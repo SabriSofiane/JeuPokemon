@@ -23,9 +23,10 @@ int main(int argc, char * argv[]) {
     {
     SDL_RenderClear(game_motor->renderer);
     //menu_Battle_Attaque(&game_motor);
-    //menu_Battle(&game_motor);
+    menu_Battle(&game_motor);
     //menu_Bag(&game_motor);
     //menu(&game_motor);
+    //speech_bubble(&game_motor);
     //1280x720
     SDL_RenderPresent(game_motor->renderer);
     }
