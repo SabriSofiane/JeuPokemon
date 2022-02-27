@@ -22,8 +22,8 @@ int main(int argc, char * argv[]) {
     if (event_handle(&game_motor) == 1)
     {
     SDL_RenderClear(game_motor->renderer);
-    //menu_Battle_Attaque(&game_motor);
-    menu_Battle(&game_motor);
+    menu_Battle_Attaque(&game_motor);
+  //  menu_Battle(&game_motor);
     //menu_Bag(&game_motor);
     //menu(&game_motor);
     //speech_bubble(&game_motor);
