@@ -1,6 +1,27 @@
+/**
+  * \file menu.c
+  * \brief fichier d'interface graphique
+  * \author Sofiane SABRI
+  * \version 0.5
+  * \date 8 mars 22
+*/
+
+
+/**
+  * \function get_text_and_rect
+  * \brief cette fonction permet de creer un rectangle configurable et un font pour un texte mis en paramètre
+  * \param renderer : rendu
+  * \param x : position x du texte
+  * \param y : position y du texte
+  * \param text : texte à afficher
+  * \param font : la police du texte à afficher
+  * \param texture : la texture du texte à afficher
+  * \param rect : le rectangle pour positioner le texte à afficher
+  * \param texColor : Couleur du texte à afficher
+*/
 void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,
   TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect,SDL_Color textColor) {
-    //cette fonction permet de creer un rectangle configurable et un f pour un texte mis en paramètre
+
     int text_width;
     int text_height;
     SDL_Surface *surface;
@@ -17,13 +38,35 @@ void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,
     rect->h = text_height;
   }
 
+  /**
+    * \function color
+    * \brief cette fonction permet d'attribuer la couleur d'un élément, utilisé pour les rectangles
+    * \param r : valeur de la couleur rouge (0-255)
+    * \param g : valeur de la couleur vert (0-255)
+    * \param b : valeur de la couleur bleu (0-255)
+    * \param a : valeur de la transparence (0-255)
+    * \param a : valeur de la transparence (0-255)
+    * \return col: un tableau avec les valeurs mis en paramètre
+  */
   SDL_Color color(Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
    SDL_Color col = {r,g,b,a};
    return col;
 }
+/**
+  * \function RenderHPBar
+  * \brief cette fonction permet de modifier le rectangle de bar de vie avec un pourcentage de vie: vie/vieMaximum
+  * \param renderer : rendu
+  * \param x : position x du rectangle
+  * \param y : position y du rectangle
+  * \param w : largeur du rectangle
+  * \param h : hauteur du rectangle
+  * \param percent : pourcentage de vie d'un pokemon
+  * \param FGColor : couleur du rectangle en premier plan
+  * \param BGColor : couleur du rectangle en arrière plan
+  * \param renderer: rendu du jeu
+*/
+void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, SDL_Color BGColor,SDL_Renderer *renderer){
 
-void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, SDL_Color BGColor,motor_t ** motor){
-   
    if(percent > 1.f)
    {
      percent = 1.f;
@@ -34,16 +77,16 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
      percent = percent;
    }
    SDL_Color old;
-   SDL_GetRenderDrawColor((*motor)->renderer, &old.r, &old.g, &old.g, &old.a);
+   SDL_GetRenderDrawColor(renderer, &old.r, &old.g, &old.g, &old.a);
    SDL_Rect bgrect = { x, y, w, h };
-   SDL_SetRenderDrawColor((*motor)->renderer, BGColor.r, BGColor.g, BGColor.b, BGColor.a);
-   SDL_RenderFillRect((*motor)->renderer, &bgrect);
-   SDL_SetRenderDrawColor((*motor)->renderer, FGColor.r, FGColor.g, FGColor.b, FGColor.a);
+   SDL_SetRenderDrawColor(renderer, BGColor.r, BGColor.g, BGColor.b, BGColor.a);
+   SDL_RenderFillRect(renderer, &bgrect);
+   SDL_SetRenderDrawColor(renderer, FGColor.r, FGColor.g, FGColor.b, FGColor.a);
    int pw = (int)((float)w * percent);
    int px = x + (w - pw);
    SDL_Rect fgrect = { px, y, pw, h };
-   SDL_RenderFillRect((*motor)->renderer, &fgrect);
-   SDL_SetRenderDrawColor((*motor)->renderer, old.r, old.g, old.b, old.a);
+   SDL_RenderFillRect(renderer, &fgrect);
+   SDL_SetRenderDrawColor(renderer, old.r, old.g, old.b, old.a);
 }
 
   void menu(motor_t ** motor)
@@ -280,7 +323,7 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
     */
 
     float percent = 0.5;
-    RenderHPBar(1130,490,-150,20,percent,color(0,255,0,255),color(0,0,0,255),motor);
+    RenderHPBar(1130,490,-150,20,percent,color(0,255,0,255),color(0,0,0,255),(*motor)->renderer);
     /*SDL_Rect hplinePlayer;
     hplinePlayer.x=980;
     hplinePlayer.y=490;
