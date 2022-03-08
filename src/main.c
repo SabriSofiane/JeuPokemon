@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,7 +9,7 @@
 #include <SDL2/SDL_ttf.h>
 
 #include "load_header.h"
-
+//export LD_LIBRARY_PATH="$HOME/SDL2/lib"
 int main(int argc, char * argv[]) {
   motor_t * game_motor;
   game_motor = init_motor();
@@ -27,7 +26,9 @@ int main(int argc, char * argv[]) {
     //menu_Bag(&game_motor);
     //menu(&game_motor);
     //speech_bubble(&game_motor);
-    menu_shop(&game_motor);
+    //menu_shop(&game_motor);
+    //menu_save(&game_motor);
+    menu_pokedex(&game_motor);
     //1280x720
     SDL_RenderPresent(game_motor->renderer);
     }
@@ -40,3 +41,27 @@ int main(int argc, char * argv[]) {
   SDL_Quit();
   return 0;
 }
+
+
+
+
+/*
+
+
+var 1
+var 2
+var 3
+var 4
+
+
+Etape 1)
+
+trouver la liste des objets dans le fichier player_obj
+Ex : a,b,c,d,e,f,g,h,i,j,k
+
+Etape 2)
+Pour chaque elements de la liste
+recuperer ses propriétées dans son fichier
+
+
+*/
