@@ -649,7 +649,7 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
     SDL_DestroyTexture(hpbarEnnemi_texture);
   }
 
-  void speech_bubble(motor_t ** motor)
+  void speech_bubble(motor_t ** motor,char * text)
   {
     SDL_Surface * surface;
     surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/messagedummy.png");
@@ -670,7 +670,13 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
     SDL_QueryTexture(textureSpeechBubble, NULL, NULL,  &image_width , &image_height);
     SDL_RenderCopy((*motor)->renderer, textureSpeechBubble, NULL, &rectBackground);
 
-
+    SDL_Texture *textureTextSpeech;
+    SDL_Rect rectTextSpeech;
+    if(font == NULL){
+      printf("Erreur font\n");
+    }
+    get_text_and_rect((*motor)->renderer, 250, 590, text, font, &textureTextSpeech, &rectTextSpeech,textColor);
+    SDL_RenderCopy((*motor)->renderer, textureTextSpeech, NULL, &rectTextSpeech);
 
     SDL_DestroyTexture(textureSpeechBubble);
   }
