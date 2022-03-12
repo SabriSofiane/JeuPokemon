@@ -1,0 +1,14 @@
+Bulbizare
+Plante Poison
+49
+49
+65
+65
+45
+Engrais
+45
+50
+500
+1
+Herbizare
+charge flammeche fouet_lianes pistolet_a_o

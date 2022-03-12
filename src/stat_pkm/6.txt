@@ -1,0 +1,14 @@
+Dracaufeu
+Feu Vol
+78
+50
+84
+78
+109
+Brasier
+85
+100
+500
+32
+Null
+charge flammeche fouet_lianes pistolet_a_o

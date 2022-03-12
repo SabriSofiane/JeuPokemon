@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <time.h> //Time.h à ajouter en commun
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
@@ -14,21 +15,24 @@ int main(int argc, char * argv[]) {
   motor_t * game_motor;
   game_motor = init_motor();
   init(&game_motor);
+  init_pkm_enemy(&wild_pkm);
+  init_pkm_team(&pkm, "1.txt");
+  push(&player, pkm);
 
   //play_sound(&game_motor,"C:/Users/Elias/Desktop/JEU_POKEMON/truc_bien_range/asset/Driftveil.mp3");
-
   while (!game_motor->quit) {
     if (event_handle(&game_motor) == 1)
     {
     SDL_RenderClear(game_motor->renderer);
-    //menu_Battle_Attaque(&game_motor);
-    //menu_Battle(&game_motor);
+    menu_Battle_Attaque(&game_motor,player,&wild_pkm);
+    menu_Battle(&game_motor);
     //menu_Bag(&game_motor);
     //menu(&game_motor);
-    //speech_bubble(&game_motor);
+    //afficher(&game_motor);
+    speech_bubble(&game_motor,"le joueur est décédé cette heure ci.");
     //menu_shop(&game_motor);
     //menu_save(&game_motor);
-    menu_pokedex(&game_motor);
+    //menu_pokedex(&game_motor);
     //1280x720
     SDL_RenderPresent(game_motor->renderer);
     }

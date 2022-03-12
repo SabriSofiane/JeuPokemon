@@ -1,0 +1,14 @@
+Herbizarre
+Plante Poison
+60
+50
+62
+63
+80
+Engrais
+60
+80
+500
+16
+Florizarre
+charge flammeche fouet_lianes null

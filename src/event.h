@@ -4,8 +4,11 @@ syntaxe lors d'ajout d'événement, par défaut les événements de déplacement
 la souris sont désactivées.
 */
 
+
 int event_handle(motor_t ** motor)
 {
+  int retour=3;
+
   SDL_WaitEvent(&(*motor)->event);
 
   if ((*motor)->event.type == SDL_MOUSEMOTION)
@@ -13,7 +16,6 @@ int event_handle(motor_t ** motor)
 
   char * key_pressed;
   key_pressed = (*motor)->last_key;
-
   if ((*motor)->event.type == SDL_KEYDOWN)
   {
     switch ((*motor)->event.key.keysym.sym)
@@ -35,6 +37,58 @@ int event_handle(motor_t ** motor)
       key_pressed = "d";
       break;
 
+
+
+      case SDLK_RETURN:
+
+      printf("lol\n");
+
+
+      switch ((*motor)->menu->el_battle_menu_atk_select) {
+        case 0:
+        (*motor)->menu->choixCombat = 0;
+        player_attack(player,&wild_pkm,(*motor)->menu->choixCombat);
+        retour = combat(player,&wild_pkm);
+        break;
+        case 1:
+        (*motor)->menu->choixCombat = 1;
+        player_attack(player,&wild_pkm,(*motor)->menu->choixCombat);
+        break;
+        case 2:
+        (*motor)->menu->choixCombat = 2;
+        player_attack(player,&wild_pkm,(*motor)->menu->choixCombat);
+        break;
+        case 3:
+        (*motor)->menu->choixCombat = 3;
+        player_attack(player,&wild_pkm,(*motor)->menu->choixCombat);
+        break;
+
+      }
+
+      switch ((*motor)->menu->el_battle_menu_select) {
+        case 0:
+        (*motor)->menu->menu_battle = 0;
+        (*motor)->menu->menu_battle_attaque= 1;
+
+        break;
+        case 1:
+
+        break;
+        case 2:
+
+        break;
+        case 3:
+
+        break;
+
+      }
+
+      if(retour == 1){
+        (*motor)->menu->speech_bubble = 1;
+      }
+
+      break;
+
       case SDLK_m:
       key_pressed = "m";
 
@@ -50,7 +104,7 @@ int event_handle(motor_t ** motor)
       break;
 
       case SDLK_UP:
-      key_pressed = "a";
+
       if ((*motor)->menu->el_menu_select > 0)
       (*motor)->menu->el_menu_select--;
       else
@@ -61,22 +115,48 @@ int event_handle(motor_t ** motor)
       (*motor)->menu->el_battle_menu_select--;
       else
       (*motor)->menu->el_battle_menu_select =3;
+
       printf("%d",(*motor)->menu->el_battle_menu_select);
+
+
+      if ((*motor)->menu->el_battle_menu_atk_select > 0)
+      (*motor)->menu->el_battle_menu_atk_select--;
+      else
+      (*motor)->menu->el_battle_menu_atk_select =3;
+
+      printf("%d",(*motor)->menu->el_battle_menu_atk_select);
+
+
+
+
+
+
+
+
       break;
 
       case SDLK_DOWN:
-      key_pressed = "a";
+
+      printf("%d",(*motor)->menu->el_battle_menu_select);
       if ((*motor)->menu->el_menu_select < 5)
       (*motor)->menu->el_menu_select++;
       else
       (*motor)->menu->el_menu_select = 0;
-      
+
 
       if ((*motor)->menu->el_battle_menu_select < 3)
       (*motor)->menu->el_battle_menu_select++;
       else
       (*motor)->menu->el_battle_menu_select =0;
       printf("%d",(*motor)->menu->el_battle_menu_select);
+
+
+      if ((*motor)->menu->el_battle_menu_atk_select < 3)
+      (*motor)->menu->el_battle_menu_atk_select++;
+      else
+      (*motor)->menu->el_battle_menu_atk_select =0;
+      printf("%d",(*motor)->menu->el_battle_menu_atk_select);
+
       break;
 
       default:

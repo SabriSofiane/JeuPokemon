@@ -2,8 +2,9 @@
 #include "motor.h"
 #include "textures.h"
 #include "initialisation.h"
+#include "combat.h"
 #include "menu.h"
 #include "event.h"
-//#include "liste.h"
+
 
 //#include "audio.h"

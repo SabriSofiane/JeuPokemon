@@ -50,8 +50,13 @@ typedef struct
 {
   int el_menu_select;
   int el_battle_menu_select;
+  int el_battle_menu_atk_select;
+  int choixCombat;
   SDL_Texture ** menu_textures;
   int taille;
+  int speech_bubble;
+  int menu_battle;
+  int menu_battle_attaque;
 } menu_t;
 
 typedef struct
@@ -72,6 +77,33 @@ typedef struct
 //Ajouter vos nouvelles structures ICI (et donc pas ailleur, pour plus de simplicité lors de la fusion des codes)
 /*-------------------------------------*/
 
+//Ce qui defeini un pkm
+typedef struct{
+  char pkm_name[50];
+  char type1[50];
+  char type2[50];
+  int atk;
+  int def;
+  int spatk;
+  int spdef;
+  int sp;
+  char talent[50];
+  int hp;
+  int mp;
+  int lvl;
+  int exp;
+  char evolution[50];
+  char skill[4][20];
+}t_pkm;
+
+// Declaration du tableau contenant les elements de liste
+typedef struct listeEl{
+  t_pkm pkm;
+  struct listeEl *next;
+}Liste_t;
+t_pkm pkm;
+Liste_t * player;
+t_pkm wild_pkm;
 
 motor_t * init_motor()
 {
@@ -103,10 +135,14 @@ motor_t * init_motor()
 
     motor->menu = malloc(sizeof(menu_t));
     motor->menu->el_menu_select = 0;
-
+    motor->menu->el_battle_menu_select = 0;
+    motor->menu->el_battle_menu_atk_select = 0;
+    motor->menu->choixCombat = 1;
     motor->menu->taille = 6;
     motor->menu->menu_textures = malloc(sizeof(SDL_Texture*)*10);
-
+    motor->menu->speech_bubble = 0;
+    motor->menu->menu_battle=1;
+    motor->menu->menu_battle_attaque=0;
     /* Initialisation de la chaine de char*/
     motor->last_key = malloc(10*sizeof(char));
 
@@ -157,5 +193,5 @@ void destroy_motor(motor_t ** motor)
     }
 
     free(*motor);
-    *motor = NULL;
+    //*motor = NULL;
 }
