@@ -1,10 +1,10 @@
-#include "../lib/pokemon/motor.h"
-#include "../lib/pokemon/text.h"
+#include "../include/motor.h"
+#include "../include/text.h"
 
 void text_init(motor_t ** motor)
 {
   TTF_Init();
-  (*motor)->windows->font = TTF_OpenFont("arial.ttf", 25);
+  (*motor)->windows->font = TTF_OpenFont("./fonts/arial.ttf", 25);
 }
 
 void text_draw(motor_t ** motor,char * text,int x,int y) {

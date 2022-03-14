@@ -1,6 +1,6 @@
-#include "../lib/pokemon/motor.h"
-#include "../lib/pokemon/player.h"
-#include "../lib/pokemon/textures.h"
+#include "../include/motor.h"
+#include "../include/player.h"
+#include "../include/textures.h"
 
 int init_player(motor_t ** motor)
 {
@@ -10,14 +10,14 @@ int init_player(motor_t ** motor)
   (*motor)->player->player_cooldown = 0;
 
 
-  (*motor)->player->posX = 201;//215;
-  (*motor)->player->posY = 216;//220;
+  (*motor)->player->posX = 170;//201;//215;
+  (*motor)->player->posY = 50;//216;//220;
 
   (*motor)->player->width = (int)(64*(floor((*motor)->windows->size_coef)));
   (*motor)->player->height = (int)(64*(floor((*motor)->windows->size_coef)));
 
-  load_texture(&(*motor)->renderer,&(*motor)->textures->player_walk,"C:/Users/Elias/Desktop/JEU_POKEMON/truc_bien_range/asset/lyra/lyra_walk.png");
-  load_texture(&(*motor)->renderer,&(*motor)->textures->player_run,"C:/Users/Elias/Desktop/JEU_POKEMON/truc_bien_range/asset/lyra/lyra_run.png");
+  load_texture(&(*motor)->renderer,&(*motor)->textures->player_walk,"C:/Users/Elias/Desktop/JEU_POKEMON/src/asset/lyra/lyra_walk.png");
+  load_texture(&(*motor)->renderer,&(*motor)->textures->player_run,"C:/Users/Elias/Desktop/JEU_POKEMON/src/asset/lyra/lyra_run.png");
 
   if ((*motor)->textures->player_walk== NULL)
   {
@@ -36,16 +36,6 @@ int init_player(motor_t ** motor)
 
 void display_player(motor_t ** motor)
 {
-  /*
-  if ((*motor)->player->player_cooldown > 0)
-  (*motor)->player->player_cooldown--;
-  else if ((*motor)->player->player_cooldown == 0)
-  {
-    (*motor)->player->movement_id = 1;
-    (*motor)->player->player_cooldown = -1;
-  }
-  */
-
   SDL_Rect * player_rect;
   player_rect = &(*motor)->player->player_rect;
 
@@ -59,17 +49,45 @@ void display_player(motor_t ** motor)
   player_rect->y += 32;
 
   SDL_Rect SrcR;
-
+  /*
   SrcR.x = ((*motor)->player->movement_id/2)+(*motor)->player->movement_id%2;
   SrcR.x--;
   SrcR.x *= 64;
+*/
 
+  /*
+  if ((*motor)->keys.z_key + (*motor)->keys.q_key + (*motor)->keys.s_key + (*motor)->keys.d_key == 0)
+  {
+    SrcR.x = 0;
+  } else
+  {
+    Uint32 ticks = SDL_GetTicks();
+    Uint32 seconds = ticks / 50;
+    Uint32 sprite = seconds % 4;
+    SrcR.x = sprite;
+    SrcR.x *= 64;
+  }
+  */
+
+
+  /*
+  if ((*motor)->keys.z_key + (*motor)->keys.q_key + (*motor)->keys.s_key + (*motor)->keys.d_key > 0)
+  {
+    SrcR.x = sprite;
+    SrcR.x *= 64;
+  }
+  */
 
   if ((*motor)->player->speed == 1)
   {
 
-  if ((*motor)->keys.z_key + (*motor)->keys.q_key + (*motor)->keys.s_key + (*motor)->keys.d_key > 0)
-  {
+    if ((*motor)->keys.z_key + (*motor)->keys.q_key + (*motor)->keys.s_key + (*motor)->keys.d_key > 0)
+    {
+      Uint32 ticks = SDL_GetTicks();
+      Uint32 seconds = ticks / 100;
+      Uint32 sprite = seconds % 4;
+      SrcR.x = sprite;
+      SrcR.x *= 64;
     if ((*motor)->keys.z_key == 1)
     SrcR.y = 64*0;
     else if ((*motor)->keys.q_key == 1)
@@ -78,8 +96,8 @@ void display_player(motor_t ** motor)
     SrcR.y = 64*2;
     else if ((*motor)->keys.d_key == 1)
     SrcR.y = 64*3;
-  } else
-  {
+    } else
+    {
     if ((*motor)->keys.lastkey == 'z')
     SrcR.y = 64*0;
     else if ((*motor)->keys.lastkey == 'q')
@@ -120,6 +138,4 @@ void display_player(motor_t ** motor)
     SDL_RenderCopy((*motor)->renderer, (*motor)->textures->player_run, &SrcR, player_rect);
   }
 
-  //free(player_rect);
-  //player_rect = NULL;
 }

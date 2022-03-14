@@ -1,14 +1,14 @@
-#include "../lib/pokemon/motor.h"
-#include "../lib/pokemon/map.h"
-#include "../lib/pokemon/textures.h"
-#include "../lib/pokemon/string_matrice.h"
+#include "../include/motor.h"
+#include "../include/map.h"
+#include "../include/textures.h"
+#include "../include/string_matrice.h"
 
 int init_map(motor_t ** motor)
 {
   int retour = 0;
 
-  char * tileset = "C:/Users/Elias/Desktop/JEU_POKEMON/composite_game.png";
-  char * datafile = "C:/Users/Elias/Desktop/JEU_POKEMON/truc_bien_range/asset/file_map3_game.dat";
+  char * tileset = "C:/Users/Elias/Desktop/JEU_POKEMON/src/asset/composite_game.png";
+  char * datafile = "C:/Users/Elias/Desktop/JEU_POKEMON/src/asset/file_map3_game.dat";
   load_texture(&(*motor)->renderer,&(*motor)->textures->texture_map,tileset);
 
   if ((*motor)->textures->texture_map== NULL)
@@ -55,7 +55,7 @@ void display_map(motor_t ** motor,int texture_id)
 {
   int nb_bordure = 10;
 
-  char *** mat = get_String_Matrice(&(*motor),"C:/Users/Elias/Desktop/JEU_POKEMON/truc_bien_range/asset/file_map3.dat", nb_bordure, (*motor)->player->posX,(*motor)->player->posY,"display_map_convert");
+  char *** mat = get_String_Matrice(&(*motor),"C:/Users/Elias/Desktop/JEU_POKEMON/src/asset/file_map3.dat", nb_bordure, (*motor)->player->posX,(*motor)->player->posY,"display_map_convert");
   int loop = (2 * nb_bordure) + 1;
 
   //printf("matrice %s\n",mat[16][16]);
@@ -73,7 +73,7 @@ void display_map(motor_t ** motor,int texture_id)
       int property = split_string_data(mat[i][j],',',3);
       //mat_val--;
 
-      if (atoi(mat[i][j]) != -1)
+      if (1)//(mat_val != -1)
       {
         /*
         int y = mat_val/tiles_size;

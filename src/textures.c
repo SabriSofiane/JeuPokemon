@@ -1,5 +1,5 @@
-#include "../lib/pokemon/motor.h"
-#include "../lib/pokemon/textures.h"
+#include "../include/motor.h"
+#include "../include/textures.h"
 
 
 void init_textures(motor_t ** motor,SDL_Texture * texture_map1,char path[100])

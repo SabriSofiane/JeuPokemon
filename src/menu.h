@@ -1,4 +1,4 @@
-#include "../lib/pokemon/motor.h"
+#include "../include/motor.h"
 
 void menu(motor_t ** motor)
 {

@@ -1,6 +1,7 @@
-#include "../lib/pokemon/motor.h"
-#include "../lib/pokemon/admin.h"
-#include "../lib/pokemon/text.h"
+#include "../include/motor.h"
+#include "../include/admin.h"
+#include "../include/text.h"
+
 void selection_bar(motor_t ** motor,int nb_menu,int nb_option)
 {
 if ((*motor)->keys.right_arrow == 1)
@@ -48,6 +49,7 @@ void display_console(motor_t ** motor)
   menu[5] = "Changement map/tp";
   menu[6] = "Trigger animation";
 
+
   int menu_selection[5];
   menu_selection[0] = 0;
   /*
@@ -60,10 +62,10 @@ void display_console(motor_t ** motor)
   selection_bar_y = (*motor)->admin_console->selection_bar_y;
 
 
-    if (selection_bar_y == 0)
-    (*motor)->admin_console->selected_menu = selection_bar_x;
-    //else if (selection_bar_y < 10)
-    /*
+  if (selection_bar_y == 0)
+  (*motor)->admin_console->selected_menu = selection_bar_x;
+  //else if (selection_bar_y < 10)
+  /*
     if ((*motor)->admin_console->menu_change == 0)
     {
       (*motor)->admin_console->arguments[selection_bar_y] = atoi((*motor)->admin_console->keypad);
@@ -92,4 +94,9 @@ void display_console(motor_t ** motor)
     //sprintf(value,"%i",(*motor)->admin_console->arguments[i]);
     text_draw(motor,(*motor)->admin_console->arguments[i],1450,100+(i*30) );
   }
+
+  text_draw(motor,str,1400,500);
+
+  sprintf(str,"%f;%f",(*motor)->player->posX,(*motor)->player->posY);
+  text_draw(motor,str,1400,550);
 }

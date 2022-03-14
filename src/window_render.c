@@ -1,11 +1,11 @@
-#include "../lib/pokemon/motor.h"
-#include "../lib/pokemon/window_render.h"
+#include "../include/motor.h"
+#include "../include/window_render.h"
 
 int create_window_render(SDL_Window ** window, SDL_Renderer ** renderer,int window_width, int window_height)
 {
   (*window) = SDL_CreateWindow("Pokemon ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_width, window_height, SDL_WINDOW_RESIZABLE );
 
-  SDL_Surface * icon = IMG_Load("C:/Users/Elias/Desktop/JEU_POKEMON/truc_bien_range/asset/icon.png");
+  SDL_Surface * icon = IMG_Load("C:/Users/Elias/Desktop/JEU_POKEMON/src/asset/icon.png");
   SDL_SetWindowIcon(*window,icon);
   SDL_FreeSurface(icon);
 

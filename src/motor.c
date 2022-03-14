@@ -1,6 +1,9 @@
-#include "../lib/pokemon/motor.h"
-#include "../lib/pokemon/window_render.h"
-
+#include "../include/motor.h"
+#include "../include/window_render.h"
+#include "../include/SDL2/SDL.h"
+#include "../include/SDL2/SDL_image.h"
+#include "../include/SDL2/SDL_mixer.h"
+#include "../include/SDL2/SDL_ttf.h"
 
 /*-------------------------------------*/
 //Ajouter vos nouvelle structure ICI (et donc pas ailleur, pour plus de simplicité lors de la fusion des codes)

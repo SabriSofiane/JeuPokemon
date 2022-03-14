@@ -1,15 +1,15 @@
-#include "../lib/pokemon/motor.h"
-#include "../lib/pokemon/collisions.h"
-#include "../lib/pokemon/string_matrice.h"
-#include "../lib/pokemon/audio.h"
+#include "../include/motor.h"
+#include "../include/collisions.h"
+#include "../include/string_matrice.h"
+#include "../include/audio.h"
 
 int check_collision(motor_t ** motor)
 {
   int y = (*motor)->player->posY;
   y -= 4;
 
-  char *** matrice = get_String_Matrice(&(*motor),"C:/Users/Elias/Desktop/JEU_POKEMON/truc_bien_range/asset/file_map3.dat", 1, (*motor)->player->posX,y,"check_collision");
-  int collision = split_string_data(matrice[1][1],',',3);
+  char *** matrice = get_String_Matrice(&(*motor),"C:/Users/Elias/Desktop/JEU_POKEMON/src/asset/file_map3.dat", 1, (*motor)->player->posX,y,"check_collision");
+  int collision = split_string_data(matrice[1][1],',',4);
 
   detruire_string_matrice(matrice,3);
   matrice = NULL;
@@ -37,7 +37,7 @@ int * check_interaction(motor_t ** motor)
   pos_x++;
 
 
-  char *** matrice = get_String_Matrice(&(*motor),"C:/Users/Elias/Desktop/JEU_POKEMON/truc_bien_range/asset/file_map3.dat", 0, pos_x,pos_y,"check_interaction");
+  char *** matrice = get_String_Matrice(&(*motor),"C:/Users/Elias/Desktop/JEU_POKEMON/src/asset/file_map3.dat", 0, pos_x,pos_y,"check_interaction");
   static int interaction[5];
 
   interaction[0] = split_string_data(matrice[1][1],',',4);
@@ -47,8 +47,7 @@ int * check_interaction(motor_t ** motor)
   }
   */
   //int interaction = split_string_data(matrice[1][1],',',4);
-
-/*
+  /*
   printf("-------------\n");
   for (size_t i = 0; i < 3; i++) {
     for (size_t j = 0; j < 3; j++) {
@@ -71,13 +70,13 @@ int * check_tile_agurments(motor_t ** motor)
   int pos_y = (*motor)->player->posY;
   pos_y -= 4;
 
-  char *** matrice = get_String_Matrice(&(*motor),"C:/Users/Elias/Desktop/JEU_POKEMON/truc_bien_range/asset/file_map3.dat", 0, pos_x,pos_y,"check_interaction");
+  char *** matrice = get_String_Matrice(&(*motor),"C:/Users/Elias/Desktop/JEU_POKEMON/src/asset/file_map3.dat", 0, pos_x,pos_y,"check_interaction");
 
   int * arguments = malloc(sizeof(int) * 10);
-  arguments[0] = split_string_data(matrice[0][0],',',3);
-  arguments[1] = split_string_data(matrice[0][0],',',4);
-  arguments[2] = split_string_data(matrice[0][0],',',5);
-  arguments[3] = split_string_data(matrice[0][0],',',6);
+  arguments[0] = split_string_data(matrice[0][0],',',4);
+  arguments[1] = split_string_data(matrice[0][0],',',5);
+  arguments[2] = split_string_data(matrice[0][0],',',6);
+  arguments[3] = split_string_data(matrice[0][0],',',7);
 /*
   for (size_t i = 0; i < 4; i++) {
     printf("Arguments[%i] : %i\n",i,arguments[i] );
@@ -185,7 +184,7 @@ void collision(motor_t ** motor)
       if (enable_play_sound == 1)
       {
         stop_sound();
-        play_sound(motor,(*motor)->musique->track_path_list[arguments[1]]);
+        play_sound(motor,(*motor)->musique->track_path_list[arguments[1]],-1,10);
       }
       /*
       arg 0 : 5;

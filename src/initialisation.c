@@ -1,7 +1,7 @@
-#include "../lib/pokemon/motor.h"
-#include "../lib/pokemon/initialisation.h"
-#include "../lib/pokemon/player.h"
-#include "../lib/pokemon/map.h"
+#include "../include/motor.h"
+#include "../include/initialisation.h"
+#include "../include/player.h"
+#include "../include/map.h"
 
   
 int init(motor_t ** motor)

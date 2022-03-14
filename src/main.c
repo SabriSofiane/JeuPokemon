@@ -1,18 +1,20 @@
-/*
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include <math.h>
 #include <dirent.h>
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_mixer.h>
-#include <SDL_ttf.h>
-*/
 
-#include "C:/Users/Elias/Desktop/JEU_POKEMON/lib/pokemon/load_header.h"
+
+#include "../include/SDL2/SDL.h"
+#include "../include/SDL2/SDL_image.h"
+#include "../include/SDL2/SDL_mixer.h"
+#include "../include/SDL2/SDL_ttf.h"
+
+#include "C:/Users/Elias/Desktop/JEU_POKEMON/include/load_header.h"
+
+#define fps_limit 16
+void limit_fps(unsigned int fps);
 
 int main(int argc, char * argv[]) {
 
@@ -24,64 +26,38 @@ int main(int argc, char * argv[]) {
     return(-1);
   }
 
-  /*
-  for (int i = 0; i < SDL_NumJoysticks(); ++i) {
-    if (SDL_IsGameController(i)) {
-        (game_motor)->controller->controller = SDL_GameControllerOpen(i);
-        if ((game_motor)->controller->controller) {
-          printf("Controller find %i\n",i);
-            break;
-        } else {
-            fprintf(stderr, "Could not open gamecontroller %i: %s\n", i, SDL_GetError());
-        }
-    }
-  }
-*/
 
   //system("cls");
   audio_init(&game_motor);
-  play_sound(&game_motor,(game_motor)->musique->track_path_list[0]);//"./truc_bien_range/asset/audio/Driftveil.mp3");//(game_motor)->musique->track_path_list[0]);
-  printf("%s------ \n", (game_motor)->musique->track_path_list[0]);
-  printf("%i \n", strlen((game_motor)->musique->track_path_list[0]));
-  /*
-  SDL_Window * win;
-  SDL_Renderer * renderer;
-  create_window_render(&win,&renderer,100,100);//dialog();
-*/
-  TTF_Init();
-  (game_motor)->windows->font = TTF_OpenFont("arial.ttf", 25);
+  play_sound(&game_motor,(game_motor)->musique->track_path_list[0],-1,0);
 
-  int game_loop = 0;
+  text_init(&game_motor);
+
+
+  game_motor->actual_time = 0;
   while (!game_motor->quit) {
-    game_motor->previous_time = game_motor->actual_time;
-    game_motor->actual_time = SDL_GetTicks();
+    //game_motor->actual_time = SDL_GetTicks()+fps_limit;
 
-    if (event_handle(&game_motor) == 1)
-    {
-      if (2 == 2)
-      {
+    //limit_fps(game_motor->actual_time);
+
+    event_handle(&game_motor);
+
+    SDL_RenderClear(game_motor->renderer);
+    SDL_SetRenderDrawColor(game_motor->renderer, 128,128,128, 255);
+    collision(&game_motor);
+
+    display_map(&game_motor,1);   //calque n°1
+    display_map(&game_motor,2);   //calque n°2
+    display_map(&game_motor,3);   //calque n°3
+    display_player(&game_motor);  //joueur
+    display_map(&game_motor,4);   //calque n°3
+    display_console(&game_motor);
 
 
-        SDL_SetRenderDrawColor(game_motor->renderer, 128,128,128, 255);
+    SDL_RenderPresent(game_motor->renderer);
 
-
-
-
-        SDL_RenderClear(game_motor->renderer);
-
-        collision(&game_motor);
-
-        display_map(&game_motor,1);   //calque n°1
-        display_map(&game_motor,2);   //calque n°2
-        display_player(&game_motor);  //joueur
-        display_map(&game_motor,3);   //calque n°3
-        display_console(&game_motor);
-        SDL_RenderPresent(game_motor->renderer);
-        game_loop = 0;
-      }
-      game_loop++;
+    //game_motor->actual_time = SDL_GetTicks()+fps_limit;
     }
-  }
 
   printf("Fin du while\n");
   /////destroy_window_render(&win,&renderer);
@@ -89,4 +65,16 @@ int main(int argc, char * argv[]) {
   IMG_Quit();
   SDL_Quit();
   return 0;
+}
+
+void limit_fps(unsigned int limit)
+{
+  unsigned int ticks = SDL_GetTicks();
+
+  if (limit < ticks)
+      return;
+  else if (limit > ticks + fps_limit)
+      SDL_Delay(fps_limit);
+  else
+      SDL_Delay(limit-ticks);
 }

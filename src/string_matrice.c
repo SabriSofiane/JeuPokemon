@@ -1,5 +1,5 @@
-#include "../lib/pokemon/motor.h"
-#include "../lib/pokemon/string_matrice.h"
+#include "../include/motor.h"
+#include "../include/string_matrice.h"
 
 char *** creer_string_matrice(int size)
 {
