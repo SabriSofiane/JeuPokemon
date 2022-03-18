@@ -5,7 +5,6 @@
 #include <time.h> //Time.h à ajouter en commun
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-
 //#include <SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
 
@@ -18,18 +17,28 @@ int main(int argc, char * argv[]) {
   init_pkm_enemy(&wild_pkm);
   init_pkm_team(&pkm, "1.txt");
   push(&player, pkm);
-
+  init_pkm_team(&pkm, "2.txt");
+  insertAtEnd(player, pkm);
+  init_pkm_team(&pkm, "3.txt");
+  insertAtEnd(player, pkm);
+  init_pkm_team(&pkm, "7.txt");
+  insertAtEnd(player, pkm);
+  init_pkm_team(&pkm, "5.txt");
+  insertAtEnd(player, pkm);
+  init_pkm_team(&pkm, "6.txt");
+  insertAtEnd(player, pkm);
   //play_sound(&game_motor,"C:/Users/Elias/Desktop/JEU_POKEMON/truc_bien_range/asset/Driftveil.mp3");
   while (!game_motor->quit) {
     if (event_handle(&game_motor) == 1)
     {
     SDL_RenderClear(game_motor->renderer);
-    menu_Battle_Attaque(&game_motor,player,&wild_pkm);
+    menu_Battle_Attaque(&game_motor);
     menu_Battle(&game_motor);
+    menu_pokemon(&game_motor);
     //menu_Bag(&game_motor);
     //menu(&game_motor);
     //afficher(&game_motor);
-    speech_bubble(&game_motor,"le joueur est décédé cette heure ci.");
+    speech_bubble(&game_motor,"Bienvenue a Bidoofville");
     //menu_shop(&game_motor);
     //menu_save(&game_motor);
     //menu_pokedex(&game_motor);

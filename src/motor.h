@@ -51,12 +51,20 @@ typedef struct
   int el_menu_select;
   int el_battle_menu_select;
   int el_battle_menu_atk_select;
+  int el_menu_pokemon_select;
+  int el_menu_save_select;
   int choixCombat;
   SDL_Texture ** menu_textures;
   int taille;
   int speech_bubble;
+  int menu_principal;
   int menu_battle;
   int menu_battle_attaque;
+  int menu_pokemon;
+  int menu_bag;
+  int menu_shop;
+  int menu_save;
+  int current_pokemon;
 } menu_t;
 
 typedef struct
@@ -77,7 +85,7 @@ typedef struct
 //Ajouter vos nouvelles structures ICI (et donc pas ailleur, pour plus de simplicité lors de la fusion des codes)
 /*-------------------------------------*/
 
-//Ce qui defeini un pkm
+//Ce qui defini un pkm
 typedef struct{
   char pkm_name[50];
   char type1[50];
@@ -94,6 +102,9 @@ typedef struct{
   int exp;
   char evolution[50];
   char skill[4][20];
+  int pkmId;
+  int id;
+  int hpMax;
 }t_pkm;
 
 // Declaration du tableau contenant les elements de liste
@@ -103,6 +114,8 @@ typedef struct listeEl{
 }Liste_t;
 t_pkm pkm;
 Liste_t * player;
+//Liste_t * temp = player;
+
 t_pkm wild_pkm;
 
 motor_t * init_motor()
@@ -132,17 +145,27 @@ motor_t * init_motor()
     Exemple d'initialisation d'une texture
     motor->textures->calque_map_1 = malloc(sizeof(SDL_Texture*));
     */
-
+    /* Initialisation de tout les éléments utiles pour le menu et les interfaces. */
     motor->menu = malloc(sizeof(menu_t));
+
     motor->menu->el_menu_select = 0;
     motor->menu->el_battle_menu_select = 0;
     motor->menu->el_battle_menu_atk_select = 0;
+    motor->menu->el_menu_pokemon_select=0;
+    motor->menu->el_menu_save_select=0;
     motor->menu->choixCombat = 1;
     motor->menu->taille = 6;
     motor->menu->menu_textures = malloc(sizeof(SDL_Texture*)*10);
     motor->menu->speech_bubble = 0;
     motor->menu->menu_battle=1;
     motor->menu->menu_battle_attaque=0;
+    motor->menu->menu_pokemon=0;
+    motor->menu->menu_bag=0;
+    motor->menu->menu_shop=0;
+    motor->menu->menu_save=0;
+    motor->menu->menu_principal=0;
+    motor->menu->current_pokemon = 1;
+
     /* Initialisation de la chaine de char*/
     motor->last_key = malloc(10*sizeof(char));
 

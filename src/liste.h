@@ -1,110 +1,109 @@
+// Mise en oeuvre contigue d'une liste d'entiers
+#define TAILLE_MAX 100
+#include<stdio.h>
 
-typedef struct element {
-	struct element* pred;
-	struct element* succ;
- } t_element;
+// Declaration du tableau contenant les elements de liste
+int liste[TAILLE_MAX];
+// Declaration des indices de queue et d'element courant
+int queue, ec;
 
-typedef struct {
-	t_element* drapeau;
-	t_element* ec;
- } t_liste;
+void init_liste(void){
+// Initialise la liste a vide
 
-t_liste * liste;
-// Primitives de listes
-
-void init_liste(t_liste *l) {
-	l->drapeau = (t_element*)malloc(sizeof(t_element));
-
-	l->drapeau->pred = l->drapeau;
-	l->drapeau->succ = l->drapeau;
-	l->ec = l->drapeau;
+	queue = -1;
+	ec = -1;
 }
 
-int liste_vide(t_liste *l) {
-	return ((l->drapeau->pred == l->drapeau) && (l->drapeau->succ == l->drapeau));
+int liste_vide(void){
+// Rend vrai si la liste est vide, faux sinon
+
+	return (queue== -1);
 }
 
-int hors_liste(t_liste *l) {
-	return (l->ec == l->drapeau);
+int hors_liste(void){
+// Rend vrai si l'elt courant est hors de la liste, faux sinon
+
+	return(ec < 0 || ec > queue);
 }
 
-void en_tete(t_liste *l) {
-	if(!liste_vide(l))
-		l->ec = l->drapeau->succ;
+void en_tete(void){
+// Positionne en tete de la liste
+
+	if(!liste_vide())
+		ec = 0;
 }
 
-void en_queue(t_liste *l) {
-	if(!liste_vide(l))
-		l->ec = l->drapeau->pred;
+void en_queue(void){
+// Positionne en queue de la liste
+
+	if(!liste_vide())
+		ec = queue;
 }
 
-void suivant(t_liste *l) {
-	if(!hors_liste(l))
-		l->ec = l->ec->succ;
+void precedent(void){
+// Positionne sur l'elt precedent
+
+	if(!hors_liste())
+		ec--;
 }
 
-void precedent(t_liste *l) {
-	if(!hors_liste(l))
-		l->ec = l->ec->pred;
+void suivant(void){
+// Positionne sur l'elt suivant
+
+	if(!hors_liste())
+		ec++;
 }
 
-void valeur_elt(t_liste *l, t_fourmi* f) {
-	if(!hors_liste(l))
-		*f = l->ec->f;
+void valeur_elt(int* v){
+// Renvoie dans v la valeur de l'elt courant
+
+	if(!hors_liste())
+		*v= liste[ec];
 }
 
-void modif_elt(t_liste *l, t_fourmi f) {
-	if(!hors_liste(l))
-		l->ec->f = f;
+void modif_elt(int v){
+// Affecte v a l'elt courant
+
+	if(!hors_liste())
+		liste[ec]=v;
 }
 
-void oter_elt(t_liste *l) {
-	if(!hors_liste(l)) {
-		t_element* p;
+void oter_elt(void){
+// Supprime l'elt courant et positionne sur le precedent
 
-		(l->ec->pred)->succ = l->ec->succ;
-		(l->ec->succ)->pred = l->ec->pred;
-		p = l->ec;
-		precedent(l);
-		free(p);
+	int i;
+	if(!hors_liste()){
+		for(i=ec;i<queue;i++)
+			liste[i]=liste[i+1];
+		ec--; queue--;
 	}
 }
 
-void ajout_droit(t_liste *l, t_fourmi f) {
-	if(liste_vide(l) || !hors_liste(l)) {
-		t_element* nouv;
+void ajout_droit(int v){
+// Ajoute v a droite de l'elt courant
 
-		nouv = (t_element*)malloc(sizeof(t_element));
-		nouv->f = f;
-		nouv->pred = l->ec;
-		nouv->succ = l->ec->succ;
-		//Mise a jour des chainages des voisins
-		(l->ec->succ)->pred = nouv;
-		l->ec->succ = nouv;
-		//On se positionne sur le nouvel ?lement
-		l->ec = nouv;
+	int i;
+
+	if(liste_vide()||!hors_liste()){
+		for(i=queue;i>ec;i--)
+			liste[i+1]=liste[i];
+		liste[ec+1]=v;
+		ec++; queue++;
 	}
 }
 
-void ajout_gauche(t_liste *l, t_fourmi f) {
-	if(liste_vide(l) || !hors_liste(l)) {
-		t_element* nouv;
+void ajout_gauche(int v){
+// Ajoute v a gauche de l'elt courant
 
-		nouv = (t_element*)malloc(sizeof(t_element));
-		nouv->f = f;
-		nouv->pred = l->ec->pred;
-		nouv->succ = l->ec;
-		//Mise a jour des chainages des voisins
-		(l->ec->pred)->succ = nouv;
-		l->ec->pred = nouv;
-		//On se positionne sur le nouvel element
-		l->ec = nouv;
+	int i;
+
+	if(liste_vide())
+		ec++;
+
+	if(liste_vide()||!hors_liste()){
+		for(i=queue;i>=ec;i--)
+			liste[i+1]=liste[i];
+		liste[ec]=v;
+		queue++;
 	}
-}
-
-int taille(t_liste* l){
-	int t=0;
-	for(en_tete(l);!hors_liste(l);suivant(l))
-		t++;
-	return t;
 }

@@ -12,3 +12,4 @@ Brasier
 32
 Null
 charge flammeche fouet_lianes pistolet_a_o
+6

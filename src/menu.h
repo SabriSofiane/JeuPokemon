@@ -1,6 +1,7 @@
 /**
   * \file menu.c
   * \brief fichier d'interface graphique
+  * Attention au chemin des textures dans chacune des fonctions!
   * \author Sofiane SABRI
   * \version 0.5
   * \date 8 mars 22
@@ -8,35 +9,32 @@
 
 
 /**
-  * \function get_text_and_rect
-  * \brief cette fonction permet de creer un rectangle configurable et un font pour un texte mis en paramètre
-  * \param renderer : rendu
-  * \param x : position x du texte
-  * \param y : position y du texte
+  * \function render_text
+  * \brief cette fonction permet de creer du texte et de le positioner
+  * \param motor : moteur de jeux
   * \param text : texte à afficher
   * \param font : la police du texte à afficher
-  * \param texture : la texture du texte à afficher
-  * \param rect : le rectangle pour positioner le texte à afficher
-  * \param texColor : Couleur du texte à afficher
+  * \param x : position x du texte
+  * \param y : position y du texte
 */
-void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,
-  TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect,SDL_Color textColor) {
+  void render_text(motor_t ** motor,char * text,TTF_Font *font,int x,int y) {
+      SDL_Color color = {0,0,0,0};
+      SDL_Surface * surface = TTF_RenderText_Solid(font,
+        text, color);
+      SDL_Texture * texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      int text_width = surface->w;
+      int text_height = surface->h;
+      SDL_Rect textRect;
+      textRect.x = x;
+      textRect.y = y;
+      textRect.w = text_width;
+      textRect.h = text_height;
+      SDL_QueryTexture(texture, NULL, NULL, &text_width, &text_height);
+      SDL_RenderCopy((*motor)->renderer, texture, NULL, &textRect);
+      SDL_FreeSurface(surface);
+      SDL_DestroyTexture(texture);
+    }
 
-    int text_width;
-    int text_height;
-    SDL_Surface *surface;
-
-
-    surface = TTF_RenderText_Solid(font, text, textColor);
-    *texture = SDL_CreateTextureFromSurface(renderer, surface);
-    text_width = surface->w;
-    text_height = surface->h;
-    SDL_FreeSurface(surface);
-    rect->x = x;
-    rect->y = y;
-    rect->w = text_width;
-    rect->h = text_height;
-  }
 
   /**
     * \function color
@@ -89,161 +87,143 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
    SDL_SetRenderDrawColor(renderer, old.r, old.g, old.b, old.a);
 }
 
-  void menu(motor_t ** motor)
+/**
+  * \function menu
+  * \brief menu principal du jeu
+  * \param motor : moteur de jeux
+*/
+void menu(motor_t ** motor)
   {
-    SDL_Surface * surface;
-    //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Menu_Back.png");
-    surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Menu_Back.png");
-    if (surface == NULL)
-    printf("Erreur Background\n");
-    SDL_Texture * textureBackgroundMenu = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
-    SDL_FreeSurface(surface);
-    SDL_Rect rectBackground;
-    char* font_path = "Pokemon_GB.ttf";
-    SDL_Color textColor = {255, 255, 255, 0};
-    SDL_Rect menu;
-    rectBackground.x=0;
-    rectBackground.y=0;
-    rectBackground.w=640;
-    rectBackground.h=480;
-    int image_width,image_height;
-    SDL_QueryTexture(textureBackgroundMenu, NULL, NULL,  &image_width , &image_height);
-    SDL_RenderCopy((*motor)->renderer, textureBackgroundMenu, NULL, &rectBackground);
-
-    for (int i = 0; i < 6; i++) {
-
-      char path[100];
-      //sprintf(path,"C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Menu%i.png",i);
-      sprintf(path,"/info/etu/l2info/s2103600/SDL2/images/Pictures/Menu%i.png",i);
-      surface = IMG_Load(path);
+    if(((*motor)->menu->menu_principal)==1){
+      SDL_Surface * surface;
+      //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Menu_Back.png");
+      surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Menu_Back.png");
       if (surface == NULL)
-      printf("Erreur Icone menu\n");
-
-      (*motor)->menu->menu_textures[i] = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      printf("Erreur Background\n");
+      SDL_Texture * textureBackgroundMenu = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
       SDL_FreeSurface(surface);
-    }
+      SDL_Rect rectBackground;
+      char* font_path = "Pokemon_GB.ttf";
+      SDL_Color textColor = {255, 255, 255, 0};
+      SDL_Rect menu;
+      rectBackground.x=0;
+      rectBackground.y=0;
+      rectBackground.w=640;
+      rectBackground.h=480;
+      int image_width,image_height;
+      SDL_QueryTexture(textureBackgroundMenu, NULL, NULL,  &image_width , &image_height);
+      SDL_RenderCopy((*motor)->renderer, textureBackgroundMenu, NULL, &rectBackground);
 
+      for (int i = 0; i < 6; i++) {
 
-    for (int i = 0; i < 6; i++) {
+        char path[100];
+        //sprintf(path,"C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Menu%i.png",i);
+        sprintf(path,"/info/etu/l2info/s2103600/SDL2/images/Pictures/Menu%i.png",i);
+        surface = IMG_Load(path);
+        if (surface == NULL)
+        printf("Erreur Icone menu\n");
+
+        (*motor)->menu->menu_textures[i] = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+        SDL_FreeSurface(surface);
+      }
+
+      for (int i = 0; i < 6; i++) {
+        menu.x = 230;
+        menu.y = 54*i+40;
+        menu.w = 80;
+        menu.h = 52;
+
+        SDL_QueryTexture((*motor)->menu->menu_textures[i], NULL, NULL,  &image_width , &image_height);
+        SDL_RenderCopy((*motor)->renderer, (*motor)->menu->menu_textures[i], NULL, &menu);
+      }
+
+      //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Menu_curseur.png");
+      surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Menu_curseur.png");
+      if (surface == NULL)
+      printf("Erreur\n");
+
+      SDL_Texture * menu_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      SDL_FreeSurface(surface);
+      SDL_QueryTexture(menu_texture, NULL, NULL,  &image_width , &image_height);
+      SDL_RenderCopy((*motor)->renderer, menu_texture, NULL, &menu);
 
       menu.x = 230;
-      menu.y = 54*i+40;
+      menu.y = 54* (*motor)->menu->el_menu_select+40;
       menu.w = 80;
       menu.h = 52;
 
-      //int image_width,image_height;
-      SDL_QueryTexture((*motor)->menu->menu_textures[i], NULL, NULL,  &image_width , &image_height);
-      SDL_RenderCopy((*motor)->renderer, (*motor)->menu->menu_textures[i], NULL, &menu);
+      TTF_Font *font = TTF_OpenFont(font_path, 18);
+
+      if(font == NULL){
+        printf("Erreur font\n");
+      }
+      render_text(motor,"MENU",font,100,8);
+      render_text(motor,"Pokedex",font,25,60);
+      render_text(motor,"Pokemon",font,25,115);
+      render_text(motor,"Inventaire",font,25,165);
+      render_text(motor,"Id",font,25,220);
+      render_text(motor,"Sauvegarder",font,25,275);
+      render_text(motor,"Quitter",font,25,325);
+
+      SDL_DestroyTexture(menu_texture);
+      SDL_DestroyTexture(textureBackgroundMenu);
+
     }
 
-    //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Menu_curseur.png");
-    surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Menu_curseur.png");
-    if (surface == NULL)
-    printf("Erreur\n");
-
-    SDL_Texture * menu_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
-    SDL_FreeSurface(surface);
-
-
-    menu.x = 230;
-    menu.y = 54* (*motor)->menu->el_menu_select+40;
-    menu.w = 80;
-    menu.h = 52;
-
-    TTF_Font *font = TTF_OpenFont(font_path, 18);
-    SDL_Texture *textureTextMenu,*textureTextPokedex,*textureTextPokemon,*textureTextBag,*textureTextId,*textureTextSave,*textureTextExit;
-    SDL_Rect rectTextMenu,rectTextPokedex,rectTextPokemon,rectTextBag,rectTextId,rectTextSave,rectTextExit;
-
-    if(font == NULL){
-      printf("Erreur font\n");
-    }
-    get_text_and_rect((*motor)->renderer, 100, 8, "MENU", font, &textureTextMenu, &rectTextMenu,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextMenu, NULL, &rectTextMenu);
-
-    get_text_and_rect((*motor)->renderer, 25, 60, "Pokedex", font, &textureTextPokedex, &rectTextPokedex,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextPokedex, NULL, &rectTextPokedex);
-
-    get_text_and_rect((*motor)->renderer, 25, 115, "Pokemon", font, &textureTextPokemon, &rectTextPokemon,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextPokemon, NULL, &rectTextPokemon);
-
-    get_text_and_rect((*motor)->renderer, 25, 165, "Inventaire", font, &textureTextBag, &rectTextBag,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextBag, NULL, &rectTextBag);
-
-    get_text_and_rect((*motor)->renderer, 25, 220, "Id", font, &textureTextId, &rectTextId,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextId, NULL, &rectTextId);
-
-    get_text_and_rect((*motor)->renderer, 25, 275, "Sauvegarder", font, &textureTextSave, &rectTextSave,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextSave, NULL, &rectTextSave);
-
-    get_text_and_rect((*motor)->renderer, 25, 325, "Quitter", font, &textureTextExit, &rectTextExit,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextExit, NULL, &rectTextExit);
-
-    SDL_QueryTexture(menu_texture, NULL, NULL,  &image_width , &image_height);
-    SDL_RenderCopy((*motor)->renderer, menu_texture, NULL, &menu);
-    SDL_DestroyTexture(menu_texture);
-    SDL_DestroyTexture(textureBackgroundMenu);
   }
 
-
-
-
-
-
-
-
+  /**
+    * \function menu_Bag
+    * \brief menu du sac du joueur
+    * \param motor : moteur de jeux
+  */
   void menu_Bag(motor_t ** motor){
-    SDL_Surface * surface;
-    //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/bagfond.png");
-    surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/bagfond.png");
-    if (surface == NULL)
-    printf("Erreur Background\n");
-    SDL_Texture * textureBackgroundMenu = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
-    SDL_FreeSurface(surface);
-    SDL_Rect rectBackground;
-    char* font_path = "Pokemon_GB.ttf";
-    SDL_Color textColor = {0,0,0,0};
+    if(((*motor)->menu->menu_bag)==1)
+      {
+        SDL_Surface * surface;
+        //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/bagfond.png");
+        surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/bagfond.png");
+        if (surface == NULL)
+        printf("Erreur Background\n");
+        SDL_Texture * textureBackgroundMenu = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+        SDL_FreeSurface(surface);
+        SDL_Rect rectBackground;
+        char* font_path = "Pokemon_GB.ttf";
+        SDL_Color textColor = {0,0,0,0};
 
-    rectBackground.x=0;
-    rectBackground.y=0;
-    rectBackground.w=640;
-    rectBackground.h=480;
-    int image_width,image_height;
-    SDL_QueryTexture(textureBackgroundMenu, NULL, NULL,  &image_width , &image_height);
-    SDL_RenderCopy((*motor)->renderer, textureBackgroundMenu, NULL, &rectBackground);
+        rectBackground.x=0;
+        rectBackground.y=0;
+        rectBackground.w=640;
+        rectBackground.h=480;
+        int image_width,image_height;
+        SDL_QueryTexture(textureBackgroundMenu, NULL, NULL,  &image_width , &image_height);
+        SDL_RenderCopy((*motor)->renderer, textureBackgroundMenu, NULL, &rectBackground);
 
+        TTF_Font *font = TTF_OpenFont(font_path, 20);
 
-    TTF_Font *font = TTF_OpenFont(font_path, 20);
-    SDL_Texture *textureTextMenu,*textureTextPokedex,*textureTextPokemon,*textureTextBag,*textureTextId,*textureTextSave,*textureTextExit;
-    SDL_Rect rectTextMenu,rectTextPokedex,rectTextPokemon,rectTextBag,rectTextId,rectTextSave,rectTextExit;
+        if(font == NULL){
+          printf("Erreur font\n");
+        }
+        render_text(motor,"BAG",font,120,40);
+        render_text(motor,"item0",font,300,60);
+        render_text(motor,"item1",font,300,115);
+        render_text(motor,"item2",font,300,165);
+        render_text(motor,"item3",font,300,225);
+        render_text(motor,"img",font,25,235);
+        render_text(motor,"itemDesc",font,25,335);
 
-    if(font == NULL){
-      printf("Erreur font\n");
-    }
-    get_text_and_rect((*motor)->renderer, 120, 40, "BAG", font, &textureTextMenu, &rectTextMenu,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextMenu, NULL, &rectTextMenu);
-
-    get_text_and_rect((*motor)->renderer, 300, 60, "item0", font, &textureTextPokedex, &rectTextPokedex,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextPokedex, NULL, &rectTextPokedex);
-
-    get_text_and_rect((*motor)->renderer, 300, 115, "item1", font, &textureTextPokemon, &rectTextPokemon,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextPokemon, NULL, &rectTextPokemon);
-
-    get_text_and_rect((*motor)->renderer, 300, 165, "item2", font, &textureTextBag, &rectTextBag,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextBag, NULL, &rectTextBag);
-
-    get_text_and_rect((*motor)->renderer, 300, 225, "item3", font, &textureTextSave, &rectTextSave,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextSave, NULL, &rectTextSave);
-
-    get_text_and_rect((*motor)->renderer, 25, 235, "Img", font, &textureTextId, &rectTextId,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextId, NULL, &rectTextId);
-
-    get_text_and_rect((*motor)->renderer, 25, 325, "itemDesc", font, &textureTextExit, &rectTextExit,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextExit, NULL, &rectTextExit);
-    SDL_DestroyTexture(textureBackgroundMenu);
+        SDL_DestroyTexture(textureBackgroundMenu);
+      }
   }
 
 
-
+  /**
+    * \function menu_Battle
+    * \brief interface de combat du jeux
+    * \param motor : moteur de jeux
+    * \param player : structure de donnéees contenant les informations des pokémons du joueur
+    * \param wild_pkm : structure de donnéees contenant les informations des pokémons adversaire
+  */
   void menu_Battle(motor_t ** motor){
     if(((*motor)->menu->menu_battle)==1){
       //SDL_SetRenderDrawColor((*motor)->renderer,255,0,0,255);
@@ -252,14 +232,12 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
       SDL_Color textColor = {0,0,0,0};
       int image_width,image_height;
 
-
       //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Battlebacks/battle11.png");
       surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Battlebacks/battle11.png");
       if (surface == NULL)
       printf("Erreur Background\n");
       SDL_Texture * textureBackground = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
       SDL_FreeSurface(surface);
-
       SDL_Rect rectBackground;
       rectBackground.x=0;
       rectBackground.y=0;
@@ -276,7 +254,6 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
       SDL_FreeSurface(surface);
 
       SDL_Rect rectBattleMenu;
-
       rectBattleMenu.x=300;
       rectBattleMenu.y=550;
       rectBattleMenu.w=640;
@@ -309,11 +286,8 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
       SDL_QueryTexture(cadreJoueur_texture, NULL, NULL,  &image_width , &image_height);
       SDL_RenderCopy((*motor)->renderer, cadreJoueur_texture, NULL, &rectCadreJoueur);
 
-
-
-      float percentAlly = 0.2;
+      float percentAlly = (float)(player->pkm.hp)/ (player->pkm.hpMax);
       RenderHPBar(1130,490,-150,20,percentAlly,color(0,255,0,255),color(0,0,0,255),(*motor)->renderer);
-
 
       SDL_Rect xpLinePlayer;
       xpLinePlayer.x=886;
@@ -322,7 +296,6 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
       xpLinePlayer.h=5;
       SDL_SetRenderDrawColor((*motor)->renderer,0,0,255,255);
       SDL_RenderFillRect((*motor)->renderer,&xpLinePlayer);
-
       SDL_SetRenderDrawColor((*motor)->renderer,0,0,0,255);
 
       //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Battle/hpbar.png");
@@ -338,7 +311,7 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
       SDL_RenderCopy((*motor)->renderer, hpbarJoueur_texture, NULL, &rectHpbarJoueur);
 
 
-      float percentEnemi = 0.25;
+      float percentEnemi = (float)wild_pkm.hp/wild_pkm.hpMax;
       RenderHPBar(345,160,-150,20,percentEnemi,color(0,255,0,255),color(0,0,0,255),(*motor)->renderer);
 
       //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Battle/hpbar.png");
@@ -354,6 +327,65 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
       SDL_QueryTexture(hpbarEnnemi_texture, NULL, NULL,  &image_width , &image_height);
       SDL_RenderCopy((*motor)->renderer, hpbarEnnemi_texture, NULL, &rectHpbarEnnemi);
 
+      //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Battle/hpbar.png");
+      surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Battlebacks/groundbattle11.png");
+      SDL_Texture * ground_ennemi_texture= SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      SDL_FreeSurface(surface);
+      SDL_Rect rectGroundEnnemi;
+      rectGroundEnnemi.x=640;
+      rectGroundEnnemi.y=230;
+      rectGroundEnnemi.w=378;
+      rectGroundEnnemi.h=90;
+      SDL_QueryTexture(ground_ennemi_texture, NULL, NULL,  &image_width , &image_height);
+      SDL_RenderCopy((*motor)->renderer, ground_ennemi_texture, NULL, &rectGroundEnnemi);
+
+
+      //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Battle/hpbar.png");
+      surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Battlebacks/groundbattle11.png");
+      SDL_Texture * ground_joueur_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      SDL_FreeSurface(surface);
+      SDL_Rect rectGroundJoueur;
+      rectGroundJoueur.x=310;
+      rectGroundJoueur.y=430;
+      rectGroundJoueur.w=378;
+      rectGroundJoueur.h=90;
+      SDL_QueryTexture(ground_joueur_texture, NULL, NULL,  &image_width , &image_height);
+      SDL_RenderCopy((*motor)->renderer, ground_joueur_texture, NULL, &rectGroundJoueur);
+
+      char path[100];
+      sprintf(path,"/info/etu/l2info/s2103600/SDL2/images/Pictures/Battlers/Front_Male/%d.png",wild_pkm.pkmId);
+      //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Battle/hpbar.png");
+      //surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Battlers/Front_Male/003.png");
+      surface = IMG_Load(path);
+      SDL_Texture * pokemonFront_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      SDL_FreeSurface(surface);
+      SDL_Rect rectPokemonFront;
+      rectPokemonFront.x=750;
+      rectPokemonFront.y=150;
+      rectPokemonFront.w=160;
+      rectPokemonFront.h=160;
+
+      SDL_QueryTexture(pokemonFront_texture, NULL, NULL,  &image_width , &image_height);
+      SDL_RenderCopy((*motor)->renderer, pokemonFront_texture, NULL, &rectPokemonFront);
+
+
+      sprintf(path,"/info/etu/l2info/s2103600/SDL2/images/Pictures/Battlers/Back_Male/%d.png",player->pkm.pkmId);
+      //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Battle/hpbar.png");
+      //surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Battlers/Back_Male/2.png");
+      surface = IMG_Load(path);
+      SDL_Texture * pokemonBack_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      SDL_FreeSurface(surface);
+      SDL_Rect rectPokemonBack;
+      rectPokemonBack.x=400;
+      rectPokemonBack.y=300;
+      rectPokemonBack.w=192;
+      rectPokemonBack.h=192;
+
+      SDL_QueryTexture(pokemonBack_texture, NULL, NULL,  &image_width , &image_height);
+      SDL_RenderCopy((*motor)->renderer, pokemonBack_texture, NULL, &rectPokemonBack);
+
+
+
 
 
       //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Menu_curseur.png");
@@ -365,66 +397,62 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
       SDL_FreeSurface(surface);
 
       SDL_Rect menu;
-
-
       if((*motor)->menu->el_battle_menu_select < 2){
         menu.x = 200+425;
         menu.y = 550+54* (*motor)->menu->el_battle_menu_select+18;
       }
-      if ((*motor)->menu->el_battle_menu_select == 2)
-      {
+      if ((*motor)->menu->el_battle_menu_select == 2){
         menu.x = 200+580;
         menu.y = 550+18;
       }
-      if ((*motor)->menu->el_battle_menu_select == 3)
-      {
+      if ((*motor)->menu->el_battle_menu_select == 3){
         menu.x = 200+580;
         menu.y = 550+72;
       }
-
       menu.w = 155;
       menu.h = 55;
       SDL_QueryTexture(menu_texture, NULL, NULL,  &image_width , &image_height);
       SDL_RenderCopy((*motor)->renderer, menu_texture, NULL, &menu);
 
-
       TTF_Font *font = TTF_OpenFont(font_path, 14);
-      SDL_Texture *textureTextMenu,*textureTextPokemonJoueur,*textureTextPokemonEnnemi,*textureTextLvlPJoueur,*textureTextLvlPEnnemi,*textureTextHpPJoueur;
-      SDL_Rect rectTextMenu,rectTextPokemonJoueur,rectTextPokemonEnnemi,rectTextLvlPJoueur,rectTextLvlPEnnemi,rectTextHpPJoueur;
-
       if(font == NULL){
         printf("Erreur font\n");
       }
-      get_text_and_rect((*motor)->renderer, 335, 585, "Que faire?", font, &textureTextMenu, &rectTextMenu,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextMenu, NULL, &rectTextMenu);
-
-      get_text_and_rect((*motor)->renderer, 880, 460, "pokemonJ", font, &textureTextPokemonJoueur, &rectTextPokemonJoueur,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextPokemonJoueur, NULL, &rectTextPokemonJoueur);
-
-      get_text_and_rect((*motor)->renderer, 160, 125, "pokemonE", font, &textureTextPokemonEnnemi, &rectTextPokemonEnnemi,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextPokemonEnnemi, NULL, &rectTextPokemonEnnemi);
-
-      get_text_and_rect((*motor)->renderer, 1080, 460, "Lv", font, &textureTextLvlPJoueur, &rectTextLvlPJoueur,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextLvlPJoueur, NULL, &rectTextLvlPJoueur);
-
-      get_text_and_rect((*motor)->renderer, 360, 125, "Lv", font, &textureTextLvlPEnnemi, &rectTextLvlPEnnemi,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextLvlPEnnemi, NULL, &rectTextLvlPEnnemi);
-
-      get_text_and_rect((*motor)->renderer, 1000, 515, "hp/hpMax", font, &textureTextHpPJoueur, &rectTextHpPJoueur,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextHpPJoueur, NULL, &rectTextHpPJoueur);
+      char test[20];
+      render_text(motor,"Que faire?",font,335,580);
+      render_text(motor,player->pkm.pkm_name,font,880,460);
+      render_text(motor,wild_pkm.pkm_name,font,160,125);
+      sprintf(test,"%d",player->pkm.lvl);
+      render_text(motor,test,font,1080,460); //500?
+      sprintf(test,"%d",wild_pkm.hp);
+      render_text(motor,test,font,360,125);
+      sprintf(test,"%d",player->pkm.hp);
+      render_text(motor,test,font,1000,515);
 
       SDL_DestroyTexture(textureBackground);
       SDL_DestroyTexture(menu_texture);
       SDL_DestroyTexture(textureBattleMenu);
-      //  SDL_DestroyTexture(cadreJoueur_texture2);
       SDL_DestroyTexture(cadreEnnemi_texture);
+      SDL_DestroyTexture(pokemonFront_texture);
+      SDL_DestroyTexture(pokemonBack_texture);
+      SDL_DestroyTexture(ground_ennemi_texture);
+      SDL_DestroyTexture(ground_joueur_texture);
       SDL_DestroyTexture(cadreJoueur_texture);
       SDL_DestroyTexture(hpbarJoueur_texture);
       SDL_DestroyTexture(hpbarEnnemi_texture);
     }
   }
 
-  void menu_Battle_Attaque(motor_t ** motor,Liste_t * player,t_pkm *wild_pkm){
+
+  /**
+    * \function menu_Battle_Attaque
+    * \brief interface de combat du jeux affichant les attaques disponibles pour le joueur
+
+    * \param motor : moteur de jeux
+    * \param player : structure de donnéees contenant les informations des pokémons du joueur
+    * \param wild_pkm : structure de donnéees contenant les informations des pokémons adversaire
+  */
+  void menu_Battle_Attaque(motor_t ** motor){
     if(((*motor)->menu->menu_battle_attaque)==1){
       SDL_Surface * surface;
       char* font_path = "Pokemon_GB.ttf";
@@ -439,7 +467,6 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
       SDL_FreeSurface(surface);
 
       SDL_Rect rectBackground;
-
 
       rectBackground.x=0;
       rectBackground.y=0;
@@ -474,10 +501,8 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
       SDL_QueryTexture(cadreJoueur_texture, NULL, NULL,  &image_width , &image_height);
       SDL_RenderCopy((*motor)->renderer, cadreJoueur_texture, NULL, &rectCadreJoueur);
 
-      float percentAlly = 0.7;
+      float percentAlly = (float)(player->pkm.hp)/ (player->pkm.hpMax);
       RenderHPBar(1130,490,-150,20,percentAlly,color(0,255,0,255),color(0,0,0,255),(*motor)->renderer);
-
-
 
       //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Battle/hpbar.png");
       surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Battle/hpbar.png");
@@ -499,8 +524,7 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
       SDL_SetRenderDrawColor((*motor)->renderer,0,0,255,255);
       SDL_RenderFillRect((*motor)->renderer,&xpLinePlayer);
 
-
-      float percentEnemi = 0.25;
+      float percentEnemi = (float)wild_pkm.hp/wild_pkm.hpMax;
       RenderHPBar(345,160,-150,20,percentEnemi,color(0,255,0,255),color(0,0,0,255),(*motor)->renderer);
 
       SDL_SetRenderDrawColor((*motor)->renderer,0,0,0,255);
@@ -534,6 +558,63 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
 
       SDL_QueryTexture(textureBattleAttackMenu, NULL, NULL,  &image_width , &image_height);
       SDL_RenderCopy((*motor)->renderer, textureBattleAttackMenu, NULL, &rectBattleAttackMenu);
+
+      //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Battle/hpbar.png");
+      surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Battlebacks/groundbattle11.png");
+      SDL_Texture * ground_ennemi_texture= SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      SDL_FreeSurface(surface);
+      SDL_Rect rectGroundEnnemi;
+      rectGroundEnnemi.x=640;
+      rectGroundEnnemi.y=230;
+      rectGroundEnnemi.w=378;
+      rectGroundEnnemi.h=90;
+      SDL_QueryTexture(ground_ennemi_texture, NULL, NULL,  &image_width , &image_height);
+      SDL_RenderCopy((*motor)->renderer, ground_ennemi_texture, NULL, &rectGroundEnnemi);
+
+
+      //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Battle/hpbar.png");
+      surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Battlebacks/groundbattle11.png");
+      SDL_Texture * ground_joueur_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      SDL_FreeSurface(surface);
+      SDL_Rect rectGroundJoueur;
+      rectGroundJoueur.x=310;
+      rectGroundJoueur.y=430;
+      rectGroundJoueur.w=378;
+      rectGroundJoueur.h=90;
+      SDL_QueryTexture(ground_joueur_texture, NULL, NULL,  &image_width , &image_height);
+      SDL_RenderCopy((*motor)->renderer, ground_joueur_texture, NULL, &rectGroundJoueur);
+
+      char path[100];
+      sprintf(path,"/info/etu/l2info/s2103600/SDL2/images/Pictures/Battlers/Front_Male/%d.png",wild_pkm.pkmId);
+      //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Battle/hpbar.png");
+      //surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Battlers/Front_Male/003.png");
+      surface = IMG_Load(path);
+      SDL_Texture * pokemonFront_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      SDL_FreeSurface(surface);
+      SDL_Rect rectPokemonFront;
+      rectPokemonFront.x=750;
+      rectPokemonFront.y=150;
+      rectPokemonFront.w=160;
+      rectPokemonFront.h=160;
+
+      SDL_QueryTexture(pokemonFront_texture, NULL, NULL,  &image_width , &image_height);
+      SDL_RenderCopy((*motor)->renderer, pokemonFront_texture, NULL, &rectPokemonFront);
+
+
+      sprintf(path,"/info/etu/l2info/s2103600/SDL2/images/Pictures/Battlers/Back_Male/%d.png",player->pkm.pkmId);
+      //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Battle/hpbar.png");
+      //surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Battlers/Back_Male/2.png");
+      surface = IMG_Load(path);
+      SDL_Texture * pokemonBack_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      SDL_FreeSurface(surface);
+      SDL_Rect rectPokemonBack;
+      rectPokemonBack.x=400;
+      rectPokemonBack.y=300;
+      rectPokemonBack.w=192;
+      rectPokemonBack.h=192;
+
+      SDL_QueryTexture(pokemonBack_texture, NULL, NULL,  &image_width , &image_height);
+      SDL_RenderCopy((*motor)->renderer, pokemonBack_texture, NULL, &rectPokemonBack);
 
       //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Menu_curseur.png");
       surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Menu_curseur.png");
@@ -569,67 +650,53 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
 
 
       TTF_Font *font = TTF_OpenFont(font_path, 14);
-      SDL_Texture *textureTextAbility1,*textureTextAbility2,*textureTextAbility3,*textureTextAbility4,*textureTextPP,*textureTextType,*textureTextPokemonJoueur,*textureTextPokemonEnnemi,*textureTextLvlPJoueur,*textureTextLvlPEnnemi,*textureTextHpPJoueur;
-      SDL_Rect rectTextAbility1,rectTextAbility2,rectTextAbility3,rectTextAbility4,rectTextPP,rectTextType,rectTextPokemonJoueur,rectTextPokemonEnnemi,rectTextLvlPJoueur,rectTextLvlPEnnemi,rectTextHpPJoueur;
 
       if(font == NULL){
         printf("Erreur font\n");
       }
       char test[20];
 
-      get_text_and_rect((*motor)->renderer, 350, 590, player->pkm.skill[0], font, &textureTextAbility1, &rectTextAbility1,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextAbility1, NULL, &rectTextAbility1);
-
-      get_text_and_rect((*motor)->renderer, 350, 645, player->pkm.skill[1], font, &textureTextAbility2, &rectTextAbility2,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextAbility2, NULL, &rectTextAbility2);
-
-      get_text_and_rect((*motor)->renderer, 600, 590, player->pkm.skill[2], font, &textureTextAbility3, &rectTextAbility3,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextAbility3, NULL, &rectTextAbility3);
-
-      get_text_and_rect((*motor)->renderer, 600, 645, player->pkm.skill[3], font, &textureTextAbility4, &rectTextAbility4,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextAbility4, NULL, &rectTextAbility4);
-
-      get_text_and_rect((*motor)->renderer, 825, 580, "PP/PPMax", font, &textureTextPP, &rectTextPP,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextPP, NULL, &rectTextPP);
-
-      get_text_and_rect((*motor)->renderer, 825, 650, player->pkm.type1, font, &textureTextType, &rectTextType,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextType, NULL, &rectTextType);
-
-      get_text_and_rect((*motor)->renderer, 880, 460, player->pkm.pkm_name, font, &textureTextPokemonJoueur, &rectTextPokemonJoueur,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextPokemonJoueur, NULL, &rectTextPokemonJoueur);
-
-      get_text_and_rect((*motor)->renderer, 160, 125, wild_pkm->pkm_name, font, &textureTextPokemonEnnemi, &rectTextPokemonEnnemi,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextPokemonEnnemi, NULL, &rectTextPokemonEnnemi);
+      render_text(motor,player->pkm.skill[0],font,350,590);
+      render_text(motor,player->pkm.skill[1],font,350,645);
+      render_text(motor,player->pkm.skill[2],font,570,590);
+      render_text(motor,player->pkm.skill[3],font,570,645);
+      render_text(motor,"PP/PPMax",font,815,580);
+      render_text(motor,player->pkm.type1,font,825,650);
+      render_text(motor,player->pkm.pkm_name,font,880,460);
       sprintf(test,"%d",player->pkm.lvl);
-      get_text_and_rect((*motor)->renderer, 1080, 460, test, font, &textureTextLvlPJoueur, &rectTextLvlPJoueur,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextLvlPJoueur, NULL, &rectTextLvlPJoueur);
-      sprintf(test,"%d",wild_pkm->hp);
-      get_text_and_rect((*motor)->renderer, 360, 125, test, font, &textureTextLvlPEnnemi, &rectTextLvlPEnnemi,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextLvlPEnnemi, NULL, &rectTextLvlPEnnemi);
+      render_text(motor,test,font,1080,460);
       sprintf(test,"%d",player->pkm.hp);
-      get_text_and_rect((*motor)->renderer, 1000, 515, test  , font, &textureTextHpPJoueur, &rectTextHpPJoueur,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextHpPJoueur, NULL, &rectTextHpPJoueur);
+      render_text(motor,test,font,1000,515);
 
-
+      render_text(motor,wild_pkm.pkm_name,font,160,125);
+      sprintf(test,"%d",wild_pkm.hp);
+      render_text(motor,test,font,360,125);
 
       SDL_DestroyTexture(textureBackground);
       SDL_DestroyTexture(menu_texture);
       SDL_DestroyTexture(textureBattleAttackMenu);
+      SDL_DestroyTexture(ground_ennemi_texture);
+      SDL_DestroyTexture(ground_joueur_texture);
+      SDL_DestroyTexture(pokemonBack_texture);
+      SDL_DestroyTexture(pokemonFront_texture);
       SDL_DestroyTexture(cadreEnnemi_texture);
       SDL_DestroyTexture(cadreJoueur_texture);
       SDL_DestroyTexture(hpbarJoueur_texture);
       SDL_DestroyTexture(hpbarEnnemi_texture);
     }
-
-    }
-
+}
 
 
+    /**
+      * \function speech_bubble
+      * \brief fonction qui affiche une bulle de texte contenant du texte mis en paramètre
+      * \param motor : moteur de jeux
+      * \param text: texte à afficher dans la bulle
+    */
   void speech_bubble(motor_t ** motor,char * text)
   {
     if ((*motor)->menu->speech_bubble == 1)
     {
-      printf("speech_bubble\n");
       SDL_Surface * surface;
       //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/messagedummy.png");
       surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/messagedummy.png");
@@ -639,8 +706,8 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
       SDL_FreeSurface(surface);
       SDL_Rect rectBackground;
       char* font_path = "Pokemon_GB.ttf";
-      TTF_Font *font = TTF_OpenFont(font_path, 14);
-      SDL_Color textColor = {0,0,0,0};
+      TTF_Font *font = TTF_OpenFont(font_path, 35);
+      SDL_Color textColor = {0,0,0,0  };
 
       rectBackground.x=200;
       rectBackground.y=550;
@@ -649,162 +716,162 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
       int image_width,image_height;
       SDL_QueryTexture(textureSpeechBubble, NULL, NULL,  &image_width , &image_height);
       SDL_RenderCopy((*motor)->renderer, textureSpeechBubble, NULL, &rectBackground);
-
-      SDL_Texture *textureTextSpeech;
-      SDL_Rect rectTextSpeech;
       if(font == NULL){
         printf("Erreur font\n");
       }
-      get_text_and_rect((*motor)->renderer, 250, 590, text, font, &textureTextSpeech, &rectTextSpeech,textColor);
-      SDL_RenderCopy((*motor)->renderer, textureTextSpeech, NULL, &rectTextSpeech);
-
+      render_text(motor,text,font,250,590);
       SDL_DestroyTexture(textureSpeechBubble);
     }
   }
 
+
+  /**
+    * \function menu_shop
+    * \brief interface pour le marché
+    * \param motor : moteur de jeux
+  */
   void menu_shop(motor_t ** motor){
-    SDL_Surface * surface;
-    SDL_Color textColor = {0,0,0,0};
-    char* font_path = "Pokemon_GB.ttf";
-    int image_width,image_height;
+    if ((*motor)->menu->menu_shop == 1)
+    {
+      SDL_Surface * surface;
+      SDL_Color textColor = {0,0,0,0};
+      char* font_path = "Pokemon_GB.ttf";
+      int image_width,image_height;
 
-    //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/boxback.png");
-surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/boxback.png");
-    if (surface == NULL)
-    printf("Erreur Background\n");
-    SDL_Texture * textureBackgroundImage = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
-    SDL_FreeSurface(surface);
-    SDL_Rect rectBackground;
+      //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/boxback.png");
+  surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/boxback.png");
+      if (surface == NULL)
+      printf("Erreur Background\n");
+      SDL_Texture * textureBackgroundImage = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      SDL_FreeSurface(surface);
+      SDL_Rect rectBackground;
 
-    rectBackground.x=0;
-    rectBackground.y=0;
-    rectBackground.w=640;
-    rectBackground.h=480;
+      rectBackground.x=0;
+      rectBackground.y=0;
+      rectBackground.w=640;
+      rectBackground.h=480;
 
-    SDL_QueryTexture(textureBackgroundImage, NULL, NULL,  &image_width , &image_height);
-    SDL_RenderCopy((*motor)->renderer, textureBackgroundImage, NULL, &rectBackground);
+      SDL_QueryTexture(textureBackgroundImage, NULL, NULL,  &image_width , &image_height);
+      SDL_RenderCopy((*motor)->renderer, textureBackgroundImage, NULL, &rectBackground);
+
+      //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/shopfond.png");
+  surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/shopfond.png");
+      if (surface == NULL)
+      printf("Erreur Background\n");
+      SDL_Texture * textureShop = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      SDL_FreeSurface(surface);
+      SDL_Rect rectShop;
+
+      rectShop.x=0;
+      rectShop.y=0;
+      rectShop.w=640;
+      rectShop.h=480;
+
+      SDL_QueryTexture(textureShop, NULL, NULL,  &image_width , &image_height);
+      SDL_RenderCopy((*motor)->renderer, textureShop, NULL, &rectShop);
 
 
-    //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/shopfond.png");
-surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/shopfond.png");
-    if (surface == NULL)
-    printf("Erreur Background\n");
-    SDL_Texture * textureShop = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
-    SDL_FreeSurface(surface);
-    SDL_Rect rectShop;
+      TTF_Font *font = TTF_OpenFont(font_path, 20);
 
-    rectShop.x=0;
-    rectShop.y=0;
-    rectShop.w=640;
-    rectShop.h=480;
+      if(font == NULL){
+        printf("Erreur font\n");
+      }
+      render_text(motor,"Boutique",font,60,40);
+      render_text(motor,"item0",font,300,60);
+      render_text(motor,"item1",font,300,115);
+      render_text(motor,"item2",font,300,165);
+      render_text(motor,"item3",font,300,225);
+      render_text(motor,"img",font,25,235);
+      render_text(motor,"itemDesc",font,25,325);
 
-    SDL_QueryTexture(textureShop, NULL, NULL,  &image_width , &image_height);
-    SDL_RenderCopy((*motor)->renderer, textureShop, NULL, &rectShop);
-
-
-    TTF_Font *font = TTF_OpenFont(font_path, 20);
-    SDL_Texture *textureTextMenu,*textureTextPokedex,*textureTextPokemon,*textureTextBag,*textureTextId,*textureTextSave,*textureTextExit;
-    SDL_Rect rectTextMenu,rectTextPokedex,rectTextPokemon,rectTextBag,rectTextId,rectTextSave,rectTextExit;
-
-    if(font == NULL){
-      printf("Erreur font\n");
+      SDL_DestroyTexture(textureBackgroundImage);
+      SDL_DestroyTexture(textureShop);
     }
-    get_text_and_rect((*motor)->renderer, 60, 40, "Boutique", font, &textureTextMenu, &rectTextMenu,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextMenu, NULL, &rectTextMenu);
-
-    get_text_and_rect((*motor)->renderer, 300, 60, "item0", font, &textureTextPokedex, &rectTextPokedex,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextPokedex, NULL, &rectTextPokedex);
-
-    get_text_and_rect((*motor)->renderer, 300, 115, "item1", font, &textureTextPokemon, &rectTextPokemon,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextPokemon, NULL, &rectTextPokemon);
-
-    get_text_and_rect((*motor)->renderer, 300, 165, "item2", font, &textureTextBag, &rectTextBag,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextBag, NULL, &rectTextBag);
-
-    get_text_and_rect((*motor)->renderer, 300, 225, "item3", font, &textureTextSave, &rectTextSave,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextSave, NULL, &rectTextSave);
-
-    get_text_and_rect((*motor)->renderer, 25, 235, "Img", font, &textureTextId, &rectTextId,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextId, NULL, &rectTextId);
-
-    get_text_and_rect((*motor)->renderer, 25, 325, "itemDesc", font, &textureTextExit, &rectTextExit,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextExit, NULL, &rectTextExit);
-    SDL_DestroyTexture(textureBackgroundImage);
-    SDL_DestroyTexture(textureShop);
   }
 
+  /**
+    * \function menu_save
+    * \brief interface pour la sauvegarde de jeu
+    * \param motor : moteur de jeux
+  */
   void menu_save(motor_t ** motor){
-    SDL_Surface * surface;
-    SDL_Color textColor = {0,0,0,0};
-    char* font_path = "Pokemon_GB.ttf";
-    int image_width,image_height;
+      if ((*motor)->menu->menu_save == 1)
+      {
+        SDL_Surface * surface;
+        SDL_Color textColor = {0,0,0,0};
+        char* font_path = "Pokemon_GB.ttf";
+        int image_width,image_height;
 
-    //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/name.png");
-surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/name.png");
-    if (surface == NULL)
-    printf("Erreur Background\n");
-    SDL_Texture * textureBackgroundImage = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
-    SDL_FreeSurface(surface);
-    SDL_Rect rectBackground;
+        //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/name.png");
+        surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/name.png");
+        if (surface == NULL)
+        printf("Erreur Background\n");
+        SDL_Texture * textureBackgroundImage = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+        SDL_FreeSurface(surface);
+        SDL_Rect rectBackground;
+        rectBackground.x=0;
+        rectBackground.y=0;
+        rectBackground.w=1280;
+        rectBackground.h=720;
+        SDL_QueryTexture(textureBackgroundImage, NULL, NULL,  &image_width , &image_height);
+        SDL_RenderCopy((*motor)->renderer, textureBackgroundImage, NULL, &rectBackground);
 
-    rectBackground.x=0;
-    rectBackground.y=0;
-    rectBackground.w=1280;
-    rectBackground.h=720;
+        //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/tcard.png");
+        surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/tcard.png");
+        if (surface == NULL)
+        printf("Erreur card\n");
+        SDL_Texture * textureCard = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+        SDL_FreeSurface(surface);
+        SDL_Rect rectCard;
+        rectCard.x=130;
+        rectCard.y=240;
+        rectCard.w=640;
+        rectCard.h=430;
+        SDL_QueryTexture(textureCard, NULL, NULL,  &image_width , &image_height);
+        SDL_RenderCopy((*motor)->renderer, textureCard, NULL, &rectCard);
 
-    SDL_QueryTexture(textureBackgroundImage, NULL, NULL,  &image_width , &image_height);
-    SDL_RenderCopy((*motor)->renderer, textureBackgroundImage, NULL, &rectBackground);
+        //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Select_Category.png");
+        surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Select_Category.png");
+        if (surface == NULL)
+        printf("Erreur\n");
+        SDL_Texture * menu_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+        SDL_FreeSurface(surface);
+        SDL_Rect menuSelectSave;
+        menuSelectSave.x = 760;
+        menuSelectSave.y = 108* (*motor)->menu->el_menu_save_select+260;
+        menuSelectSave.w = 400;
+        menuSelectSave.h = 110;
+        SDL_QueryTexture(menu_texture, NULL, NULL,  &image_width , &image_height);
+        SDL_RenderCopy((*motor)->renderer, menu_texture, NULL, &menuSelectSave);
 
-    //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/tcard.png");
-surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/shopfond.png");
-    if (surface == NULL)
-    printf("Erreur card\n");
-    SDL_Texture * textureCard = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
-    SDL_FreeSurface(surface);
-    SDL_Rect rectCard;
-
-    rectCard.x=130;
-    rectCard.y=240;
-    rectCard.w=640;
-    rectCard.h=430;
-
-    SDL_QueryTexture(textureCard, NULL, NULL,  &image_width , &image_height);
-    SDL_RenderCopy((*motor)->renderer, textureCard, NULL, &rectCard);
-
-
-    TTF_Font *font = TTF_OpenFont(font_path, 20);
-    SDL_Texture *textureTextSave,*textureTextNomDresseur,*textureTextYes,*textureTextNo;
-    SDL_Rect rectTextSave,rectNomDresseur,rectYes,rectNo;
-
-    if(font == NULL){
-      printf("Erreur font\n");
+        TTF_Font *font = TTF_OpenFont(font_path, 20);
+        if(font == NULL){
+          printf("Erreur font\n");
+        }
+        render_text(motor,"Sauvegarder?",font,240,80);
+        render_text(motor,"nomDresseur",font,200,380);
+        render_text(motor,"Oui",font,900,300);
+        render_text(motor,"Non",font,900,400);
+        SDL_DestroyTexture(textureBackgroundImage);
+        SDL_DestroyTexture(textureCard);
+        SDL_DestroyTexture(menu_texture);
+      }
     }
-    get_text_and_rect((*motor)->renderer, 240, 80, "Sauvegarder?", font, &textureTextSave, &rectTextSave,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextSave, NULL, &rectTextSave);
-
-    get_text_and_rect((*motor)->renderer, 200, 380, "nomDresseur", font, &textureTextNomDresseur, &rectNomDresseur,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextNomDresseur, NULL, &rectNomDresseur);
-
-    get_text_and_rect((*motor)->renderer, 900, 300, "Oui", font, &textureTextYes, &rectYes,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextYes, NULL, &rectYes);
-
-    get_text_and_rect((*motor)->renderer, 900, 400, "Non", font, &textureTextNo, &rectNo,textColor);
-    SDL_RenderCopy((*motor)->renderer, textureTextNo, NULL, &rectNo);
-    SDL_DestroyTexture(textureBackgroundImage);
-    SDL_DestroyTexture(textureCard);
-
-  }
 
 
 
-
+  /**
+    * \function menu_pokedex
+    * \brief interface pour le pokedex qui est une sorte de base de données des pokémons
+    * \param motor : moteur de jeux
+  */
   void menu_pokedex(motor_t ** motor){
     SDL_Surface * surface;
     SDL_Color textColor = {0,0,0,0};
     int image_width,image_height;
     char* font_path = "Pokemon_GB.ttf";
     //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Pokedex/Background_1.png");
-surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Pokedex/Background_1.png");
+    surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Pokedex/Background_1.png");
     if (surface == NULL)
     printf("Erreur Background\n");
     SDL_Texture * textureBackground = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
@@ -858,17 +925,95 @@ surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Pokedex/Windo
 
 }
 
-  void afficher(motor_t ** motor){
-    printf("%d",(*motor)->menu->el_battle_menu_select);
-  }
-/*
-void menu_pokemon(motor_t ** motor){
 
+
+  /**
+    * \function menu_pokemon
+    * \brief interface pour la selection de pokemons pour le combat.
+    * \param motor : moteur de jeux
+  */
+  void menu_pokemon(motor_t ** motor){
+    if(((*motor)->menu->menu_pokemon)==1)
+    {
+      SDL_Surface * surface;
+      char* font_path = "Pokemon_GB.ttf";
+      Liste_t * truc = player;
+
+      TTF_Font *font = TTF_OpenFont(font_path, 14);
+      int image_width,image_height;
+
+      //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Partyfond2.png");
+      surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Partyfond2.png");
+      if (surface == NULL)
+      printf("Erreur Background\n");
+      SDL_Texture * textureBackground = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      SDL_FreeSurface(surface);
+
+      SDL_Rect rectBackground;
+      rectBackground.x=0;
+      rectBackground.y=0;
+      rectBackground.w=1280;
+      rectBackground.h=720;
+      SDL_QueryTexture(textureBackground, NULL, NULL,  &image_width , &image_height);
+      SDL_RenderCopy((*motor)->renderer, textureBackground, NULL, &rectBackground);
+
+      //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Select_Category.png");
+      surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Select_Category.png");
+
+      if (surface == NULL)
+      printf("Erreur\n");
+
+      SDL_Texture * menu_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      SDL_FreeSurface(surface);
+      SDL_Rect menuSelectPokemon;
+
+      menuSelectPokemon.x = 550;
+      menuSelectPokemon.y = 108* (*motor)->menu->el_menu_pokemon_select+40;
+      menuSelectPokemon.w = 740;
+      menuSelectPokemon.h = 110;
+      SDL_QueryTexture(menu_texture, NULL, NULL,  &image_width , &image_height);
+      SDL_RenderCopy((*motor)->renderer, menu_texture, NULL, &menuSelectPokemon);
+
+      render_text(motor,"imgPokemon",font,100,170);
+
+      //Affichage du pokemon dans le menu pokemon
+      /*
+      char path[100];
+      sprintf(path,"/info/etu/l2info/s2103600/SDL2/images/Pictures/Battlers/Front_Male/%d.png",(*motor)->menu->current_pokemon);
+      //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Battle/hpbar.png");
+      //surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Battlers/Front_Male/003.png");
+      surface = IMG_Load(path);
+      SDL_Texture * pokemonFront_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+      SDL_FreeSurface(surface);
+      SDL_Rect rectPokemonFront;
+      rectPokemonFront.x=750;
+      rectPokemonFront.y=150;
+      rectPokemonFront.w=160;
+      rectPokemonFront.h=160;
+      SDL_QueryTexture(pokemonFront_texture, NULL, NULL,  &image_width , &image_height);
+      SDL_RenderCopy((*motor)->renderer, pokemonFront_texture, NULL, &rectPokemonFront);*/
+
+      int i = 0;
+      char intToText[50];
+      char hp[10]="HP";
+      char mp[10]="MP";
+
+      while (truc != NULL) {
+        render_text(motor,truc->pkm.pkm_name,font,600,105*i+70);
+        render_text(motor,"LVL",font,600,105*i+120);
+        sprintf(intToText,"%d",truc->pkm.lvl);
+        render_text(motor,intToText,font,650,105*i+120);
+        sprintf(intToText,"%d",truc->pkm.hp);
+        strcat(intToText,hp);
+        render_text(motor,intToText,font,700,105*i+120);
+        sprintf(intToText,"%d",truc->pkm.mp);
+        strcat(intToText,mp);
+        render_text(motor,intToText,font,780,105*i+120);
+        truc = truc->next;
+        i++;
+      }
+      SDL_DestroyTexture(textureBackground);
+      //  SDL_DestroyTexture(pokemonFront_texture);
+      SDL_DestroyTexture(menu_texture);
+    }
 }
-
-void ajout(liste_t * l,char * nomFichier){
-
-
-
-}
-*/
