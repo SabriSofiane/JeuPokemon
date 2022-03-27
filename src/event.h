@@ -4,7 +4,11 @@ syntaxe lors d'ajout d'événement, par défaut les événements de déplacement
 la souris sont désactivées.
 */
 
-
+/**
+  * \function event_handle
+  * \brief Gestion d'événement de la SDL
+  * \param motor : moteur de jeux
+*/
 int event_handle(motor_t ** motor)
 {
   int retour=3;
@@ -190,11 +194,17 @@ int event_handle(motor_t ** motor)
       (*motor)->menu->el_battle_menu_select--;
       else
       (*motor)->menu->el_battle_menu_select =3;
-
+      //Selectionneur pour le menu de sauvegarde
       if ((*motor)->menu->el_menu_save_select > 0)
       (*motor)->menu->el_menu_save_select--;
       else
       (*motor)->menu->el_menu_save_select =1;
+
+      //Selectionneur pour l'écran principal
+      if ((*motor)->menu->el_menu_main_screen_select > 0)
+      (*motor)->menu->el_menu_main_screen_select--;
+      else
+      (*motor)->menu->el_menu_main_screen_select =1;
 
 
 
@@ -261,6 +271,12 @@ int event_handle(motor_t ** motor)
       (*motor)->menu->el_menu_save_select++;
       else
       (*motor)->menu->el_menu_save_select =0;
+
+      //Selectionneur pour l'écran principal
+      if ((*motor)->menu->el_menu_main_screen_select < 1)
+      (*motor)->menu->el_menu_main_screen_select++;
+      else
+      (*motor)->menu->el_menu_main_screen_select =0;
 
       break;
 

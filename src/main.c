@@ -32,13 +32,14 @@ int main(int argc, char * argv[]) {
     if (event_handle(&game_motor) == 1)
     {
     SDL_RenderClear(game_motor->renderer);
-    menu_Battle_Attaque(&game_motor);
-    menu_Battle(&game_motor);
-    menu_pokemon(&game_motor);
-    //menu_Bag(&game_motor);
+    //ecran_acceuil(&game_motor);
+   //menu_Battle_Attaque(&game_motor);
+    //menu_Battle(&game_motor);
+  //menu_pokemon(&game_motor);
+    menu_Bag(&game_motor);
     //menu(&game_motor);
     //afficher(&game_motor);
-    speech_bubble(&game_motor,"Bienvenue a Bidoofville");
+    //speech_bubble(&game_motor,"Bienvenue a Bidoofville");
     //menu_shop(&game_motor);
     //menu_save(&game_motor);
     //menu_pokedex(&game_motor);

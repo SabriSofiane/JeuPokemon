@@ -178,26 +178,42 @@ void menu(motor_t ** motor)
     * \param motor : moteur de jeux
   */
   void menu_Bag(motor_t ** motor){
-    if(((*motor)->menu->menu_bag)==1)
+    if(((*motor)->menu->menu_bag)==0)
       {
         SDL_Surface * surface;
-        //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/bagfond.png");
-        surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/bagfond.png");
+        int image_width,image_height;
+        char* font_path = "src/Pokemon_GB.ttf";
+        surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/bagfond.png");
+        //surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/bagfond.png");
         if (surface == NULL)
         printf("Erreur Background\n");
         SDL_Texture * textureBackgroundMenu = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
         SDL_FreeSurface(surface);
         SDL_Rect rectBackground;
-        char* font_path = "Pokemon_GB.ttf";
-        SDL_Color textColor = {0,0,0,0};
 
         rectBackground.x=0;
         rectBackground.y=0;
         rectBackground.w=640;
         rectBackground.h=480;
-        int image_width,image_height;
+
         SDL_QueryTexture(textureBackgroundMenu, NULL, NULL,  &image_width , &image_height);
         SDL_RenderCopy((*motor)->renderer, textureBackgroundMenu, NULL, &rectBackground);
+
+        surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Menu_curseur.png");
+        //surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Menu_curseur.png");
+        if (surface == NULL)
+        printf("Erreur Background\n");
+        SDL_Texture * selecteur_bag_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+        SDL_FreeSurface(surface);
+        SDL_Rect rectSelecteurBag;
+
+        rectSelecteurBag.x=280;
+        rectSelecteurBag.y=40;
+        rectSelecteurBag.w=360;
+        rectSelecteurBag.h=55;
+
+        SDL_QueryTexture(selecteur_bag_texture, NULL, NULL,  &image_width , &image_height);
+        SDL_RenderCopy((*motor)->renderer, selecteur_bag_texture, NULL, &rectSelecteurBag);
 
         TTF_Font *font = TTF_OpenFont(font_path, 20);
 
@@ -212,6 +228,7 @@ void menu(motor_t ** motor)
         render_text(motor,"img",font,25,235);
         render_text(motor,"itemDesc",font,25,335);
 
+        SDL_DestroyTexture(selecteur_bag_texture);
         SDL_DestroyTexture(textureBackgroundMenu);
       }
   }
@@ -917,8 +934,6 @@ surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Pokedex/Windo
     SDL_QueryTexture(textureDetail, NULL, NULL,  &image_width , &image_height);
     SDL_RenderCopy((*motor)->renderer, textureDetail, NULL, &rectDetail);
 
-
-
     SDL_DestroyTexture(textureBackground);
     SDL_DestroyTexture(textureBackgroundTwo);
     SDL_DestroyTexture(textureDetail);
@@ -1016,4 +1031,61 @@ surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Pokedex/Windo
       //  SDL_DestroyTexture(pokemonFront_texture);
       SDL_DestroyTexture(menu_texture);
     }
+}
+
+
+/**
+  * \function ecran_acceuil
+  * \brief interface pour l'écran principal du jeu
+  * \param motor : moteur de jeux
+*/
+void ecran_acceuil(motor_t ** motor){
+
+  if ((*motor)->menu->menu_page_acceuil == 1){ //Mis à 0 par défaut
+    SDL_Surface * surface;
+    char* font_path = "src/Pokemon_GB.ttf";
+    int image_width,image_height;
+
+    surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/titlepage.png");
+    //surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/titlepage.png");
+    if (surface == NULL)
+    printf("Erreur image page d'accueil\n");
+    SDL_Texture * textureBackground = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+    SDL_FreeSurface(surface);
+
+    SDL_Rect rectBackground;
+    rectBackground.x=0;
+    rectBackground.y=0;
+    rectBackground.w=1280;
+    rectBackground.h=720;
+    SDL_QueryTexture(textureBackground, NULL, NULL,  &image_width , &image_height);
+    SDL_RenderCopy((*motor)->renderer, textureBackground, NULL, &rectBackground);
+
+    surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Select_Category.png");
+    //surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Select_Category.png");
+    if (surface == NULL)
+    printf("Erreur\n");
+    SDL_Texture * select_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+    SDL_FreeSurface(surface);
+    SDL_Rect menuSelectMainScreen;
+    menuSelectMainScreen.x = 760;
+    menuSelectMainScreen.y = 100* (*motor)->menu->el_menu_main_screen_select+200;
+    menuSelectMainScreen.w = 400;
+    menuSelectMainScreen.h = 110;
+    SDL_QueryTexture(select_texture, NULL, NULL,  &image_width , &image_height);
+    SDL_RenderCopy((*motor)->renderer, select_texture, NULL, &menuSelectMainScreen);
+    TTF_Font *font = TTF_OpenFont(font_path, 20);
+    if(font == NULL){
+      printf("Erreur font\n");
+    }
+    if ((*motor)->menu->save_available == 1) {
+      render_text(motor,"Continuer",font,800,240);
+    }
+    render_text(motor,"Nouvelle partie",font,800,240);
+    render_text(motor,"Quitter",font,800,340);
+
+    SDL_DestroyTexture(select_texture);
+    SDL_DestroyTexture(textureBackground);
+
+  }
 }
