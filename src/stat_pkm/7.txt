@@ -8,8 +8,8 @@ Eau Null
 Torrent
 64
 43
-500
 1
+500
 Carabaffe
-charge flammeche fouet_lianes pistolet_a_o
+charge flammeche fouet_lianes null
 7

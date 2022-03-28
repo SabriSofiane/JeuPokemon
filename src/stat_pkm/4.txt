@@ -8,8 +8,8 @@ Feu Null
 Brasier
 50
 65
-500
 1
+500
 Reptincel
-charge flammeche fouet_lianes pistolet_a_o
+charge flammeche fouet_lianes null
 4

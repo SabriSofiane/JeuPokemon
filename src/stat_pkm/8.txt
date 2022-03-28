@@ -8,8 +8,8 @@ Eau Null
 Torrent
 80
 58
-500
 16
+500
 Tortank
-charge flammeche fouet_lianes pistolet_a_o
+charge flammeche fouet_lianes null
 8

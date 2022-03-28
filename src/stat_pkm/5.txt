@@ -11,5 +11,5 @@ Brasier
 500
 1
 Reptincel
-charge flammeche fouet_lianes pistolet_a_o
+charge flammeche fouet_lianes null
 5

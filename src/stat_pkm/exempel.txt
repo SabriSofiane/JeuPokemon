@@ -8,20 +8,8 @@ Vitesse
 Talent
 HP
 MP
-EXP
 Niveau
-Prochain evol
-Liste attaque pnom
-Type1 Type2
-Attaque
-Defense
-Attaque Sp.
-Defense Sp.
-Vitesse
-Talent
-HP
-MP
 EXP
-Niveau
 Prochain evol
-Liste attaque possible[]
+Liste attaques
+ID

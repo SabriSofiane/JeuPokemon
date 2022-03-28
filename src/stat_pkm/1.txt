@@ -8,8 +8,8 @@ Plante Poison
 Engrais
 45
 50
-500
 1
+500
 Herbizare
-charge flammeche fouet_lianes pistolet_a_o
+charge flammeche fouet_lianes null
 1
