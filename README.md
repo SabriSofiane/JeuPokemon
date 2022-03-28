@@ -6,3 +6,5 @@ De nouveaux éléments de gameplay seront ajoutés pour rendre le jeu plus diffi
 
 Pour le moment chacun des trois membres du groupe dispose de sa propre branche dans ce dépo, chaque branche à sa propre structure.
 À termes l'ensemble des fonctions développé par chacun d'entre nous serons regroupés dans une seul branche.
+
+https://drive.google.com/file/d/17HFsNsYTSlwoxXSIjUJqBaXsbfGiaXzB/view?usp=sharing
