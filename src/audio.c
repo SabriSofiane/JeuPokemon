@@ -10,7 +10,7 @@ void audio_init(motor_t ** motor)
 {
   //(*motor)->musique->track_path_list
   (*motor)->musique->track_in_list = 0;
-  (*motor)->musique->volume = 0.1;
+  (*motor)->musique->volume = 1;
     DIR *d;
    struct dirent *dir;
    d = opendir("./src/asset/audio/");
@@ -38,14 +38,14 @@ void audio_init(motor_t ** motor)
 
 void play_sound(motor_t ** motor,char * path,int loop,int volume)
 {
-  printf("PLAY AUDIO\n");
+  printf("PLAY AUDIO : %s\n",path);
   if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
   {
      printf("%s", Mix_GetError());
   }
 
   (*motor)->musique->music=Mix_LoadMUS(path);
-  Mix_VolumeMusic( (volume * 128) / 100);
+  Mix_VolumeMusic( (10 * 128) / 100);
   if(!(*motor)->musique->music) {
     printf("Mix_LoadMUS(\"music.mp3\"): %s\n", Mix_GetError());
     // this might be a critical error...
@@ -56,6 +56,8 @@ void play_sound(motor_t ** motor,char * path,int loop,int volume)
   }
 
 }
+
+
 
 void stop_sound()
 {

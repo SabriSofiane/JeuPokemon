@@ -1,6 +1,14 @@
 #include "../include/motor.h"
 #include "../include/window_render.h"
 
+int init_window_render(motor_t ** motor)
+{
+  (*motor)->windows = malloc(sizeof(window_t));    // Allocation de l'espace mémoire pour la fenetre
+  (*motor)->windows->width = 1280;                 // Définition de la largeur de la fenetre
+  (*motor)->windows->height = 720;                 // Définition de la hauteur de la fenetre
+  (*motor)->windows->size_coef = 2;                // Définition du Coefficient d'échelle (ne vraiment pas modifier svp)
+  (*motor)->windows->font = malloc(sizeof(TTF_Font*));
+}
 int create_window_render(SDL_Window ** window, SDL_Renderer ** renderer,int window_width, int window_height)
 {
   (*window) = SDL_CreateWindow("Pokemon ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_width, window_height, SDL_WINDOW_RESIZABLE );
@@ -50,4 +58,16 @@ void destroy_window_render(SDL_Window ** window, SDL_Renderer ** renderer)
         (*window) = NULL;
         printf("Destruction de la fenetre\n");
     }
+}
+
+void limit_fps(unsigned int limit,int fps_limit)
+{
+  unsigned int ticks = SDL_GetTicks();
+
+  if (limit < ticks)
+      return;
+  else if (limit > ticks + fps_limit)
+      SDL_Delay(fps_limit);
+  else
+      SDL_Delay(limit-ticks);
 }

@@ -2,6 +2,11 @@
 #include "../include/admin.h"
 #include "../include/text.h"
 
+int init_admin(motor_t ** motor)
+{
+  (*motor)->admin_console->key_delay = SDL_GetTicks();
+}
+
 void selection_bar(motor_t ** motor,int nb_menu,int nb_option)
 {
 if ((*motor)->keys.right_arrow == 1)
@@ -95,8 +100,16 @@ void display_console(motor_t ** motor)
     text_draw(motor,(*motor)->admin_console->arguments[i],1450,100+(i*30) );
   }
 
-  text_draw(motor,str,1400,500);
+  text_draw(motor,str,800,500);
 
-  sprintf(str,"%f;%f",(*motor)->player->posX,(*motor)->player->posY);
-  text_draw(motor,str,1400,550);
+  sprintf(str,"%2.f;%2.f",(*motor)->player->posX,(*motor)->player->posY-4);
+  text_draw(motor,str,1000,550);
+/*
+  sprintf(str,"%i;%i",floorf((*motor)->player->posX) == (*motor)->player->posX,floorf((*motor)->player->posY) == (*motor)->player->posY);
+  text_draw(motor,str,1000,570);
+
+  sprintf(str,"%i",(*motor)->player->movement_id);
+  text_draw(motor,str,1000,590);
+  */
+  text_draw(motor,"lol \t mdr",1000,590);
 }

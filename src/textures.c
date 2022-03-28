@@ -2,11 +2,10 @@
 #include "../include/textures.h"
 
 
-void init_textures(motor_t ** motor,SDL_Texture * texture_map1,char path[100])
+int init_texture(motor_t ** motor )
 {
-  SDL_Surface * map_surface = IMG_Load(path);
-  texture_map1 = SDL_CreateTextureFromSurface((*motor)->renderer, map_surface);
-  SDL_FreeSurface(map_surface);
+  (*motor)->textures = malloc(sizeof(texture_t));
+  (*motor)->textures->texture_map = malloc(sizeof(SDL_Texture*));
 }
 
 

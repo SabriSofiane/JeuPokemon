@@ -30,7 +30,7 @@ void detruire_string_matrice(char *** matrice,int size)
    free(matrice);
 }
 
-char *** get_String_Matrice(motor_t ** motor,char * filename, int nb_bordure,int x_center,int y_center,char * nom_function)
+char *** get_String_Matrice(motor_t ** motor, int nb_bordure,int x_center,int y_center)
 {
   int r = (*motor)->tiles_number;
   int c = (*motor)->tiles_number;
@@ -64,6 +64,8 @@ int split_string_data(char str[80], const char s2,int index)
   // get the first token
   token = strtok(str_buffer, s);
 
+
+
   if (index == 0)
   return atoi(token);
   //walk through other tokens
@@ -71,7 +73,31 @@ int split_string_data(char str[80], const char s2,int index)
     token = strtok(NULL, s);
     index--;
  }
- //if (token != '')
+
+ /*
+ if (((token[0] == '[') == 0) && ((token[strlen(token)-1] == ']') == 0))
+ {
+
+   char token_buffer[30];
+   strncpy(token_buffer, token+1, strlen(token)-2);
+
+
+   Uint32 ticks = SDL_GetTicks();
+   Uint32 seconds = ticks / 200;
+   Uint32 index_tiles = seconds % 4;
+
+   token = strtok(token_buffer, s);
+   while(index_tiles != 0) {
+     token = strtok(NULL, ",");
+     index_tiles--;
+   }
+
+   strncpy(token,token_buffer,strlen(token_buffer));
+
+ }
+*/
+
+ if (token)
  retour = atoi(token);
 
  return retour;

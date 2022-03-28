@@ -4,23 +4,34 @@
 void text_init(motor_t ** motor)
 {
   TTF_Init();
-  (*motor)->windows->font = TTF_OpenFont("./fonts/arial.ttf", 25);
+  (*motor)->windows->font = TTF_OpenFont("./fonts/PKMN_RBYGSC.ttf", 25);
 }
 
-void text_draw(motor_t ** motor,char * text,int x,int y) {
-  SDL_Color color = { 23, 101, 125 };
+void text_draw(motor_t ** motor,char * text,int x,int y)
+{
+  SDL_Color color = { 23, 101, 125 ,255};
+
+  Uint32 ticks = SDL_GetTicks();
+  Uint32 seconds = ticks / 100;
+  Uint32 sprite = seconds % strlen(text);
+
   SDL_Surface * surface = TTF_RenderText_Solid((*motor)->windows->font,
-    text, color);
+  text, color);
 
 
   SDL_Texture * texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
+  int text_width = surface->w;
+  int text_height = surface->h;
+  SDL_Rect textRect;
+  textRect.x = x;
+  textRect.y = y;
+  textRect.w = text_width;
+  textRect.h = text_height;
 
-  int texW = 0;
-  int texH = 0;
-  SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
-  SDL_Rect dstrect = { x, y, texW, texH };
+  SDL_QueryTexture(texture, NULL, NULL, &text_width, &text_height);
 
-  SDL_RenderCopy((*motor)->renderer, texture, NULL, &dstrect);
+
+  SDL_RenderCopy((*motor)->renderer, texture, NULL, &textRect);
   SDL_DestroyTexture(texture);
   SDL_FreeSurface(surface);
 }

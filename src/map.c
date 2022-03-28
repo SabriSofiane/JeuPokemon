@@ -55,7 +55,7 @@ void display_map(motor_t ** motor,int texture_id)
 {
   int nb_bordure = 10;
 
-  char *** mat = get_String_Matrice(&(*motor),"C:/Users/Elias/Desktop/JEU_POKEMON/src/asset/file_map3.dat", nb_bordure, (*motor)->player->posX,(*motor)->player->posY,"display_map_convert");
+  char *** mat = get_String_Matrice(&(*motor), nb_bordure, (*motor)->player->posX,(*motor)->player->posY);
   int loop = (2 * nb_bordure) + 1;
 
   //printf("matrice %s\n",mat[16][16]);
@@ -100,6 +100,11 @@ void display_map(motor_t ** motor,int texture_id)
             SrcR.y = 32*(mat_val-1018);
           }
 */
+/*
+      SrcR.x = 32*(mat_val/510);
+      SrcR.y = 32*(mat_val%509);
+*/
+
         if (mat_val < 510)
         {
           SrcR.x = 0*32;
@@ -130,7 +135,6 @@ void display_map(motor_t ** motor,int texture_id)
         {
           SrcR.x = 5*32;
           SrcR.y = 32*(mat_val-(5*509));
-
         }
 
           SrcR.w = 32;

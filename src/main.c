@@ -4,7 +4,8 @@
 #include <time.h>
 #include <math.h>
 #include <dirent.h>
-
+#include <signal.h>
+#include <unistd.h>
 
 #include "../include/SDL2/SDL.h"
 #include "../include/SDL2/SDL_image.h"
@@ -14,7 +15,11 @@
 #include "C:/Users/Elias/Desktop/JEU_POKEMON/include/load_header.h"
 
 #define fps_limit 16
-void limit_fps(unsigned int fps);
+
+void sig_handler(int signum){
+  //Return type of the handler function should be void
+  printf("\nInside handler function\n");
+}
 
 int main(int argc, char * argv[]) {
 
@@ -26,19 +31,20 @@ int main(int argc, char * argv[]) {
     return(-1);
   }
 
-
-  //system("cls");
   audio_init(&game_motor);
+  init_admin(&game_motor);
   play_sound(&game_motor,(game_motor)->musique->track_path_list[0],-1,0);
 
   text_init(&game_motor);
-
-
+  printf("%i\n",sizeof(game_motor->menu) );
+  game_motor->menu->speech_bubble = 0;
   game_motor->actual_time = 0;
-  while (!game_motor->quit) {
-    //game_motor->actual_time = SDL_GetTicks()+fps_limit;
 
-    //limit_fps(game_motor->actual_time);
+  while (!game_motor->quit) {
+
+    game_motor->actual_time = SDL_GetTicks()+fps_limit;
+
+    limit_fps(game_motor->actual_time,fps_limit);
 
     event_handle(&game_motor);
 
@@ -51,12 +57,10 @@ int main(int argc, char * argv[]) {
     display_map(&game_motor,3);   //calque n°3
     display_player(&game_motor);  //joueur
     display_map(&game_motor,4);   //calque n°3
-    display_console(&game_motor);
-
+    //display_console(&game_motor);
+    speech_bubble(&game_motor);
 
     SDL_RenderPresent(game_motor->renderer);
-
-    //game_motor->actual_time = SDL_GetTicks()+fps_limit;
     }
 
   printf("Fin du while\n");
@@ -65,16 +69,4 @@ int main(int argc, char * argv[]) {
   IMG_Quit();
   SDL_Quit();
   return 0;
-}
-
-void limit_fps(unsigned int limit)
-{
-  unsigned int ticks = SDL_GetTicks();
-
-  if (limit < ticks)
-      return;
-  else if (limit > ticks + fps_limit)
-      SDL_Delay(fps_limit);
-  else
-      SDL_Delay(limit-ticks);
 }
