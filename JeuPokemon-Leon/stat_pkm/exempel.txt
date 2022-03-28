@@ -1,0 +1,15 @@
+nom
+Type1 Type2
+Attaque
+Defense
+Attaque Sp.
+Defense Sp.
+Vitesse
+Talent
+HP
+MP
+Niveau
+EXP
+Prochain evol
+Liste attaques
+ID
