@@ -7,6 +7,7 @@
 #include <time.h>
 #include <math.h>
 #include <dirent.h>
+
 #include "../include/SDL2/SDL.h"
 #include "../include/SDL2/SDL_image.h"
 #include "../include/SDL2/SDL_mixer.h"
@@ -15,6 +16,7 @@
 typedef struct
 {
     SDL_Texture * texture_map;     // Texture pour la map
+    SDL_Texture * texture_animation_water;
     SDL_Texture * player_walk;      // Texture pour les sprite de marche du joueur
     SDL_Texture * player_run;       // Texture pour les sprite de course du joueur
     SDL_Texture * player_bike;      // Texture pour les sprite de vélo du joueur
@@ -73,6 +75,8 @@ typedef struct
   char lastkey;
 } keys_t;
 
+
+
 typedef struct
 {
     float posX;                     // Possition X du rectangle du joueur
@@ -83,16 +87,14 @@ typedef struct
     int speed;                      // Correspond à la vitesse de déplacement du joueur
 
     int player_cooldown;            // Pas encore utilisé
-    float monney;                   // Pas encore utilisé
-    int badge[8];                   // Pas encore utilisé
-    int pkm_ids[6];                 // Pas encore utilisé
-    SDL_Rect player_rect;           // Pas encore utilisé
-    int srcX;
+    SDL_Rect player_rect;           // Rectangle SDL pour le joueur
+    int player_last_time;
+    float move_step;
 } player_t;                         // Struture pour le joueur (donc avec les variables importante)
 
 typedef struct
 {
-  int x;             // Ne pas utilisé
+  int x;                // Ne pas utilisé
   int y;
   char * spritesheet;
 } npc_t;                            // Struture pour la map (pas encore utilisé)
@@ -108,15 +110,31 @@ typedef struct
 typedef struct
 {
   char * texture_name;
-  SDL_Texture * texture;
+  SDL_Texture * texture_speech_bubble;
 }menu_texture_t;
 
 typedef struct
 {
   int el_menu_select;
-  menu_texture_t ** menu_textures;
+  int el_battle_menu_select;
+  int el_battle_menu_atk_select;
+  int el_menu_pokemon_select;
+  int el_menu_save_select;
+  int choixCombat;
+  SDL_Texture * texture_speech_bubble;
+  char speech_bubble_text[255];
   int taille;
+  int speech_bubble;
+  int menu_principal;
+  int menu_battle;
+  int menu_battle_attaque;
+  int menu_pokemon;
+  int menu_bag;
+  int menu_shop;
+  int menu_save;
+  int current_pokemon;
 } menu_t;
+
 
 typedef struct
 {
@@ -153,6 +171,7 @@ typedef struct
   int selection_bar_y;
   char keypad[5];
   char arguments[10][5];
+  unsigned int key_delay;
 } admin_console_t;
 
 typedef struct
@@ -165,10 +184,7 @@ typedef struct
     int quit;                       // variable boolean 0 (false) -> en fonctionnement, 1 (true) -> quitté
     int tiles_number;
     char *** matrice_file;
-    SDL_bool key[SDL_NUM_SCANCODES];
-    SDL_bool key_pressed;
     controller_t * controller;
-    unsigned int motor_time;
     SDL_bool collision;
     unsigned int previous_time;
     unsigned int actual_time;
@@ -176,6 +192,7 @@ typedef struct
     keys_t keys;
     admin_console_t * admin_console;
     musique_t * musique;
+    menu_t * menu;
 } motor_t;                          // Struture du moteur de jeu (⚠️merci de ne pas modifier⚠️)
 
 
@@ -185,8 +202,6 @@ typedef struct
 
 
 motor_t * init_motor();
-
-
 
 void destroy_motor(motor_t ** motor);
 
