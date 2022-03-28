@@ -1,3 +1,14 @@
+/**
+  * \file event.h
+  * \brief fichier de gestion des événements
+  * \author Elias OKAT
+  * \version 0.5
+  * \date 28 février 2022
+*/
+
+
+
+
 /*
 Le but de ce fichier est de gérer tous les événements, merci d'adopter la même
 syntaxe lors d'ajout d'événement, par défaut les événements de déplacement de
@@ -50,6 +61,11 @@ int event_handle(motor_t ** motor)
           (*motor)->menu->menu_save = 0;
         }
 
+      }
+
+
+      if((*motor)->menu->menu_page_acceuil == 1 && (*motor)->menu->el_menu_main_screen_select == 1){
+        (*motor)->quit = 1;
       }
 
 
@@ -127,37 +143,42 @@ int event_handle(motor_t ** motor)
       else if ((*motor)->menu->menu_pokemon == 1 && (*motor)->menu->menu_battle == 0){
         switch ((*motor)->menu->el_menu_pokemon_select){
           case 1:
-          swapNodes(1,  2);
-          (*motor)->menu->menu_battle = 1;
-          (*motor)->menu->menu_pokemon = 0;
+          if (swapNodes( 1, 2) == 1){
+            (*motor)->menu->menu_battle = 1;
+            (*motor)->menu->menu_pokemon = 0;
+          }
           (*motor)->menu->el_battle_menu_select = 0;
           (*motor)->menu->el_menu_pokemon_select = 0;
           break;
           case 2:
-          swapNodes( 1, 3);
-          (*motor)->menu->menu_battle = 1;
-          (*motor)->menu->menu_pokemon = 0;
+          if (swapNodes( 1, 3) == 1){
+            (*motor)->menu->menu_battle = 1;
+            (*motor)->menu->menu_pokemon = 0;
+          }
           (*motor)->menu->el_battle_menu_select = 0;
           (*motor)->menu->el_menu_pokemon_select = 0;
           break;
           case 3:
-          swapNodes( 1,  4);
-          (*motor)->menu->menu_battle = 1;
-          (*motor)->menu->menu_pokemon = 0;
+          if (swapNodes( 1, 4) == 1){
+            (*motor)->menu->menu_battle = 1;
+            (*motor)->menu->menu_pokemon = 0;
+          }
           (*motor)->menu->el_battle_menu_select = 0;
           (*motor)->menu->el_menu_pokemon_select = 0;
           break;
           case 4:
-          swapNodes( 1, 5);
-          (*motor)->menu->menu_battle = 1;
-          (*motor)->menu->menu_pokemon = 0;
+          if (swapNodes( 1, 5) == 1){
+            (*motor)->menu->menu_battle = 1;
+            (*motor)->menu->menu_pokemon = 0;
+          }
           (*motor)->menu->el_battle_menu_select = 0;
           (*motor)->menu->el_menu_pokemon_select = 0;
           break;
           case 5:
-          swapNodes( 1, 6);
-          (*motor)->menu->menu_battle = 1;
-          (*motor)->menu->menu_pokemon = 0;
+          if (swapNodes( 1, 6) == 1){
+            (*motor)->menu->menu_battle = 1;
+            (*motor)->menu->menu_pokemon = 0;
+          }
           (*motor)->menu->el_battle_menu_select = 0;
           (*motor)->menu->el_menu_pokemon_select = 0;
           break;
@@ -184,8 +205,9 @@ int event_handle(motor_t ** motor)
 
       case SDLK_UP:
       //Selectionneur du menu principal
-      if ((*motor)->menu->el_menu_select > 0)
-      (*motor)->menu->el_menu_select--;
+      if ((*motor)->menu->el_menu_select > 0){
+        (*motor)->menu->el_menu_select--;
+      }
       else
       (*motor)->menu->el_menu_select = 5;
 

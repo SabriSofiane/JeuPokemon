@@ -8,8 +8,8 @@ Plante Poison
 Engrais
 60
 80
-500
 16
+500
 Florizarre
 charge flammeche fouet_lianes null
 2

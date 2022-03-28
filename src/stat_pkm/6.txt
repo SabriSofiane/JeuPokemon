@@ -8,8 +8,8 @@ Feu Vol
 Brasier
 85
 100
-500
 32
+500
 Null
-charge flammeche fouet_lianes pistolet_a_o
+charge flammeche fouet_lianes null
 6

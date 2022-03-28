@@ -48,26 +48,26 @@ typedef struct
 
 typedef struct
 {
-  int el_menu_select;
-  int el_battle_menu_select;
-  int el_battle_menu_atk_select;
-  int el_menu_pokemon_select;
-  int el_menu_save_select;
-  int el_menu_main_screen_select; //new
-  int choixCombat;
+  int el_menu_select;//element de selection pour le menu principal
+  int el_battle_menu_select;//element de selection pour le menu battle attaque
+  int el_battle_menu_atk_select; //element de selection pour le menu battle attaque
+  int el_menu_pokemon_select; //element de selection pour le menu pokemon
+  int el_menu_save_select; //element de selection pour la sauvegarde
+  int el_menu_main_screen_select; //element de selection pour la page d'acceuil /*nouveau*/
+  int choixCombat; //variable de choix pour le combat
   SDL_Texture ** menu_textures;
   int taille;
-  int speech_bubble;
-  int menu_page_acceuil;
-  int menu_principal;
-  int menu_battle;
-  int menu_battle_attaque;
-  int menu_pokemon;
-  int menu_bag;
-  int menu_shop;
-  int menu_save;
+  int speech_bubble; //variable pour l'affichage de la bulle de texte
+  int menu_page_acceuil; //variable pour l'affichage de la page d'accueil /*nouveau*/
+  int menu_principal; //variable pour l'affichage du menu principal
+  int menu_battle; //variable pour l'affichage du menu battle
+  int menu_battle_attaque; //variable pour l'affichage du menu battle attaque
+  int menu_pokemon;//variable pour l'affichage du menu pokemon
+  int menu_bag;//variable pour l'affichage du menu bag
+  int menu_shop;//variable pour l'affichage du menu shop
+  int menu_save; //variable pour l'affichage du menu de sauvegarde
   int save_available; //Modification d'affichage dans la fonction ecran_acceuil à Continuer si une sauvegarde est disponible /* A DEPLACER */
-  int current_pokemon;
+  int current_pokemon; ////variable utilisé pour savoir quelle pokémon est actif dans le combat.
 } menu_t;
 
 typedef struct
@@ -88,7 +88,7 @@ typedef struct
 //Ajouter vos nouvelles structures ICI (et donc pas ailleur, pour plus de simplicité lors de la fusion des codes)
 /*-------------------------------------*/
 
-//Ce qui defini un pkm
+//Structure qui defini un pkm
 typedef struct{
   char pkm_name[50];
   char type1[50];
@@ -117,10 +117,14 @@ typedef struct listeEl{
 }Liste_t;
 t_pkm pkm;
 Liste_t * player;
-//Liste_t * temp = player;
 
 t_pkm wild_pkm;
 
+/**
+  * \function init_motor
+  * \brief Fonction d'initialisation de la structure globale de moteur de jeu
+  * \return motor_t Retourne le moteur de jeux
+*/
 motor_t * init_motor()
 {
     motor_t * motor = malloc(sizeof(motor_t));  // Création du moteur
@@ -150,27 +154,30 @@ motor_t * init_motor()
     */
     /* Initialisation de tout les éléments utiles pour le menu et les interfaces. */
     motor->menu = malloc(sizeof(menu_t));
-
+    //Initialisation de tout les selecteurs des menus
     motor->menu->el_menu_select = 0;
     motor->menu->el_battle_menu_select = 0;
     motor->menu->el_battle_menu_atk_select = 0;
     motor->menu->el_menu_pokemon_select=0;
     motor->menu->el_menu_save_select=0;
-    motor->menu->el_menu_main_screen_select=0;
+    motor->menu->el_menu_main_screen_select=0; /*nouveau*/
+
     motor->menu->choixCombat = 1;
     motor->menu->taille = 6;
     motor->menu->menu_textures = malloc(sizeof(SDL_Texture*)*10);
+    motor->menu->save_available = 0;
+    //Initialisation de toutes les variables qui concerne l'affichage des menu.
     motor->menu->speech_bubble = 0;
-    motor->menu->menu_page_acceuil=1;
-    motor->menu->menu_battle=1;
+    motor->menu->menu_page_acceuil=0; /*nouveau*/
+    motor->menu->menu_battle=0;
     motor->menu->menu_battle_attaque=0;
     motor->menu->menu_pokemon=0;
     motor->menu->menu_bag=0;
     motor->menu->menu_shop=0;
     motor->menu->menu_save=0;
-    motor->menu->menu_principal=0;
+    motor->menu->menu_principal=1;
     motor->menu->current_pokemon = 1;
-    motor->menu->save_available = 0;
+
 
     /* Initialisation de la chaine de char*/
     motor->last_key = malloc(10*sizeof(char));
@@ -187,7 +194,11 @@ motor_t * init_motor()
     return motor;    // Retourne le moteur
 }
 
-
+/**
+  * \function destroy_motor
+  * \brief Fonction de destruction du moteur de jeu
+  * \param motor : moteur de jeux
+*/
 void destroy_motor(motor_t ** motor)
 {
   /*

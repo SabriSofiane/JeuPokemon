@@ -1,5 +1,5 @@
 /**
-  * \file menu.c
+  * \file menu.h
   * \brief fichier d'interface graphique
   * Attention au chemin des textures dans chacune des fonctions!
   * \author Sofiane SABRI
@@ -103,7 +103,7 @@ void menu(motor_t ** motor)
       SDL_Texture * textureBackgroundMenu = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
       SDL_FreeSurface(surface);
       SDL_Rect rectBackground;
-      char* font_path = "Pokemon_GB.ttf";
+      char* font_path = "PKMN_RBYGSC.ttf";
       SDL_Color textColor = {255, 255, 255, 0};
       SDL_Rect menu;
       rectBackground.x=0;
@@ -144,13 +144,14 @@ void menu(motor_t ** motor)
 
       SDL_Texture * menu_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
       SDL_FreeSurface(surface);
+      menu.x = 230;
+      menu.y = 54 * (*motor)->menu->el_menu_select+40;
+      menu.w = 80;
+      menu.h = 52;
       SDL_QueryTexture(menu_texture, NULL, NULL,  &image_width , &image_height);
       SDL_RenderCopy((*motor)->renderer, menu_texture, NULL, &menu);
 
-      menu.x = 230;
-      menu.y = 54* (*motor)->menu->el_menu_select+40;
-      menu.w = 80;
-      menu.h = 52;
+
 
       TTF_Font *font = TTF_OpenFont(font_path, 18);
 
@@ -178,13 +179,13 @@ void menu(motor_t ** motor)
     * \param motor : moteur de jeux
   */
   void menu_Bag(motor_t ** motor){
-    if(((*motor)->menu->menu_bag)==0)
+    if(((*motor)->menu->menu_bag)==1)
       {
         SDL_Surface * surface;
         int image_width,image_height;
-        char* font_path = "src/Pokemon_GB.ttf";
-        surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/bagfond.png");
-        //surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/bagfond.png");
+        char* font_path = "PKMN_RBYGSC.ttf";
+        //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/bagfond.png");
+        surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/bagfond.png");
         if (surface == NULL)
         printf("Erreur Background\n");
         SDL_Texture * textureBackgroundMenu = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
@@ -199,8 +200,8 @@ void menu(motor_t ** motor)
         SDL_QueryTexture(textureBackgroundMenu, NULL, NULL,  &image_width , &image_height);
         SDL_RenderCopy((*motor)->renderer, textureBackgroundMenu, NULL, &rectBackground);
 
-        surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Menu_curseur.png");
-        //surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Menu_curseur.png");
+        //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Menu_curseur.png");
+        surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Menu_curseur.png");
         if (surface == NULL)
         printf("Erreur Background\n");
         SDL_Texture * selecteur_bag_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
@@ -245,7 +246,7 @@ void menu(motor_t ** motor)
     if(((*motor)->menu->menu_battle)==1){
       //SDL_SetRenderDrawColor((*motor)->renderer,255,0,0,255);
       SDL_Surface * surface;
-      char* font_path = "Pokemon_GB.ttf";
+      char* font_path = "PKMN_RBYGSC.ttf";
       SDL_Color textColor = {0,0,0,0};
       int image_width,image_height;
 
@@ -472,7 +473,7 @@ void menu(motor_t ** motor)
   void menu_Battle_Attaque(motor_t ** motor){
     if(((*motor)->menu->menu_battle_attaque)==1){
       SDL_Surface * surface;
-      char* font_path = "Pokemon_GB.ttf";
+      char* font_path = "PKMN_RBYGSC.ttf";
       SDL_Color textColor = {0,0,0,0};
       int image_width,image_height;
 
@@ -722,7 +723,7 @@ void menu(motor_t ** motor)
       SDL_Texture * textureSpeechBubble = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
       SDL_FreeSurface(surface);
       SDL_Rect rectBackground;
-      char* font_path = "Pokemon_GB.ttf";
+      char* font_path = "PKMN_RBYGSC.ttf";
       TTF_Font *font = TTF_OpenFont(font_path, 35);
       SDL_Color textColor = {0,0,0,0  };
 
@@ -752,7 +753,7 @@ void menu(motor_t ** motor)
     {
       SDL_Surface * surface;
       SDL_Color textColor = {0,0,0,0};
-      char* font_path = "Pokemon_GB.ttf";
+      char* font_path = "PKMN_RBYGSC.ttf";
       int image_width,image_height;
 
       //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/boxback.png");
@@ -816,7 +817,7 @@ void menu(motor_t ** motor)
       {
         SDL_Surface * surface;
         SDL_Color textColor = {0,0,0,0};
-        char* font_path = "Pokemon_GB.ttf";
+        char* font_path = "PKMN_RBYGSC.ttf";
         int image_width,image_height;
 
         //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/name.png");
@@ -886,7 +887,7 @@ void menu(motor_t ** motor)
     SDL_Surface * surface;
     SDL_Color textColor = {0,0,0,0};
     int image_width,image_height;
-    char* font_path = "Pokemon_GB.ttf";
+    char* font_path = "PKMN_RBYGSC.ttf";
     //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Pokedex/Background_1.png");
     surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Pokedex/Background_1.png");
     if (surface == NULL)
@@ -951,7 +952,7 @@ surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Pokedex/Windo
     if(((*motor)->menu->menu_pokemon)==1)
     {
       SDL_Surface * surface;
-      char* font_path = "Pokemon_GB.ttf";
+      char* font_path = "PKMN_RBYGSC.ttf";
       Liste_t * truc = player;
 
       TTF_Font *font = TTF_OpenFont(font_path, 14);
@@ -1043,11 +1044,11 @@ void ecran_acceuil(motor_t ** motor){
 
   if ((*motor)->menu->menu_page_acceuil == 1){ //Mis à 0 par défaut
     SDL_Surface * surface;
-    char* font_path = "src/Pokemon_GB.ttf";
+    char* font_path = "PKMN_RBYGSC.ttf";
     int image_width,image_height;
 
-    surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/titlepage.png");
-    //surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/titlepage.png");
+    //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/titlepage.png");
+    surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/titlepage.png");
     if (surface == NULL)
     printf("Erreur image page d'accueil\n");
     SDL_Texture * textureBackground = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
@@ -1061,8 +1062,8 @@ void ecran_acceuil(motor_t ** motor){
     SDL_QueryTexture(textureBackground, NULL, NULL,  &image_width , &image_height);
     SDL_RenderCopy((*motor)->renderer, textureBackground, NULL, &rectBackground);
 
-    surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Select_Category.png");
-    //surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Select_Category.png");
+    //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Select_Category.png");
+    surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Select_Category.png");
     if (surface == NULL)
     printf("Erreur\n");
     SDL_Texture * select_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
