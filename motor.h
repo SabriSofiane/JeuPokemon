@@ -117,6 +117,7 @@ typedef struct listeEl{
 }Liste_t;
 t_pkm pkm;
 Liste_t * player;
+Liste_t * testEnnemi;
 
 t_pkm wild_pkm;
 

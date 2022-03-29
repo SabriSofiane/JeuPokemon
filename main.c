@@ -24,10 +24,13 @@ int main(int argc, char * argv[]) {
   init_pkm_team(&pkm, "1.txt");
   inserFin(player, pkm);
   init_pkm_team(&pkm, "1.txt");
-  /*
   inserFin(player, pkm);
-  init_pkm_team(&pkm, "6.txt");*/
+  init_pkm_team(&pkm, "6.txt");
   inserFin(player, pkm);
+
+  initBilly(testEnnemi, "billy.txt");
+  print_list(testEnnemi);
+  //printf("%s\n", testEnnemi->pkm.pkm_name);
   //play_sound(&game_motor,"C:/Users/Elias/Desktop/JEU_POKEMON/truc_bien_range/asset/Driftveil.mp3");
   while (!game_motor->quit) {
     if (event_handle(&game_motor) == 1)

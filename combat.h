@@ -1,12 +1,12 @@
 //Affiche tous les elements d' une liste de pokemon
-void print_list(Liste_t * player)
+void print_list(Liste_t * pl)
 { //
   int i = 1;
-  while(player)
+  while(pl)
   {
     printf("%d <----------Pokémon n°%d: ---------->\n Nom: %s \n Type 1: %s Type 2: %s Potentiel evolution: %s \n Atk: %i, Def: %i, SpAtk: %i, SpDef: %i, Sp: %i \n Talent: %s \n Hp: %i  Mp: %i \n LvL: %i ExP: %i \n Attaques: %s %s %s %s \n",
-    player->pkm.id, i, player->pkm.pkm_name, player->pkm.type1, player->pkm.type2,player->pkm.evolution, player->pkm.atk, player->pkm.def, player->pkm.spatk, player->pkm.spdef, player->pkm.sp, player->pkm.talent, player->pkm.hp, player->pkm.mp, player->pkm.lvl, player->pkm.exp, player->pkm.skill[0], player->pkm.skill[1], player->pkm.skill[2], player->pkm.skill[3]);
-    player = player->next;
+    pl->pkm.id, i, pl->pkm.pkm_name, pl->pkm.type1, pl->pkm.type2,pl->pkm.evolution, pl->pkm.atk, pl->pkm.def, pl->pkm.spatk, pl->pkm.spdef, pl->pkm.sp, pl->pkm.talent, pl->pkm.hp, pl->pkm.mp, pl->pkm.lvl, pl->pkm.exp, pl->pkm.skill[0], pl->pkm.skill[1], pl->pkm.skill[2], pl->pkm.skill[3]);
+    pl = pl->next;
     i++;
   }
 }
@@ -64,9 +64,9 @@ void suppr(Liste_t **p, t_pkm pkm)
 }
 
 //Affiche les statistiques des pokemons sur le terrain
-void affiche_Stats(Liste_t *player, t_pkm *wild_pkm){
+void affiche_Stats(Liste_t *pl, t_pkm *wild_pkm){
   printf("<----------Joueur: ---------->\n Nom: %s \n Type 1: %s Type 2: %s \n Atk: %i, Def: %i, SpAtk: %i, SpDef: %i, Sp: %i \n Talent: %s \n Hp: %i  Mp: %i \n LvL: %i ExP: %i \n Attaques: %s %s %s %s \n",
-          player->pkm.pkm_name, player->pkm.type1, player->pkm.type2, player->pkm.atk, player->pkm.def, player->pkm.spatk, player->pkm.spdef, player->pkm.sp, player->pkm.talent, player->pkm.hp, player->pkm.mp, player->pkm.lvl, player->pkm.exp, player->pkm.skill[0], player->pkm.skill[1], player->pkm.skill[2], player->pkm.skill[3]);
+          pl->pkm.pkm_name, pl->pkm.type1, pl->pkm.type2, pl->pkm.atk, pl->pkm.def, pl->pkm.spatk, pl->pkm.spdef, pl->pkm.sp, pl->pkm.talent, pl->pkm.hp, pl->pkm.mp, pl->pkm.lvl, pl->pkm.exp, pl->pkm.skill[0], pl->pkm.skill[1], pl->pkm.skill[2], pl->pkm.skill[3]);
   printf("<----------Adversaire---------->\n Nom: %s  Type 1: %s Type 2: %s \n \n Atk: %i, Def: %i, SpAtk: %i SpDef: %i, Sp: %i \n Talent : %s, Hp: %i  Mp: %i \n LvL: %i ExP: %i \n Attaques: %s %s %s %s \n",
           wild_pkm->pkm_name, wild_pkm->type1, wild_pkm->type2, wild_pkm->atk, wild_pkm->def, wild_pkm->spatk, wild_pkm->spdef, wild_pkm->sp, wild_pkm->talent, wild_pkm->hp, wild_pkm->mp, wild_pkm->lvl, wild_pkm->exp, wild_pkm->skill[0], wild_pkm->skill[1], wild_pkm->skill[2], wild_pkm->skill[3]);
 }
@@ -87,11 +87,11 @@ t_pkm GetNth(Liste_t* head, int index){
 /*Echange la place entre deux pokemon dans la liste
   Renvoie 1 si l'echange est possible ou 0 sinon
 */
-int swapNodes(int n1, int n2){
-    Liste_t *prevNode1 = NULL, *prevNode2 = NULL, *node1 = player, *node2 = player, *temp = NULL;
+int swapNodes(int n1, int n2, Liste_t *pl){
+    Liste_t *prevNode1 = NULL, *prevNode2 = NULL, *node1 = pl, *node2 = pl, *temp = NULL;
     int tp;
     //Verifier si la liste est null
-    if(player == NULL) {
+    if(pl == NULL) {
         return 0;
     }
 
@@ -121,12 +121,12 @@ int swapNodes(int n1, int n2){
         if(prevNode1 != NULL)
           prevNode1->next = node2;
         else
-          player  = node2;
+          pl  = node2;
         //Si l'element precedent de node2 n'est pas null, le pointer sur node1
         if(prevNode2 != NULL)
           prevNode2->next = node1;
         else
-          player  = node1;
+          pl  = node1;
         //Echange les elements de node1 et node2
         temp = node1->next;
         node1->next = node2->next;
@@ -188,7 +188,7 @@ void init_pkm_enemy(t_pkm *pkm){
 }
 
 //Personnage allie utilise une capacite contre ennemi
-void player_attack(Liste_t*player, t_pkm *wild_pkm,int choix){
+void pl_attack(Liste_t*pl, t_pkm *wild_pkm,int choix){
   FILE * file;
   char choice[50]= {"\0"};
   char dir[50] = "atk/";
@@ -196,18 +196,18 @@ void player_attack(Liste_t*player, t_pkm *wild_pkm,int choix){
   char type1[50];
   int pow, acc, pp;
   int accuracy;
-  strcat(choice,player->pkm.skill[choix]);
+  strcat(choice,pl->pkm.skill[choix]);
   strcat(choice, ".txt");
   strcat(dir, choice);
   file=fopen(dir, "r");
   fscanf(file, "%s %s %i %i %i", nom, type1, &pow, &acc, &pp);
   wild_pkm->hp -= pow;
-  printf("%s inflige %i à %s avec %s\n", player->pkm.pkm_name,  pow, wild_pkm->pkm_name, player->pkm.skill[choix]);
+  printf("%s inflige %i à %s avec %s\n", pl->pkm.pkm_name,  pow, wild_pkm->pkm_name, pl->pkm.skill[choix]);
   fclose(file);
 }
 
 //Personnage allie utilise une capacite contre ennemi
-void enemy_attack(Liste_t *player, t_pkm *wild_pkm){
+void enemy_attack(Liste_t *pl, t_pkm *wild_pkm){
   FILE * file;
   char choice[50]= {"\0"};
   char dir[50] = "atk/";
@@ -223,19 +223,19 @@ void enemy_attack(Liste_t *player, t_pkm *wild_pkm){
   strcat(dir, choice);
   file=fopen(dir, "r");
   fscanf(file, "%s %s %i %i %i", nom, type1, &pow, &acc, &pp);
-  player->pkm.hp -= pow;
-  printf("%s inflige %i à %s avec %s\n", player->pkm.pkm_name,  pow, wild_pkm->pkm_name, player->pkm.skill[choix]);
+  pl->pkm.hp -= pow;
+  printf("%s inflige %i à %s avec %s\n", pl->pkm.pkm_name,  pow, wild_pkm->pkm_name, pl->pkm.skill[choix]);
   fclose(file);
 }
 
 //Verif si tous les pokemon de la liste sont en vie
-int verif_pkmEnVie(Liste_t *player){
+int verif_pkmEnVie(Liste_t *pl){
   int count = 0;
-  int length = Length(player);
-  while(player){
-    if (player->pkm.hp <= 0)
+  int length = Length(pl);
+  while(pl){
+    if (pl->pkm.hp <= 0)
       count++;
-    player = player->next;
+    pl = pl->next;
   }
   if (count == length) return 0;  //si tosu les pokemon sont morts
   else return 1;
@@ -248,15 +248,19 @@ void initBilly(Liste_t *liste, char nomDress[50])
   char dir[50] = "dress_ennemi/";
   char nomPkm[50];
   int lvl;
-  t_pkm *pkm;
+  t_pkm pkm;
+  int total = 0;
   strcat(dir, nomDress);
   chercherDress = fopen(dir, "r");
-  while (!feof(chercherDress))
+  for (int i = 0; i < 3; i++)
   {
     fscanf(chercherDress, "%s %i", nomPkm, &lvl);
-    init_pkm_team(pkm, nomPkm);
-    pkm->lvl = lvl;
-    inserFin(liste, *pkm);
+    init_pkm_team(&pkm, nomPkm);
+    pkm.lvl = lvl;
+    if(liste == NULL)
+      inserDebut((&liste), pkm);
+    else
+      inserFin(liste, pkm);
   }
   fclose(chercherDress);
 }
@@ -265,38 +269,81 @@ void initBilly(Liste_t *liste, char nomDress[50])
   Fonction generale de combat par systeme de manche
   Inflige les degats et verifie l'etat de la manche
 */
-int combat(Liste_t *player, t_pkm *wild_pkm, int choix){
-  if(player->pkm.hp > 0 && wild_pkm->hp > 0){
-    player_attack(player, wild_pkm, choix);
+int combat(Liste_t *pl, t_pkm *wild_pkm, int choix){
+  if(pl->pkm.hp > 0 && wild_pkm->hp > 0){
+    pl_attack(pl, wild_pkm, choix);
     if (wild_pkm->hp <= 0)
       return 1;
-    enemy_attack(player, wild_pkm);
+    enemy_attack(pl, wild_pkm);
   }
-  if (player->pkm.hp <= 0 && verif_pkmEnVie(player) == 1){
-    printf("%s est K.O !\n", player->pkm.pkm_name);
+  if (pl->pkm.hp <= 0 && verif_pkmEnVie(pl) == 1){
+    printf("%s est K.O !\n", pl->pkm.pkm_name);
     return (2);
   }
-  if (player->pkm.hp <= 0 && verif_pkmEnVie(player) == 0)
+  if (pl->pkm.hp <= 0 && verif_pkmEnVie(pl) == 0)
     return 0;
   else
     return 3;
 }
 
+//Personnage allie utilise une capacite contre ennemi
+void pl_attack2(Liste_t*pl, Liste_t *ennemi,int choix){
+  FILE * file;
+  char choice[50]= {"\0"};
+  char dir[50] = "atk/";
+  char nom[50];
+  char type1[50];
+  int pow, acc, pp;
+  int accuracy;
+  strcat(choice,pl->pkm.skill[choix]);
+  strcat(choice, ".txt");
+  strcat(dir, choice);
+  file=fopen(dir, "r");
+  fscanf(file, "%s %s %i %i %i", nom, type1, &pow, &acc, &pp);
+  ennemi->pkm.hp -= pow;
+  printf("%s inflige %i à %s avec %s\n", pl->pkm.pkm_name,  pow, ennemi->pkm.pkm_name, pl->pkm.skill[choix]);
+  fclose(file);
+}
+
+//Personnage allie utilise une capacite contre ennemi
+void enemy_attack2(Liste_t *pl, Liste_t *ennemi){
+  FILE * file;
+  char choice[50]= {"\0"};
+  char dir[50] = "atk/";
+  char nom[50];
+  char type1[50];
+  int pow, acc, pp;
+  int accuracy;
+  srand(time(NULL));
+  int choix = (rand() % 4); //Choix de l'attaque entre 0 et 3
+  printf("CHOIX : %d\n", choix);
+  strcat(choice,ennemi->pkm.skill[choix]);
+  strcat(choice, ".txt");
+  strcat(dir, choice);
+  file=fopen(dir, "r");
+  fscanf(file, "%s %s %i %i %i", nom, type1, &pow, &acc, &pp);
+  pl->pkm.hp -= pow;
+  printf("%s inflige %i à %s avec %s\n", ennemi->pkm.pkm_name,  pow, pl->pkm.pkm_name, ennemi->pkm.skill[choix]);
+  fclose(file);
+}
+
 /*
   je fais les test pour les dresseurs adverse
 */
-int combat2(Liste_t *player, Liste_t *ennemi, int choix){
-  if(player->pkm.hp > 0 && &ennemi->pkm.hp > 0){
-    player_attack(player, &ennemi->pkm, choix);
+int combat2(Liste_t *pl, Liste_t *ennemi, int choix){
+  printf("JE SUIS LA\n");
+  if(pl->pkm.hp > 0 && ennemi->pkm.hp > 0){
+    printf("JE SUIS ICI\n");
+    pl_attack2(pl, ennemi, choix);
     if (ennemi->pkm.hp < 0 && verif_pkmEnVie(ennemi) == 0)
       return 1;
-    enemy_attack(player, &ennemi->pkm);
+    enemy_attack2(pl, ennemi);
   }
-  if (player->pkm.hp <= 0 && verif_pkmEnVie(player) == 1){
-    printf("%s est K.O !\n", player->pkm.pkm_name);
+  if (pl->pkm.hp <= 0 && verif_pkmEnVie(pl) == 1){
+    printf("%s est K.O !\n", pl->pkm.pkm_name);
     return (2);
   }
-  if (player->pkm.hp <= 0 && verif_pkmEnVie(player) == 0)
+  if (pl->pkm.hp <= 0 && verif_pkmEnVie(pl) == 0)
     return 0;
   else{
     if (verif_pkmEnVie(ennemi) == 1)
