@@ -11,3 +11,4 @@ Lien du google slide : https://docs.google.com/presentation/d/1yb5YWyLSwFXjLONsn
 
 Lien d'édition du rapport de projet latex: https://www.overleaf.com/4391831434jmjjkrpzcxzt
 
+Lien de la dernière version du jeu fusion en cours : https://drive.google.com/file/d/1EVNpHRIb0DxaTqQ1FUCmwBtm0UWzU7Nk/view?usp=sharing
