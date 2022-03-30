@@ -187,6 +187,7 @@ void init_pkm_enemy(t_pkm *pkm){
   pkm->hpMax = pkm->hp;
 }
 
+//Cherche le multiplicateur de dégats dans la table des types
 int chercherMultiplicateur(int typePokemon1, int typeAttaque){
   FILE * fcherch;
   int a[16][16];
@@ -199,6 +200,7 @@ int chercherMultiplicateur(int typePokemon1, int typeAttaque){
   return a[i][j];
 }
 
+//Renvoie le multiplicateur de degats selon les types
 int verifType(char typePokemon1[50], char typePokemon2[50], char typeAttaque[50]){
   int typeAttaqueInt;
   int multiplicateur = 0;
