@@ -187,6 +187,79 @@ void init_pkm_enemy(t_pkm *pkm){
   pkm->hpMax = pkm->hp;
 }
 
+int chercherMultiplicateur(int typePokemon1, int typeAttaque){
+  FILE * fcherch;
+  int a[16][16];
+  int i, j;
+  fcherch = fopen("atk/tableType.txt", "r");
+  for (i = 0; i < typePokemon1; i++)
+    for (j = 0; j < typeAttaque; j++)
+      fscanf(fcherch, "%d", &a[i][j]);
+  fclose(fcherch);
+  return a[i][j];
+}
+
+int verifType(char typePokemon1[50], char typePokemon2[50], char typeAttaque[50]){
+  int typeAttaqueInt;
+  int multiplicateur = 0;
+  //RENVOIE INDICE DE typeAttaque
+  if (strcmp(typeAttaque, "Acier")) typeAttaqueInt = 0;
+  else if (strcmp(typeAttaque, "Combat")) typeAttaqueInt = 1;
+  else if (strcmp(typeAttaque, "Dragon")) typeAttaqueInt = 2;
+  else if (strcmp(typeAttaque, "Eau")) typeAttaqueInt = 3;
+  else if (strcmp(typeAttaque, "Electrik")) typeAttaqueInt = 4;
+  else if (strcmp(typeAttaque, "Feu")) typeAttaqueInt = 5;
+  else if (strcmp(typeAttaque, "Glace")) typeAttaqueInt = 6;
+  else if (strcmp(typeAttaque, "Insecte")) typeAttaqueInt = 7;
+  else if (strcmp(typeAttaque, "Normal")) typeAttaqueInt = 8;
+  else if (strcmp(typeAttaque, "Plante")) typeAttaqueInt = 9;
+  else if (strcmp(typeAttaque, "Poison")) typeAttaqueInt = 10;
+  else if (strcmp(typeAttaque, "Psy")) typeAttaqueInt = 11;
+  else if (strcmp(typeAttaque, "Roche")) typeAttaqueInt = 12;
+  else if (strcmp(typeAttaque, "Sol")) typeAttaqueInt = 13;
+  else if (strcmp(typeAttaque, "Spectre")) typeAttaqueInt = 14;
+  else if (strcmp(typeAttaque, "Tenebre")) typeAttaqueInt = 15;
+  else if (strcmp(typeAttaque, "Vol")) typeAttaqueInt = 16;
+
+  if (strcmp(typePokemon1, "Acier")) multiplicateur = chercherMultiplicateur(0, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Combat")) multiplicateur = chercherMultiplicateur(1, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Dragon")) multiplicateur = chercherMultiplicateur(2, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Eau")) multiplicateur = chercherMultiplicateur(3, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Electrik")) multiplicateur = chercherMultiplicateur(4, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Feu")) multiplicateur = chercherMultiplicateur(5, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Glace")) multiplicateur = chercherMultiplicateur(6, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Insecte")) multiplicateur = chercherMultiplicateur(7, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Normal")) multiplicateur = chercherMultiplicateur(8, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Plante")) multiplicateur = chercherMultiplicateur(9, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Poison")) multiplicateur = chercherMultiplicateur(10, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Psy")) multiplicateur = chercherMultiplicateur(11, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Roche")) multiplicateur = chercherMultiplicateur(12, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Sol")) multiplicateur = chercherMultiplicateur(13, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Spectre")) multiplicateur = chercherMultiplicateur(14, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Tenebre")) multiplicateur = chercherMultiplicateur(15, typeAttaqueInt);
+  else if (strcmp(typePokemon1, "Vol")) multiplicateur = chercherMultiplicateur(16, typeAttaqueInt);
+
+  if (!typePokemon2){
+    if (strcmp(typePokemon2, "Acier")) multiplicateur *= chercherMultiplicateur(0, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Combat")) multiplicateur *= chercherMultiplicateur(1, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Dragon")) multiplicateur *= chercherMultiplicateur(2, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Eau")) multiplicateur *= chercherMultiplicateur(3, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Electrik")) multiplicateur *= chercherMultiplicateur(4, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Feu")) multiplicateur *= chercherMultiplicateur(5, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Glace")) multiplicateur *= chercherMultiplicateur(6, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Insecte")) multiplicateur *= chercherMultiplicateur(7, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Normal")) multiplicateur *= chercherMultiplicateur(8, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Plante")) multiplicateur *= chercherMultiplicateur(9, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Poison")) multiplicateur *= chercherMultiplicateur(10, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Psy")) multiplicateur *= chercherMultiplicateur(11, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Roche")) multiplicateur *= chercherMultiplicateur(12, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Sol")) multiplicateur *= chercherMultiplicateur(13, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Spectre")) multiplicateur *= chercherMultiplicateur(14, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Tenebre")) multiplicateur *= chercherMultiplicateur(15, typeAttaqueInt);
+    else if (strcmp(typePokemon2, "Vol")) multiplicateur *= chercherMultiplicateur(16, typeAttaqueInt);
+  }
+}
+
 //Personnage allie utilise une capacite contre ennemi
 void pl_attack(Liste_t*pl, t_pkm *wild_pkm,int choix){
   FILE * file;

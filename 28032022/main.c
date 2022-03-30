@@ -27,6 +27,8 @@ int main(int argc, char * argv[]) {
   inserFin(player, pkm);
   init_pkm_team(player,&pkm, "6.txt");
   inserFin(player, pkm);
+  int multiplicateur = verifType("Acier", "Combat", "Feu");
+  printf("MULTIPLICATEUR: %d", multiplicateur);
   //play_sound(&game_motor,"C:/Users/Elias/Desktop/JEU_POKEMON/truc_bien_range/asset/Driftveil.mp3");
   while (!game_motor->quit) {
     if (event_handle(&game_motor) == 1)
