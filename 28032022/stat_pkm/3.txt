@@ -1,0 +1,15 @@
+Florizarre
+Plante Poison
+80
+50
+82
+83
+100
+Engrais
+100
+80
+32
+500
+Null
+charge flammeche fouet_lianes null
+3
