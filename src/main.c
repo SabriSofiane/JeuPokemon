@@ -2,7 +2,7 @@
   * \file main.c
   * \brief main du programme
   * \author Elias OKAT
-  * \version 0.5
+  * \version 1
   * \date 28 février 2022
 */
 
@@ -15,7 +15,6 @@
 #include <SDL2/SDL_image.h>
 //#include <SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
-
 #include "load_header.h"
 //export LD_LIBRARY_PATH="$HOME/SDL2/lib"
 
@@ -37,23 +36,24 @@ int main(int argc, char * argv[]) {
   inserFin(player, pkm);
   init_pkm_team(&pkm, "7.txt");
   inserFin(player, pkm);
-  init_pkm_team(&pkm, "5.txt");
+  init_pkm_team(&pkm, "9.txt");
   inserFin(player, pkm);
-  init_pkm_team(&pkm, "6.txt");
-  inserFin(player, pkm);
+  srand(time(0));
+  //init_pkm_team(&pkm, "6.txt");
+  //inserFin(player, pkm);
   //play_sound(&game_motor,"C:/Users/Elias/Desktop/JEU_POKEMON/truc_bien_range/asset/Driftveil.mp3");
   while (!game_motor->quit) {
     if (event_handle(&game_motor) == 1)
     {
     SDL_RenderClear(game_motor->renderer);
     //ecran_acceuil(&game_motor);
-   //menu_Battle_Attaque(&game_motor);
-    //menu_Battle(&game_motor);
-  //menu_pokemon(&game_motor);
+   menu_Battle_Attaque(&game_motor);
+    menu_Battle(&game_motor);
+  menu_pokemon(&game_motor);
     //menu_Bag(&game_motor);
-    menu(&game_motor);
+    //menu(&game_motor);
 
-  //speech_bubble(&game_motor,"Bienvenue a Bidoofville");
+  speech_bubble(&game_motor,"Bienvenue a Bidoofville");
     //menu_shop(&game_motor);
     //menu_save(&game_motor);
     //menu_pokedex(&game_motor);

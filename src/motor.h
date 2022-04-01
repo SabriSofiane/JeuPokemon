@@ -117,7 +117,7 @@ typedef struct listeEl{
 }Liste_t;
 t_pkm pkm;
 Liste_t * player;
-
+Liste_t * testEnnemi;
 t_pkm wild_pkm;
 
 /**
@@ -169,7 +169,7 @@ motor_t * init_motor()
     //Initialisation de toutes les variables qui concerne l'affichage des menu.
     motor->menu->speech_bubble = 0;
     motor->menu->menu_page_acceuil=0; /*nouveau*/
-    motor->menu->menu_battle=0;
+    motor->menu->menu_battle=1;
     motor->menu->menu_battle_attaque=0;
     motor->menu->menu_pokemon=0;
     motor->menu->menu_bag=0;

@@ -1,9 +1,9 @@
 /**
-  * \file event.h
-  * \brief fichier de gestion des événements
-  * \author Elias OKAT
-  * \version 0.5
-  * \date 28 février 2022
+* \file event.h
+* \brief fichier de gestion des événements
+* \author Elias OKAT
+* \version 1
+* \date 28 février 2022
 */
 
 
@@ -16,9 +16,9 @@ la souris sont désactivées.
 */
 
 /**
-  * \function event_handle
-  * \brief Gestion d'événement de la SDL
-  * \param motor : moteur de jeux
+* \function event_handle
+* \brief Gestion d'événement de la SDL
+* \param motor : moteur de jeux
 */
 int event_handle(motor_t ** motor)
 {
@@ -77,14 +77,18 @@ int event_handle(motor_t ** motor)
           break;
 
           case 1:
-
           (*motor)->menu->menu_pokemon = 1;
           (*motor)->menu->menu_battle = 0;
+          resetSelecteurs(&(*motor)); /* NOUVEAU : Reset de selecteur*/
           break;
 
           case 2:
           //(*motor)->menu->menu_battle_attaque= 1;
-          (*motor)->menu->menu_battle = 0;
+          if (capturer(player,wild_pkm) == 1){/* NOUVEAU : CAPTURE DE Pokemon*/
+            printf("Vous avez capturé %s !\n",wild_pkm.pkm_name);
+            (*motor)->menu->menu_battle = 0;
+          }
+
           break;
           case 3:
           //(*motor)->menu->menu_battle_attaque= 1;
@@ -99,27 +103,28 @@ int event_handle(motor_t ** motor)
           (*motor)->menu->choixCombat = 0;
           retour = combat(player,&wild_pkm,(*motor)->menu->choixCombat);
 
-            (*motor)->menu->el_battle_menu_select = 0;
-            (*motor)->menu->el_battle_menu_atk_select = 0;
+          resetSelecteurs(&(*motor));/* NOUVEAU : Reset de selecteur*/
+
 
           break;
           case 1:
           (*motor)->menu->choixCombat = 1;
           retour = combat(player,&wild_pkm,(*motor)->menu->choixCombat);
-          (*motor)->menu->el_battle_menu_select = 0;
-          (*motor)->menu->el_battle_menu_atk_select = 0;
+          resetSelecteurs(&(*motor));/* NOUVEAU : Reset de selecteur*/
+
+
           break;
           case 2:
           (*motor)->menu->choixCombat = 2;
           retour = combat(player,&wild_pkm,(*motor)->menu->choixCombat);
-          (*motor)->menu->el_battle_menu_select = 0;
-          (*motor)->menu->el_battle_menu_atk_select = 0;
+          resetSelecteurs(&(*motor));/* NOUVEAU : Reset de selecteur*/
+
           break;
           case 3:
           (*motor)->menu->choixCombat = 3;
           retour = combat(player,&wild_pkm,(*motor)->menu->choixCombat);
-          (*motor)->menu->el_battle_menu_select = 0;
-          (*motor)->menu->el_battle_menu_atk_select = 0;
+          resetSelecteurs(&(*motor));/* NOUVEAU : Reset de selecteur*/
+
           break;
 
         }
@@ -147,40 +152,40 @@ int event_handle(motor_t ** motor)
             (*motor)->menu->menu_battle = 1;
             (*motor)->menu->menu_pokemon = 0;
           }
-          (*motor)->menu->el_battle_menu_select = 0;
-          (*motor)->menu->el_menu_pokemon_select = 0;
+          resetSelecteurs(&(*motor));/* NOUVEAU : Reset de selecteur*/
+
           break;
           case 2:
           if (swapNodes( 1, 3) == 1){
             (*motor)->menu->menu_battle = 1;
             (*motor)->menu->menu_pokemon = 0;
           }
-          (*motor)->menu->el_battle_menu_select = 0;
-          (*motor)->menu->el_menu_pokemon_select = 0;
+          resetSelecteurs(&(*motor));/* NOUVEAU : Reset de selecteur*/
+
           break;
           case 3:
           if (swapNodes( 1, 4) == 1){
             (*motor)->menu->menu_battle = 1;
             (*motor)->menu->menu_pokemon = 0;
           }
-          (*motor)->menu->el_battle_menu_select = 0;
-          (*motor)->menu->el_menu_pokemon_select = 0;
+          resetSelecteurs(&(*motor));/* NOUVEAU : Reset de selecteur*/
+
           break;
           case 4:
           if (swapNodes( 1, 5) == 1){
             (*motor)->menu->menu_battle = 1;
             (*motor)->menu->menu_pokemon = 0;
           }
-          (*motor)->menu->el_battle_menu_select = 0;
-          (*motor)->menu->el_menu_pokemon_select = 0;
+          resetSelecteurs(&(*motor));/* NOUVEAU : Reset de selecteur*/
+
           break;
           case 5:
           if (swapNodes( 1, 6) == 1){
             (*motor)->menu->menu_battle = 1;
             (*motor)->menu->menu_pokemon = 0;
           }
-          (*motor)->menu->el_battle_menu_select = 0;
-          (*motor)->menu->el_menu_pokemon_select = 0;
+          resetSelecteurs(&(*motor));/* NOUVEAU : Reset de selecteur*/
+
           break;
         }
       }
@@ -244,73 +249,73 @@ int event_handle(motor_t ** motor)
 
       /*
       if ((*motor)->menu->menu_pokemon == 1) {
-        Algorithme de récupération de l'id du pokemon pour l'affichage dans le menu pokemon
-        Par défaut current_pokemon vaut le premier de la liste.
-        Si le menu pokemon est activé
-          Le Pokemon actuel est attribué la valeur du pokemon de la liste
-          Lorsque d'un appui up or down, on avance ou on recule de la liste
+      Algorithme de récupération de l'id du pokemon pour l'affichage dans le menu pokemon
+      Par défaut current_pokemon vaut le premier de la liste.
+      Si le menu pokemon est activé
+      Le Pokemon actuel est attribué la valeur du pokemon de la liste
+      Lorsque d'un appui up or down, on avance ou on recule de la liste
 
-        (*motor)->menu->current_pokemon = temp->pkm.id;
-        temp = temp->next;
-      }
-      */
-
-
-
-
-
-
-      break;
-
-      case SDLK_DOWN:
-
-      //Selectionneur du menu principal
-      if ((*motor)->menu->el_menu_select < 5)
-      (*motor)->menu->el_menu_select++;
-      else
-      (*motor)->menu->el_menu_select = 0;
-
-      //Selectionneur pour le menu battle
-      if ((*motor)->menu->el_battle_menu_select < 3)
-      (*motor)->menu->el_battle_menu_select++;
-      else
-      (*motor)->menu->el_battle_menu_select =0;
-
-
-      //Selectionneur pour le menu battle attaque
-      if ((*motor)->menu->el_battle_menu_atk_select < 3)
-      (*motor)->menu->el_battle_menu_atk_select++;
-      else
-      (*motor)->menu->el_battle_menu_atk_select =0;
-
-      //Selectionneur pour le menu pokemon
-      if ((*motor)->menu->el_menu_pokemon_select < 5)
-      (*motor)->menu->el_menu_pokemon_select++;
-      else
-      (*motor)->menu->el_menu_pokemon_select = 0;
-      //Selectionneur pour le menu de sauvegarde
-      if ((*motor)->menu->el_menu_save_select < 1)
-      (*motor)->menu->el_menu_save_select++;
-      else
-      (*motor)->menu->el_menu_save_select =0;
-
-      //Selectionneur pour l'écran principal
-      if ((*motor)->menu->el_menu_main_screen_select < 1)
-      (*motor)->menu->el_menu_main_screen_select++;
-      else
-      (*motor)->menu->el_menu_main_screen_select =0;
-
-      break;
-
-      default:
-      break;
+      (*motor)->menu->current_pokemon = temp->pkm.id;
+      temp = temp->next;
     }
-    strcpy((*motor)->last_key,key_pressed);
-  }
-  else if ((*motor)->event.type == SDL_QUIT)
-  {
-    (*motor)->quit = 1;
-  }
+    */
 
-  return 1;
+
+
+
+
+
+    break;
+
+    case SDLK_DOWN:
+
+    //Selectionneur du menu principal
+    if ((*motor)->menu->el_menu_select < 5)
+    (*motor)->menu->el_menu_select++;
+    else
+    (*motor)->menu->el_menu_select = 0;
+
+    //Selectionneur pour le menu battle
+    if ((*motor)->menu->el_battle_menu_select < 3)
+    (*motor)->menu->el_battle_menu_select++;
+    else
+    (*motor)->menu->el_battle_menu_select =0;
+
+
+    //Selectionneur pour le menu battle attaque
+    if ((*motor)->menu->el_battle_menu_atk_select < 3)
+    (*motor)->menu->el_battle_menu_atk_select++;
+    else
+    (*motor)->menu->el_battle_menu_atk_select =0;
+
+    //Selectionneur pour le menu pokemon
+    if ((*motor)->menu->el_menu_pokemon_select < 5)
+    (*motor)->menu->el_menu_pokemon_select++;
+    else
+    (*motor)->menu->el_menu_pokemon_select = 0;
+    //Selectionneur pour le menu de sauvegarde
+    if ((*motor)->menu->el_menu_save_select < 1)
+    (*motor)->menu->el_menu_save_select++;
+    else
+    (*motor)->menu->el_menu_save_select =0;
+
+    //Selectionneur pour l'écran principal
+    if ((*motor)->menu->el_menu_main_screen_select < 1)
+    (*motor)->menu->el_menu_main_screen_select++;
+    else
+    (*motor)->menu->el_menu_main_screen_select =0;
+
+    break;
+
+    default:
+    break;
+  }
+  strcpy((*motor)->last_key,key_pressed);
+}
+else if ((*motor)->event.type == SDL_QUIT)
+{
+  (*motor)->quit = 1;
+}
+
+return 1;
 }

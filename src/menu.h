@@ -239,8 +239,6 @@ void menu(motor_t ** motor)
     * \function menu_Battle
     * \brief interface de combat du jeux
     * \param motor : moteur de jeux
-    * \param player : structure de donnéees contenant les informations des pokémons du joueur
-    * \param wild_pkm : structure de donnéees contenant les informations des pokémons adversaire
   */
   void menu_Battle(motor_t ** motor){
     if(((*motor)->menu->menu_battle)==1){
@@ -1065,7 +1063,7 @@ void ecran_acceuil(motor_t ** motor){
     //surface = IMG_Load("C:/Users/Sofiane/eclipse-workspace/SDL/images/Pictures/Select_Category.png");
     surface = IMG_Load("/info/etu/l2info/s2103600/SDL2/images/Pictures/Select_Category.png");
     if (surface == NULL)
-    printf("Erreur\n");
+    printf("Erreur selecteur acc\n");
     SDL_Texture * select_texture = SDL_CreateTextureFromSurface((*motor)->renderer, surface);
     SDL_FreeSurface(surface);
     SDL_Rect menuSelectMainScreen;
@@ -1089,4 +1087,18 @@ void ecran_acceuil(motor_t ** motor){
     SDL_DestroyTexture(textureBackground);
 
   }
+}
+
+
+void resetSelecteurs(motor_t ** motor){
+  (*motor)->menu->el_menu_select = 0;
+  (*motor)->menu->el_battle_menu_select = 0;
+  (*motor)->menu->el_battle_menu_atk_select = 0;
+  (*motor)->menu->el_menu_pokemon_select=0;
+  (*motor)->menu->el_menu_save_select=0;
+  (*motor)->menu->el_menu_main_screen_select=0;
+}
+
+void testUnitaire(){
+  
 }
