@@ -1,6 +1,10 @@
 void inserFin(Liste_t *head, t_pkm pkm);
 int Length(Liste_t *p);
-
+/**
+  * \function capturer
+  * \brief 1 chance sur 2 de rajouter le pkm ennemi dans equipe
+  * \param liste des pkm du joueur et pkm ennemi
+**/
 int capturer(Liste_t *player, t_pkm wild_pkm)
 {
   srand(time(0));
@@ -17,6 +21,12 @@ int capturer(Liste_t *player, t_pkm wild_pkm)
     printf("CA MARCHE PAS\n");
   }
 }
+
+/**
+  * \function soin
+  * \brief rend tous les points de vie aux pokemon de l'equipe
+  * \param liste des pkm du joueur
+**/
 
 int soin(Liste_t *player)
 {

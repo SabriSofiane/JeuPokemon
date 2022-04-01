@@ -86,7 +86,9 @@ int event_handle(motor_t ** motor)
           break;
 
         }
-      }/*
+      }
+      //Combat 1 pkm
+      /*
       else if ((*motor)->menu->menu_battle_attaque == 1 && (*motor)->menu->menu_battle == 0){
         switch ((*motor)->menu->el_battle_menu_atk_select) {
           case 0:
@@ -132,29 +134,34 @@ int event_handle(motor_t ** motor)
 
         }
       }*/
+      //Combat dresseur
       else if ((*motor)->menu->menu_battle_attaque == 1 && (*motor)->menu->menu_battle == 0){
+        print_list(player);
+        printf("-----------------------------------\n");
+        print_list(testEnnemi);
+        printf("-----------------------------------\n");
         switch ((*motor)->menu->el_battle_menu_atk_select) {
           case 0:
           (*motor)->menu->choixCombat = 0;
-          retour = combat2(player,testEnnemi,(*motor)->menu->choixCombat);
+          retour = combatDresseur(player,testEnnemi,(*motor)->menu->choixCombat);
           (*motor)->menu->el_battle_menu_select = 0;
           (*motor)->menu->el_battle_menu_atk_select = 0;
           break;
           case 1:
           (*motor)->menu->choixCombat = 1;
-          retour = combat2(player,testEnnemi,(*motor)->menu->choixCombat);
+          retour = combatDresseur(player,testEnnemi,(*motor)->menu->choixCombat);
           (*motor)->menu->el_battle_menu_select = 0;
           (*motor)->menu->el_battle_menu_atk_select = 0;
           break;
           case 2:
           (*motor)->menu->choixCombat = 2;
-          retour = combat2(player,testEnnemi,(*motor)->menu->choixCombat);
+          retour = combatDresseur(player,testEnnemi,(*motor)->menu->choixCombat);
           (*motor)->menu->el_battle_menu_select = 0;
           (*motor)->menu->el_battle_menu_atk_select = 0;
           break;
           case 3:
           (*motor)->menu->choixCombat = 3;
-          retour = combat2(player,testEnnemi,(*motor)->menu->choixCombat);
+          retour = combatDresseur(player,testEnnemi,(*motor)->menu->choixCombat);
           (*motor)->menu->el_battle_menu_select = 0;
           (*motor)->menu->el_battle_menu_atk_select = 0;
           break;
@@ -172,6 +179,8 @@ int event_handle(motor_t ** motor)
         }
         else if (retour == 3){  //tour suivant pas de k.o
           printf("Retour: %d\n", retour);
+          if (testEnnemi->pkm.hp <=0)
+            testEnnemi = testEnnemi->next;
           (*motor)->menu->menu_battle = 1;
           (*motor)->menu->menu_battle_attaque = 0;
 
@@ -180,7 +189,7 @@ int event_handle(motor_t ** motor)
       else if ((*motor)->menu->menu_pokemon == 1 && (*motor)->menu->menu_battle == 0){
         switch ((*motor)->menu->el_menu_pokemon_select){
           case 1:
-          if (swapNodes( 1, 2, player) == 1){
+          if (swapNodes( 1, 2) == 1){
             (*motor)->menu->menu_battle = 1;
             (*motor)->menu->menu_pokemon = 0;
           }
@@ -188,7 +197,7 @@ int event_handle(motor_t ** motor)
           (*motor)->menu->el_menu_pokemon_select = 0;
           break;
           case 2:
-          if (swapNodes( 1, 3, player) == 1){
+          if (swapNodes( 1, 3) == 1){
             (*motor)->menu->menu_battle = 1;
             (*motor)->menu->menu_pokemon = 0;
           }
@@ -196,7 +205,7 @@ int event_handle(motor_t ** motor)
           (*motor)->menu->el_menu_pokemon_select = 0;
           break;
           case 3:
-          if (swapNodes( 1, 4, player) == 1){
+          if (swapNodes( 1, 4) == 1){
             (*motor)->menu->menu_battle = 1;
             (*motor)->menu->menu_pokemon = 0;
           }
@@ -204,7 +213,7 @@ int event_handle(motor_t ** motor)
           (*motor)->menu->el_menu_pokemon_select = 0;
           break;
           case 4:
-          if (swapNodes( 1, 5, player) == 1){
+          if (swapNodes( 1, 5) == 1){
             (*motor)->menu->menu_battle = 1;
             (*motor)->menu->menu_pokemon = 0;
           }
@@ -212,7 +221,7 @@ int event_handle(motor_t ** motor)
           (*motor)->menu->el_menu_pokemon_select = 0;
           break;
           case 5:
-          if (swapNodes( 1, 6, player) == 1){
+          if (swapNodes( 1, 6) == 1){
             (*motor)->menu->menu_battle = 1;
             (*motor)->menu->menu_pokemon = 0;
           }
