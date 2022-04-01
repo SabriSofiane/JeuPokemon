@@ -88,7 +88,7 @@ int event_handle(motor_t ** motor)
         }
       }
       //Combat 1 pkm
-      /*
+
       else if ((*motor)->menu->menu_battle_attaque == 1 && (*motor)->menu->menu_battle == 0){
         switch ((*motor)->menu->el_battle_menu_atk_select) {
           case 0:
@@ -133,8 +133,9 @@ int event_handle(motor_t ** motor)
           (*motor)->menu->menu_battle_attaque = 0;
 
         }
-      }*/
+      }
       //Combat dresseur
+      /*
       else if ((*motor)->menu->menu_battle_attaque == 1 && (*motor)->menu->menu_battle == 0){
         print_list(player);
         printf("-----------------------------------\n");
@@ -185,7 +186,7 @@ int event_handle(motor_t ** motor)
           (*motor)->menu->menu_battle_attaque = 0;
 
         }
-      }
+      }*/
       else if ((*motor)->menu->menu_pokemon == 1 && (*motor)->menu->menu_battle == 0){
         switch ((*motor)->menu->el_menu_pokemon_select){
           case 1:

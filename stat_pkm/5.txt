@@ -1,15 +1,15 @@
-Salamèche
-Feu NULL 
-39
-50
-52
-43
-60
-Brasier
-50
-65
-500
-1
 Reptincel
+Feu NULL 
+64
+58
+80
+65
+80
+Brasier
+58
+58
+16
+500
+Dracaufeu
 charge flammeche fouet_lianes null
 5

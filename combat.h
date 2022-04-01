@@ -1,4 +1,16 @@
-//Affiche tous les elements d' une liste de pokemon
+/**
+  * \file combat.h
+  * \brief fichier de gestion de combat
+  * \author Léon TER
+  * \version 0.5
+  * \date 28 mars 22
+*/
+
+/**
+  * \function print_list
+  * \brief Cette fonction permer de afficher tout les elements d'une liste de pokemon que le joueur possède.
+  * \param player : liste du joueur
+  */
 void print_list(Liste_t * pl)
 { //
   int i = 1;
@@ -11,7 +23,11 @@ void print_list(Liste_t * pl)
   }
 }
 
-//Renvoie la longueur d'une liste de pokemon
+/**
+  * \function length
+  * \brief Cette fonction Renvoie la longueur d'une liste de pokemon
+  * \param player : liste de pokemon
+  */
 int Length(Liste_t *p)
 {
         int n=0;
@@ -23,7 +39,12 @@ int Length(Liste_t *p)
         return n;
 }
 
-//Ajoute au debut de la liste p un pokemon
+/**
+  * \function inserDebut
+  * \brief Cette fonction ajoute au debut de la liste un pokemon
+  * \param player : liste de pokemon
+  * \param pkm : le pokemon à inserer
+  */
 void inserDebut(Liste_t **p, t_pkm pkm)
 {
         Liste_t *element = malloc(sizeof(Liste_t));
@@ -34,26 +55,36 @@ void inserDebut(Liste_t **p, t_pkm pkm)
         *p = element;       /* Le pointeur pointe sur le dernier élément. */
 }
 
-//Ajoute a la fin de la liste p un pokemon
-void inserFin(Liste_t *head, t_pkm pkm){
+/**
+  * \function inserFin
+  * \brief Cette fonction ajoute à la fin de la liste p un pokemon
+  * \param player : liste de pokemon
+  * \param pkm : le pokemon à inserer
+  */
+void inserFin(Liste_t *courant, t_pkm pkm){
     /* Input validation */
-    if (head == NULL) {
-       printf("Error : Invalid node pointer !!!\n");
+    if (courant == NULL) {
+       printf("Erreur : pointeur sur element invalide\n");
        return;
     }
-    pkm.id = Length(head)+1;
-    /* creates a new node */
-    Liste_t* newNode =malloc(sizeof(Liste_t));
-    newNode->pkm  = pkm;
-    newNode->next = NULL;
-    /* Traverse from head to last node  */
-    while(head->next != NULL)
-       head = head->next;
-    /* Insert newNode after Tail node */
-    head->next = newNode;
+    pkm.id = Length(courant)+1;
+    /* creation element */
+    Liste_t* newEl =malloc(sizeof(Liste_t));
+    newEl->pkm  = pkm;
+    newEl->next = NULL;
+    /* De l'element courant au dernier  */
+    while(courant->next != NULL)
+       courant = courant->next;
+    /* Inserer nouvel element a la fin */
+    courant->next = newEl;
 }
 
-//Supprime pokemon de la liste
+/**
+  * \function suppr
+  * \brief Cette fonction Supprime un pokemon de la liste
+  * \param player : liste de pokemon
+  * \param pkm : le pokemon à supprimer
+  */
 void suppr(Liste_t **p, t_pkm pkm)
 {
         Liste_t *tmp;
@@ -63,7 +94,12 @@ void suppr(Liste_t **p, t_pkm pkm)
         *p = tmp;       /* Le pointeur pointe sur le dernier élément. */
 }
 
-//Affiche les statistiques des pokemons sur le terrain
+/**
+  * \function affiche_Stats
+  * \brief Cette fonction affiche les statistiques des pokemons sur le terrain
+  * \param player : liste de pokemon
+  * \param wild_pkm : le pokémon que l'on veut afficher
+  */
 void affiche_Stats(Liste_t *pl, t_pkm *wild_pkm){
   printf("<----------Joueur: ---------->\n Nom: %s \n Type 1: %s Type 2: %s \n Atk: %i, Def: %i, SpAtk: %i, SpDef: %i, Sp: %i \n Talent: %s \n Hp: %i  Mp: %i \n LvL: %i ExP: %i \n Attaques: %s %s %s %s \n",
           pl->pkm.pkm_name, pl->pkm.type1, pl->pkm.type2, pl->pkm.atk, pl->pkm.def, pl->pkm.spatk, pl->pkm.spdef, pl->pkm.sp, pl->pkm.talent, pl->pkm.hp, pl->pkm.mp, pl->pkm.lvl, pl->pkm.exp, pl->pkm.skill[0], pl->pkm.skill[1], pl->pkm.skill[2], pl->pkm.skill[3]);
@@ -71,7 +107,13 @@ void affiche_Stats(Liste_t *pl, t_pkm *wild_pkm){
           wild_pkm->pkm_name, wild_pkm->type1, wild_pkm->type2, wild_pkm->atk, wild_pkm->def, wild_pkm->spatk, wild_pkm->spdef, wild_pkm->sp, wild_pkm->talent, wild_pkm->hp, wild_pkm->mp, wild_pkm->lvl, wild_pkm->exp, wild_pkm->skill[0], wild_pkm->skill[1], wild_pkm->skill[2], wild_pkm->skill[3]);
 }
 
-//Renvoie le pokemon a la place 'index' de la liste
+/**
+  * \function GetNth
+  * \brief Cette fonction renvoie le pokemon a la place 'index' de la liste
+  * \param head : tête de la liste
+  * \param index : l'index de la liste
+  * \return t_pkm : retourne le pokemon
+  */
 t_pkm GetNth(Liste_t* head, int index){
     Liste_t* current = head;
 
@@ -84,9 +126,13 @@ t_pkm GetNth(Liste_t* head, int index){
     }
 }
 
-/*Echange la place entre deux pokemon dans la liste
-  Renvoie 1 si l'echange est possible ou 0 sinon
-*/
+/**
+  * \function swapNodes
+  * \brief Echange la place entre deux pokemon dans la liste
+  * \param n1 : le premier pokemon
+  * \param n2 : le deuxième pokemon
+  * \return int : Renvoie 1 si l'echange est possible ou 0 sinon
+  */
 int swapNodes(int n1, int n2){
     Liste_t *prevNode1 = NULL, *prevNode2 = NULL, *node1 = player, *node2 = player, *temp = NULL;
     int tp;
@@ -140,18 +186,12 @@ int swapNodes(int n1, int n2){
         return 0;
     }
 }
-/*
-//Recupere les statistiques d'un pokemon allie pour son initialisation
-void init_pkm_team(Liste_t* pl, t_pkm *pkm, char nom_pkm[20]){ //inscrit le pokemon dans equipe
-  FILE * file_stat;
-  char dir[50] = "stat_pkm/";
-  strcat(dir, nom_pkm);
-  file_stat = fopen(dir, "r");
-  fscanf(file_stat, "%s %s %s %d %d %d %d %d %s %d %d %d %d %s %s %s %s %s %d",
-  pkm->pkm_name, pkm->type1, pkm->type2,&pkm->atk, &pkm->def, &pkm->spatk, &pkm->spdef, &pkm->sp, pkm->talent, &pkm->hp, &pkm->mp, &pkm->lvl, &pkm->exp, pkm->evolution, pkm->skill[0], pkm->skill[1], pkm->skill[2], pkm->skill[3],&pkm->pkmId);
-  fclose(file_stat);
-  pkm->hpMax = pkm->hp;
-}*/
+/**
+  * \function init_pkm_team
+  * \brief Recupere les statistiques d'un pokemon allie pour son initialisation et inscrit le pokemon dans equipe
+  * \param pkm : le pokemon
+  * \param nom_pkm : le nom du pokemon
+  */
 
 void init_pkm_team(t_pkm *pkm, char nom_pkm[20]){ //inscrit le pokemon dans equipe
   FILE * file_stat;
@@ -164,7 +204,11 @@ void init_pkm_team(t_pkm *pkm, char nom_pkm[20]){ //inscrit le pokemon dans equi
   pkm->hpMax = pkm->hp;
 }
 
-//Fait varier les statistiques d'un pokemon
+/**
+  * \function rand_scale_stat
+  * \brief Fait varier les statistiques d'un pokemon
+  * \param pkm : le pokemon que l'on veut faire varier
+  */
 void rand_scale_stat(t_pkm *pkm){
   srand(time(0));
   int lvl = rand() % (10-4)+4;
@@ -179,7 +223,11 @@ void rand_scale_stat(t_pkm *pkm){
 
 }
 
-//Recupere les statistiques d'un pokemon ennemi pour son initialisation
+/**
+  * \function init_pkm_team
+  * \brief Recupere les statistiques d'un pokemon ennemi pour son initialisation
+  * \param pkm : le pokemon que l'on veut initialiser
+  */
 void init_pkm_enemy(t_pkm *pkm){
   FILE * file;
   FILE * file_equipe;
@@ -202,7 +250,7 @@ void init_pkm_enemy(t_pkm *pkm){
   * \function chercherMultiplicateur
   * \brief Lit depuis le fichier tableType.txt le multiplicateur associe a l'attaque
   * \param indices des types d'un type defensif et d'un type offensif
-**/
+  */
 int chercherMultiplicateur(int typePokemon1, int typeAttaque){
   FILE * fcherch;
   float a[20][20];
@@ -219,7 +267,7 @@ int chercherMultiplicateur(int typePokemon1, int typeAttaque){
   * \function verifType
   * \brief Renvoie le multiplicateur de degats si attaque super efficace
   * \param 3 Types: typePokemon1 1er type du pokemon defensif, typePokemon 2eme type du pokemon defensif, typeAttaque type du pokemon offensif
-**/
+  */
 int verifType(char typePokemon1[50], char typePokemon2[50], char typeAttaque[50]){
   int typeAttaqueInt = 0;
   int multiplicateur = 0;
@@ -282,7 +330,13 @@ int verifType(char typePokemon1[50], char typePokemon2[50], char typeAttaque[50]
   return multiplicateur;
 }
 
-//J'AI RENOMME ICI LE NOM DE LA FONCTION
+/**
+  * \function getAttackJoueur
+  * \brief Fonction pour quand le personnage allie utilise une capacite contre ennemi
+  * \param pl : la liste du joueur
+  * \param wild_pkm : le pokemon énnemi
+  * \param choix : le choix apporté par l'utilisateur
+  */
 void getAttackJoueur(Liste_t*pl, t_pkm *wild_pkm,int choix){
   FILE * file;
   char choice[50]= {"\0"};
@@ -301,7 +355,12 @@ void getAttackJoueur(Liste_t*pl, t_pkm *wild_pkm,int choix){
   fclose(file);
 }
 
-//J'AI RENOMME ICI LE NOM DE LA FONCTION
+/**
+  * \function getAttackEnnemi
+  * \brief Fonction pour le okemon énnemi utilise une attaque contre le personnage
+  * \param pl : la liste du joueur
+  * \param wild_pkm : le pokemon énnemi
+  */
 void getAttackEnnemi(Liste_t *pl, t_pkm *wild_pkm){
   FILE * file;
   char choice[50]= {"\0"};
@@ -323,7 +382,12 @@ void getAttackEnnemi(Liste_t *pl, t_pkm *wild_pkm){
   fclose(file);
 }
 
-//Verif si tous les pokemon de la liste sont en vie
+/**
+  * \function verif_pkmEnVie
+  * \brief Fonction qui verifie si tous les pokémons de la liste sont en vie
+  * \param player : la liste du joueur
+  * \return int : retourne 0 si tout les pokémons sont morts, 1 sinon
+  */
 int verif_pkmEnVie(Liste_t *pl){
   int count = 0;
   int length = Length(pl);
@@ -336,10 +400,14 @@ int verif_pkmEnVie(Liste_t *pl){
   else return 1;
 }
 
-/*
-  Fonction generale de combat par systeme de manche
-  Inflige les degats et verifie l'etat de la manche
-*/
+/**
+  * \function combat
+  * \brief Fonction generale de combat par systeme de manche, inflige les degats et verifie l'etat de la manche
+  * \param pl : la liste du joueur
+  * \param wild_pkm : le pokémon ennemi
+  * \param choix : le choix du joueur
+  * \return int : retourne 1 si tout le pokémon adverse est Ko, 1 si le pokémon du joueur actuelle est KO, 2 si les tout les pokémons du joueur sont KO
+  */
 int combat(Liste_t *pl, t_pkm *wild_pkm, int choix){
   if(pl->pkm.hp > 0 && wild_pkm->hp > 0){
     getAttackJoueur(pl, wild_pkm, choix);
@@ -360,9 +428,10 @@ int combat(Liste_t *pl, t_pkm *wild_pkm, int choix){
 //cva marche mais c'est moche EN FAIT FAUT CHANGER LA VALEUR DU i SELON LE NBR DE PKM DU DRESSEUR DSL
 /**
 	* \function initBilly
-	* \Initialisation du dresseur adverse
-	* \param liste Liste de pkm du dresseur adverse, nomDress nom du fichier du dresseur
-**/
+	* \brief Initialisation du dresseur adverse
+	* \param liste : Liste de pkm du dresseur adverse
+  * \param nomDress : nom du fichier du dresseur
+  */
 void initBilly(Liste_t *liste, char nomDress[50])
 {
   FILE *chercherDress;
@@ -393,9 +462,11 @@ void initBilly(Liste_t *liste, char nomDress[50])
 
 /**
   * \function getAttackJoueurDuel
-  * \brief fonction d'attaque du joueur au pokemon adverse, dans le cas d'un combat contre dresseur
-  * \param liste de pokemons du joueur, liste de pokemons du dresseur adverse, choix de l'attaque
-**/
+  * \brief Fonction pour quand le personnage allie utilise une capacite contre pokemon de dresseur ennemi
+  * \param player : la liste du joueur
+  * \param ennemi : la liste du dresseur ennemi
+  * \param choix : le choix apporté par l'utilisateur
+  */
 void getAttackJoueurDuel(Liste_t*pl, Liste_t *ennemi,int choix){
   FILE * file;
   char choice[50]= {"\0"};
@@ -416,9 +487,10 @@ void getAttackJoueurDuel(Liste_t*pl, Liste_t *ennemi,int choix){
 
 /**
   * \function getAttackEnnemiDuel
-  * \brief fonction d'attaque du joueur au pokemon adverse, dans le cas d'un combat contre dresseur
-  * \param liste de pokemons du joueur, liste de pokemons du dresseur adverse, choix de l'attaque
-**/
+  * \brief Fonction pour le pokemon énnemi utilise une attaque contre le personnage
+  * \param player : la liste du joueur
+  * \param wild_ennemipkm : la liste du dresseur ennemi
+  */
 void getAttackEnnemiDuel(Liste_t *pl, Liste_t *ennemi){
   FILE * file;
   char choice[50]= {"\0"};
@@ -441,18 +513,19 @@ void getAttackEnnemiDuel(Liste_t *pl, Liste_t *ennemi){
 }
 
 /**
-  * \function combatDress
-  * \brief Fonction generale du combat contre un dresseur ennemi, appliquer les degats et verifier la fin du combat
-  * \param liste de pokemons du joueur, liste de pokemons du dresseur adverse, choix de l'attaque
-**/
+  * \function combatDresseur
+  * \brief Fonction generale de combat par systeme de manche, inflige les degats et verifie l'etat de la manche
+  * \param player : la liste du joueur
+  * \param ennemi : la liste du dresseur ennemi
+  * \param choix : le choix du joueur
+  * \return int : retourne 1 si tout le pokémon adverse est Ko, 1 si le pokémon du joueur actuelle est KO, 2 si les tout les pokémons du joueur sont KO
+  */
 int combatDresseur(Liste_t *pl, Liste_t *ennemi, int choix){
   if(pl->pkm.hp > 0 && ennemi->pkm.hp > 0){
-    printf("ON VA ATTAQUER\n");
     getAttackJoueurDuel(pl, ennemi, choix);
     if (ennemi->pkm.hp <= 0 && verif_pkmEnVie(ennemi) == 0)
       return 1;
     else if (ennemi->pkm.hp <= 0 && verif_pkmEnVie(ennemi) == 1){
-      printf("C'EST LE RETOUR OU PKM SUIVANT \n");
       return 3;
     }
     else{

@@ -15,7 +15,7 @@ int main(int argc, char * argv[]) {
   game_motor = init_motor();
   init(&game_motor);
   init_pkm_enemy(&wild_pkm);
-  init_pkm_team(&pkm, "1.txt");
+  init_pkm_team(&pkm, "5.txt");
   inserDebut(&player, pkm);
   init_pkm_team(&pkm, "1.txt");
   inserFin(player, pkm);
