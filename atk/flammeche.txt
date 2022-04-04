@@ -1,1 +1,1 @@
-Flammèche Feu 40 100 35
+Flammèche Feu 40 100

@@ -1,1 +1,1 @@
-Nom Type atk acc pp
+Nom Type atk acc

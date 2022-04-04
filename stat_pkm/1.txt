@@ -11,5 +11,5 @@ Engrais
 1
 500
 Herbizare
-charge flammeche fouet_lianes null
+pistolet_a_o flammeche fouet_lianes pistolet_a_o
 1
