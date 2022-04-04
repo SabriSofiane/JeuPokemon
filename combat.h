@@ -23,6 +23,16 @@ void print_list(Liste_t * pl)
   }
 }
 
+int getPlayerPkmId(Liste_t * pl, int id){
+  while(pl)
+  {
+    if (pl->pkm.id == id){
+      return pl->pkm.pkmId;
+    }
+    pl = pl->next;
+  }
+}
+
 /**
   * \function length
   * \brief Cette fonction Renvoie la longueur d'une liste de pokemon
@@ -199,7 +209,7 @@ void init_pkm_team(t_pkm *pkm, char nom_pkm[20]){ //inscrit le pokemon dans equi
   strcat(dir, nom_pkm);
   file_stat = fopen(dir, "r");
   fscanf(file_stat, "%s %s %s %d %d %d %d %d %s %d %d %d %d %s %s %s %s %s %d",
-  pkm->pkm_name, pkm->type1, pkm->type2,&pkm->atk, &pkm->def, &pkm->spatk, &pkm->spdef, &pkm->sp, pkm->talent, &pkm->hp, &pkm->mp, &pkm->lvl, &pkm->exp, pkm->evolution, pkm->skill[0], pkm->skill[1], pkm->skill[2], pkm->skill[3],&pkm->pkmId);
+    pkm->pkm_name, pkm->type1, pkm->type2,&pkm->atk, &pkm->def, &pkm->spatk, &pkm->spdef, &pkm->sp, pkm->talent, &pkm->hp, &pkm->mp, &pkm->lvl, &pkm->exp, pkm->evolution, pkm->skill[0], pkm->skill[1], pkm->skill[2], pkm->skill[3],&pkm->pkmId);
   fclose(file_stat);
   pkm->hpMax = pkm->hp;
 }
@@ -251,7 +261,7 @@ void init_pkm_enemy(t_pkm *pkm){
   * \brief Lit depuis le fichier tableType.txt le multiplicateur associe a l'attaque
   * \param indices des types d'un type defensif et d'un type offensif
   */
-int chercherMultiplicateur(int typePokemon1, int typeAttaque){
+float chercherMultiplicateur(int typePokemon1, int typeAttaque){
   FILE * fcherch;
   float a[20][20];
   int i, j;
@@ -260,7 +270,7 @@ int chercherMultiplicateur(int typePokemon1, int typeAttaque){
     for (j = 0; j < 18; j++)
       fscanf(fcherch, "%f", &a[i][j]);
   fclose(fcherch);
-  return ((int)a[typePokemon1][typeAttaque]);
+  return (a[typePokemon1][typeAttaque]);
 }
 
 /**
@@ -268,9 +278,9 @@ int chercherMultiplicateur(int typePokemon1, int typeAttaque){
   * \brief Renvoie le multiplicateur de degats si attaque super efficace
   * \param 3 Types: typePokemon1 1er type du pokemon defensif, typePokemon 2eme type du pokemon defensif, typeAttaque type du pokemon offensif
   */
-int verifType(char typePokemon1[50], char typePokemon2[50], char typeAttaque[50]){
+float verifType(char typePokemon1[50], char typePokemon2[50], char typeAttaque[50]){
   int typeAttaqueInt = 0;
-  int multiplicateur = 0;
+  float multiplicateur = 0;
   if (strcmp(typeAttaque, "Acier") == 0) typeAttaqueInt = 0;
   else if (strcmp(typeAttaque, "Combat") == 0) typeAttaqueInt = 1;
   else if (strcmp(typeAttaque, "Dragon") == 0) typeAttaqueInt = 2;
@@ -288,45 +298,46 @@ int verifType(char typePokemon1[50], char typePokemon2[50], char typeAttaque[50]
   else if (strcmp(typeAttaque, "Spectre") == 0) typeAttaqueInt = 14;
   else if (strcmp(typeAttaque, "Tenebre") == 0) typeAttaqueInt = 15;
   else if (strcmp(typeAttaque, "Vol") == 0) typeAttaqueInt = 16;
-  if (strcmp(typePokemon1, "Acier") == 0) multiplicateur = chercherMultiplicateur(0, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Combat") == 0) multiplicateur = chercherMultiplicateur(1, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Dragon") == 0) multiplicateur = chercherMultiplicateur(2, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Eau") == 0) multiplicateur = chercherMultiplicateur(3, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Electrik") == 0) multiplicateur = chercherMultiplicateur(4, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Feu") == 0) multiplicateur = chercherMultiplicateur(5, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Glace") == 0) multiplicateur = chercherMultiplicateur(6, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Insecte") == 0) multiplicateur = chercherMultiplicateur(7, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Normal") == 0) multiplicateur = chercherMultiplicateur(8, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Plante") == 0) multiplicateur = chercherMultiplicateur(9, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Poison") == 0) multiplicateur = chercherMultiplicateur(10, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Psy") == 0) multiplicateur = chercherMultiplicateur(11, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Roche") == 0) multiplicateur = chercherMultiplicateur(12, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Sol") == 0) multiplicateur = chercherMultiplicateur(13, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Spectre") == 0) multiplicateur = chercherMultiplicateur(14, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Tenebre") == 0) multiplicateur = chercherMultiplicateur(15, typeAttaqueInt);
-  else if (strcmp(typePokemon1, "Vol") == 0) multiplicateur = chercherMultiplicateur(16, typeAttaqueInt);
-
+  if (strcmp(typePokemon1, "Acier") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 0);
+  else if (strcmp(typePokemon1, "Combat") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 1);
+  else if (strcmp(typePokemon1, "Dragon") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 2);
+  else if (strcmp(typePokemon1, "Eau") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 3);
+  else if (strcmp(typePokemon1, "Electrik") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 4);
+  else if (strcmp(typePokemon1, "Feu") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 5);
+  else if (strcmp(typePokemon1, "Glace") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 6);
+  else if (strcmp(typePokemon1, "Insecte") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 7);
+  else if (strcmp(typePokemon1, "Normal") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 8);
+  else if (strcmp(typePokemon1, "Plante") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 9);
+  else if (strcmp(typePokemon1, "Poison") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 10);
+  else if (strcmp(typePokemon1, "Psy") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 11);
+  else if (strcmp(typePokemon1, "Roche") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 12);
+  else if (strcmp(typePokemon1, "Sol") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 13);
+  else if (strcmp(typePokemon1, "Spectre") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 14);
+  else if (strcmp(typePokemon1, "Tenebre") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 15);
+  else if (strcmp(typePokemon1, "Vol") == 0) multiplicateur = chercherMultiplicateur(typeAttaqueInt, 16);
   if (strcmp(typePokemon2, "NULL") == 1){
-    if (strcmp(typePokemon2, "Acier") == 0) multiplicateur *= chercherMultiplicateur(0, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Combat") == 0) multiplicateur *= chercherMultiplicateur(1, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Dragon") == 0) multiplicateur *= chercherMultiplicateur(2, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Eau") == 0) multiplicateur *= chercherMultiplicateur(3, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Electrik") == 0) multiplicateur *= chercherMultiplicateur(4, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Feu") == 0) multiplicateur *= chercherMultiplicateur(5, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Glace") == 0) multiplicateur *= chercherMultiplicateur(6, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Insecte") == 0) multiplicateur *= chercherMultiplicateur(7, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Normal") == 0) multiplicateur *= chercherMultiplicateur(8, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Plante") == 0) multiplicateur *= chercherMultiplicateur(9, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Poison") == 0) multiplicateur *= chercherMultiplicateur(10, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Psy") == 0) multiplicateur *= chercherMultiplicateur(11, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Roche") == 0) multiplicateur *= chercherMultiplicateur(12, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Sol") == 0) multiplicateur *= chercherMultiplicateur(13, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Spectre") == 0) multiplicateur *= chercherMultiplicateur(14, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Tenebre") == 0) multiplicateur *= chercherMultiplicateur(15, typeAttaqueInt);
-    else if (strcmp(typePokemon2, "Vol") == 0) multiplicateur *= chercherMultiplicateur(16, typeAttaqueInt);
+    if (strcmp(typePokemon2, "Acier") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 0);
+    else if (strcmp(typePokemon2, "Combat") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 1);
+    else if (strcmp(typePokemon2, "Dragon") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 2);
+    else if (strcmp(typePokemon2, "Eau") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 3);
+    else if (strcmp(typePokemon2, "Electrik") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 4);
+    else if (strcmp(typePokemon2, "Feu") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 5);
+    else if (strcmp(typePokemon2, "Glace") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 6);
+    else if (strcmp(typePokemon2, "Insecte") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 7);
+    else if (strcmp(typePokemon2, "Normal") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 8);
+    else if (strcmp(typePokemon2, "Plante") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 9);
+    else if (strcmp(typePokemon2, "Poison") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 10);
+    else if (strcmp(typePokemon2, "Psy") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 11);
+    else if (strcmp(typePokemon2, "Roche") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 12);
+    else if (strcmp(typePokemon2, "Sol") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 13);
+    else if (strcmp(typePokemon2, "Spectre") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 14);
+    else if (strcmp(typePokemon2, "Tenebre") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 15);
+    else if (strcmp(typePokemon2, "Vol") == 0) multiplicateur *= chercherMultiplicateur(typeAttaqueInt, 16);
   }
   if (multiplicateur >= 2)
     printf("C'est super efficace\n");
+  else if (multiplicateur < 1)
+    printf("Ce n'est pas très efficace\n");
   return multiplicateur;
 }
 
@@ -343,15 +354,17 @@ void getAttackJoueur(Liste_t*pl, t_pkm *wild_pkm,int choix){
   char dir[50] = "atk/";
   char nom[50];
   char type1[50];
-  int pow, acc, pp;
-  int accuracy;
+  int acc;
+  float pow;
   strcat(choice,pl->pkm.skill[choix]);
   strcat(choice, ".txt");
   strcat(dir, choice);
   file=fopen(dir, "r");
-  fscanf(file, "%s %s %i %i %i", nom, type1, &pow, &acc, &pp);
-  wild_pkm->hp -= pow;
-  printf("%s inflige %i à %s avec %s\n", pl->pkm.pkm_name,  pow, wild_pkm->pkm_name, pl->pkm.skill[choix]);
+  fscanf(file, "%s %s %f %i", nom, type1, &pow, &acc);
+  float multiplicateur = verifType(pl->pkm.type1, pl->pkm.type2, type1);
+  pow*=multiplicateur;
+  wild_pkm->hp -= (int)pow;
+  printf("%s inflige %i à %s avec %s getAttackJoueur\n", pl->pkm.pkm_name, (int)pow, wild_pkm->pkm_name, pl->pkm.skill[choix]);
   fclose(file);
 }
 
@@ -367,18 +380,19 @@ void getAttackEnnemi(Liste_t *pl, t_pkm *wild_pkm){
   char dir[50] = "atk/";
   char nom[50];
   char type1[50];
-  int pow, acc, pp;
-  int accuracy;
+  int acc;
+  float pow;
   srand(time(NULL));
   int choix = (rand() % 4); //Choix de l'attaque entre 0 et 3
-  printf("CHOIX : %d\n", choix);
   strcat(choice,wild_pkm->skill[choix]);
   strcat(choice, ".txt");
   strcat(dir, choice);
   file=fopen(dir, "r");
-  fscanf(file, "%s %s %i %i %i", nom, type1, &pow, &acc, &pp);
-  pl->pkm.hp -= pow;
-  printf("%s inflige %i à %s avec %s\n", pl->pkm.pkm_name,  pow, wild_pkm->pkm_name, pl->pkm.skill[choix]);
+  fscanf(file, "%s %s %f %i", nom, type1, &pow, &acc);
+  float multiplicateur = verifType(wild_pkm->type1, wild_pkm->type2, type1);
+  pow*=(int)multiplicateur;
+  pl->pkm.hp -= (int)pow;
+  printf("%s inflige %i à %s avec %s getAttackEnnemi\n", wild_pkm->pkm_name,  (int)pow, pl->pkm.pkm_name, wild_pkm->skill[choix]);
   fclose(file);
 }
 
@@ -442,7 +456,7 @@ void initBilly(Liste_t *liste, char nomDress[50])
   int total = 0;
   strcat(dir, nomDress);
   chercherDress = fopen(dir, "r");
-  for (int i = 0; i < 2; i++)
+  for (int i = 0; i < 3; i++)
   {
     fscanf(chercherDress, "%s %i", nomPkm, &lvl);
     init_pkm_team(&pkm, nomPkm);
@@ -473,15 +487,17 @@ void getAttackJoueurDuel(Liste_t*pl, Liste_t *ennemi,int choix){
   char dir[50] = "atk/";
   char nom[50];
   char type1[50];
-  int pow, acc, pp;
-  int accuracy;
+  int acc;
+  float pow;
   strcat(choice,pl->pkm.skill[choix]);
   strcat(choice, ".txt");
   strcat(dir, choice);
   file=fopen(dir, "r");
-  fscanf(file, "%s %s %i %i %i", nom, type1, &pow, &acc, &pp);
-  ennemi->pkm.hp -= pow;
-  printf("%s inflige %i à %s avec %s\n", pl->pkm.pkm_name,  pow, ennemi->pkm.pkm_name, pl->pkm.skill[choix]);
+  fscanf(file, "%s %s %f %i", nom, type1, &pow, &acc);
+  float multiplicateur = verifType(ennemi->pkm.type1, ennemi->pkm.type2, type1);
+  pow*=multiplicateur;
+  ennemi->pkm.hp -= (int)pow;
+  printf("%s inflige %i à %s avec %s getAttackJoueurDuel\n", pl->pkm.pkm_name,  (int)pow, ennemi->pkm.pkm_name, pl->pkm.skill[choix]);
   fclose(file);
 }
 
@@ -497,8 +513,8 @@ void getAttackEnnemiDuel(Liste_t *pl, Liste_t *ennemi){
   char dir[50] = "atk/";
   char nom[50];
   char type1[50];
-  int pow, acc, pp;
-  int accuracy;
+  int acc;
+  float pow;
   srand(time(NULL));
   int choix = (rand() % 4); //Choix de l'attaque entre 0 et 3
   printf("CHOIX : %d\n", choix);
@@ -506,9 +522,11 @@ void getAttackEnnemiDuel(Liste_t *pl, Liste_t *ennemi){
   strcat(choice, ".txt");
   strcat(dir, choice);
   file=fopen(dir, "r");
-  fscanf(file, "%s %s %i %i %i", nom, type1, &pow, &acc, &pp);
-  pl->pkm.hp -= pow;
-  printf("%s ennemi inflige %i à %s avec %s\n", ennemi->pkm.pkm_name,  pow, pl->pkm.pkm_name, ennemi->pkm.skill[choix]);
+  fscanf(file, "%s %s %f %i", nom, type1, &pow, &acc);
+  float multiplicateur = verifType(pl->pkm.type1, pl->pkm.type2, type1);
+  pow*=multiplicateur;
+  pl->pkm.hp -= (int)pow;
+  printf("%s ennemi inflige %i à %s avec %s getAttackEnnemiDuel\n", ennemi->pkm.pkm_name,  (int)pow, pl->pkm.pkm_name, ennemi->pkm.skill[choix]);
   fclose(file);
 }
 
