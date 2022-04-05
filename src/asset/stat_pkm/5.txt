@@ -1,0 +1,15 @@
+Reptincel
+Feu NULL 
+64
+58
+80
+65
+80
+Brasier
+58
+58
+16
+500
+Dracaufeu
+charge flammeche fouet_lianes null
+5

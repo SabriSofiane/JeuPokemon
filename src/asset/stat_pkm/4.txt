@@ -1,0 +1,15 @@
+Salamèche
+Feu NULL
+39
+50
+52
+43
+60
+Brasier
+50
+65
+1
+500
+Reptincel
+charge flammeche fouet_lianes null
+4
