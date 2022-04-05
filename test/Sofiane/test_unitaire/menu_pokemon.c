@@ -32,9 +32,10 @@ int main(int argc, char * argv[]) {
     if (event_handle(&game_motor) == 1)
     {
     SDL_RenderClear(game_motor->renderer);
-   
-    menu(&game_motor);
     
+    menu_pokemon(&game_motor);
+    
+    //1280x720
     SDL_RenderPresent(game_motor->renderer);
     }
   }
