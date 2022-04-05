@@ -7,14 +7,16 @@ De nouveaux éléments de gameplay seront ajoutés pour rendre le jeu plus diffi
 Pour le moment chacun des trois membres du groupe dispose de sa propre branche dans ce dépo, chaque branche à sa propre structure.
 À termes l'ensemble des fonctions développé par chacun d'entre nous serons regroupés dans une seul branche.
 
-Contrôles pour l’overworld :
-• Z - Avancer
-• S - Reculer
-• D - Aller à droite
-• Q - Aller à gauche
-Contrôles pour les menus :
-• M - Ouvrir le menu principal
-• Échap - Fermer le menu actuellement ouvert
-• Entrer - Confirmer la sélection d’un menu
-• ↑ - Sélectionner le menu plus haut
-• ↓ - Sélectionner le menu plus bas
+Contrôles pour l’overworld :<br/>
+• **Z** - Avancer<br/>
+• **S** - Reculer<br/>
+• **D** - Aller à droite<br/>
+• **Q** - Aller à gauche<br/>
+
+
+Contrôles pour les menus :<br/>
+• **M** - Ouvrir le menu principal<br/>
+• **Échap** - Fermer le menu actuellement ouvert<br/>
+• **Entrer** - Confirmer la sélection d’un menu<br/>
+• **↑** - Sélectionner le menu plus haut<br/>
+• **↓** - Sélectionner le menu plus bas<br/>
