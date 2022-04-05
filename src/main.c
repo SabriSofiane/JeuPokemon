@@ -1,3 +1,10 @@
+/**
+  * \file main.c
+  * \brief main du programme
+  * \author Elias OKAT
+  * \version 1
+  * \date 28 février 2022
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

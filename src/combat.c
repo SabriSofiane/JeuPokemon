@@ -1,3 +1,10 @@
+/**
+  * \file combat.c
+  * \brief fichier de gestion de combat
+  * \author Léon TER
+  * \version 1
+  * \date 28 mars 22
+*/
 #include "../include/motor.h"
 #include "../include/window_render.h"
 #include "../include/combat.h"

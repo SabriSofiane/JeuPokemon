@@ -1,3 +1,10 @@
+/**
+  * \file motor.c
+  * \brief fichier du moteur
+  * \author OKAT Elias
+  * \version 1
+  * \date 8 mars 22
+*/
 #include "../include/SDL2/SDL.h"
 #include "../include/SDL2/SDL_image.h"
 #include "../include/SDL2/SDL_mixer.h"
@@ -14,7 +21,11 @@
 #include "../include/menu.h"
 #include "../include/combat.h"
 #include "../include/controller.h"
-
+/**
+  * \function init_motor
+  * \brief Constructeur du moteur de jeu
+  * \param motor : moteur de jeux
+*/
 motor_t * init_motor()
 {
   motor_t * motor = malloc(sizeof(motor_t));  // Allocation de l'espace mémoire du moteur
@@ -148,7 +159,11 @@ motor_t * init_motor()
   return motor;
 }
 
-
+/**
+  * \function destroy_motor
+  * \brief destructeur du moteur de jeu
+  * \param motor : moteur de jeux
+*/
 void destroy_motor(motor_t ** motor)
 {
   if(*motor != NULL)

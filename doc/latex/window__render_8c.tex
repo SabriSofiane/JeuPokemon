@@ -1,0 +1,107 @@
+\hypertarget{window__render_8c}{}\doxysection{Référence du fichier window\+\_\+render.\+c}
+\label{window__render_8c}\index{window\_render.c@{window\_render.c}}
+
+
+fichier pour l\textquotesingle{}affichage de la fenetre  
+
+
+{\ttfamily \#include \char`\"{}../include/motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/window\+\_\+render.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{window__render_8c_a1a97993b152ed0c7c7f85ee426d18e8f}{init\+\_\+window\+\_\+render}} (motor\+\_\+t $\ast$$\ast$motor)
+\begin{DoxyCompactList}\small\item\em fonction d\textquotesingle{}initialisation de la fenetre \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{window__render_8c_aee01c56c7e3fd94c96eef479ada6167b}{create\+\_\+window\+\_\+render}} (SDL\+\_\+\+Window $\ast$$\ast$window, SDL\+\_\+\+Renderer $\ast$$\ast$renderer, int window\+\_\+width, int window\+\_\+height)
+\begin{DoxyCompactList}\small\item\em Creation de la fenetre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{window__render_8c_a06d383b8e198f9e1695fda93d494f3c6}{destroy\+\_\+window\+\_\+render}} (SDL\+\_\+\+Window $\ast$$\ast$window, SDL\+\_\+\+Renderer $\ast$$\ast$renderer)
+\begin{DoxyCompactList}\small\item\em destruction de la fenetre \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{window__render_8c_aa4d32e4e5564980ba2cf6a4820641ade}{limit\+\_\+fps}} (unsigned int limit, int fps\+\_\+limit)
+\begin{DoxyCompactList}\small\item\em limitation des images par secondes du jeu \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fichier pour l\textquotesingle{}affichage de la fenetre 
+
+\begin{DoxyAuthor}{Auteur}
+OKAT Elias 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+8 mars 22 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{window__render_8c_aee01c56c7e3fd94c96eef479ada6167b}\label{window__render_8c_aee01c56c7e3fd94c96eef479ada6167b}} 
+\index{window\_render.c@{window\_render.c}!create\_window\_render@{create\_window\_render}}
+\index{create\_window\_render@{create\_window\_render}!window\_render.c@{window\_render.c}}
+\doxysubsubsection{\texorpdfstring{create\_window\_render()}{create\_window\_render()}}
+{\footnotesize\ttfamily int create\+\_\+window\+\_\+render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window $\ast$$\ast$}]{window,  }\item[{SDL\+\_\+\+Renderer $\ast$$\ast$}]{renderer,  }\item[{int}]{window\+\_\+width,  }\item[{int}]{window\+\_\+height }\end{DoxyParamCaption})}
+
+
+
+Creation de la fenetre. 
+
+\textbackslash{}function create\+\_\+window\+\_\+render 
+\begin{DoxyParams}{Paramètres}
+{\em window} & \+: la fenetre SDL \\
+\hline
+{\em renderer} & \+: le renderer SDL \\
+\hline
+{\em window\+\_\+width} & \+: la taille définit pour la longueur de la fenetre \\
+\hline
+{\em window\+\_\+height} & \+: la taille définit pour la largeur de la fenetre \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{window__render_8c_a06d383b8e198f9e1695fda93d494f3c6}\label{window__render_8c_a06d383b8e198f9e1695fda93d494f3c6}} 
+\index{window\_render.c@{window\_render.c}!destroy\_window\_render@{destroy\_window\_render}}
+\index{destroy\_window\_render@{destroy\_window\_render}!window\_render.c@{window\_render.c}}
+\doxysubsubsection{\texorpdfstring{destroy\_window\_render()}{destroy\_window\_render()}}
+{\footnotesize\ttfamily void destroy\+\_\+window\+\_\+render (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window $\ast$$\ast$}]{window,  }\item[{SDL\+\_\+\+Renderer $\ast$$\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+destruction de la fenetre 
+
+\textbackslash{}function destroy\+\_\+window\+\_\+render 
+\begin{DoxyParams}{Paramètres}
+{\em window} & \+: la fenetre SDL \\
+\hline
+{\em renderer} & \+: le renderer SDL \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{window__render_8c_a1a97993b152ed0c7c7f85ee426d18e8f}\label{window__render_8c_a1a97993b152ed0c7c7f85ee426d18e8f}} 
+\index{window\_render.c@{window\_render.c}!init\_window\_render@{init\_window\_render}}
+\index{init\_window\_render@{init\_window\_render}!window\_render.c@{window\_render.c}}
+\doxysubsubsection{\texorpdfstring{init\_window\_render()}{init\_window\_render()}}
+{\footnotesize\ttfamily int init\+\_\+window\+\_\+render (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+
+
+
+fonction d\textquotesingle{}initialisation de la fenetre 
+
+\textbackslash{}function init\+\_\+window\+\_\+render 
+\begin{DoxyParams}{Paramètres}
+{\em motor} & \+: le moteur de jeu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{window__render_8c_aa4d32e4e5564980ba2cf6a4820641ade}\label{window__render_8c_aa4d32e4e5564980ba2cf6a4820641ade}} 
+\index{window\_render.c@{window\_render.c}!limit\_fps@{limit\_fps}}
+\index{limit\_fps@{limit\_fps}!window\_render.c@{window\_render.c}}
+\doxysubsubsection{\texorpdfstring{limit\_fps()}{limit\_fps()}}
+{\footnotesize\ttfamily void limit\+\_\+fps (\begin{DoxyParamCaption}\item[{unsigned int}]{limit,  }\item[{int}]{fps\+\_\+limit }\end{DoxyParamCaption})}
+
+
+
+limitation des images par secondes du jeu 
+
+\textbackslash{}function limit\+\_\+fps 
+\begin{DoxyParams}{Paramètres}
+{\em limit} & \+: la fenetre SDL \\
+\hline
+{\em fps\+\_\+limit} & \+: le renderer SDL \\
+\hline
+\end{DoxyParams}

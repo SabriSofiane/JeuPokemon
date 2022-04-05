@@ -1,7 +1,18 @@
+/**
+  * \file player.c
+  * \brief fichier du joueur
+  * \author OKAT Elias
+  * \version 1
+  * \date 8 mars 22
+*/
 #include "../include/motor.h"
 #include "../include/player.h"
 #include "../include/textures.h"
-
+/**
+  * \function init_player
+  * \brief Initialisation du joueur (texture, mouvements...)
+  * \param motor : moteur de jeux
+*/
 int init_player(motor_t ** motor)
 {
   int retour = 0;
@@ -59,7 +70,11 @@ int init_player(motor_t ** motor)
 
   return(retour);
 }
-
+/**
+  * \function init_player
+  * \brief fonction d'affichage du joueur
+  * \param motor : moteur de jeux
+*/
 void display_player(motor_t ** motor)
 {
   SDL_Rect * player_rect;

@@ -1,0 +1,837 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet Jeu Pokémon: Référence du fichier combat.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Projet Jeu Pokémon<span id="projectnumber">&#160;1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier combat.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>fichier de gestion de combat  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;../include/motor.h&quot;</code><br />
+<code>#include &quot;../include/window_render.h&quot;</code><br />
+<code>#include &quot;../include/combat.h&quot;</code><br />
+<code>#include &quot;../include/liste.h&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a19cd40ebc53f1c29da60c5f38aa08f34"><td class="memItemLeft" align="right" valign="top"><a id="a19cd40ebc53f1c29da60c5f38aa08f34" name="a19cd40ebc53f1c29da60c5f38aa08f34"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>init_combat</b> (motor_t **motor, int pkm_enemy_ids[5])</td></tr>
+<tr class="separator:a19cd40ebc53f1c29da60c5f38aa08f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56afc9c9f1c313561e1118283d25cb0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a56afc9c9f1c313561e1118283d25cb0c">print_list</a> (Liste_t *player)</td></tr>
+<tr class="memdesc:a56afc9c9f1c313561e1118283d25cb0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction permer de afficher tout les elements d'une liste de pokemon que le joueur possède.  <a href="combat_8c.html#a56afc9c9f1c313561e1118283d25cb0c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a56afc9c9f1c313561e1118283d25cb0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85f29085a654f105e75e90a46546f877"><td class="memItemLeft" align="right" valign="top"><a id="a85f29085a654f105e75e90a46546f877" name="a85f29085a654f105e75e90a46546f877"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getPlayerPkmId</b> (Liste_t *pl, int id)</td></tr>
+<tr class="separator:a85f29085a654f105e75e90a46546f877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f0cddf15b62a4b7088c0831155339ab"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a9f0cddf15b62a4b7088c0831155339ab">Length</a> (Liste_t *p)</td></tr>
+<tr class="memdesc:a9f0cddf15b62a4b7088c0831155339ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction Renvoie la longueur d'une liste de pokemon.  <a href="combat_8c.html#a9f0cddf15b62a4b7088c0831155339ab">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9f0cddf15b62a4b7088c0831155339ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af50d5a7e70679ad3e0ed9f33d411e9bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#af50d5a7e70679ad3e0ed9f33d411e9bc">inserDebut</a> (Liste_t **p, t_pkm pkm)</td></tr>
+<tr class="memdesc:af50d5a7e70679ad3e0ed9f33d411e9bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction ajoute au debut de la liste un pokemon.  <a href="combat_8c.html#af50d5a7e70679ad3e0ed9f33d411e9bc">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af50d5a7e70679ad3e0ed9f33d411e9bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b2ee18f222ca2598f0d28bc4a39aa4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a7b2ee18f222ca2598f0d28bc4a39aa4a">inserFin</a> (Liste_t *courant, t_pkm pkm)</td></tr>
+<tr class="memdesc:a7b2ee18f222ca2598f0d28bc4a39aa4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction ajoute à la fin de la liste p un pokemon.  <a href="combat_8c.html#a7b2ee18f222ca2598f0d28bc4a39aa4a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a7b2ee18f222ca2598f0d28bc4a39aa4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4496108607ff3704e282f646fbbb61d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#aa4496108607ff3704e282f646fbbb61d">Pop</a> (Liste_t **p, t_pkm pkm)</td></tr>
+<tr class="memdesc:aa4496108607ff3704e282f646fbbb61d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction Supprime un pokemon de la liste.  <a href="combat_8c.html#aa4496108607ff3704e282f646fbbb61d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa4496108607ff3704e282f646fbbb61d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21edaecdcb48bd0ffd5230a3028bb2da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a21edaecdcb48bd0ffd5230a3028bb2da">affiche_Stats</a> (Liste_t *player, t_pkm *wild_pkm)</td></tr>
+<tr class="memdesc:a21edaecdcb48bd0ffd5230a3028bb2da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction affiche les statistiques des pokemons sur le terrain.  <a href="combat_8c.html#a21edaecdcb48bd0ffd5230a3028bb2da">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a21edaecdcb48bd0ffd5230a3028bb2da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59144ef179aa81ec5e2c437cc956087f"><td class="memItemLeft" align="right" valign="top">t_pkm&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a59144ef179aa81ec5e2c437cc956087f">GetNth</a> (Liste_t *head, int index)</td></tr>
+<tr class="memdesc:a59144ef179aa81ec5e2c437cc956087f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction renvoie le pokemon a la place 'index' de la liste.  <a href="combat_8c.html#a59144ef179aa81ec5e2c437cc956087f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a59144ef179aa81ec5e2c437cc956087f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a117214db74819250eccf294fba5f979e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a117214db74819250eccf294fba5f979e">swapNodes</a> (motor_t **motor, int n1, int n2)</td></tr>
+<tr class="memdesc:a117214db74819250eccf294fba5f979e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Echange la place entre deux pokemon dans la liste.  <a href="combat_8c.html#a117214db74819250eccf294fba5f979e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a117214db74819250eccf294fba5f979e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b0e5f701d592a9ded13af8e504a1973"><td class="memItemLeft" align="right" valign="top"><a id="a8b0e5f701d592a9ded13af8e504a1973" name="a8b0e5f701d592a9ded13af8e504a1973"></a>
+Liste_t *&#160;</td><td class="memItemRight" valign="bottom"><b>current_pkm</b> (Liste_t *player, int index)</td></tr>
+<tr class="separator:a8b0e5f701d592a9ded13af8e504a1973"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1051f124913a039fdbd23e14f4ab6f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#af1051f124913a039fdbd23e14f4ab6f9">init_pkm_team</a> (t_pkm *pkm, char nom_pkm[20])</td></tr>
+<tr class="memdesc:af1051f124913a039fdbd23e14f4ab6f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recupere les statistiques d'un pokemon allie pour son initialisation et inscrit le pokemon dans equipe.  <a href="combat_8c.html#af1051f124913a039fdbd23e14f4ab6f9">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af1051f124913a039fdbd23e14f4ab6f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82f9b80f0c6c0f615866ad82d6ba5be4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a82f9b80f0c6c0f615866ad82d6ba5be4">rand_scale_stat</a> (t_pkm *wild_pkm)</td></tr>
+<tr class="memdesc:a82f9b80f0c6c0f615866ad82d6ba5be4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fait varier les statistiques d'un pokemon.  <a href="combat_8c.html#a82f9b80f0c6c0f615866ad82d6ba5be4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a82f9b80f0c6c0f615866ad82d6ba5be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c0a4616c71d89980d5a85900bc0003c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a5c0a4616c71d89980d5a85900bc0003c">init_pkm_enemy</a> (t_pkm *pkm, int numFichier2)</td></tr>
+<tr class="memdesc:a5c0a4616c71d89980d5a85900bc0003c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recupere les statistiques d'un pokemon ennemi pour son initialisation.  <a href="combat_8c.html#a5c0a4616c71d89980d5a85900bc0003c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5c0a4616c71d89980d5a85900bc0003c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fb57adf26cdf545610de646a0266515"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a2fb57adf26cdf545610de646a0266515">chercherMultiplicateur</a> (int typePokemon1, int typeAttaque)</td></tr>
+<tr class="memdesc:a2fb57adf26cdf545610de646a0266515"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit depuis le fichier tableType.txt le multiplicateur associe a l'attaque.  <a href="combat_8c.html#a2fb57adf26cdf545610de646a0266515">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2fb57adf26cdf545610de646a0266515"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21a2a352d47607e7750bc4eb17458166"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a21a2a352d47607e7750bc4eb17458166">verifType</a> (char typePokemon1[50], char typePokemon2[50], char typeAttaque[50])</td></tr>
+<tr class="memdesc:a21a2a352d47607e7750bc4eb17458166"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le multiplicateur de degats si attaque super efficace.  <a href="combat_8c.html#a21a2a352d47607e7750bc4eb17458166">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a21a2a352d47607e7750bc4eb17458166"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd6ff1103f8ef2e92b279504db623bbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#abd6ff1103f8ef2e92b279504db623bbc">getAttackJoueur</a> (Liste_t *player, t_pkm *wild_pkm, int choix)</td></tr>
+<tr class="memdesc:abd6ff1103f8ef2e92b279504db623bbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour le okemon énnemi utilise une attaque contre le personnage.  <a href="combat_8c.html#abd6ff1103f8ef2e92b279504db623bbc">Plus de détails...</a><br /></td></tr>
+<tr class="separator:abd6ff1103f8ef2e92b279504db623bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a39efbe45969681961125230b1b4000"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a2a39efbe45969681961125230b1b4000">getAttackEnnemi</a> (Liste_t *pl, t_pkm *wild_pkm)</td></tr>
+<tr class="memdesc:a2a39efbe45969681961125230b1b4000"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour le okemon énnemi utilise une attaque contre le personnage.  <a href="combat_8c.html#a2a39efbe45969681961125230b1b4000">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2a39efbe45969681961125230b1b4000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24ce27ef5c734d05f4e02ff1ff9faee2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a24ce27ef5c734d05f4e02ff1ff9faee2">verif_pkmEnVie</a> (Liste_t *pl)</td></tr>
+<tr class="memdesc:a24ce27ef5c734d05f4e02ff1ff9faee2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui verifie si tous les pokémons de la liste sont en vie.  <a href="combat_8c.html#a24ce27ef5c734d05f4e02ff1ff9faee2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a24ce27ef5c734d05f4e02ff1ff9faee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e78544507ae53daca1bf4ee4e9091ea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a0e78544507ae53daca1bf4ee4e9091ea">combat</a> (Liste_t *pl, t_pkm *wild_pkm, int choix)</td></tr>
+<tr class="memdesc:a0e78544507ae53daca1bf4ee4e9091ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction generale de combat par systeme de manche, inflige les degats et verifie l'etat de la manche.  <a href="combat_8c.html#a0e78544507ae53daca1bf4ee4e9091ea">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0e78544507ae53daca1bf4ee4e9091ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83c33c210a538fe84769a5be53554e29"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a83c33c210a538fe84769a5be53554e29">capturer</a> (motor_t **motor, Liste_t *player, t_pkm wild_pkm)</td></tr>
+<tr class="memdesc:a83c33c210a538fe84769a5be53554e29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du dresseur adverse.  <a href="combat_8c.html#a83c33c210a538fe84769a5be53554e29">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a83c33c210a538fe84769a5be53554e29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ecccdcd8f5d0d7234d0894ba0cb4511"><td class="memItemLeft" align="right" valign="top"><a id="a4ecccdcd8f5d0d7234d0894ba0cb4511" name="a4ecccdcd8f5d0d7234d0894ba0cb4511"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>soin</b> (Liste_t *player)</td></tr>
+<tr class="separator:a4ecccdcd8f5d0d7234d0894ba0cb4511"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p >fichier de gestion de combat </p>
+<dl class="section author"><dt>Auteur</dt><dd>Léon TER </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>28 mars 22 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a21edaecdcb48bd0ffd5230a3028bb2da" name="a21edaecdcb48bd0ffd5230a3028bb2da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21edaecdcb48bd0ffd5230a3028bb2da">&#9670;&nbsp;</a></span>affiche_Stats()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affiche_Stats </td>
+          <td>(</td>
+          <td class="paramtype">Liste_t *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pkm *&#160;</td>
+          <td class="paramname"><em>wild_pkm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction affiche les statistiques des pokemons sur le terrain. </p>
+<p >\function affiche_Stats </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>: liste de pokemon </td></tr>
+    <tr><td class="paramname">wild_pkm</td><td>: le pokémon que l'on veut afficher </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a83c33c210a538fe84769a5be53554e29" name="a83c33c210a538fe84769a5be53554e29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83c33c210a538fe84769a5be53554e29">&#9670;&nbsp;</a></span>capturer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int capturer </td>
+          <td>(</td>
+          <td class="paramtype">motor_t **&#160;</td>
+          <td class="paramname"><em>motor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Liste_t *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pkm&#160;</td>
+          <td class="paramname"><em>wild_pkm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialisation du dresseur adverse. </p>
+<p >\function initBilly </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">liste</td><td>: Liste de pkm du dresseur adverse </td></tr>
+    <tr><td class="paramname">nomDress</td><td>: nom du fichier du dresseur \function getAttackJoueurDuel</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Fonction pour quand le personnage allie utilise une capacite contre pokemon de dresseur ennemi </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>: la liste du joueur </td></tr>
+    <tr><td class="paramname">ennemi</td><td>: la liste du dresseur ennemi </td></tr>
+    <tr><td class="paramname">choix</td><td>: le choix apporté par l'utilisateur \function getAttackEnnemiDuel</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Fonction pour le pokemon énnemi utilise une attaque contre le personnage </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>: la liste du joueur </td></tr>
+    <tr><td class="paramname">wild_ennemipkm</td><td>: la liste du dresseur ennemi \function combatDresseur</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Fonction generale de combat par systeme de manche, inflige les degats et verifie l'etat de la manche </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>: la liste du joueur </td></tr>
+    <tr><td class="paramname">ennemi</td><td>: la liste du dresseur ennemi </td></tr>
+    <tr><td class="paramname">choix</td><td>: le choix du joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int : retourne 1 si tout le pokémon adverse est Ko, 1 si le pokémon du joueur actuelle est KO, 2 si les tout les pokémons du joueur sont KO </dd></dl>
+
+</div>
+</div>
+<a id="a2fb57adf26cdf545610de646a0266515" name="a2fb57adf26cdf545610de646a0266515"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fb57adf26cdf545610de646a0266515">&#9670;&nbsp;</a></span>chercherMultiplicateur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float chercherMultiplicateur </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>typePokemon1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>typeAttaque</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit depuis le fichier tableType.txt le multiplicateur associe a l'attaque. </p>
+<p >\function chercherMultiplicateur </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indices</td><td>des types d'un type defensif et d'un type offensif </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0e78544507ae53daca1bf4ee4e9091ea" name="a0e78544507ae53daca1bf4ee4e9091ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e78544507ae53daca1bf4ee4e9091ea">&#9670;&nbsp;</a></span>combat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int combat </td>
+          <td>(</td>
+          <td class="paramtype">Liste_t *&#160;</td>
+          <td class="paramname"><em>pl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pkm *&#160;</td>
+          <td class="paramname"><em>wild_pkm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>choix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction generale de combat par systeme de manche, inflige les degats et verifie l'etat de la manche. </p>
+<p >\function combat </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pl</td><td>: la liste du joueur </td></tr>
+    <tr><td class="paramname">wild_pkm</td><td>: le pokémon ennemi </td></tr>
+    <tr><td class="paramname">choix</td><td>: le choix du joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int : retourne 1 si tout le pokémon adverse est Ko, 1 si le pokémon du joueur actuelle est KO, 2 si les tout les pokémons du joueur sont KO </dd></dl>
+
+</div>
+</div>
+<a id="a2a39efbe45969681961125230b1b4000" name="a2a39efbe45969681961125230b1b4000"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a39efbe45969681961125230b1b4000">&#9670;&nbsp;</a></span>getAttackEnnemi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getAttackEnnemi </td>
+          <td>(</td>
+          <td class="paramtype">Liste_t *&#160;</td>
+          <td class="paramname"><em>pl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pkm *&#160;</td>
+          <td class="paramname"><em>wild_pkm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour le okemon énnemi utilise une attaque contre le personnage. </p>
+<p >\function getAttackEnnemi </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pl</td><td>: la liste du joueur </td></tr>
+    <tr><td class="paramname">wild_pkm</td><td>: le pokemon énnemi </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abd6ff1103f8ef2e92b279504db623bbc" name="abd6ff1103f8ef2e92b279504db623bbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd6ff1103f8ef2e92b279504db623bbc">&#9670;&nbsp;</a></span>getAttackJoueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getAttackJoueur </td>
+          <td>(</td>
+          <td class="paramtype">Liste_t *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pkm *&#160;</td>
+          <td class="paramname"><em>wild_pkm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>choix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour le okemon énnemi utilise une attaque contre le personnage. </p>
+<p >\function getAttackEnnemi </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pl</td><td>: la liste du joueur </td></tr>
+    <tr><td class="paramname">wild_pkm</td><td>: le pokemon énnemi </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a59144ef179aa81ec5e2c437cc956087f" name="a59144ef179aa81ec5e2c437cc956087f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59144ef179aa81ec5e2c437cc956087f">&#9670;&nbsp;</a></span>GetNth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">t_pkm GetNth </td>
+          <td>(</td>
+          <td class="paramtype">Liste_t *&#160;</td>
+          <td class="paramname"><em>head</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction renvoie le pokemon a la place 'index' de la liste. </p>
+<p >\function GetNth </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">head</td><td>: tête de la liste </td></tr>
+    <tr><td class="paramname">index</td><td>: l'index de la liste </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>t_pkm : retourne le pokemon </dd></dl>
+
+</div>
+</div>
+<a id="a5c0a4616c71d89980d5a85900bc0003c" name="a5c0a4616c71d89980d5a85900bc0003c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c0a4616c71d89980d5a85900bc0003c">&#9670;&nbsp;</a></span>init_pkm_enemy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_pkm_enemy </td>
+          <td>(</td>
+          <td class="paramtype">t_pkm *&#160;</td>
+          <td class="paramname"><em>pkm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numFichier2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recupere les statistiques d'un pokemon ennemi pour son initialisation. </p>
+<p >\function init_pkm_team </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pkm</td><td>: le pokemon que l'on veut initialiser </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af1051f124913a039fdbd23e14f4ab6f9" name="af1051f124913a039fdbd23e14f4ab6f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1051f124913a039fdbd23e14f4ab6f9">&#9670;&nbsp;</a></span>init_pkm_team()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_pkm_team </td>
+          <td>(</td>
+          <td class="paramtype">t_pkm *&#160;</td>
+          <td class="paramname"><em>pkm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>nom_pkm</em>[20]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recupere les statistiques d'un pokemon allie pour son initialisation et inscrit le pokemon dans equipe. </p>
+<p >\function init_pkm_team </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pkm</td><td>: le pokemon </td></tr>
+    <tr><td class="paramname">nom_pkm</td><td>: le nom du pokemon </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af50d5a7e70679ad3e0ed9f33d411e9bc" name="af50d5a7e70679ad3e0ed9f33d411e9bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af50d5a7e70679ad3e0ed9f33d411e9bc">&#9670;&nbsp;</a></span>inserDebut()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void inserDebut </td>
+          <td>(</td>
+          <td class="paramtype">Liste_t **&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pkm&#160;</td>
+          <td class="paramname"><em>pkm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction ajoute au debut de la liste un pokemon. </p>
+<p >\function inserDebut </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>: liste de pokemon </td></tr>
+    <tr><td class="paramname">pkm</td><td>: le pokemon à inserer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7b2ee18f222ca2598f0d28bc4a39aa4a" name="a7b2ee18f222ca2598f0d28bc4a39aa4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b2ee18f222ca2598f0d28bc4a39aa4a">&#9670;&nbsp;</a></span>inserFin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void inserFin </td>
+          <td>(</td>
+          <td class="paramtype">Liste_t *&#160;</td>
+          <td class="paramname"><em>courant</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pkm&#160;</td>
+          <td class="paramname"><em>pkm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction ajoute à la fin de la liste p un pokemon. </p>
+<p >\function inserFin </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>: liste de pokemon </td></tr>
+    <tr><td class="paramname">pkm</td><td>: le pokemon à inserer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9f0cddf15b62a4b7088c0831155339ab" name="a9f0cddf15b62a4b7088c0831155339ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f0cddf15b62a4b7088c0831155339ab">&#9670;&nbsp;</a></span>Length()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Length </td>
+          <td>(</td>
+          <td class="paramtype">Liste_t *&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction Renvoie la longueur d'une liste de pokemon. </p>
+<p >\function length </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>: liste de pokemon </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa4496108607ff3704e282f646fbbb61d" name="aa4496108607ff3704e282f646fbbb61d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4496108607ff3704e282f646fbbb61d">&#9670;&nbsp;</a></span>Pop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pop </td>
+          <td>(</td>
+          <td class="paramtype">Liste_t **&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pkm&#160;</td>
+          <td class="paramname"><em>pkm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction Supprime un pokemon de la liste. </p>
+<p >\function Pop </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>: liste de pokemon </td></tr>
+    <tr><td class="paramname">pkm</td><td>: le pokemon à supprimer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a56afc9c9f1c313561e1118283d25cb0c" name="a56afc9c9f1c313561e1118283d25cb0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56afc9c9f1c313561e1118283d25cb0c">&#9670;&nbsp;</a></span>print_list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_list </td>
+          <td>(</td>
+          <td class="paramtype">Liste_t *&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction permer de afficher tout les elements d'une liste de pokemon que le joueur possède. </p>
+<p >\function print_list </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>: liste du joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a82f9b80f0c6c0f615866ad82d6ba5be4" name="a82f9b80f0c6c0f615866ad82d6ba5be4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82f9b80f0c6c0f615866ad82d6ba5be4">&#9670;&nbsp;</a></span>rand_scale_stat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rand_scale_stat </td>
+          <td>(</td>
+          <td class="paramtype">t_pkm *&#160;</td>
+          <td class="paramname"><em>wild_pkm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fait varier les statistiques d'un pokemon. </p>
+<p >\function rand_scale_stat </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pkm</td><td>: le pokemon que l'on veut faire varier </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a117214db74819250eccf294fba5f979e" name="a117214db74819250eccf294fba5f979e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a117214db74819250eccf294fba5f979e">&#9670;&nbsp;</a></span>swapNodes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int swapNodes </td>
+          <td>(</td>
+          <td class="paramtype">motor_t **&#160;</td>
+          <td class="paramname"><em>motor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Echange la place entre deux pokemon dans la liste. </p>
+<p >\function swapNodes </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n1</td><td>: le premier pokemon </td></tr>
+    <tr><td class="paramname">n2</td><td>: le deuxième pokemon </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int : Renvoie 1 si l'echange est possible ou 0 sinon </dd></dl>
+
+</div>
+</div>
+<a id="a24ce27ef5c734d05f4e02ff1ff9faee2" name="a24ce27ef5c734d05f4e02ff1ff9faee2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24ce27ef5c734d05f4e02ff1ff9faee2">&#9670;&nbsp;</a></span>verif_pkmEnVie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int verif_pkmEnVie </td>
+          <td>(</td>
+          <td class="paramtype">Liste_t *&#160;</td>
+          <td class="paramname"><em>pl</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui verifie si tous les pokémons de la liste sont en vie. </p>
+<p >\function verif_pkmEnVie </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>: la liste du joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int : retourne 0 si tout les pokémons sont morts, 1 sinon </dd></dl>
+
+</div>
+</div>
+<a id="a21a2a352d47607e7750bc4eb17458166" name="a21a2a352d47607e7750bc4eb17458166"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21a2a352d47607e7750bc4eb17458166">&#9670;&nbsp;</a></span>verifType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float verifType </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>typePokemon1</em>[50], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>typePokemon2</em>[50], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>typeAttaque</em>[50]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Renvoie le multiplicateur de degats si attaque super efficace. </p>
+<p >\function verifType </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">3</td><td>Types: typePokemon1 1er type du pokemon defensif, typePokemon 2eme type du pokemon defensif, typeAttaque type du pokemon offensif </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

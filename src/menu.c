@@ -1,10 +1,22 @@
+/**
+  * \file menu.c
+  * \brief fichier d'interface graphique
+  * Attention au chemin des textures dans chacune des fonctions!
+  * \author Sofiane SABRI
+  * \version 1
+  * \date 8 mars 22
+*/
 #include "../include/motor.h"
 #include "../include/menu.h"
 #include "../include/text.h"
 #include "../include/textures.h"
 #include "../include/combat.h"
 #include "../include/string_matrice.h"
-
+/**
+  * \function init_menu
+  * \brief Initialisation de toutes les variables utilisé pour les menu
+  * \param motor : moteur de jeux
+*/
 int init_menu(motor_t ** motor)
 {
   (*motor)->menu = malloc(sizeof(menu_t));
@@ -913,6 +925,11 @@ SDL_DestroyTexture(textureSpeechBubble);
 }
 */
 //Fonctione
+/**
+* \function speech_bubble
+* \brief interface d'une bulle de texte pour le dialogue
+* \param motor : moteur de jeux
+*/
 void speech_bubble(motor_t ** motor)
 {
 
@@ -1294,7 +1311,11 @@ void ecran_acceuil(motor_t ** motor){
   }
 }
 
-
+/**
+* \function resetSelecteurs
+* \brief Reset des variables utilisé par les selecteurs
+* \param motor : moteur de jeux
+*/
 void resetSelecteurs(motor_t ** motor){
 
   (*motor)->menu->el_menu_select = 0;

@@ -1,3 +1,10 @@
+/**
+  * \file event.c
+  * \brief fichier de gestion des événements
+  * \author Elias OKAT
+  * \version 1
+  * \date 28 février 2022
+*/
 #include "../include/motor.h"
 #include "../include/event.h"
 #include "../include/string_matrice.h"
@@ -6,7 +13,12 @@
 #include "../include/menu.h"
 #include "../include/combat.h"
 
-
+/**
+  * \function mouvement
+  * \param motor : moteur de jeu
+  * \param move_add : valeur de déplacement
+  * \param axis : axe auquel le personnage devra se déplacer
+*/
 void mouvement(motor_t ** motor, float move_add, char axis) {
   if ((*motor)->keys.z_key + (*motor)->keys.q_key + (*motor)->keys.s_key + (*motor)->keys.d_key == 1)
   {
@@ -42,7 +54,11 @@ void mouvement(motor_t ** motor, float move_add, char axis) {
     }
   }
 }
-
+/**
+  * \function event_handle
+  * \param motor : moteur de jeu
+  * \return retourne l'événement
+*/
 int event_handle(motor_t ** motor) {
   int retour=3;
   while (SDL_PollEvent(&(*motor)->event)) {

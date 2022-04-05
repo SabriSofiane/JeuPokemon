@@ -1,3 +1,10 @@
+/**
+  * \file admin.c
+  * \brief fichier dédié pour les sons du jeu
+  * \author Elias OKAT
+  * \version 1
+  * \date 28 mars 2022
+*/
 #include "../include/motor.h"
 #include "../include/audio.h"
 #include "../include/text.h"
@@ -7,7 +14,11 @@
 #include "../include/SDL2/SDL_mixer.h"
 #include "../include/SDL2/SDL_ttf.h"
 
-
+/**
+  * \function audio_init
+  * \brief fonction d'Initialisation de l'audio
+  * \param motor : moteur de jeux
+*/
 int audio_init(motor_t ** motor)
 {
   int retour = 0;
@@ -47,6 +58,14 @@ int audio_init(motor_t ** motor)
   return(retour);
 }
 
+/**
+  * \function play_sound
+  * \brief fonction qui fait jouer un son mis en paramètre
+  * \param motor : moteur de jeux
+  * \param path : le chemin du fichier son
+  * \param loop : variable qui defini si le son doit boucler ou non
+  * \param volume : variable qui paramètre le volume du son
+*/
 void play_sound(motor_t ** motor,char * path,int loop,int volume)
 {
   printf("PLAY AUDIO : %s\n",path);
@@ -68,14 +87,20 @@ void play_sound(motor_t ** motor,char * path,int loop,int volume)
 }
 
 
-
+/**
+  * \function stop_sound
+  * \brief fonction qui arrète la musique
+*/
 void stop_sound()
 {
   //Mix_FadeOutMusic(3000);
   //Mix_HaltMusic();
   //Mix_FreeMusic(musique);
 }
-
+/**
+  * \function sound_quit
+  * \brief Destructeur du son
+*/
 void sound_quit(){
 
 }

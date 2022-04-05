@@ -1,9 +1,20 @@
+/**
+  * \file collision.c
+  * \brief fichier dédié pour les collisions par rapport au joueur et un élément du monde.
+  * \author Elias OKAT
+  * \version 1
+  * \date 28 mars 2022
+*/
 #include "../include/motor.h"
 #include "../include/collisions.h"
 #include "../include/string_matrice.h"
 #include "../include/audio.h"
 #include "../include/combat.h"
-
+/**
+  * \function check_collision
+  * \brief fonction qui detecter si la case en face du joueur est blocante
+  * \return int : retourne l'état de collision
+*/
 int check_collision(motor_t ** motor)
 {
   int y = (*motor)->player->posY;
@@ -17,8 +28,12 @@ int check_collision(motor_t ** motor)
 
   return collision;
 }
+/**
+  * \function check_interaction
+  * \brief Fonction de detection d'une interaction avec un élément du jeu (overworld) à la suite d'un appui sur une touche d'action (a,x,y,b)
+  * \param motor : Moteur de jeu
+*/
 
-/*Fonction de detection d'une interaction avec un élément du jeu (overworld) à la suite d'un appuis sur une touche d'action (a,x,y,b)*/
 int * check_interaction(motor_t ** motor)
 {
   int pos_x = (*motor)->player->posX;
@@ -67,7 +82,11 @@ int * check_interaction(motor_t ** motor)
 
   return interaction;
 }
-
+/**
+  * \function check_tile_agurments
+  * \brief
+  * \param motor : Moteur de jeu
+*/
 int * check_tile_agurments(motor_t ** motor)
 {
 
@@ -105,7 +124,11 @@ int * check_tile_agurments(motor_t ** motor)
 
   return arguments;
 }
-
+/**
+  * \function collision
+  * \brief Fonction de blocage du joueur quand une collision est rencontrée
+  * \param motor : Moteur de jeu
+*/
 void collision(motor_t ** motor)
 {
   if ((*motor)->keys.z_key + (*motor)->keys.q_key + (*motor)->keys.s_key + (*motor)->keys.d_key > 0 )

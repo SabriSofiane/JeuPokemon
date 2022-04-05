@@ -1,3 +1,10 @@
+/**
+  * \file start_game.c
+  * \brief fichier appelant toute les fonctions
+  * \author OKAT Elias
+  * \version 1
+  * \date 1 avril 22
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,7 +20,11 @@
 #include "../include/SDL2/SDL_ttf.h"
 
 #include "../include/load_header.h"
-
+/**
+  * \function start_game
+  * \brief fonction appelant toutes les fonctions du jeu
+  * \param fps_limit : la limite des images par secondes que l'on souhaite imposer
+*/
 void start_game(int fps_limit)
 {
   motor_t * game_motor;

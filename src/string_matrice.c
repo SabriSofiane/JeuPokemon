@@ -1,6 +1,18 @@
+/**
+  * \file string_matrice.c
+  * \brief fichier des matrices de jeu
+  * \author OKAT Elias
+  * \version 1
+  * \date 8 mars 22
+*/
 #include "../include/motor.h"
 #include "../include/string_matrice.h"
-
+/**
+  * \function creer_string_matrice
+  * \brief fonction de creation d'une matrice à 3 dimensions
+  * \param size : taille de la matrice
+  * \return char: la matrice initialisé
+*/
 char *** creer_string_matrice(int size)
 {
   char *** data = (char *** )malloc(size * sizeof(char ** )) ;
@@ -16,7 +28,12 @@ char *** creer_string_matrice(int size)
    }
    return data;
 }
-
+/**
+  * \function detruire_string_matrice
+  * \brief fonction de destruction de la matrice
+  * \param matrice : la matrice que l'on veut détruire
+  * \param size : taille de la matrice
+*/
 void detruire_string_matrice(char *** matrice,int size)
 {
   for(int i = 0 ; i < size ; i++ )
@@ -29,7 +46,15 @@ void detruire_string_matrice(char *** matrice,int size)
    }
    free(matrice);
 }
-
+/**
+  * \function get_string_matrice
+  * \brief fonction qui récupère une matrice en matrice string
+  * \param motor : le moteur de jeu
+  * \param nb_bordure : le nombre de bordure que l'on souhaite definir dans notre matrice
+  * \param x_center :
+  * \param y_center :
+  * \return char: la matrice en string
+*/
 char *** get_String_Matrice(motor_t ** motor, int nb_bordure,int x_center,int y_center)
 {
   int r = (*motor)->tiles_number;
@@ -53,7 +78,14 @@ char *** get_String_Matrice(motor_t ** motor, int nb_bordure,int x_center,int y_
   }
   return data2;
 }
-
+/**
+  * \function split_string_data
+  * \brief Cette fonction découpe un string en deux
+  * \param str: message
+  * \param s2 : récupère le caractère à l'index
+  * \param index : la position auquel l'on veut choisir le caractère
+  * \return int : la position du caractère
+*/
 int split_string_data(char str[80], const char s2,int index)
 {
   int retour = -1;

@@ -1,0 +1,413 @@
+\hypertarget{combat_8c}{}\doxysection{Référence du fichier combat.\+c}
+\label{combat_8c}\index{combat.c@{combat.c}}
+
+
+fichier de gestion de combat  
+
+
+{\ttfamily \#include \char`\"{}../include/motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/window\+\_\+render.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/combat.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/liste.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{combat_8c_a19cd40ebc53f1c29da60c5f38aa08f34}\label{combat_8c_a19cd40ebc53f1c29da60c5f38aa08f34}} 
+int {\bfseries init\+\_\+combat} (motor\+\_\+t $\ast$$\ast$motor, int pkm\+\_\+enemy\+\_\+ids\mbox{[}5\mbox{]})
+\item 
+void \mbox{\hyperlink{combat_8c_a56afc9c9f1c313561e1118283d25cb0c}{print\+\_\+list}} (Liste\+\_\+t $\ast$player)
+\begin{DoxyCompactList}\small\item\em Cette fonction permer de afficher tout les elements d\textquotesingle{}une liste de pokemon que le joueur possède. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{combat_8c_a85f29085a654f105e75e90a46546f877}\label{combat_8c_a85f29085a654f105e75e90a46546f877}} 
+int {\bfseries get\+Player\+Pkm\+Id} (Liste\+\_\+t $\ast$pl, int id)
+\item 
+int \mbox{\hyperlink{combat_8c_a9f0cddf15b62a4b7088c0831155339ab}{Length}} (Liste\+\_\+t $\ast$p)
+\begin{DoxyCompactList}\small\item\em Cette fonction Renvoie la longueur d\textquotesingle{}une liste de pokemon. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_af50d5a7e70679ad3e0ed9f33d411e9bc}{inser\+Debut}} (Liste\+\_\+t $\ast$$\ast$p, t\+\_\+pkm pkm)
+\begin{DoxyCompactList}\small\item\em Cette fonction ajoute au debut de la liste un pokemon. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_a7b2ee18f222ca2598f0d28bc4a39aa4a}{inser\+Fin}} (Liste\+\_\+t $\ast$courant, t\+\_\+pkm pkm)
+\begin{DoxyCompactList}\small\item\em Cette fonction ajoute à la fin de la liste p un pokemon. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_aa4496108607ff3704e282f646fbbb61d}{Pop}} (Liste\+\_\+t $\ast$$\ast$p, t\+\_\+pkm pkm)
+\begin{DoxyCompactList}\small\item\em Cette fonction Supprime un pokemon de la liste. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_a21edaecdcb48bd0ffd5230a3028bb2da}{affiche\+\_\+\+Stats}} (Liste\+\_\+t $\ast$player, t\+\_\+pkm $\ast$wild\+\_\+pkm)
+\begin{DoxyCompactList}\small\item\em Cette fonction affiche les statistiques des pokemons sur le terrain. \end{DoxyCompactList}\item 
+t\+\_\+pkm \mbox{\hyperlink{combat_8c_a59144ef179aa81ec5e2c437cc956087f}{Get\+Nth}} (Liste\+\_\+t $\ast$head, int index)
+\begin{DoxyCompactList}\small\item\em Cette fonction renvoie le pokemon a la place \textquotesingle{}index\textquotesingle{} de la liste. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a117214db74819250eccf294fba5f979e}{swap\+Nodes}} (motor\+\_\+t $\ast$$\ast$motor, int n1, int n2)
+\begin{DoxyCompactList}\small\item\em Echange la place entre deux pokemon dans la liste. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{combat_8c_a8b0e5f701d592a9ded13af8e504a1973}\label{combat_8c_a8b0e5f701d592a9ded13af8e504a1973}} 
+Liste\+\_\+t $\ast$ {\bfseries current\+\_\+pkm} (Liste\+\_\+t $\ast$player, int index)
+\item 
+void \mbox{\hyperlink{combat_8c_af1051f124913a039fdbd23e14f4ab6f9}{init\+\_\+pkm\+\_\+team}} (t\+\_\+pkm $\ast$pkm, char nom\+\_\+pkm\mbox{[}20\mbox{]})
+\begin{DoxyCompactList}\small\item\em Recupere les statistiques d\textquotesingle{}un pokemon allie pour son initialisation et inscrit le pokemon dans equipe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_a82f9b80f0c6c0f615866ad82d6ba5be4}{rand\+\_\+scale\+\_\+stat}} (t\+\_\+pkm $\ast$wild\+\_\+pkm)
+\begin{DoxyCompactList}\small\item\em Fait varier les statistiques d\textquotesingle{}un pokemon. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_a5c0a4616c71d89980d5a85900bc0003c}{init\+\_\+pkm\+\_\+enemy}} (t\+\_\+pkm $\ast$pkm, int num\+Fichier2)
+\begin{DoxyCompactList}\small\item\em Recupere les statistiques d\textquotesingle{}un pokemon ennemi pour son initialisation. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{combat_8c_a2fb57adf26cdf545610de646a0266515}{chercher\+Multiplicateur}} (int type\+Pokemon1, int type\+Attaque)
+\begin{DoxyCompactList}\small\item\em Lit depuis le fichier table\+Type.\+txt le multiplicateur associe a l\textquotesingle{}attaque. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{combat_8c_a21a2a352d47607e7750bc4eb17458166}{verif\+Type}} (char type\+Pokemon1\mbox{[}50\mbox{]}, char type\+Pokemon2\mbox{[}50\mbox{]}, char type\+Attaque\mbox{[}50\mbox{]})
+\begin{DoxyCompactList}\small\item\em Renvoie le multiplicateur de degats si attaque super efficace. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_abd6ff1103f8ef2e92b279504db623bbc}{get\+Attack\+Joueur}} (Liste\+\_\+t $\ast$player, t\+\_\+pkm $\ast$wild\+\_\+pkm, int choix)
+\begin{DoxyCompactList}\small\item\em Fonction pour le okemon énnemi utilise une attaque contre le personnage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8c_a2a39efbe45969681961125230b1b4000}{get\+Attack\+Ennemi}} (Liste\+\_\+t $\ast$pl, t\+\_\+pkm $\ast$wild\+\_\+pkm)
+\begin{DoxyCompactList}\small\item\em Fonction pour le okemon énnemi utilise une attaque contre le personnage. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a24ce27ef5c734d05f4e02ff1ff9faee2}{verif\+\_\+pkm\+En\+Vie}} (Liste\+\_\+t $\ast$pl)
+\begin{DoxyCompactList}\small\item\em Fonction qui verifie si tous les pokémons de la liste sont en vie. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a0e78544507ae53daca1bf4ee4e9091ea}{combat}} (Liste\+\_\+t $\ast$pl, t\+\_\+pkm $\ast$wild\+\_\+pkm, int choix)
+\begin{DoxyCompactList}\small\item\em Fonction generale de combat par systeme de manche, inflige les degats et verifie l\textquotesingle{}etat de la manche. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{combat_8c_a83c33c210a538fe84769a5be53554e29}{capturer}} (motor\+\_\+t $\ast$$\ast$motor, Liste\+\_\+t $\ast$player, t\+\_\+pkm wild\+\_\+pkm)
+\begin{DoxyCompactList}\small\item\em Initialisation du dresseur adverse. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{combat_8c_a4ecccdcd8f5d0d7234d0894ba0cb4511}\label{combat_8c_a4ecccdcd8f5d0d7234d0894ba0cb4511}} 
+int {\bfseries soin} (Liste\+\_\+t $\ast$player)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fichier de gestion de combat 
+
+\begin{DoxyAuthor}{Auteur}
+Léon TER 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+28 mars 22 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{combat_8c_a21edaecdcb48bd0ffd5230a3028bb2da}\label{combat_8c_a21edaecdcb48bd0ffd5230a3028bb2da}} 
+\index{combat.c@{combat.c}!affiche\_Stats@{affiche\_Stats}}
+\index{affiche\_Stats@{affiche\_Stats}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{affiche\_Stats()}{affiche\_Stats()}}
+{\footnotesize\ttfamily void affiche\+\_\+\+Stats (\begin{DoxyParamCaption}\item[{Liste\+\_\+t $\ast$}]{player,  }\item[{t\+\_\+pkm $\ast$}]{wild\+\_\+pkm }\end{DoxyParamCaption})}
+
+
+
+Cette fonction affiche les statistiques des pokemons sur le terrain. 
+
+\textbackslash{}function affiche\+\_\+\+Stats 
+\begin{DoxyParams}{Paramètres}
+{\em player} & \+: liste de pokemon \\
+\hline
+{\em wild\+\_\+pkm} & \+: le pokémon que l\textquotesingle{}on veut afficher \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_a83c33c210a538fe84769a5be53554e29}\label{combat_8c_a83c33c210a538fe84769a5be53554e29}} 
+\index{combat.c@{combat.c}!capturer@{capturer}}
+\index{capturer@{capturer}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{capturer()}{capturer()}}
+{\footnotesize\ttfamily int capturer (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor,  }\item[{Liste\+\_\+t $\ast$}]{player,  }\item[{t\+\_\+pkm}]{wild\+\_\+pkm }\end{DoxyParamCaption})}
+
+
+
+Initialisation du dresseur adverse. 
+
+\textbackslash{}function init\+Billy 
+\begin{DoxyParams}{Paramètres}
+{\em liste} & \+: Liste de pkm du dresseur adverse \\
+\hline
+{\em nom\+Dress} & \+: nom du fichier du dresseur \textbackslash{}function get\+Attack\+Joueur\+Duel\\
+\hline
+\end{DoxyParams}
+Fonction pour quand le personnage allie utilise une capacite contre pokemon de dresseur ennemi 
+\begin{DoxyParams}{Paramètres}
+{\em player} & \+: la liste du joueur \\
+\hline
+{\em ennemi} & \+: la liste du dresseur ennemi \\
+\hline
+{\em choix} & \+: le choix apporté par l\textquotesingle{}utilisateur \textbackslash{}function get\+Attack\+Ennemi\+Duel\\
+\hline
+\end{DoxyParams}
+Fonction pour le pokemon énnemi utilise une attaque contre le personnage 
+\begin{DoxyParams}{Paramètres}
+{\em player} & \+: la liste du joueur \\
+\hline
+{\em wild\+\_\+ennemipkm} & \+: la liste du dresseur ennemi \textbackslash{}function combat\+Dresseur\\
+\hline
+\end{DoxyParams}
+Fonction generale de combat par systeme de manche, inflige les degats et verifie l\textquotesingle{}etat de la manche 
+\begin{DoxyParams}{Paramètres}
+{\em player} & \+: la liste du joueur \\
+\hline
+{\em ennemi} & \+: la liste du dresseur ennemi \\
+\hline
+{\em choix} & \+: le choix du joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int \+: retourne 1 si tout le pokémon adverse est Ko, 1 si le pokémon du joueur actuelle est KO, 2 si les tout les pokémons du joueur sont KO 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a2fb57adf26cdf545610de646a0266515}\label{combat_8c_a2fb57adf26cdf545610de646a0266515}} 
+\index{combat.c@{combat.c}!chercherMultiplicateur@{chercherMultiplicateur}}
+\index{chercherMultiplicateur@{chercherMultiplicateur}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{chercherMultiplicateur()}{chercherMultiplicateur()}}
+{\footnotesize\ttfamily float chercher\+Multiplicateur (\begin{DoxyParamCaption}\item[{int}]{type\+Pokemon1,  }\item[{int}]{type\+Attaque }\end{DoxyParamCaption})}
+
+
+
+Lit depuis le fichier table\+Type.\+txt le multiplicateur associe a l\textquotesingle{}attaque. 
+
+\textbackslash{}function chercher\+Multiplicateur 
+\begin{DoxyParams}{Paramètres}
+{\em indices} & des types d\textquotesingle{}un type defensif et d\textquotesingle{}un type offensif \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_a0e78544507ae53daca1bf4ee4e9091ea}\label{combat_8c_a0e78544507ae53daca1bf4ee4e9091ea}} 
+\index{combat.c@{combat.c}!combat@{combat}}
+\index{combat@{combat}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{combat()}{combat()}}
+{\footnotesize\ttfamily int combat (\begin{DoxyParamCaption}\item[{Liste\+\_\+t $\ast$}]{pl,  }\item[{t\+\_\+pkm $\ast$}]{wild\+\_\+pkm,  }\item[{int}]{choix }\end{DoxyParamCaption})}
+
+
+
+Fonction generale de combat par systeme de manche, inflige les degats et verifie l\textquotesingle{}etat de la manche. 
+
+\textbackslash{}function combat 
+\begin{DoxyParams}{Paramètres}
+{\em pl} & \+: la liste du joueur \\
+\hline
+{\em wild\+\_\+pkm} & \+: le pokémon ennemi \\
+\hline
+{\em choix} & \+: le choix du joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int \+: retourne 1 si tout le pokémon adverse est Ko, 1 si le pokémon du joueur actuelle est KO, 2 si les tout les pokémons du joueur sont KO 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a2a39efbe45969681961125230b1b4000}\label{combat_8c_a2a39efbe45969681961125230b1b4000}} 
+\index{combat.c@{combat.c}!getAttackEnnemi@{getAttackEnnemi}}
+\index{getAttackEnnemi@{getAttackEnnemi}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{getAttackEnnemi()}{getAttackEnnemi()}}
+{\footnotesize\ttfamily void get\+Attack\+Ennemi (\begin{DoxyParamCaption}\item[{Liste\+\_\+t $\ast$}]{pl,  }\item[{t\+\_\+pkm $\ast$}]{wild\+\_\+pkm }\end{DoxyParamCaption})}
+
+
+
+Fonction pour le okemon énnemi utilise une attaque contre le personnage. 
+
+\textbackslash{}function get\+Attack\+Ennemi 
+\begin{DoxyParams}{Paramètres}
+{\em pl} & \+: la liste du joueur \\
+\hline
+{\em wild\+\_\+pkm} & \+: le pokemon énnemi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_abd6ff1103f8ef2e92b279504db623bbc}\label{combat_8c_abd6ff1103f8ef2e92b279504db623bbc}} 
+\index{combat.c@{combat.c}!getAttackJoueur@{getAttackJoueur}}
+\index{getAttackJoueur@{getAttackJoueur}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{getAttackJoueur()}{getAttackJoueur()}}
+{\footnotesize\ttfamily void get\+Attack\+Joueur (\begin{DoxyParamCaption}\item[{Liste\+\_\+t $\ast$}]{player,  }\item[{t\+\_\+pkm $\ast$}]{wild\+\_\+pkm,  }\item[{int}]{choix }\end{DoxyParamCaption})}
+
+
+
+Fonction pour le okemon énnemi utilise une attaque contre le personnage. 
+
+\textbackslash{}function get\+Attack\+Ennemi 
+\begin{DoxyParams}{Paramètres}
+{\em pl} & \+: la liste du joueur \\
+\hline
+{\em wild\+\_\+pkm} & \+: le pokemon énnemi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_a59144ef179aa81ec5e2c437cc956087f}\label{combat_8c_a59144ef179aa81ec5e2c437cc956087f}} 
+\index{combat.c@{combat.c}!GetNth@{GetNth}}
+\index{GetNth@{GetNth}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{GetNth()}{GetNth()}}
+{\footnotesize\ttfamily t\+\_\+pkm Get\+Nth (\begin{DoxyParamCaption}\item[{Liste\+\_\+t $\ast$}]{head,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Cette fonction renvoie le pokemon a la place \textquotesingle{}index\textquotesingle{} de la liste. 
+
+\textbackslash{}function Get\+Nth 
+\begin{DoxyParams}{Paramètres}
+{\em head} & \+: tête de la liste \\
+\hline
+{\em index} & \+: l\textquotesingle{}index de la liste \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+t\+\_\+pkm \+: retourne le pokemon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a5c0a4616c71d89980d5a85900bc0003c}\label{combat_8c_a5c0a4616c71d89980d5a85900bc0003c}} 
+\index{combat.c@{combat.c}!init\_pkm\_enemy@{init\_pkm\_enemy}}
+\index{init\_pkm\_enemy@{init\_pkm\_enemy}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{init\_pkm\_enemy()}{init\_pkm\_enemy()}}
+{\footnotesize\ttfamily void init\+\_\+pkm\+\_\+enemy (\begin{DoxyParamCaption}\item[{t\+\_\+pkm $\ast$}]{pkm,  }\item[{int}]{num\+Fichier2 }\end{DoxyParamCaption})}
+
+
+
+Recupere les statistiques d\textquotesingle{}un pokemon ennemi pour son initialisation. 
+
+\textbackslash{}function init\+\_\+pkm\+\_\+team 
+\begin{DoxyParams}{Paramètres}
+{\em pkm} & \+: le pokemon que l\textquotesingle{}on veut initialiser \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_af1051f124913a039fdbd23e14f4ab6f9}\label{combat_8c_af1051f124913a039fdbd23e14f4ab6f9}} 
+\index{combat.c@{combat.c}!init\_pkm\_team@{init\_pkm\_team}}
+\index{init\_pkm\_team@{init\_pkm\_team}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{init\_pkm\_team()}{init\_pkm\_team()}}
+{\footnotesize\ttfamily void init\+\_\+pkm\+\_\+team (\begin{DoxyParamCaption}\item[{t\+\_\+pkm $\ast$}]{pkm,  }\item[{char}]{nom\+\_\+pkm\mbox{[}20\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Recupere les statistiques d\textquotesingle{}un pokemon allie pour son initialisation et inscrit le pokemon dans equipe. 
+
+\textbackslash{}function init\+\_\+pkm\+\_\+team 
+\begin{DoxyParams}{Paramètres}
+{\em pkm} & \+: le pokemon \\
+\hline
+{\em nom\+\_\+pkm} & \+: le nom du pokemon \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_af50d5a7e70679ad3e0ed9f33d411e9bc}\label{combat_8c_af50d5a7e70679ad3e0ed9f33d411e9bc}} 
+\index{combat.c@{combat.c}!inserDebut@{inserDebut}}
+\index{inserDebut@{inserDebut}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{inserDebut()}{inserDebut()}}
+{\footnotesize\ttfamily void inser\+Debut (\begin{DoxyParamCaption}\item[{Liste\+\_\+t $\ast$$\ast$}]{p,  }\item[{t\+\_\+pkm}]{pkm }\end{DoxyParamCaption})}
+
+
+
+Cette fonction ajoute au debut de la liste un pokemon. 
+
+\textbackslash{}function inser\+Debut 
+\begin{DoxyParams}{Paramètres}
+{\em player} & \+: liste de pokemon \\
+\hline
+{\em pkm} & \+: le pokemon à inserer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_a7b2ee18f222ca2598f0d28bc4a39aa4a}\label{combat_8c_a7b2ee18f222ca2598f0d28bc4a39aa4a}} 
+\index{combat.c@{combat.c}!inserFin@{inserFin}}
+\index{inserFin@{inserFin}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{inserFin()}{inserFin()}}
+{\footnotesize\ttfamily void inser\+Fin (\begin{DoxyParamCaption}\item[{Liste\+\_\+t $\ast$}]{courant,  }\item[{t\+\_\+pkm}]{pkm }\end{DoxyParamCaption})}
+
+
+
+Cette fonction ajoute à la fin de la liste p un pokemon. 
+
+\textbackslash{}function inser\+Fin 
+\begin{DoxyParams}{Paramètres}
+{\em player} & \+: liste de pokemon \\
+\hline
+{\em pkm} & \+: le pokemon à inserer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_a9f0cddf15b62a4b7088c0831155339ab}\label{combat_8c_a9f0cddf15b62a4b7088c0831155339ab}} 
+\index{combat.c@{combat.c}!Length@{Length}}
+\index{Length@{Length}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{Length()}{Length()}}
+{\footnotesize\ttfamily int Length (\begin{DoxyParamCaption}\item[{Liste\+\_\+t $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Cette fonction Renvoie la longueur d\textquotesingle{}une liste de pokemon. 
+
+\textbackslash{}function length 
+\begin{DoxyParams}{Paramètres}
+{\em player} & \+: liste de pokemon \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_aa4496108607ff3704e282f646fbbb61d}\label{combat_8c_aa4496108607ff3704e282f646fbbb61d}} 
+\index{combat.c@{combat.c}!Pop@{Pop}}
+\index{Pop@{Pop}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{Pop()}{Pop()}}
+{\footnotesize\ttfamily void Pop (\begin{DoxyParamCaption}\item[{Liste\+\_\+t $\ast$$\ast$}]{p,  }\item[{t\+\_\+pkm}]{pkm }\end{DoxyParamCaption})}
+
+
+
+Cette fonction Supprime un pokemon de la liste. 
+
+\textbackslash{}function Pop 
+\begin{DoxyParams}{Paramètres}
+{\em player} & \+: liste de pokemon \\
+\hline
+{\em pkm} & \+: le pokemon à supprimer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_a56afc9c9f1c313561e1118283d25cb0c}\label{combat_8c_a56afc9c9f1c313561e1118283d25cb0c}} 
+\index{combat.c@{combat.c}!print\_list@{print\_list}}
+\index{print\_list@{print\_list}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{print\_list()}{print\_list()}}
+{\footnotesize\ttfamily void print\+\_\+list (\begin{DoxyParamCaption}\item[{Liste\+\_\+t $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Cette fonction permer de afficher tout les elements d\textquotesingle{}une liste de pokemon que le joueur possède. 
+
+\textbackslash{}function print\+\_\+list 
+\begin{DoxyParams}{Paramètres}
+{\em player} & \+: liste du joueur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_a82f9b80f0c6c0f615866ad82d6ba5be4}\label{combat_8c_a82f9b80f0c6c0f615866ad82d6ba5be4}} 
+\index{combat.c@{combat.c}!rand\_scale\_stat@{rand\_scale\_stat}}
+\index{rand\_scale\_stat@{rand\_scale\_stat}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{rand\_scale\_stat()}{rand\_scale\_stat()}}
+{\footnotesize\ttfamily void rand\+\_\+scale\+\_\+stat (\begin{DoxyParamCaption}\item[{t\+\_\+pkm $\ast$}]{wild\+\_\+pkm }\end{DoxyParamCaption})}
+
+
+
+Fait varier les statistiques d\textquotesingle{}un pokemon. 
+
+\textbackslash{}function rand\+\_\+scale\+\_\+stat 
+\begin{DoxyParams}{Paramètres}
+{\em pkm} & \+: le pokemon que l\textquotesingle{}on veut faire varier \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8c_a117214db74819250eccf294fba5f979e}\label{combat_8c_a117214db74819250eccf294fba5f979e}} 
+\index{combat.c@{combat.c}!swapNodes@{swapNodes}}
+\index{swapNodes@{swapNodes}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{swapNodes()}{swapNodes()}}
+{\footnotesize\ttfamily int swap\+Nodes (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor,  }\item[{int}]{n1,  }\item[{int}]{n2 }\end{DoxyParamCaption})}
+
+
+
+Echange la place entre deux pokemon dans la liste. 
+
+\textbackslash{}function swap\+Nodes 
+\begin{DoxyParams}{Paramètres}
+{\em n1} & \+: le premier pokemon \\
+\hline
+{\em n2} & \+: le deuxième pokemon \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int \+: Renvoie 1 si l\textquotesingle{}echange est possible ou 0 sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a24ce27ef5c734d05f4e02ff1ff9faee2}\label{combat_8c_a24ce27ef5c734d05f4e02ff1ff9faee2}} 
+\index{combat.c@{combat.c}!verif\_pkmEnVie@{verif\_pkmEnVie}}
+\index{verif\_pkmEnVie@{verif\_pkmEnVie}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{verif\_pkmEnVie()}{verif\_pkmEnVie()}}
+{\footnotesize\ttfamily int verif\+\_\+pkm\+En\+Vie (\begin{DoxyParamCaption}\item[{Liste\+\_\+t $\ast$}]{pl }\end{DoxyParamCaption})}
+
+
+
+Fonction qui verifie si tous les pokémons de la liste sont en vie. 
+
+\textbackslash{}function verif\+\_\+pkm\+En\+Vie 
+\begin{DoxyParams}{Paramètres}
+{\em player} & \+: la liste du joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int \+: retourne 0 si tout les pokémons sont morts, 1 sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a21a2a352d47607e7750bc4eb17458166}\label{combat_8c_a21a2a352d47607e7750bc4eb17458166}} 
+\index{combat.c@{combat.c}!verifType@{verifType}}
+\index{verifType@{verifType}!combat.c@{combat.c}}
+\doxysubsubsection{\texorpdfstring{verifType()}{verifType()}}
+{\footnotesize\ttfamily float verif\+Type (\begin{DoxyParamCaption}\item[{char}]{type\+Pokemon1\mbox{[}50\mbox{]},  }\item[{char}]{type\+Pokemon2\mbox{[}50\mbox{]},  }\item[{char}]{type\+Attaque\mbox{[}50\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Renvoie le multiplicateur de degats si attaque super efficace. 
+
+\textbackslash{}function verif\+Type 
+\begin{DoxyParams}{Paramètres}
+{\em 3} & Types\+: type\+Pokemon1 1er type du pokemon defensif, type\+Pokemon 2eme type du pokemon defensif, type\+Attaque type du pokemon offensif \\
+\hline
+\end{DoxyParams}

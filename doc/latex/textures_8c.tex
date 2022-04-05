@@ -1,0 +1,67 @@
+\hypertarget{textures_8c}{}\doxysection{Référence du fichier textures.\+c}
+\label{textures_8c}\index{textures.c@{textures.c}}
+
+
+fichier pour les textures  
+
+
+{\ttfamily \#include \char`\"{}../include/motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/textures.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{textures_8c_ac1a6f67e3a14eac70c81bb0329e828cc}{init\+\_\+texture}} (motor\+\_\+t $\ast$$\ast$motor)
+\begin{DoxyCompactList}\small\item\em fonction d\textquotesingle{}initialisation des textures \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{textures_8c_a56ecd1d9be85371b3d430dbe9198bbf6}{load\+\_\+texture}} (SDL\+\_\+\+Renderer $\ast$$\ast$renderer, SDL\+\_\+\+Texture $\ast$$\ast$texture, char $\ast$path)
+\begin{DoxyCompactList}\small\item\em fonction d\textquotesingle{}application de texture sur une surface \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fichier pour les textures 
+
+\begin{DoxyAuthor}{Auteur}
+OKAT Elias 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+8 mars 22 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{textures_8c_ac1a6f67e3a14eac70c81bb0329e828cc}\label{textures_8c_ac1a6f67e3a14eac70c81bb0329e828cc}} 
+\index{textures.c@{textures.c}!init\_texture@{init\_texture}}
+\index{init\_texture@{init\_texture}!textures.c@{textures.c}}
+\doxysubsubsection{\texorpdfstring{init\_texture()}{init\_texture()}}
+{\footnotesize\ttfamily int init\+\_\+texture (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+
+
+
+fonction d\textquotesingle{}initialisation des textures 
+
+\textbackslash{}function init\+\_\+texture 
+\begin{DoxyParams}{Paramètres}
+{\em motor} & \+: le moteur de jeu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{textures_8c_a56ecd1d9be85371b3d430dbe9198bbf6}\label{textures_8c_a56ecd1d9be85371b3d430dbe9198bbf6}} 
+\index{textures.c@{textures.c}!load\_texture@{load\_texture}}
+\index{load\_texture@{load\_texture}!textures.c@{textures.c}}
+\doxysubsubsection{\texorpdfstring{load\_texture()}{load\_texture()}}
+{\footnotesize\ttfamily void load\+\_\+texture (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$$\ast$}]{renderer,  }\item[{SDL\+\_\+\+Texture $\ast$$\ast$}]{texture,  }\item[{char $\ast$}]{path }\end{DoxyParamCaption})}
+
+
+
+fonction d\textquotesingle{}application de texture sur une surface 
+
+\textbackslash{}function load\+\_\+texture 
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & \+: le renderer de la SDL \\
+\hline
+{\em texture} & \+: la texture de la SDL \\
+\hline
+{\em path} & \+: le chemin de la texture \\
+\hline
+\end{DoxyParams}

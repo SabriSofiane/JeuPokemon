@@ -1,0 +1,635 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet Jeu Pokémon: Référence du fichier menu.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Projet Jeu Pokémon<span id="projectnumber">&#160;1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier menu.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>fichier d'interface graphique Attention au chemin des textures dans chacune des fonctions!  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;../include/motor.h&quot;</code><br />
+<code>#include &quot;../include/menu.h&quot;</code><br />
+<code>#include &quot;../include/text.h&quot;</code><br />
+<code>#include &quot;../include/textures.h&quot;</code><br />
+<code>#include &quot;../include/combat.h&quot;</code><br />
+<code>#include &quot;../include/string_matrice.h&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a19f6b16af8fa98b95b9b73f1853d3c22"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a19f6b16af8fa98b95b9b73f1853d3c22">init_menu</a> (motor_t **motor)</td></tr>
+<tr class="memdesc:a19f6b16af8fa98b95b9b73f1853d3c22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation de toutes les variables utilisé pour les menu.  <a href="menu_8c.html#a19f6b16af8fa98b95b9b73f1853d3c22">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a19f6b16af8fa98b95b9b73f1853d3c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74f320c38b3f02ea557f8d41e2f5df27"><td class="memItemLeft" align="right" valign="top"><a id="a74f320c38b3f02ea557f8d41e2f5df27" name="a74f320c38b3f02ea557f8d41e2f5df27"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **motor)</td></tr>
+<tr class="separator:a74f320c38b3f02ea557f8d41e2f5df27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abffa03133988ab61e668c75178d630b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#abffa03133988ab61e668c75178d630b1">render_text</a> (motor_t **motor, char *text, TTF_Font *font, int x, int y)</td></tr>
+<tr class="memdesc:abffa03133988ab61e668c75178d630b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">cette fonction permet de creer du texte et de le positioner  <a href="menu_8c.html#abffa03133988ab61e668c75178d630b1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:abffa03133988ab61e668c75178d630b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07753dec9b0d8ad58944ccd3f7406ce3"><td class="memItemLeft" align="right" valign="top">SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a07753dec9b0d8ad58944ccd3f7406ce3">color</a> (Uint8 r, Uint8 g, Uint8 b, Uint8 a)</td></tr>
+<tr class="memdesc:a07753dec9b0d8ad58944ccd3f7406ce3"><td class="mdescLeft">&#160;</td><td class="mdescRight">cette fonction permet d'attribuer la couleur d'un élément, utilisé pour les rectangles  <a href="menu_8c.html#a07753dec9b0d8ad58944ccd3f7406ce3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a07753dec9b0d8ad58944ccd3f7406ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ed74f3a081b1b11b9be57a1d6f15c3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a4ed74f3a081b1b11b9be57a1d6f15c3d">RenderHPBar</a> (int x, int y, int w, int h, float percent, SDL_Color FGColor, SDL_Color BGColor, SDL_Renderer *renderer)</td></tr>
+<tr class="memdesc:a4ed74f3a081b1b11b9be57a1d6f15c3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cette fonction permet de modifier le rectangle de bar de vie avec un pourcentage de vie: vie/vieMaximum  <a href="menu_8c.html#a4ed74f3a081b1b11b9be57a1d6f15c3d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4ed74f3a081b1b11b9be57a1d6f15c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d13db494d9bcac49cccb0c90dba0dcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a0d13db494d9bcac49cccb0c90dba0dcf">menu_Bag</a> (motor_t **motor)</td></tr>
+<tr class="memdesc:a0d13db494d9bcac49cccb0c90dba0dcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">menu principal du jeu  <a href="menu_8c.html#a0d13db494d9bcac49cccb0c90dba0dcf">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0d13db494d9bcac49cccb0c90dba0dcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46d7ec83f1d2c0efec8fed796bd04f0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a46d7ec83f1d2c0efec8fed796bd04f0d">menu_Battle</a> (motor_t **motor)</td></tr>
+<tr class="memdesc:a46d7ec83f1d2c0efec8fed796bd04f0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface de combat du jeux  <a href="menu_8c.html#a46d7ec83f1d2c0efec8fed796bd04f0d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a46d7ec83f1d2c0efec8fed796bd04f0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5486d8209d4fd0cc06340ff6f20e4d38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a5486d8209d4fd0cc06340ff6f20e4d38">menu_Battle_Attaque</a> (motor_t **motor)</td></tr>
+<tr class="memdesc:a5486d8209d4fd0cc06340ff6f20e4d38"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface de combat du jeux affichant les attaques disponibles pour le joueur  <a href="menu_8c.html#a5486d8209d4fd0cc06340ff6f20e4d38">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5486d8209d4fd0cc06340ff6f20e4d38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78e6d1e68c60b1602cafff26f277b170"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a78e6d1e68c60b1602cafff26f277b170">speech_bubble</a> (motor_t **motor)</td></tr>
+<tr class="memdesc:a78e6d1e68c60b1602cafff26f277b170"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui affiche une bulle de texte contenant du texte mis en paramètre  <a href="menu_8c.html#a78e6d1e68c60b1602cafff26f277b170">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a78e6d1e68c60b1602cafff26f277b170"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff8e002275fdbb9d4054a6b82f7b6788"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#aff8e002275fdbb9d4054a6b82f7b6788">menu_shop</a> (motor_t **motor)</td></tr>
+<tr class="memdesc:aff8e002275fdbb9d4054a6b82f7b6788"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface pour le marché  <a href="menu_8c.html#aff8e002275fdbb9d4054a6b82f7b6788">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aff8e002275fdbb9d4054a6b82f7b6788"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f948077226cf7cb161db485aec27aba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a5f948077226cf7cb161db485aec27aba">menu_save</a> (motor_t **motor)</td></tr>
+<tr class="memdesc:a5f948077226cf7cb161db485aec27aba"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface pour la sauvegarde de jeu  <a href="menu_8c.html#a5f948077226cf7cb161db485aec27aba">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5f948077226cf7cb161db485aec27aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00b330ae7c5b28b22253c6b8d89c1281"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a00b330ae7c5b28b22253c6b8d89c1281">menu_pokedex</a> (motor_t **motor)</td></tr>
+<tr class="memdesc:a00b330ae7c5b28b22253c6b8d89c1281"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface pour le pokedex qui est une sorte de base de données des pokémons  <a href="menu_8c.html#a00b330ae7c5b28b22253c6b8d89c1281">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a00b330ae7c5b28b22253c6b8d89c1281"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ccf19b8b59c71fa8a07bdbe81c54c90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a5ccf19b8b59c71fa8a07bdbe81c54c90">menu_pokemon</a> (motor_t **motor)</td></tr>
+<tr class="memdesc:a5ccf19b8b59c71fa8a07bdbe81c54c90"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface pour la selection de pokemons pour le combat.  <a href="menu_8c.html#a5ccf19b8b59c71fa8a07bdbe81c54c90">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5ccf19b8b59c71fa8a07bdbe81c54c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a413c6aacc17bd6ea5af704998608c023"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a413c6aacc17bd6ea5af704998608c023">ecran_acceuil</a> (motor_t **motor)</td></tr>
+<tr class="memdesc:a413c6aacc17bd6ea5af704998608c023"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface pour l'écran principal du jeu  <a href="menu_8c.html#a413c6aacc17bd6ea5af704998608c023">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a413c6aacc17bd6ea5af704998608c023"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d678454da7c00d9201de6439446c848"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a1d678454da7c00d9201de6439446c848">resetSelecteurs</a> (motor_t **motor)</td></tr>
+<tr class="memdesc:a1d678454da7c00d9201de6439446c848"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset des variables utilisé par les selecteurs.  <a href="menu_8c.html#a1d678454da7c00d9201de6439446c848">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1d678454da7c00d9201de6439446c848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p >fichier d'interface graphique Attention au chemin des textures dans chacune des fonctions! </p>
+<dl class="section author"><dt>Auteur</dt><dd>Sofiane SABRI </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>8 mars 22 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a07753dec9b0d8ad58944ccd3f7406ce3" name="a07753dec9b0d8ad58944ccd3f7406ce3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07753dec9b0d8ad58944ccd3f7406ce3">&#9670;&nbsp;</a></span>color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Color color </td>
+          <td>(</td>
+          <td class="paramtype">Uint8&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Uint8&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Uint8&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Uint8&#160;</td>
+          <td class="paramname"><em>a</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>cette fonction permet d'attribuer la couleur d'un élément, utilisé pour les rectangles </p>
+<p >\function color </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">r</td><td>: valeur de la couleur rouge (0-255) </td></tr>
+    <tr><td class="paramname">g</td><td>: valeur de la couleur vert (0-255) </td></tr>
+    <tr><td class="paramname">b</td><td>: valeur de la couleur bleu (0-255) </td></tr>
+    <tr><td class="paramname">a</td><td>: valeur de la transparence (0-255) </td></tr>
+    <tr><td class="paramname">a</td><td>: valeur de la transparence (0-255) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>col: un tableau avec les valeurs mis en paramètre </dd></dl>
+
+</div>
+</div>
+<a id="a413c6aacc17bd6ea5af704998608c023" name="a413c6aacc17bd6ea5af704998608c023"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a413c6aacc17bd6ea5af704998608c023">&#9670;&nbsp;</a></span>ecran_acceuil()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ecran_acceuil </td>
+          <td>(</td>
+          <td class="paramtype">motor_t **&#160;</td>
+          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>interface pour l'écran principal du jeu </p>
+<p >\function ecran_acceuil </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a19f6b16af8fa98b95b9b73f1853d3c22" name="a19f6b16af8fa98b95b9b73f1853d3c22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19f6b16af8fa98b95b9b73f1853d3c22">&#9670;&nbsp;</a></span>init_menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int init_menu </td>
+          <td>(</td>
+          <td class="paramtype">motor_t **&#160;</td>
+          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialisation de toutes les variables utilisé pour les menu. </p>
+<p >\function init_menu </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0d13db494d9bcac49cccb0c90dba0dcf" name="a0d13db494d9bcac49cccb0c90dba0dcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d13db494d9bcac49cccb0c90dba0dcf">&#9670;&nbsp;</a></span>menu_Bag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void menu_Bag </td>
+          <td>(</td>
+          <td class="paramtype">motor_t **&#160;</td>
+          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>menu principal du jeu </p>
+<p >\function menu </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor</td><td>: moteur de jeux \function menu_Bag</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>menu du sac du joueur </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a46d7ec83f1d2c0efec8fed796bd04f0d" name="a46d7ec83f1d2c0efec8fed796bd04f0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46d7ec83f1d2c0efec8fed796bd04f0d">&#9670;&nbsp;</a></span>menu_Battle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void menu_Battle </td>
+          <td>(</td>
+          <td class="paramtype">motor_t **&#160;</td>
+          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>interface de combat du jeux </p>
+<p >\function menu_Battle </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">player</td><td>: structure de donnéees contenant les informations des pokémons du joueur </td></tr>
+    <tr><td class="paramname">wild_pkm</td><td>: structure de donnéees contenant les informations des pokémons adversaire </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5486d8209d4fd0cc06340ff6f20e4d38" name="a5486d8209d4fd0cc06340ff6f20e4d38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5486d8209d4fd0cc06340ff6f20e4d38">&#9670;&nbsp;</a></span>menu_Battle_Attaque()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void menu_Battle_Attaque </td>
+          <td>(</td>
+          <td class="paramtype">motor_t **&#160;</td>
+          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>interface de combat du jeux affichant les attaques disponibles pour le joueur </p>
+<p >\function menu_Battle_Attaque</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">player</td><td>: structure de donnéees contenant les informations des pokémons du joueur </td></tr>
+    <tr><td class="paramname">wild_pkm</td><td>: structure de donnéees contenant les informations des pokémons adversaire </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a00b330ae7c5b28b22253c6b8d89c1281" name="a00b330ae7c5b28b22253c6b8d89c1281"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00b330ae7c5b28b22253c6b8d89c1281">&#9670;&nbsp;</a></span>menu_pokedex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void menu_pokedex </td>
+          <td>(</td>
+          <td class="paramtype">motor_t **&#160;</td>
+          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>interface pour le pokedex qui est une sorte de base de données des pokémons </p>
+<p >\function menu_pokedex </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5ccf19b8b59c71fa8a07bdbe81c54c90" name="a5ccf19b8b59c71fa8a07bdbe81c54c90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ccf19b8b59c71fa8a07bdbe81c54c90">&#9670;&nbsp;</a></span>menu_pokemon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void menu_pokemon </td>
+          <td>(</td>
+          <td class="paramtype">motor_t **&#160;</td>
+          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>interface pour la selection de pokemons pour le combat. </p>
+<p >\function menu_pokemon </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5f948077226cf7cb161db485aec27aba" name="a5f948077226cf7cb161db485aec27aba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f948077226cf7cb161db485aec27aba">&#9670;&nbsp;</a></span>menu_save()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void menu_save </td>
+          <td>(</td>
+          <td class="paramtype">motor_t **&#160;</td>
+          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>interface pour la sauvegarde de jeu </p>
+<p >\function menu_save </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aff8e002275fdbb9d4054a6b82f7b6788" name="aff8e002275fdbb9d4054a6b82f7b6788"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff8e002275fdbb9d4054a6b82f7b6788">&#9670;&nbsp;</a></span>menu_shop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void menu_shop </td>
+          <td>(</td>
+          <td class="paramtype">motor_t **&#160;</td>
+          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>interface pour le marché </p>
+<p >\function menu_shop </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abffa03133988ab61e668c75178d630b1" name="abffa03133988ab61e668c75178d630b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abffa03133988ab61e668c75178d630b1">&#9670;&nbsp;</a></span>render_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void render_text </td>
+          <td>(</td>
+          <td class="paramtype">motor_t **&#160;</td>
+          <td class="paramname"><em>motor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *&#160;</td>
+          <td class="paramname"><em>font</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>cette fonction permet de creer du texte et de le positioner </p>
+<p >\function text_draw </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">text</td><td>: texte à afficher </td></tr>
+    <tr><td class="paramname">font</td><td>: la police du texte à afficher </td></tr>
+    <tr><td class="paramname">x</td><td>: position x du texte </td></tr>
+    <tr><td class="paramname">y</td><td>: position y du texte </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4ed74f3a081b1b11b9be57a1d6f15c3d" name="a4ed74f3a081b1b11b9be57a1d6f15c3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ed74f3a081b1b11b9be57a1d6f15c3d">&#9670;&nbsp;</a></span>RenderHPBar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RenderHPBar </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>percent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Color&#160;</td>
+          <td class="paramname"><em>FGColor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Color&#160;</td>
+          <td class="paramname"><em>BGColor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>cette fonction permet de modifier le rectangle de bar de vie avec un pourcentage de vie: vie/vieMaximum </p>
+<p >\function RenderHPBar </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>: rendu </td></tr>
+    <tr><td class="paramname">x</td><td>: position x du rectangle </td></tr>
+    <tr><td class="paramname">y</td><td>: position y du rectangle </td></tr>
+    <tr><td class="paramname">w</td><td>: largeur du rectangle </td></tr>
+    <tr><td class="paramname">h</td><td>: hauteur du rectangle </td></tr>
+    <tr><td class="paramname">percent</td><td>: pourcentage de vie d'un pokemon </td></tr>
+    <tr><td class="paramname">FGColor</td><td>: couleur du rectangle en premier plan </td></tr>
+    <tr><td class="paramname">BGColor</td><td>: couleur du rectangle en arrière plan </td></tr>
+    <tr><td class="paramname">renderer</td><td>rendu du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1d678454da7c00d9201de6439446c848" name="a1d678454da7c00d9201de6439446c848"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d678454da7c00d9201de6439446c848">&#9670;&nbsp;</a></span>resetSelecteurs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void resetSelecteurs </td>
+          <td>(</td>
+          <td class="paramtype">motor_t **&#160;</td>
+          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reset des variables utilisé par les selecteurs. </p>
+<p >\function resetSelecteurs </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a78e6d1e68c60b1602cafff26f277b170" name="a78e6d1e68c60b1602cafff26f277b170"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78e6d1e68c60b1602cafff26f277b170">&#9670;&nbsp;</a></span>speech_bubble()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void speech_bubble </td>
+          <td>(</td>
+          <td class="paramtype">motor_t **&#160;</td>
+          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fonction qui affiche une bulle de texte contenant du texte mis en paramètre </p>
+<p >\function speech_bubble </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">text</td><td>texte à afficher dans la bulle \function speech_bubble</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>interface d'une bulle de texte pour le dialogue </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

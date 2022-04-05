@@ -1,6 +1,17 @@
+/**
+  * \file window_render.c
+  * \brief fichier pour l'affichage de la fenetre
+  * \author OKAT Elias
+  * \version 1
+  * \date 8 mars 22
+*/
 #include "../include/motor.h"
 #include "../include/window_render.h"
-
+/**
+  * \function init_window_render
+  * \brief fonction d'initialisation de la fenetre
+  * \param motor : le moteur de jeu
+*/
 int init_window_render(motor_t ** motor)
 {
   int retour = 0;
@@ -26,7 +37,14 @@ int init_window_render(motor_t ** motor)
 
   return(retour);
 }
-
+/**
+  * \function create_window_render
+  * \brief Creation de la fenetre
+  * \param window : la fenetre SDL
+  * \param renderer : le renderer SDL
+  * \param window_width : la taille définit pour la longueur de la fenetre
+  * \param window_height : la taille définit pour la largeur de la fenetre
+*/
 int create_window_render(SDL_Window ** window, SDL_Renderer ** renderer,int window_width, int window_height)
 {
   //SDL_WINDOW_FULLSCREEN
@@ -61,7 +79,12 @@ int create_window_render(SDL_Window ** window, SDL_Renderer ** renderer,int wind
 }
 
 
-
+/**
+  * \function destroy_window_render
+  * \brief destruction de la fenetre
+  * \param window : la fenetre SDL
+  * \param renderer : le renderer SDL
+*/
 void destroy_window_render(SDL_Window ** window, SDL_Renderer ** renderer)
 {
   if(*renderer != NULL)
@@ -78,7 +101,12 @@ void destroy_window_render(SDL_Window ** window, SDL_Renderer ** renderer)
         printf("Destruction de la fenetre\n");
     }
 }
-
+/**
+  * \function limit_fps
+  * \brief limitation des images par secondes du jeu
+  * \param limit : la fenetre SDL
+  * \param fps_limit : le renderer SDL
+*/
 void limit_fps(unsigned int limit,int fps_limit)
 {
   unsigned int ticks = SDL_GetTicks();

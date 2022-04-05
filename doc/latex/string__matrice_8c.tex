@@ -1,0 +1,118 @@
+\hypertarget{string__matrice_8c}{}\doxysection{Référence du fichier string\+\_\+matrice.\+c}
+\label{string__matrice_8c}\index{string\_matrice.c@{string\_matrice.c}}
+
+
+fichier des matrices de jeu  
+
+
+{\ttfamily \#include \char`\"{}../include/motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/string\+\_\+matrice.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$$\ast$$\ast$ \mbox{\hyperlink{string__matrice_8c_a861e40230a2237d432184b82d2f7678e}{creer\+\_\+string\+\_\+matrice}} (int size)
+\begin{DoxyCompactList}\small\item\em fonction de creation d\textquotesingle{}une matrice à 3 dimensions \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{string__matrice_8c_a3da6709a9d7a983f7c09f69e0825460e}{detruire\+\_\+string\+\_\+matrice}} (char $\ast$$\ast$$\ast$matrice, int size)
+\begin{DoxyCompactList}\small\item\em fonction de destruction de la matrice \end{DoxyCompactList}\item 
+char $\ast$$\ast$$\ast$ \mbox{\hyperlink{string__matrice_8c_a2987824ba7b858b8411477bf57833d50}{get\+\_\+\+String\+\_\+\+Matrice}} (motor\+\_\+t $\ast$$\ast$motor, int nb\+\_\+bordure, int x\+\_\+center, int y\+\_\+center)
+\begin{DoxyCompactList}\small\item\em fonction qui récupère une matrice en matrice string \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{string__matrice_8c_adef3b07653d233b4f8a78826acb62125}{split\+\_\+string\+\_\+data}} (char str\mbox{[}80\mbox{]}, const char s2, int index)
+\begin{DoxyCompactList}\small\item\em Cette fonction découpe un string en deux. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fichier des matrices de jeu 
+
+\begin{DoxyAuthor}{Auteur}
+OKAT Elias 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+8 mars 22 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{string__matrice_8c_a861e40230a2237d432184b82d2f7678e}\label{string__matrice_8c_a861e40230a2237d432184b82d2f7678e}} 
+\index{string\_matrice.c@{string\_matrice.c}!creer\_string\_matrice@{creer\_string\_matrice}}
+\index{creer\_string\_matrice@{creer\_string\_matrice}!string\_matrice.c@{string\_matrice.c}}
+\doxysubsubsection{\texorpdfstring{creer\_string\_matrice()}{creer\_string\_matrice()}}
+{\footnotesize\ttfamily char $\ast$$\ast$$\ast$ creer\+\_\+string\+\_\+matrice (\begin{DoxyParamCaption}\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+fonction de creation d\textquotesingle{}une matrice à 3 dimensions 
+
+\textbackslash{}function creer\+\_\+string\+\_\+matrice 
+\begin{DoxyParams}{Paramètres}
+{\em size} & \+: taille de la matrice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+char\+: la matrice initialisé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{string__matrice_8c_a3da6709a9d7a983f7c09f69e0825460e}\label{string__matrice_8c_a3da6709a9d7a983f7c09f69e0825460e}} 
+\index{string\_matrice.c@{string\_matrice.c}!detruire\_string\_matrice@{detruire\_string\_matrice}}
+\index{detruire\_string\_matrice@{detruire\_string\_matrice}!string\_matrice.c@{string\_matrice.c}}
+\doxysubsubsection{\texorpdfstring{detruire\_string\_matrice()}{detruire\_string\_matrice()}}
+{\footnotesize\ttfamily void detruire\+\_\+string\+\_\+matrice (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$$\ast$}]{matrice,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+fonction de destruction de la matrice 
+
+\textbackslash{}function detruire\+\_\+string\+\_\+matrice 
+\begin{DoxyParams}{Paramètres}
+{\em matrice} & \+: la matrice que l\textquotesingle{}on veut détruire \\
+\hline
+{\em size} & \+: taille de la matrice \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{string__matrice_8c_a2987824ba7b858b8411477bf57833d50}\label{string__matrice_8c_a2987824ba7b858b8411477bf57833d50}} 
+\index{string\_matrice.c@{string\_matrice.c}!get\_String\_Matrice@{get\_String\_Matrice}}
+\index{get\_String\_Matrice@{get\_String\_Matrice}!string\_matrice.c@{string\_matrice.c}}
+\doxysubsubsection{\texorpdfstring{get\_String\_Matrice()}{get\_String\_Matrice()}}
+{\footnotesize\ttfamily char $\ast$$\ast$$\ast$ get\+\_\+\+String\+\_\+\+Matrice (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor,  }\item[{int}]{nb\+\_\+bordure,  }\item[{int}]{x\+\_\+center,  }\item[{int}]{y\+\_\+center }\end{DoxyParamCaption})}
+
+
+
+fonction qui récupère une matrice en matrice string 
+
+\textbackslash{}function get\+\_\+string\+\_\+matrice 
+\begin{DoxyParams}{Paramètres}
+{\em motor} & \+: le moteur de jeu \\
+\hline
+{\em nb\+\_\+bordure} & \+: le nombre de bordure que l\textquotesingle{}on souhaite definir dans notre matrice \\
+\hline
+{\em x\+\_\+center} & \+: \\
+\hline
+{\em y\+\_\+center} & \+: \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+char\+: la matrice en string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{string__matrice_8c_adef3b07653d233b4f8a78826acb62125}\label{string__matrice_8c_adef3b07653d233b4f8a78826acb62125}} 
+\index{string\_matrice.c@{string\_matrice.c}!split\_string\_data@{split\_string\_data}}
+\index{split\_string\_data@{split\_string\_data}!string\_matrice.c@{string\_matrice.c}}
+\doxysubsubsection{\texorpdfstring{split\_string\_data()}{split\_string\_data()}}
+{\footnotesize\ttfamily int split\+\_\+string\+\_\+data (\begin{DoxyParamCaption}\item[{char}]{str\mbox{[}80\mbox{]},  }\item[{const char}]{s2,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Cette fonction découpe un string en deux. 
+
+\textbackslash{}function split\+\_\+string\+\_\+data 
+\begin{DoxyParams}{Paramètres}
+{\em str} & message \\
+\hline
+{\em s2} & \+: récupère le caractère à l\textquotesingle{}index \\
+\hline
+{\em index} & \+: la position auquel l\textquotesingle{}on veut choisir le caractère \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int \+: la position du caractère 
+\end{DoxyReturn}

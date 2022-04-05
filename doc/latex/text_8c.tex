@@ -1,0 +1,99 @@
+\hypertarget{text_8c}{}\doxysection{Référence du fichier text.\+c}
+\label{text_8c}\index{text.c@{text.c}}
+
+
+fichier dédié pour les textes à écrire  
+
+
+{\ttfamily \#include \char`\"{}../include/motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/text.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{text_8c_af794501b6e23371665e86572a1771810}{text\+\_\+init}} (motor\+\_\+t $\ast$$\ast$motor)
+\begin{DoxyCompactList}\small\item\em fonction d\textquotesingle{}initialisation du module de texte \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{text_8c_a22a8a64f541c1ca63acd2cb5032a9ae6}{set\+\_\+text\+\_\+font\+\_\+size}} (motor\+\_\+t $\ast$$\ast$motor, int size)
+\begin{DoxyCompactList}\small\item\em fonction de paramètrage de la taille de la police de texte \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{text_8c_a7758dbed9ccc936ce10065bbb6c7c95a}{text\+\_\+draw}} (motor\+\_\+t $\ast$$\ast$motor, char $\ast$text, int x, int y)
+\begin{DoxyCompactList}\small\item\em fonction d\textquotesingle{}initialisation du module de texte \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{text_8c_a7996f6965f182088db4961821d4512cb}{text\+\_\+quit}} (motor\+\_\+t $\ast$$\ast$motor)
+\begin{DoxyCompactList}\small\item\em fonction de destruction du texte \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fichier dédié pour les textes à écrire 
+
+\begin{DoxyAuthor}{Auteur}
+OKAT Elias 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+8 mars 22 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{text_8c_a22a8a64f541c1ca63acd2cb5032a9ae6}\label{text_8c_a22a8a64f541c1ca63acd2cb5032a9ae6}} 
+\index{text.c@{text.c}!set\_text\_font\_size@{set\_text\_font\_size}}
+\index{set\_text\_font\_size@{set\_text\_font\_size}!text.c@{text.c}}
+\doxysubsubsection{\texorpdfstring{set\_text\_font\_size()}{set\_text\_font\_size()}}
+{\footnotesize\ttfamily void set\+\_\+text\+\_\+font\+\_\+size (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+fonction de paramètrage de la taille de la police de texte 
+
+\textbackslash{}function set\+\_\+text\+\_\+font\+\_\+size 
+\begin{DoxyParams}{Paramètres}
+{\em motor} & \+: le moteur de jeu \\
+\hline
+{\em size} & \+: la taille de police \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{text_8c_a7758dbed9ccc936ce10065bbb6c7c95a}\label{text_8c_a7758dbed9ccc936ce10065bbb6c7c95a}} 
+\index{text.c@{text.c}!text\_draw@{text\_draw}}
+\index{text\_draw@{text\_draw}!text.c@{text.c}}
+\doxysubsubsection{\texorpdfstring{text\_draw()}{text\_draw()}}
+{\footnotesize\ttfamily void text\+\_\+draw (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor,  }\item[{char $\ast$}]{text,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+fonction d\textquotesingle{}initialisation du module de texte 
+
+\textbackslash{}function text\+\_\+draw 
+\begin{DoxyParams}{Paramètres}
+{\em motor} & \+: le moteur de jeu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{text_8c_af794501b6e23371665e86572a1771810}\label{text_8c_af794501b6e23371665e86572a1771810}} 
+\index{text.c@{text.c}!text\_init@{text\_init}}
+\index{text\_init@{text\_init}!text.c@{text.c}}
+\doxysubsubsection{\texorpdfstring{text\_init()}{text\_init()}}
+{\footnotesize\ttfamily int text\+\_\+init (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+
+
+
+fonction d\textquotesingle{}initialisation du module de texte 
+
+\textbackslash{}function text\+\_\+init 
+\begin{DoxyParams}{Paramètres}
+{\em motor} & \+: le moteur de jeu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{text_8c_a7996f6965f182088db4961821d4512cb}\label{text_8c_a7996f6965f182088db4961821d4512cb}} 
+\index{text.c@{text.c}!text\_quit@{text\_quit}}
+\index{text\_quit@{text\_quit}!text.c@{text.c}}
+\doxysubsubsection{\texorpdfstring{text\_quit()}{text\_quit()}}
+{\footnotesize\ttfamily void text\+\_\+quit (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+
+
+
+fonction de destruction du texte 
+
+\textbackslash{}function text\+\_\+quit 
+\begin{DoxyParams}{Paramètres}
+{\em motor} & \+: le moteur de jeu \\
+\hline
+\end{DoxyParams}

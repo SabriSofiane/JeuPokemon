@@ -1,8 +1,19 @@
+/**
+  * \file map.c
+  * \brief fichier dédié à la map du jeu
+  * \author Elias OKAT
+  * \version 1
+  * \date 28 février 2022
+*/
 #include "../include/motor.h"
 #include "../include/map.h"
 #include "../include/textures.h"
 #include "../include/string_matrice.h"
-
+/**
+  * \function init_map
+  * \brief fonction d'initialisation de la map de jeu
+  * \param motor : moteur de jeux
+*/
 int init_map(motor_t ** motor)
 {
   int retour = 0;
@@ -50,7 +61,12 @@ int init_map(motor_t ** motor)
 
   return retour;
 }
-
+/**
+  * \function display_map
+  * \brief fonction d'affichage de la matrice de jeu
+  * \param motor : moteur de jeux
+  * \param texture_id : id de la texture que l'on souhaite utilisé
+*/
 void display_map(motor_t ** motor,int calque_id)
 {
   int nb_bordure = 10;

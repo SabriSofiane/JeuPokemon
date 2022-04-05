@@ -1,6 +1,17 @@
+/**
+  * \file text.c
+  * \brief fichier dédié pour les textes à écrire
+  * \author OKAT Elias
+  * \version 1
+  * \date 8 mars 22
+*/
 #include "../include/motor.h"
 #include "../include/text.h"
-
+/**
+  * \function text_init
+  * \brief fonction d'initialisation du module de texte
+  * \param motor : le moteur de jeu
+*/
 int text_init(motor_t ** motor)
 {
   int retour = 0;
@@ -16,12 +27,21 @@ int text_init(motor_t ** motor)
 
   return(retour);
 }
-
+/**
+  * \function set_text_font_size
+  * \brief fonction de paramètrage de la taille de la police de texte
+  * \param motor : le moteur de jeu
+  * \param size : la taille de police
+*/
 void set_text_font_size(motor_t ** motor,int size)
 {
   (*motor)->windows->font = TTF_OpenFont("./fonts/PKMN_RBYGSC.ttf", size);
 }
-
+/**
+  * \function text_draw
+  * \brief fonction d'initialisation du module de texte
+  * \param motor : le moteur de jeu
+*/
 void text_draw(motor_t ** motor,char * text,int x,int y)
 {
   SDL_Color color = { 23, 101, 125 ,255};
@@ -50,7 +70,11 @@ void text_draw(motor_t ** motor,char * text,int x,int y)
   SDL_DestroyTexture(texture);
   SDL_FreeSurface(surface);
 }
-
+/**
+  * \function text_quit
+  * \brief fonction de destruction du texte
+  * \param motor : le moteur de jeu
+*/
 void text_quit(motor_t ** motor)
 {
   TTF_CloseFont((*motor)->windows->font);

@@ -1,0 +1,67 @@
+\hypertarget{event_8c}{}\doxysection{Référence du fichier event.\+c}
+\label{event_8c}\index{event.c@{event.c}}
+
+
+fichier de gestion des événements  
+
+
+{\ttfamily \#include \char`\"{}../include/motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/event.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/string\+\_\+matrice.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/collisions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/audio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/menu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/combat.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{event_8c_a0020fb4ad3d737c1e1c12fc8a359bcc5}{mouvement}} (motor\+\_\+t $\ast$$\ast$motor, float move\+\_\+add, char axis)
+\item 
+int \mbox{\hyperlink{event_8c_aae2ca38364bc575b4339dae17f4b214e}{event\+\_\+handle}} (motor\+\_\+t $\ast$$\ast$motor)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+fichier de gestion des événements 
+
+\begin{DoxyAuthor}{Auteur}
+Elias OKAT 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+28 février 2022 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{event_8c_aae2ca38364bc575b4339dae17f4b214e}\label{event_8c_aae2ca38364bc575b4339dae17f4b214e}} 
+\index{event.c@{event.c}!event\_handle@{event\_handle}}
+\index{event\_handle@{event\_handle}!event.c@{event.c}}
+\doxysubsubsection{\texorpdfstring{event\_handle()}{event\_handle()}}
+{\footnotesize\ttfamily int event\+\_\+handle (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+
+\textbackslash{}function event\+\_\+handle 
+\begin{DoxyParams}{Paramètres}
+{\em motor} & \+: moteur de jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne l\textquotesingle{}événement 
+\end{DoxyReturn}
+\mbox{\Hypertarget{event_8c_a0020fb4ad3d737c1e1c12fc8a359bcc5}\label{event_8c_a0020fb4ad3d737c1e1c12fc8a359bcc5}} 
+\index{event.c@{event.c}!mouvement@{mouvement}}
+\index{mouvement@{mouvement}!event.c@{event.c}}
+\doxysubsubsection{\texorpdfstring{mouvement()}{mouvement()}}
+{\footnotesize\ttfamily void mouvement (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor,  }\item[{float}]{move\+\_\+add,  }\item[{char}]{axis }\end{DoxyParamCaption})}
+
+\textbackslash{}function mouvement 
+\begin{DoxyParams}{Paramètres}
+{\em motor} & \+: moteur de jeu \\
+\hline
+{\em move\+\_\+add} & \+: valeur de déplacement \\
+\hline
+{\em axis} & \+: axe auquel le personnage devra se déplacer \\
+\hline
+\end{DoxyParams}
