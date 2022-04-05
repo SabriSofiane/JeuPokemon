@@ -27,7 +27,7 @@ int main(int argc, char * argv[]) {
   insertAtEnd(player, pkm);
   init_pkm_team(&pkm, "6.txt");
   insertAtEnd(player, pkm);
-  //play_sound(&game_motor,"C:/Users/Elias/Desktop/JEU_POKEMON/truc_bien_range/asset/Driftveil.mp3");
+  
   while (!game_motor->quit) {
     if (event_handle(&game_motor) == 1)
     {
@@ -36,7 +36,7 @@ int main(int argc, char * argv[]) {
 
     menu_Battle(&game_motor);
  
-    //1280x720
+ 
     SDL_RenderPresent(game_motor->renderer);
     }
   }
