@@ -750,7 +750,8 @@ int event_handle(motor_t ** motor) {
 
       break;
 
-      case SDLK_SPACE:
+      /*
+             case SDLK_SPACE:
       if (2)
       {
         int posX = (*motor)->player->posX;
@@ -787,6 +788,7 @@ int event_handle(motor_t ** motor) {
         detruire_string_matrice(matrice, 3);
       }
       break;
+      */
 
       default:
       //return -1;
