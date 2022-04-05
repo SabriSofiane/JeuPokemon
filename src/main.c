@@ -19,7 +19,7 @@
 #include "../include/SDL2/SDL_mixer.h"
 #include "../include/SDL2/SDL_ttf.h"
 
-#include "C:/Users/Elias/Desktop/JEU_POKEMON/include/load_header.h"
+#include "../include/load_header.h"
 
 #define fps_limit 16
 
