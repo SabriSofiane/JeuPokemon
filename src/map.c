@@ -18,8 +18,8 @@ int init_map(motor_t ** motor)
 {
   int retour = 0;
 
-  char * tileset = "C:/Users/Elias/Desktop/JEU_POKEMON/src/asset/composite_game.png";
-  char * datafile = "C:/Users/Elias/Desktop/JEU_POKEMON/src/asset/file_map3_game.dat";
+  char * tileset = "./src/asset/composite_game.png";
+  char * datafile = "./src/asset/file_map3_game.dat";
   load_texture(&(*motor)->renderer,&(*motor)->textures->texture_map,tileset);
 
   if ((*motor)->textures->texture_map== NULL)
@@ -87,40 +87,10 @@ void display_map(motor_t ** motor,int calque_id)
 
       int mat_val = split_string_data(mat[i][j],',',calque_id-1);
       int property = split_string_data(mat[i][j],',',3);
-      //mat_val--;
+     
 
-      if (1)//(mat_val != -1)
+      if (mat_val != -1)
       {
-        /*
-        int y = mat_val/tiles_size;
-        int x = mat_val-(y*tiles_size);
-        y++;
-*/
-        /*
-        if (! ((calque_id == 3) && (property == 2) && ((i == (*motor)->player->posX-1) && (j == ((*motor)->player->posY-4)))) )
-        {
-*/
-        /*
-          //Fonctionne
-          if (mat_val < 510)
-          {
-            SrcR.x = 0;
-            SrcR.y = 32*mat_val;
-          }else if (mat_val < 2*510)
-          {
-            SrcR.x = 32;
-            SrcR.y = 32*(mat_val-509);
-          }else if (mat_val < 3*510)
-          {
-            SrcR.x = 64;
-            SrcR.y = 32*(mat_val-1018);
-          }
-*/
-/*
-      SrcR.x = 32*(mat_val/510);
-      SrcR.y = 32*(mat_val%509);
-*/
-
         if (mat_val < 510)
         {
           SrcR.x = 0*32;
