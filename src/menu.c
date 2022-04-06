@@ -1082,8 +1082,9 @@ void menu_save(global_structure_t ** global_structure)
     SDL_RenderCopy((*global_structure)->renderer, menu_texture, NULL, &menuSelectSave);
 
 
+    set_text_font_size(global_structure,25);
     text_draw(global_structure,"Sauvegarder?",240,80);
-    text_draw(global_structure,"nomDresseur",200,380);
+    text_draw(global_structure,"Lyra",200,370);
     text_draw(global_structure,"Oui",900,300);
     text_draw(global_structure,"Non",900,400);
     SDL_DestroyTexture(textureBackgroundImage);
