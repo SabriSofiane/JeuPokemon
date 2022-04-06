@@ -32,7 +32,7 @@ int audio_init(global_structure_t ** global_structure)
   }
 
   (*global_structure)->musique->track_in_list = 0;
-  (*global_structure)->musique->volume = 1;
+  (*global_structure)->musique->volume = 0.5;
   DIR *d;
   struct dirent *dir;
   d = opendir("./src/asset/audio/");
