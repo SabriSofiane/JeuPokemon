@@ -20,3 +20,16 @@ Contrôles pour les menus :<br/>
 • **Entrer** - Confirmer la sélection d’un menu<br/>
 • **↑** - Sélectionner le menu plus haut<br/>
 • **↓** - Sélectionner le menu plus bas<br/>
+
+---
+
+Modifications effectués après la date limite
+
+
+suppresion des éléments suivant :
+
+admin.h
+
+creations des éléments suivant :
+
+Dossier objets (nécéssaire à la compilation)
