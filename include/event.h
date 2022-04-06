@@ -1,4 +1,4 @@
 
-void mouvement(motor_t ** motor, float move_add, char axis);
+void mouvement(global_structure_t ** global_structure, float move_add, char axis);
 
-int event_handle(motor_t ** motor);
+int event_handle(global_structure_t ** global_structure);

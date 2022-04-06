@@ -5,7 +5,7 @@
 fichier de gestion de combat  
 
 
-{\ttfamily \#include \char`\"{}../include/motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/global_structure.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/window\+\_\+render.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/combat.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/liste.\+h\char`\"{}}\newline
@@ -13,7 +13,7 @@ fichier de gestion de combat
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{combat_8c_a19cd40ebc53f1c29da60c5f38aa08f34}\label{combat_8c_a19cd40ebc53f1c29da60c5f38aa08f34}} 
-int {\bfseries init\+\_\+combat} (motor\+\_\+t $\ast$$\ast$motor, int pkm\+\_\+enemy\+\_\+ids\mbox{[}5\mbox{]})
+int {\bfseries init\+\_\+combat} (global_structure\+\_\+t $\ast$$\ast$global_structure, int pkm\+\_\+enemy\+\_\+ids\mbox{[}5\mbox{]})
 \item 
 void \mbox{\hyperlink{combat_8c_a56afc9c9f1c313561e1118283d25cb0c}{print\+\_\+list}} (Liste\+\_\+t $\ast$player)
 \begin{DoxyCompactList}\small\item\em Cette fonction permer de afficher tout les elements d\textquotesingle{}une liste de pokemon que le joueur possède. \end{DoxyCompactList}\item 
@@ -32,7 +32,7 @@ void \mbox{\hyperlink{combat_8c_a21edaecdcb48bd0ffd5230a3028bb2da}{affiche\+\_\+
 \begin{DoxyCompactList}\small\item\em Cette fonction affiche les statistiques des pokemons sur le terrain. \end{DoxyCompactList}\item 
 t\+\_\+pkm \mbox{\hyperlink{combat_8c_a59144ef179aa81ec5e2c437cc956087f}{Get\+Nth}} (Liste\+\_\+t $\ast$head, int index)
 \begin{DoxyCompactList}\small\item\em Cette fonction renvoie le pokemon a la place \textquotesingle{}index\textquotesingle{} de la liste. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{combat_8c_a117214db74819250eccf294fba5f979e}{swap\+Nodes}} (motor\+\_\+t $\ast$$\ast$motor, int n1, int n2)
+int \mbox{\hyperlink{combat_8c_a117214db74819250eccf294fba5f979e}{swap\+Nodes}} (global_structure\+\_\+t $\ast$$\ast$global_structure, int n1, int n2)
 \begin{DoxyCompactList}\small\item\em Echange la place entre deux pokemon dans la liste. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{combat_8c_a8b0e5f701d592a9ded13af8e504a1973}\label{combat_8c_a8b0e5f701d592a9ded13af8e504a1973}} 
 Liste\+\_\+t $\ast$ {\bfseries current\+\_\+pkm} (Liste\+\_\+t $\ast$player, int index)
@@ -55,7 +55,7 @@ int \mbox{\hyperlink{combat_8c_a24ce27ef5c734d05f4e02ff1ff9faee2}{verif\+\_\+pkm
 \begin{DoxyCompactList}\small\item\em Fonction qui verifie si tous les pokémons de la liste sont en vie. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{combat_8c_a0e78544507ae53daca1bf4ee4e9091ea}{combat}} (Liste\+\_\+t $\ast$pl, t\+\_\+pkm $\ast$wild\+\_\+pkm, int choix)
 \begin{DoxyCompactList}\small\item\em Fonction generale de combat par systeme de manche, inflige les degats et verifie l\textquotesingle{}etat de la manche. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{combat_8c_a83c33c210a538fe84769a5be53554e29}{capturer}} (motor\+\_\+t $\ast$$\ast$motor, Liste\+\_\+t $\ast$player, t\+\_\+pkm wild\+\_\+pkm)
+int \mbox{\hyperlink{combat_8c_a83c33c210a538fe84769a5be53554e29}{capturer}} (global_structure\+\_\+t $\ast$$\ast$global_structure, Liste\+\_\+t $\ast$player, t\+\_\+pkm wild\+\_\+pkm)
 \begin{DoxyCompactList}\small\item\em Initialisation du dresseur adverse. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{combat_8c_a4ecccdcd8f5d0d7234d0894ba0cb4511}\label{combat_8c_a4ecccdcd8f5d0d7234d0894ba0cb4511}} 
 int {\bfseries soin} (Liste\+\_\+t $\ast$player)
@@ -98,7 +98,7 @@ Cette fonction affiche les statistiques des pokemons sur le terrain.
 \index{combat.c@{combat.c}!capturer@{capturer}}
 \index{capturer@{capturer}!combat.c@{combat.c}}
 \doxysubsubsection{\texorpdfstring{capturer()}{capturer()}}
-{\footnotesize\ttfamily int capturer (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor,  }\item[{Liste\+\_\+t $\ast$}]{player,  }\item[{t\+\_\+pkm}]{wild\+\_\+pkm }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int capturer (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure,  }\item[{Liste\+\_\+t $\ast$}]{player,  }\item[{t\+\_\+pkm}]{wild\+\_\+pkm }\end{DoxyParamCaption})}
 
 
 
@@ -362,7 +362,7 @@ Fait varier les statistiques d\textquotesingle{}un pokemon.
 \index{combat.c@{combat.c}!swapNodes@{swapNodes}}
 \index{swapNodes@{swapNodes}!combat.c@{combat.c}}
 \doxysubsubsection{\texorpdfstring{swapNodes()}{swapNodes()}}
-{\footnotesize\ttfamily int swap\+Nodes (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor,  }\item[{int}]{n1,  }\item[{int}]{n2 }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int swap\+Nodes (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure,  }\item[{int}]{n1,  }\item[{int}]{n2 }\end{DoxyParamCaption})}
 
 
 

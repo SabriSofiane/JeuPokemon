@@ -1,2 +1,2 @@
 
-int init(motor_t ** motor);
+int init(global_structure_t ** global_structure);

@@ -27,60 +27,60 @@
 */
 void start_game(int fps_limit)
 {
-  motor_t * game_motor;
-  game_motor = init_motor();
+  global_structure_t * game_global_structure;
+  game_global_structure = init_global_structure();
 
 
-  if (game_motor == NULL)
+  if (game_global_structure == NULL)
   {
     printf("Erreur avec le moteur\n");
   }
 
-  play_sound(&game_motor,game_motor->musique->track_path_list[0],-1,0);
+  play_sound(&game_global_structure,game_global_structure->musique->track_path_list[0],-1,0);
 
-  while (!game_motor->quit) {
+  while (!game_global_structure->quit) {
 
-    SDL_RenderClear(game_motor->renderer);
+    SDL_RenderClear(game_global_structure->renderer);
 
-    event_handle(&game_motor);
+    event_handle(&game_global_structure);
 
-    game_motor->actual_time = SDL_GetTicks()+fps_limit;
+    game_global_structure->actual_time = SDL_GetTicks()+fps_limit;
 
-    limit_fps(game_motor->actual_time,fps_limit);
+    limit_fps(game_global_structure->actual_time,fps_limit);
 
-    SDL_SetRenderDrawColor(game_motor->renderer, 128,128,128, 255);
-    collision(&game_motor);
+    SDL_SetRenderDrawColor(game_global_structure->renderer, 128,128,128, 255);
+    collision(&game_global_structure);
 
-    display_map(&game_motor,1);   // Affichage du calque n°1
-    display_map(&game_motor,2);   // Affichage du calque n°2
-    display_map(&game_motor,3);   // Affichage du calque n°3
-    display_player(&game_motor);  // Affichage du joueur
-    display_map(&game_motor,4);   // Affichage du calque n°4
+    display_map(&game_global_structure,1);   // Affichage du calque n°1
+    display_map(&game_global_structure,2);   // Affichage du calque n°2
+    display_map(&game_global_structure,3);   // Affichage du calque n°3
+    display_player(&game_global_structure);  // Affichage du joueur
+    display_map(&game_global_structure,4);   // Affichage du calque n°4
 
-    menu(&game_motor);
+    menu(&game_global_structure);
 
-    ecran_acceuil(&game_motor);
+    ecran_acceuil(&game_global_structure);
 
-    menu_Bag(&game_motor);
+    menu_Bag(&game_global_structure);
 
-    menu_Battle(&game_motor);
+    menu_Battle(&game_global_structure);
 
-    menu_Battle_Attaque(&game_motor);
+    menu_Battle_Attaque(&game_global_structure);
 
-    menu_pokemon(&game_motor);
+    menu_pokemon(&game_global_structure);
 
-    menu_pokedex(&game_motor);
+    menu_pokedex(&game_global_structure);
 
-    menu_save(&game_motor);
+    menu_save(&game_global_structure);
 
-    speech_bubble(&game_motor);
+    speech_bubble(&game_global_structure);
 
-    SDL_RenderPresent(game_motor->renderer);
+    SDL_RenderPresent(game_global_structure->renderer);
   }
 
   printf("Fin du jeu\n");
-  destroy_window_render(&game_motor->windows->window,&game_motor->renderer);
-  destroy_motor(&game_motor);
+  destroy_window_render(&game_global_structure->windows->window,&game_global_structure->renderer);
+  destroy_global_structure(&game_global_structure);
   //TTF_Quit();
   IMG_Quit();
   SDL_Quit();

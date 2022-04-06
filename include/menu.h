@@ -1,19 +1,19 @@
-int init_menu(motor_t ** motor);
+int init_menu(global_structure_t ** global_structure);
 
-void menu(motor_t ** motor);
+void menu(global_structure_t ** global_structure);
 
-void speech_bubble(motor_t ** motor);
+void speech_bubble(global_structure_t ** global_structure);
 
 /**
   * \function render_text
   * \brief cette fonction permet de creer du texte et de le positioner
-  * \param motor : moteur de jeux
+  * \param global_structure : moteur de jeux
   * \param text : texte à afficher
   * \param font : la police du texte à afficher
   * \param x : position x du texte
   * \param y : position y du texte
 */
-void render_text(motor_t ** motor,char * text,TTF_Font *font,int x,int y);
+void render_text(global_structure_t ** global_structure,char * text,TTF_Font *font,int x,int y);
 
 
   /**
@@ -45,87 +45,87 @@ void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, S
 /**
   * \function menu
   * \brief menu principal du jeu
-  * \param motor : moteur de jeux
+  * \param global_structure : moteur de jeux
 */
 
 
   /**
     * \function menu_Bag
     * \brief menu du sac du joueur
-    * \param motor : moteur de jeux
+    * \param global_structure : moteur de jeux
   */
-  void menu_Bag(motor_t ** motor);
+  void menu_Bag(global_structure_t ** global_structure);
 
 
   /**
     * \function menu_Battle
     * \brief interface de combat du jeux
-    * \param motor : moteur de jeux
+    * \param global_structure : moteur de jeux
     * \param player : structure de donnéees contenant les informations des pokémons du joueur
     * \param wild_pkm : structure de donnéees contenant les informations des pokémons adversaire
   */
-  void menu_Battle(motor_t ** motor);
+  void menu_Battle(global_structure_t ** global_structure);
 
 
   /**
     * \function menu_Battle_Attaque
     * \brief interface de combat du jeux affichant les attaques disponibles pour le joueur
 
-    * \param motor : moteur de jeux
+    * \param global_structure : moteur de jeux
     * \param player : structure de donnéees contenant les informations des pokémons du joueur
     * \param wild_pkm : structure de donnéees contenant les informations des pokémons adversaire
   */
-  void menu_Battle_Attaque(motor_t ** motor);
+  void menu_Battle_Attaque(global_structure_t ** global_structure);
 
 
     /**
       * \function speech_bubble
       * \brief fonction qui affiche une bulle de texte contenant du texte mis en paramètre
-      * \param motor : moteur de jeux
+      * \param global_structure : moteur de jeux
       * \param text: texte à afficher dans la bulle
     */
-//  void speech_bubble(motor_t ** motor,char * text);
+//  void speech_bubble(global_structure_t ** global_structure,char * text);
 
 
   /**
     * \function menu_shop
     * \brief interface pour le marché
-    * \param motor : moteur de jeux
+    * \param global_structure : moteur de jeux
   */
-  void menu_shop(motor_t ** motor);
+  void menu_shop(global_structure_t ** global_structure);
 
   /**
     * \function menu_save
     * \brief interface pour la sauvegarde de jeu
-    * \param motor : moteur de jeux
+    * \param global_structure : moteur de jeux
   */
-  void menu_save(motor_t ** motor);
+  void menu_save(global_structure_t ** global_structure);
 
 
 
   /**
     * \function menu_pokedex
     * \brief interface pour le pokedex qui est une sorte de base de données des pokémons
-    * \param motor : moteur de jeux
+    * \param global_structure : moteur de jeux
   */
-  void menu_pokedex(motor_t ** motor);
+  void menu_pokedex(global_structure_t ** global_structure);
 
 
 
   /**
     * \function menu_pokemon
     * \brief interface pour la selection de pokemons pour le combat.
-    * \param motor : moteur de jeux
+    * \param global_structure : moteur de jeux
   */
-  void menu_pokemon(motor_t ** motor);
+  void menu_pokemon(global_structure_t ** global_structure);
 
 
 /**
   * \function ecran_acceuil
   * \brief interface pour l'écran principal du jeu
-  * \param motor : moteur de jeux
+  * \param global_structure : moteur de jeux
 */
-void ecran_acceuil(motor_t ** motor);
+void ecran_acceuil(global_structure_t ** global_structure);
 
 
-void resetSelecteurs(motor_t ** motor);
+void resetSelecteurs(global_structure_t ** global_structure);

@@ -10,6 +10,6 @@ var searchData=
   ['menu_5fpokemon_7',['menu_pokemon',['../menu_8c.html#a5ccf19b8b59c71fa8a07bdbe81c54c90',1,'menu.c']]],
   ['menu_5fsave_8',['menu_save',['../menu_8c.html#a5f948077226cf7cb161db485aec27aba',1,'menu.c']]],
   ['menu_5fshop_9',['menu_shop',['../menu_8c.html#aff8e002275fdbb9d4054a6b82f7b6788',1,'menu.c']]],
-  ['motor_2ec_10',['motor.c',['../motor_8c.html',1,'']]],
+  ['global_structure_2ec_10',['global_structure.c',['../global_structure_8c.html',1,'']]],
   ['mouvement_11',['mouvement',['../event_8c.html#a0020fb4ad3d737c1e1c12fc8a359bcc5',1,'event.c']]]
 ];

@@ -5,16 +5,16 @@
 fichier dédié à la map du jeu  
 
 
-{\ttfamily \#include \char`\"{}../include/motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/global_structure.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/map.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/textures.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/string\+\_\+matrice.\+h\char`\"{}}\newline
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{map_8c_a8ff134c84f38aeae58b106ac2bec3970}{init\+\_\+map}} (motor\+\_\+t $\ast$$\ast$motor)
+int \mbox{\hyperlink{map_8c_a8ff134c84f38aeae58b106ac2bec3970}{init\+\_\+map}} (global_structure\+\_\+t $\ast$$\ast$global_structure)
 \begin{DoxyCompactList}\small\item\em fonction d\textquotesingle{}initialisation de la map de jeu \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{map_8c_af837075cb9a2299e11eb0c9507675d6b}{display\+\_\+map}} (motor\+\_\+t $\ast$$\ast$motor, int calque\+\_\+id)
+void \mbox{\hyperlink{map_8c_af837075cb9a2299e11eb0c9507675d6b}{display\+\_\+map}} (global_structure\+\_\+t $\ast$$\ast$global_structure, int calque\+\_\+id)
 \begin{DoxyCompactList}\small\item\em fonction d\textquotesingle{}affichage de la matrice de jeu \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -37,7 +37,7 @@ Elias OKAT
 \index{map.c@{map.c}!display\_map@{display\_map}}
 \index{display\_map@{display\_map}!map.c@{map.c}}
 \doxysubsubsection{\texorpdfstring{display\_map()}{display\_map()}}
-{\footnotesize\ttfamily void display\+\_\+map (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor,  }\item[{int}]{calque\+\_\+id }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void display\+\_\+map (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure,  }\item[{int}]{calque\+\_\+id }\end{DoxyParamCaption})}
 
 
 
@@ -45,7 +45,7 @@ fonction d\textquotesingle{}affichage de la matrice de jeu
 
 \textbackslash{}function display\+\_\+map 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \\
+{\em global_structure} & \+: moteur de jeux \\
 \hline
 {\em texture\+\_\+id} & \+: id de la texture que l\textquotesingle{}on souhaite utilisé \\
 \hline
@@ -54,7 +54,7 @@ fonction d\textquotesingle{}affichage de la matrice de jeu
 \index{map.c@{map.c}!init\_map@{init\_map}}
 \index{init\_map@{init\_map}!map.c@{map.c}}
 \doxysubsubsection{\texorpdfstring{init\_map()}{init\_map()}}
-{\footnotesize\ttfamily int init\+\_\+map (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int init\+\_\+map (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure }\end{DoxyParamCaption})}
 
 
 
@@ -62,6 +62,6 @@ fonction d\textquotesingle{}initialisation de la map de jeu
 
 \textbackslash{}function init\+\_\+map 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \\
+{\em global_structure} & \+: moteur de jeux \\
 \hline
 \end{DoxyParams}

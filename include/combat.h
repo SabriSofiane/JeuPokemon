@@ -1,4 +1,4 @@
-int init_combat(motor_t ** motor,int pkm_enemy_ids[5]);
+int init_combat(global_structure_t ** global_structure,int pkm_enemy_ids[5]);
 
 void print_list(Liste_t * player);
 
@@ -16,7 +16,7 @@ void affiche_Stats(Liste_t *player, t_pkm *wild_pkm);
 
 t_pkm GetNth(Liste_t* head, int index);
 
-int swapNodes(motor_t ** motor, int n1, int n2);
+int swapNodes(global_structure_t ** global_structure, int n1, int n2);
 
 Liste_t * current_pkm(Liste_t *player, int index);
 
@@ -45,6 +45,6 @@ void getAttackEnnemiDuel(Liste_t *pl, Liste_t *ennemi);
 
 int combatDresseur(Liste_t *pl, Liste_t *ennemi, int choix);
 
-int capturer(motor_t ** motor, Liste_t *player, t_pkm wild_pkm);
+int capturer(global_structure_t ** global_structure, Liste_t *player, t_pkm wild_pkm);
 
 int soin(Liste_t *player);

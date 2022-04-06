@@ -5,7 +5,7 @@
 fichier d\textquotesingle{}interface graphique Attention au chemin des textures dans chacune des fonctions!  
 
 
-{\ttfamily \#include \char`\"{}../include/motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/global_structure.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/menu.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/text.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../include/textures.\+h\char`\"{}}\newline
@@ -14,36 +14,36 @@ fichier d\textquotesingle{}interface graphique Attention au chemin des textures 
 \doxysubsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{menu_8c_a19f6b16af8fa98b95b9b73f1853d3c22}{init\+\_\+menu}} (motor\+\_\+t $\ast$$\ast$motor)
+int \mbox{\hyperlink{menu_8c_a19f6b16af8fa98b95b9b73f1853d3c22}{init\+\_\+menu}} (global_structure\+\_\+t $\ast$$\ast$global_structure)
 \begin{DoxyCompactList}\small\item\em Initialisation de toutes les variables utilisé pour les menu. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{menu_8c_a74f320c38b3f02ea557f8d41e2f5df27}\label{menu_8c_a74f320c38b3f02ea557f8d41e2f5df27}} 
-void {\bfseries menu} (motor\+\_\+t $\ast$$\ast$motor)
+void {\bfseries menu} (global_structure\+\_\+t $\ast$$\ast$global_structure)
 \item 
-void \mbox{\hyperlink{menu_8c_abffa03133988ab61e668c75178d630b1}{render\+\_\+text}} (motor\+\_\+t $\ast$$\ast$motor, char $\ast$text, TTF\+\_\+\+Font $\ast$font, int x, int y)
+void \mbox{\hyperlink{menu_8c_abffa03133988ab61e668c75178d630b1}{render\+\_\+text}} (global_structure\+\_\+t $\ast$$\ast$global_structure, char $\ast$text, TTF\+\_\+\+Font $\ast$font, int x, int y)
 \begin{DoxyCompactList}\small\item\em cette fonction permet de creer du texte et de le positioner \end{DoxyCompactList}\item 
 SDL\+\_\+\+Color \mbox{\hyperlink{menu_8c_a07753dec9b0d8ad58944ccd3f7406ce3}{color}} (Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 \begin{DoxyCompactList}\small\item\em cette fonction permet d\textquotesingle{}attribuer la couleur d\textquotesingle{}un élément, utilisé pour les rectangles \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{menu_8c_a4ed74f3a081b1b11b9be57a1d6f15c3d}{Render\+HPBar}} (int x, int y, int w, int h, float percent, SDL\+\_\+\+Color FGColor, SDL\+\_\+\+Color BGColor, SDL\+\_\+\+Renderer $\ast$renderer)
 \begin{DoxyCompactList}\small\item\em cette fonction permet de modifier le rectangle de bar de vie avec un pourcentage de vie\+: vie/vie\+Maximum \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{menu_8c_a0d13db494d9bcac49cccb0c90dba0dcf}{menu\+\_\+\+Bag}} (motor\+\_\+t $\ast$$\ast$motor)
+void \mbox{\hyperlink{menu_8c_a0d13db494d9bcac49cccb0c90dba0dcf}{menu\+\_\+\+Bag}} (global_structure\+\_\+t $\ast$$\ast$global_structure)
 \begin{DoxyCompactList}\small\item\em menu principal du jeu \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{menu_8c_a46d7ec83f1d2c0efec8fed796bd04f0d}{menu\+\_\+\+Battle}} (motor\+\_\+t $\ast$$\ast$motor)
+void \mbox{\hyperlink{menu_8c_a46d7ec83f1d2c0efec8fed796bd04f0d}{menu\+\_\+\+Battle}} (global_structure\+\_\+t $\ast$$\ast$global_structure)
 \begin{DoxyCompactList}\small\item\em interface de combat du jeux \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{menu_8c_a5486d8209d4fd0cc06340ff6f20e4d38}{menu\+\_\+\+Battle\+\_\+\+Attaque}} (motor\+\_\+t $\ast$$\ast$motor)
+void \mbox{\hyperlink{menu_8c_a5486d8209d4fd0cc06340ff6f20e4d38}{menu\+\_\+\+Battle\+\_\+\+Attaque}} (global_structure\+\_\+t $\ast$$\ast$global_structure)
 \begin{DoxyCompactList}\small\item\em interface de combat du jeux affichant les attaques disponibles pour le joueur \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{menu_8c_a78e6d1e68c60b1602cafff26f277b170}{speech\+\_\+bubble}} (motor\+\_\+t $\ast$$\ast$motor)
+void \mbox{\hyperlink{menu_8c_a78e6d1e68c60b1602cafff26f277b170}{speech\+\_\+bubble}} (global_structure\+\_\+t $\ast$$\ast$global_structure)
 \begin{DoxyCompactList}\small\item\em fonction qui affiche une bulle de texte contenant du texte mis en paramètre \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{menu_8c_aff8e002275fdbb9d4054a6b82f7b6788}{menu\+\_\+shop}} (motor\+\_\+t $\ast$$\ast$motor)
+void \mbox{\hyperlink{menu_8c_aff8e002275fdbb9d4054a6b82f7b6788}{menu\+\_\+shop}} (global_structure\+\_\+t $\ast$$\ast$global_structure)
 \begin{DoxyCompactList}\small\item\em interface pour le marché \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{menu_8c_a5f948077226cf7cb161db485aec27aba}{menu\+\_\+save}} (motor\+\_\+t $\ast$$\ast$motor)
+void \mbox{\hyperlink{menu_8c_a5f948077226cf7cb161db485aec27aba}{menu\+\_\+save}} (global_structure\+\_\+t $\ast$$\ast$global_structure)
 \begin{DoxyCompactList}\small\item\em interface pour la sauvegarde de jeu \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{menu_8c_a00b330ae7c5b28b22253c6b8d89c1281}{menu\+\_\+pokedex}} (motor\+\_\+t $\ast$$\ast$motor)
+void \mbox{\hyperlink{menu_8c_a00b330ae7c5b28b22253c6b8d89c1281}{menu\+\_\+pokedex}} (global_structure\+\_\+t $\ast$$\ast$global_structure)
 \begin{DoxyCompactList}\small\item\em interface pour le pokedex qui est une sorte de base de données des pokémons \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{menu_8c_a5ccf19b8b59c71fa8a07bdbe81c54c90}{menu\+\_\+pokemon}} (motor\+\_\+t $\ast$$\ast$motor)
+void \mbox{\hyperlink{menu_8c_a5ccf19b8b59c71fa8a07bdbe81c54c90}{menu\+\_\+pokemon}} (global_structure\+\_\+t $\ast$$\ast$global_structure)
 \begin{DoxyCompactList}\small\item\em interface pour la selection de pokemons pour le combat. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{menu_8c_a413c6aacc17bd6ea5af704998608c023}{ecran\+\_\+acceuil}} (motor\+\_\+t $\ast$$\ast$motor)
+void \mbox{\hyperlink{menu_8c_a413c6aacc17bd6ea5af704998608c023}{ecran\+\_\+acceuil}} (global_structure\+\_\+t $\ast$$\ast$global_structure)
 \begin{DoxyCompactList}\small\item\em interface pour l\textquotesingle{}écran principal du jeu \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{menu_8c_a1d678454da7c00d9201de6439446c848}{reset\+Selecteurs}} (motor\+\_\+t $\ast$$\ast$motor)
+void \mbox{\hyperlink{menu_8c_a1d678454da7c00d9201de6439446c848}{reset\+Selecteurs}} (global_structure\+\_\+t $\ast$$\ast$global_structure)
 \begin{DoxyCompactList}\small\item\em Reset des variables utilisé par les selecteurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -92,7 +92,7 @@ col\+: un tableau avec les valeurs mis en paramètre
 \index{menu.c@{menu.c}!ecran\_acceuil@{ecran\_acceuil}}
 \index{ecran\_acceuil@{ecran\_acceuil}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{ecran\_acceuil()}{ecran\_acceuil()}}
-{\footnotesize\ttfamily void ecran\+\_\+acceuil (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void ecran\+\_\+acceuil (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure }\end{DoxyParamCaption})}
 
 
 
@@ -100,14 +100,14 @@ interface pour l\textquotesingle{}écran principal du jeu
 
 \textbackslash{}function ecran\+\_\+acceuil 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \\
+{\em global_structure} & \+: moteur de jeux \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{menu_8c_a19f6b16af8fa98b95b9b73f1853d3c22}\label{menu_8c_a19f6b16af8fa98b95b9b73f1853d3c22}} 
 \index{menu.c@{menu.c}!init\_menu@{init\_menu}}
 \index{init\_menu@{init\_menu}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{init\_menu()}{init\_menu()}}
-{\footnotesize\ttfamily int init\+\_\+menu (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int init\+\_\+menu (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure }\end{DoxyParamCaption})}
 
 
 
@@ -115,14 +115,14 @@ Initialisation de toutes les variables utilisé pour les menu.
 
 \textbackslash{}function init\+\_\+menu 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \\
+{\em global_structure} & \+: moteur de jeux \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{menu_8c_a0d13db494d9bcac49cccb0c90dba0dcf}\label{menu_8c_a0d13db494d9bcac49cccb0c90dba0dcf}} 
 \index{menu.c@{menu.c}!menu\_Bag@{menu\_Bag}}
 \index{menu\_Bag@{menu\_Bag}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{menu\_Bag()}{menu\_Bag()}}
-{\footnotesize\ttfamily void menu\+\_\+\+Bag (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void menu\+\_\+\+Bag (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure }\end{DoxyParamCaption})}
 
 
 
@@ -130,19 +130,19 @@ menu principal du jeu
 
 \textbackslash{}function menu 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \textbackslash{}function menu\+\_\+\+Bag\\
+{\em global_structure} & \+: moteur de jeux \textbackslash{}function menu\+\_\+\+Bag\\
 \hline
 \end{DoxyParams}
 menu du sac du joueur 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \\
+{\em global_structure} & \+: moteur de jeux \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{menu_8c_a46d7ec83f1d2c0efec8fed796bd04f0d}\label{menu_8c_a46d7ec83f1d2c0efec8fed796bd04f0d}} 
 \index{menu.c@{menu.c}!menu\_Battle@{menu\_Battle}}
 \index{menu\_Battle@{menu\_Battle}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{menu\_Battle()}{menu\_Battle()}}
-{\footnotesize\ttfamily void menu\+\_\+\+Battle (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void menu\+\_\+\+Battle (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure }\end{DoxyParamCaption})}
 
 
 
@@ -150,7 +150,7 @@ interface de combat du jeux
 
 \textbackslash{}function menu\+\_\+\+Battle 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \\
+{\em global_structure} & \+: moteur de jeux \\
 \hline
 {\em player} & \+: structure de donnéees contenant les informations des pokémons du joueur \\
 \hline
@@ -161,7 +161,7 @@ interface de combat du jeux
 \index{menu.c@{menu.c}!menu\_Battle\_Attaque@{menu\_Battle\_Attaque}}
 \index{menu\_Battle\_Attaque@{menu\_Battle\_Attaque}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{menu\_Battle\_Attaque()}{menu\_Battle\_Attaque()}}
-{\footnotesize\ttfamily void menu\+\_\+\+Battle\+\_\+\+Attaque (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void menu\+\_\+\+Battle\+\_\+\+Attaque (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure }\end{DoxyParamCaption})}
 
 
 
@@ -171,7 +171,7 @@ interface de combat du jeux affichant les attaques disponibles pour le joueur
 
 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \\
+{\em global_structure} & \+: moteur de jeux \\
 \hline
 {\em player} & \+: structure de donnéees contenant les informations des pokémons du joueur \\
 \hline
@@ -182,7 +182,7 @@ interface de combat du jeux affichant les attaques disponibles pour le joueur
 \index{menu.c@{menu.c}!menu\_pokedex@{menu\_pokedex}}
 \index{menu\_pokedex@{menu\_pokedex}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{menu\_pokedex()}{menu\_pokedex()}}
-{\footnotesize\ttfamily void menu\+\_\+pokedex (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void menu\+\_\+pokedex (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure }\end{DoxyParamCaption})}
 
 
 
@@ -190,14 +190,14 @@ interface pour le pokedex qui est une sorte de base de données des pokémons
 
 \textbackslash{}function menu\+\_\+pokedex 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \\
+{\em global_structure} & \+: moteur de jeux \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{menu_8c_a5ccf19b8b59c71fa8a07bdbe81c54c90}\label{menu_8c_a5ccf19b8b59c71fa8a07bdbe81c54c90}} 
 \index{menu.c@{menu.c}!menu\_pokemon@{menu\_pokemon}}
 \index{menu\_pokemon@{menu\_pokemon}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{menu\_pokemon()}{menu\_pokemon()}}
-{\footnotesize\ttfamily void menu\+\_\+pokemon (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void menu\+\_\+pokemon (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure }\end{DoxyParamCaption})}
 
 
 
@@ -205,14 +205,14 @@ interface pour la selection de pokemons pour le combat.
 
 \textbackslash{}function menu\+\_\+pokemon 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \\
+{\em global_structure} & \+: moteur de jeux \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{menu_8c_a5f948077226cf7cb161db485aec27aba}\label{menu_8c_a5f948077226cf7cb161db485aec27aba}} 
 \index{menu.c@{menu.c}!menu\_save@{menu\_save}}
 \index{menu\_save@{menu\_save}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{menu\_save()}{menu\_save()}}
-{\footnotesize\ttfamily void menu\+\_\+save (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void menu\+\_\+save (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure }\end{DoxyParamCaption})}
 
 
 
@@ -220,14 +220,14 @@ interface pour la sauvegarde de jeu
 
 \textbackslash{}function menu\+\_\+save 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \\
+{\em global_structure} & \+: moteur de jeux \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{menu_8c_aff8e002275fdbb9d4054a6b82f7b6788}\label{menu_8c_aff8e002275fdbb9d4054a6b82f7b6788}} 
 \index{menu.c@{menu.c}!menu\_shop@{menu\_shop}}
 \index{menu\_shop@{menu\_shop}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{menu\_shop()}{menu\_shop()}}
-{\footnotesize\ttfamily void menu\+\_\+shop (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void menu\+\_\+shop (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure }\end{DoxyParamCaption})}
 
 
 
@@ -235,14 +235,14 @@ interface pour le marché
 
 \textbackslash{}function menu\+\_\+shop 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \\
+{\em global_structure} & \+: moteur de jeux \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{menu_8c_abffa03133988ab61e668c75178d630b1}\label{menu_8c_abffa03133988ab61e668c75178d630b1}} 
 \index{menu.c@{menu.c}!render\_text@{render\_text}}
 \index{render\_text@{render\_text}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{render\_text()}{render\_text()}}
-{\footnotesize\ttfamily void render\+\_\+text (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor,  }\item[{char $\ast$}]{text,  }\item[{TTF\+\_\+\+Font $\ast$}]{font,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void render\+\_\+text (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure,  }\item[{char $\ast$}]{text,  }\item[{TTF\+\_\+\+Font $\ast$}]{font,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
 
 
 
@@ -250,7 +250,7 @@ cette fonction permet de creer du texte et de le positioner
 
 \textbackslash{}function text\+\_\+draw 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \\
+{\em global_structure} & \+: moteur de jeux \\
 \hline
 {\em text} & \+: texte à afficher \\
 \hline
@@ -296,7 +296,7 @@ cette fonction permet de modifier le rectangle de bar de vie avec un pourcentage
 \index{menu.c@{menu.c}!resetSelecteurs@{resetSelecteurs}}
 \index{resetSelecteurs@{resetSelecteurs}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{resetSelecteurs()}{resetSelecteurs()}}
-{\footnotesize\ttfamily void reset\+Selecteurs (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void reset\+Selecteurs (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure }\end{DoxyParamCaption})}
 
 
 
@@ -304,14 +304,14 @@ Reset des variables utilisé par les selecteurs.
 
 \textbackslash{}function reset\+Selecteurs 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \\
+{\em global_structure} & \+: moteur de jeux \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{menu_8c_a78e6d1e68c60b1602cafff26f277b170}\label{menu_8c_a78e6d1e68c60b1602cafff26f277b170}} 
 \index{menu.c@{menu.c}!speech\_bubble@{speech\_bubble}}
 \index{speech\_bubble@{speech\_bubble}!menu.c@{menu.c}}
 \doxysubsubsection{\texorpdfstring{speech\_bubble()}{speech\_bubble()}}
-{\footnotesize\ttfamily void speech\+\_\+bubble (\begin{DoxyParamCaption}\item[{motor\+\_\+t $\ast$$\ast$}]{motor }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void speech\+\_\+bubble (\begin{DoxyParamCaption}\item[{global_structure\+\_\+t $\ast$$\ast$}]{global_structure }\end{DoxyParamCaption})}
 
 
 
@@ -319,13 +319,13 @@ fonction qui affiche une bulle de texte contenant du texte mis en paramètre
 
 \textbackslash{}function speech\+\_\+bubble 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \\
+{\em global_structure} & \+: moteur de jeux \\
 \hline
 {\em text} & texte à afficher dans la bulle \textbackslash{}function speech\+\_\+bubble\\
 \hline
 \end{DoxyParams}
 interface d\textquotesingle{}une bulle de texte pour le dialogue 
 \begin{DoxyParams}{Paramètres}
-{\em motor} & \+: moteur de jeux \\
+{\em global_structure} & \+: moteur de jeux \\
 \hline
 \end{DoxyParams}

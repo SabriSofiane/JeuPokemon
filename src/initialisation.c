@@ -6,7 +6,7 @@
   * \date 28 mars 22
 */
 
-#include "../include/motor.h"
+#include "../include/global_structure.h"
 #include "../include/initialisation.h"
 #include "../include/player.h"
 #include "../include/map.h"
@@ -14,10 +14,10 @@
  /**
    * \function init
    * \brief fonction d'initialisation de tout les éléments liée à la SDL, de la map et du joueur
-   * \param motor : moteur de jeux
+   * \param global_structure : moteur de jeux
    * \return retourne -1 si une erreur s'est produite
  */
-int init(motor_t ** motor)
+int init(global_structure_t ** global_structure)
 {
   int retour = 0;
 

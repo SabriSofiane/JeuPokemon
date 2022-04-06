@@ -5,31 +5,31 @@
   * \version 1
   * \date 8 mars 22
 */
-#include "../include/motor.h"
+#include "../include/global_structure.h"
 #include "../include/window_render.h"
 /**
   * \function init_window_render
   * \brief fonction d'initialisation de la fenetre
-  * \param motor : le moteur de jeu
+  * \param global_structure : le moteur de jeu
 */
-int init_window_render(motor_t ** motor)
+int init_window_render(global_structure_t ** global_structure)
 {
   int retour = 0;
 
-  (*motor)->windows = malloc(sizeof(window_t));    // Allocation de l'espace mémoire pour la fenetre
+  (*global_structure)->windows = malloc(sizeof(window_t));    // Allocation de l'espace mémoire pour la fenetre
 
-  if ((*motor)->windows == NULL)
+  if ((*global_structure)->windows == NULL)
   {
     printf("Erreur a l'allocation de la struture de la fenetre  : %s\n",SDL_GetError());
     retour = -1;
   }
 
-  (*motor)->windows->width = 1280;                 // Définition de la largeur de la fenetre
-  (*motor)->windows->height = 720;                 // Définition de la hauteur de la fenetre
-  (*motor)->windows->size_coef = 2;                // Définition du Coefficient d'échelle (ne vraiment pas modifier svp)
-  (*motor)->windows->font = malloc(sizeof(TTF_Font*));
+  (*global_structure)->windows->width = 1280;                 // Définition de la largeur de la fenetre
+  (*global_structure)->windows->height = 720;                 // Définition de la hauteur de la fenetre
+  (*global_structure)->windows->size_coef = 2;                // Définition du Coefficient d'échelle (ne vraiment pas modifier svp)
+  (*global_structure)->windows->font = malloc(sizeof(TTF_Font*));
 
-  if ((*motor)->windows == NULL)
+  if ((*global_structure)->windows == NULL)
   {
     printf("Erreur a l'allocation de la police : %s\n",SDL_GetError());
     retour = -1;

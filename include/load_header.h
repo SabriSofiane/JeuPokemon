@@ -1,4 +1,4 @@
-#include "motor.h"
+#include "global_structure.h"
 #include "window_render.h"
 #include "textures.h"
 #include "player.h"

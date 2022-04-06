@@ -232,6 +232,7 @@ typedef struct
   int loop;
 } musique_t;
 
+/*
 typedef struct
 {
   int menu_change;
@@ -242,7 +243,7 @@ typedef struct
   char arguments[10][5];
   unsigned int key_delay;
 } admin_console_t;
-
+*/
 
 typedef struct
 {
@@ -260,13 +261,13 @@ typedef struct
     unsigned int actual_time;
     map_t * map;
     keys_t keys;
-    admin_console_t * admin_console;
+    //admin_console_t * admin_console;
     musique_t * musique;
     menu_t * menu;
     t_pkm pkm;
     t_pkm wild_pkm;
     Liste_t * liste_player;
-} motor_t;                          // Struture du moteur de jeu (⚠️merci de ne pas modifier⚠️)
+} global_structure_t;                          // Struture du moteur de jeu (⚠️merci de ne pas modifier⚠️)
 
 
 /*-------------------------------------*/
@@ -274,6 +275,6 @@ typedef struct
 /*-------------------------------------*/
 
 
-motor_t * init_motor();
+global_structure_t * init_global_structure();
 
-void destroy_motor(motor_t ** motor);
+void destroy_global_structure(global_structure_t ** global_structure);

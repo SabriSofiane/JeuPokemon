@@ -5,24 +5,24 @@
   * \version 1
   * \date 28 février 2022
 */
-#include "../include/motor.h"
+#include "../include/global_structure.h"
 #include "../include/map.h"
 #include "../include/textures.h"
 #include "../include/string_matrice.h"
 /**
   * \function init_map
   * \brief fonction d'initialisation de la map de jeu
-  * \param motor : moteur de jeux
+  * \param global_structure : moteur de jeux
 */
-int init_map(motor_t ** motor)
+int init_map(global_structure_t ** global_structure)
 {
   int retour = 0;
 
   char * tileset = "./src/asset/composite_game.png";
   char * datafile = "./src/asset/file_map3_game.dat";
-  load_texture(&(*motor)->renderer,&(*motor)->textures->texture_map,tileset);
+  load_texture(&(*global_structure)->renderer,&(*global_structure)->textures->texture_map,tileset);
 
-  if ((*motor)->textures->texture_map== NULL)
+  if ((*global_structure)->textures->texture_map== NULL)
   {
     printf("Erreur au chargement de la texture de la map : %s\n",SDL_GetError());
     retour = -1;
@@ -30,7 +30,7 @@ int init_map(motor_t ** motor)
 
 
 
-  int r = (*motor)->tiles_number, c = (*motor)->tiles_number;
+  int r = (*global_structure)->tiles_number, c = (*global_structure)->tiles_number;
 
   FILE * file;
 
@@ -41,9 +41,9 @@ int init_map(motor_t ** motor)
     retour = -1;
   }
 
-  (*motor)->matrice_file = creer_string_matrice((*motor)->tiles_number);
+  (*global_structure)->matrice_file = creer_string_matrice((*global_structure)->tiles_number);
 
-  if ((*motor)->matrice_file == NULL)
+  if ((*global_structure)->matrice_file == NULL)
   {
     printf("Erreur au chargement de la matrice de la map\n");
     retour = -1;
@@ -53,7 +53,7 @@ int init_map(motor_t ** motor)
     for (int j = 0; j < c; ++j) {
       char str[80];
       fscanf(file, "%s", str);
-      strncpy((*motor)->matrice_file[i][j],str,30);
+      strncpy((*global_structure)->matrice_file[i][j],str,30);
     }
   }
 
@@ -64,14 +64,14 @@ int init_map(motor_t ** motor)
 /**
   * \function display_map
   * \brief fonction d'affichage de la matrice de jeu
-  * \param motor : moteur de jeux
+  * \param global_structure : moteur de jeux
   * \param texture_id : id de la texture que l'on souhaite utilisé
 */
-void display_map(motor_t ** motor,int calque_id)
+void display_map(global_structure_t ** global_structure,int calque_id)
 {
   int nb_bordure = 10;
 
-  char *** mat = get_String_Matrice(&(*motor), nb_bordure, (*motor)->player->posX,(*motor)->player->posY);
+  char *** mat = get_String_Matrice(&(*global_structure), nb_bordure, (*global_structure)->player->posX,(*global_structure)->player->posY);
   int loop = (2 * nb_bordure) + 1;
 
   //printf("matrice %s\n",mat[16][16]);
@@ -83,13 +83,13 @@ void display_map(motor_t ** motor,int calque_id)
       SDL_Rect SrcR;
       SDL_Rect DestR;
 
-      int tiles_size = (int)(32*(floor((*motor)->windows->size_coef)));
+      int tiles_size = (int)(32*(floor((*global_structure)->windows->size_coef)));
 
       int mat_val = split_string_data(mat[i][j],',',calque_id-1);
       int property = split_string_data(mat[i][j],',',3);
-     
 
-      if (mat_val != -2) //Si la split_string_data à renvoyé -2, alors cela veut dire que la cellule et hors du jeu de donnée et donc hors de la map 
+
+      if (mat_val != -2) //Si la split_string_data à renvoyé -2, alors cela veut dire que la cellule et hors du jeu de donnée et donc hors de la map
       {
         if (mat_val < 510)
         {
@@ -131,8 +131,8 @@ void display_map(motor_t ** motor,int calque_id)
           DestR.w = tiles_size;
           DestR.h = tiles_size;
 
-          SDL_QueryTexture((*motor)->textures->texture_map, NULL, NULL,  &image_width , &image_height);
-          SDL_RenderCopy((*motor)->renderer, (*motor)->textures->texture_map, &SrcR, &DestR);
+          SDL_QueryTexture((*global_structure)->textures->texture_map, NULL, NULL,  &image_width , &image_height);
+          SDL_RenderCopy((*global_structure)->renderer, (*global_structure)->textures->texture_map, &SrcR, &DestR);
       }else {
 
         DestR.x = 0 + (tiles_size * j);
@@ -140,8 +140,8 @@ void display_map(motor_t ** motor,int calque_id)
         DestR.w = tiles_size;
         DestR.h = tiles_size;
 
-        SDL_SetRenderDrawColor( (*motor)->renderer, 255, 0, 0, 255 );
-        SDL_RenderFillRect( (*motor)->renderer, &DestR );
+        SDL_SetRenderDrawColor( (*global_structure)->renderer, 255, 0, 0, 255 );
+        SDL_RenderFillRect( (*global_structure)->renderer, &DestR );
       }
 
     }

@@ -5,33 +5,33 @@
   * \version 1
   * \date 28 mars 22
 */
-#include "../include/motor.h"
+#include "../include/global_structure.h"
 #include "../include/window_render.h"
 #include "../include/combat.h"
 #include "../include/liste.h"
 
-int init_combat(motor_t ** motor,int pkm_enemy_ids[5])
+int init_combat(global_structure_t ** global_structure,int pkm_enemy_ids[5])
 {
   int retour = 0;
 
-  init_pkm_team(&(*motor)->pkm, "1.txt");
+  init_pkm_team(&(*global_structure)->pkm, "1.txt");
 
-  inserDebut(&(*motor)->liste_player,(*motor)->pkm);
+  inserDebut(&(*global_structure)->liste_player,(*global_structure)->pkm);
 
-  init_pkm_team(&(*motor)->pkm, "3.txt");
-  inserFin((*motor)->liste_player, (*motor)->pkm);
+  init_pkm_team(&(*global_structure)->pkm, "3.txt");
+  inserFin((*global_structure)->liste_player, (*global_structure)->pkm);
 /*
-  init_pkm_team(&(*motor)->pkm, "3.txt");
-  inserFin((*motor)->liste_player, (*motor)->pkm);
+  init_pkm_team(&(*global_structure)->pkm, "3.txt");
+  inserFin((*global_structure)->liste_player, (*global_structure)->pkm);
 */
-  init_pkm_team(&(*motor)->pkm, "7.txt");
-  inserFin((*motor)->liste_player, (*motor)->pkm);
+  init_pkm_team(&(*global_structure)->pkm, "7.txt");
+  inserFin((*global_structure)->liste_player, (*global_structure)->pkm);
 
-  init_pkm_team(&(*motor)->pkm, "5.txt");
-  inserFin((*motor)->liste_player, (*motor)->pkm);
+  init_pkm_team(&(*global_structure)->pkm, "5.txt");
+  inserFin((*global_structure)->liste_player, (*global_structure)->pkm);
 
-  init_pkm_team(&(*motor)->pkm, "6.txt");
-  inserFin((*motor)->liste_player, (*motor)->pkm);
+  init_pkm_team(&(*global_structure)->pkm, "6.txt");
+  inserFin((*global_structure)->liste_player, (*global_structure)->pkm);
 
 
   return(retour);
@@ -95,7 +95,7 @@ void inserDebut(Liste_t **p, t_pkm pkm)
         *p = element;       /* Le pointeur pointe sur le dernier élément. */
 }
 
-//inserFin((*motor)->liste_player, (*motor)->pkm);
+//inserFin((*global_structure)->liste_player, (*global_structure)->pkm);
 
 /**
   * \function inserFin
@@ -178,12 +178,12 @@ t_pkm GetNth(Liste_t* head, int index)
   * \param n2 : le deuxième pokemon
   * \return int : Renvoie 1 si l'echange est possible ou 0 sinon
   */
-int swapNodes(motor_t ** motor, int n1, int n2){
-    Liste_t *prevNode1 = NULL, *prevNode2 = NULL, *node1 = (*motor)->liste_player, *node2 = (*motor)->liste_player, *temp = NULL;
+int swapNodes(global_structure_t ** global_structure, int n1, int n2){
+    Liste_t *prevNode1 = NULL, *prevNode2 = NULL, *node1 = (*global_structure)->liste_player, *node2 = (*global_structure)->liste_player, *temp = NULL;
     int tp;
     int retour = 0;
     //Verifier si la liste est null
-    if((*motor)->liste_player == NULL) {
+    if((*global_structure)->liste_player == NULL) {
       retour = -1;
     }
 
@@ -213,12 +213,12 @@ int swapNodes(motor_t ** motor, int n1, int n2){
         if(prevNode1 != NULL)
           prevNode1->next = node2;
         else
-          (*motor)->liste_player  = node2;
+          (*global_structure)->liste_player  = node2;
         //Si l'element precedent de node2 n'est pas null, le pointer sur node1
         if(prevNode2 != NULL)
           prevNode2->next = node1;
         else
-          (*motor)->liste_player  = node1;
+          (*global_structure)->liste_player  = node1;
         //Echange les elements de node1 et node2
         temp = node1->next;
         node1->next = node2->next;
@@ -634,26 +634,26 @@ int combatDresseur(Liste_t *pl, Liste_t *ennemi, int choix){
 }
 */
 
-int capturer(motor_t ** motor, Liste_t *player, t_pkm wild_pkm)
+int capturer(global_structure_t ** global_structure, Liste_t *player, t_pkm wild_pkm)
 {
   int proba = rand() % 2;
   if (proba == 0){
     printf("rate\n");
-    strncpy((*motor)->menu->speech_bubble_text,"La capture a rate !",19);
-    (*motor)->menu->speech_bubble = 1;
+    strncpy((*global_structure)->menu->speech_bubble_text,"La capture a rate !",19);
+    (*global_structure)->menu->speech_bubble = 1;
     return 0;
   }
   else if (proba == 1 && Length(player) <  6){
     inserFin(player, wild_pkm);
     printf("La capture a fonctionne\n");
-    strncpy((*motor)->menu->speech_bubble_text,"La capture a fonctionne !",25);
-    (*motor)->menu->speech_bubble = 1;
+    strncpy((*global_structure)->menu->speech_bubble_text,"La capture a fonctionne !",25);
+    (*global_structure)->menu->speech_bubble = 1;
     return 1;
   }
   else{
     printf("CA MARCHE PAS\n");
-    strncpy((*motor)->menu->speech_bubble_text,"Vous avez deja 6 pokemon !",26);
-    (*motor)->menu->speech_bubble = 1;
+    strncpy((*global_structure)->menu->speech_bubble_text,"Vous avez deja 6 pokemon !",26);
+    (*global_structure)->menu->speech_bubble = 1;
   }
 }
 

@@ -70,7 +70,7 @@ $(function() {
 
 <p>fichier d'interface graphique Attention au chemin des textures dans chacune des fonctions!  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &quot;../include/motor.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;../include/global_structure.h&quot;</code><br />
 <code>#include &quot;../include/menu.h&quot;</code><br />
 <code>#include &quot;../include/text.h&quot;</code><br />
 <code>#include &quot;../include/textures.h&quot;</code><br />
@@ -79,13 +79,13 @@ $(function() {
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a19f6b16af8fa98b95b9b73f1853d3c22"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a19f6b16af8fa98b95b9b73f1853d3c22">init_menu</a> (motor_t **motor)</td></tr>
+<tr class="memitem:a19f6b16af8fa98b95b9b73f1853d3c22"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a19f6b16af8fa98b95b9b73f1853d3c22">init_menu</a> (global_structure_t **global_structure)</td></tr>
 <tr class="memdesc:a19f6b16af8fa98b95b9b73f1853d3c22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation de toutes les variables utilisé pour les menu.  <a href="menu_8c.html#a19f6b16af8fa98b95b9b73f1853d3c22">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a19f6b16af8fa98b95b9b73f1853d3c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74f320c38b3f02ea557f8d41e2f5df27"><td class="memItemLeft" align="right" valign="top"><a id="a74f320c38b3f02ea557f8d41e2f5df27" name="a74f320c38b3f02ea557f8d41e2f5df27"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **motor)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (global_structure_t **global_structure)</td></tr>
 <tr class="separator:a74f320c38b3f02ea557f8d41e2f5df27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abffa03133988ab61e668c75178d630b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#abffa03133988ab61e668c75178d630b1">render_text</a> (motor_t **motor, char *text, TTF_Font *font, int x, int y)</td></tr>
+<tr class="memitem:abffa03133988ab61e668c75178d630b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#abffa03133988ab61e668c75178d630b1">render_text</a> (global_structure_t **global_structure, char *text, TTF_Font *font, int x, int y)</td></tr>
 <tr class="memdesc:abffa03133988ab61e668c75178d630b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">cette fonction permet de creer du texte et de le positioner  <a href="menu_8c.html#abffa03133988ab61e668c75178d630b1">Plus de détails...</a><br /></td></tr>
 <tr class="separator:abffa03133988ab61e668c75178d630b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07753dec9b0d8ad58944ccd3f7406ce3"><td class="memItemLeft" align="right" valign="top">SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a07753dec9b0d8ad58944ccd3f7406ce3">color</a> (Uint8 r, Uint8 g, Uint8 b, Uint8 a)</td></tr>
@@ -94,34 +94,34 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
 <tr class="memitem:a4ed74f3a081b1b11b9be57a1d6f15c3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a4ed74f3a081b1b11b9be57a1d6f15c3d">RenderHPBar</a> (int x, int y, int w, int h, float percent, SDL_Color FGColor, SDL_Color BGColor, SDL_Renderer *renderer)</td></tr>
 <tr class="memdesc:a4ed74f3a081b1b11b9be57a1d6f15c3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cette fonction permet de modifier le rectangle de bar de vie avec un pourcentage de vie: vie/vieMaximum  <a href="menu_8c.html#a4ed74f3a081b1b11b9be57a1d6f15c3d">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a4ed74f3a081b1b11b9be57a1d6f15c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d13db494d9bcac49cccb0c90dba0dcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a0d13db494d9bcac49cccb0c90dba0dcf">menu_Bag</a> (motor_t **motor)</td></tr>
+<tr class="memitem:a0d13db494d9bcac49cccb0c90dba0dcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a0d13db494d9bcac49cccb0c90dba0dcf">menu_Bag</a> (global_structure_t **global_structure)</td></tr>
 <tr class="memdesc:a0d13db494d9bcac49cccb0c90dba0dcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">menu principal du jeu  <a href="menu_8c.html#a0d13db494d9bcac49cccb0c90dba0dcf">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a0d13db494d9bcac49cccb0c90dba0dcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46d7ec83f1d2c0efec8fed796bd04f0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a46d7ec83f1d2c0efec8fed796bd04f0d">menu_Battle</a> (motor_t **motor)</td></tr>
+<tr class="memitem:a46d7ec83f1d2c0efec8fed796bd04f0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a46d7ec83f1d2c0efec8fed796bd04f0d">menu_Battle</a> (global_structure_t **global_structure)</td></tr>
 <tr class="memdesc:a46d7ec83f1d2c0efec8fed796bd04f0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface de combat du jeux  <a href="menu_8c.html#a46d7ec83f1d2c0efec8fed796bd04f0d">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a46d7ec83f1d2c0efec8fed796bd04f0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5486d8209d4fd0cc06340ff6f20e4d38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a5486d8209d4fd0cc06340ff6f20e4d38">menu_Battle_Attaque</a> (motor_t **motor)</td></tr>
+<tr class="memitem:a5486d8209d4fd0cc06340ff6f20e4d38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a5486d8209d4fd0cc06340ff6f20e4d38">menu_Battle_Attaque</a> (global_structure_t **global_structure)</td></tr>
 <tr class="memdesc:a5486d8209d4fd0cc06340ff6f20e4d38"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface de combat du jeux affichant les attaques disponibles pour le joueur  <a href="menu_8c.html#a5486d8209d4fd0cc06340ff6f20e4d38">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a5486d8209d4fd0cc06340ff6f20e4d38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78e6d1e68c60b1602cafff26f277b170"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a78e6d1e68c60b1602cafff26f277b170">speech_bubble</a> (motor_t **motor)</td></tr>
+<tr class="memitem:a78e6d1e68c60b1602cafff26f277b170"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a78e6d1e68c60b1602cafff26f277b170">speech_bubble</a> (global_structure_t **global_structure)</td></tr>
 <tr class="memdesc:a78e6d1e68c60b1602cafff26f277b170"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui affiche une bulle de texte contenant du texte mis en paramètre  <a href="menu_8c.html#a78e6d1e68c60b1602cafff26f277b170">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a78e6d1e68c60b1602cafff26f277b170"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff8e002275fdbb9d4054a6b82f7b6788"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#aff8e002275fdbb9d4054a6b82f7b6788">menu_shop</a> (motor_t **motor)</td></tr>
+<tr class="memitem:aff8e002275fdbb9d4054a6b82f7b6788"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#aff8e002275fdbb9d4054a6b82f7b6788">menu_shop</a> (global_structure_t **global_structure)</td></tr>
 <tr class="memdesc:aff8e002275fdbb9d4054a6b82f7b6788"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface pour le marché  <a href="menu_8c.html#aff8e002275fdbb9d4054a6b82f7b6788">Plus de détails...</a><br /></td></tr>
 <tr class="separator:aff8e002275fdbb9d4054a6b82f7b6788"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f948077226cf7cb161db485aec27aba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a5f948077226cf7cb161db485aec27aba">menu_save</a> (motor_t **motor)</td></tr>
+<tr class="memitem:a5f948077226cf7cb161db485aec27aba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a5f948077226cf7cb161db485aec27aba">menu_save</a> (global_structure_t **global_structure)</td></tr>
 <tr class="memdesc:a5f948077226cf7cb161db485aec27aba"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface pour la sauvegarde de jeu  <a href="menu_8c.html#a5f948077226cf7cb161db485aec27aba">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a5f948077226cf7cb161db485aec27aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00b330ae7c5b28b22253c6b8d89c1281"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a00b330ae7c5b28b22253c6b8d89c1281">menu_pokedex</a> (motor_t **motor)</td></tr>
+<tr class="memitem:a00b330ae7c5b28b22253c6b8d89c1281"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a00b330ae7c5b28b22253c6b8d89c1281">menu_pokedex</a> (global_structure_t **global_structure)</td></tr>
 <tr class="memdesc:a00b330ae7c5b28b22253c6b8d89c1281"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface pour le pokedex qui est une sorte de base de données des pokémons  <a href="menu_8c.html#a00b330ae7c5b28b22253c6b8d89c1281">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a00b330ae7c5b28b22253c6b8d89c1281"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ccf19b8b59c71fa8a07bdbe81c54c90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a5ccf19b8b59c71fa8a07bdbe81c54c90">menu_pokemon</a> (motor_t **motor)</td></tr>
+<tr class="memitem:a5ccf19b8b59c71fa8a07bdbe81c54c90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a5ccf19b8b59c71fa8a07bdbe81c54c90">menu_pokemon</a> (global_structure_t **global_structure)</td></tr>
 <tr class="memdesc:a5ccf19b8b59c71fa8a07bdbe81c54c90"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface pour la selection de pokemons pour le combat.  <a href="menu_8c.html#a5ccf19b8b59c71fa8a07bdbe81c54c90">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a5ccf19b8b59c71fa8a07bdbe81c54c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a413c6aacc17bd6ea5af704998608c023"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a413c6aacc17bd6ea5af704998608c023">ecran_acceuil</a> (motor_t **motor)</td></tr>
+<tr class="memitem:a413c6aacc17bd6ea5af704998608c023"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a413c6aacc17bd6ea5af704998608c023">ecran_acceuil</a> (global_structure_t **global_structure)</td></tr>
 <tr class="memdesc:a413c6aacc17bd6ea5af704998608c023"><td class="mdescLeft">&#160;</td><td class="mdescRight">interface pour l'écran principal du jeu  <a href="menu_8c.html#a413c6aacc17bd6ea5af704998608c023">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a413c6aacc17bd6ea5af704998608c023"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d678454da7c00d9201de6439446c848"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a1d678454da7c00d9201de6439446c848">resetSelecteurs</a> (motor_t **motor)</td></tr>
+<tr class="memitem:a1d678454da7c00d9201de6439446c848"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="menu_8c.html#a1d678454da7c00d9201de6439446c848">resetSelecteurs</a> (global_structure_t **global_structure)</td></tr>
 <tr class="memdesc:a1d678454da7c00d9201de6439446c848"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset des variables utilisé par les selecteurs.  <a href="menu_8c.html#a1d678454da7c00d9201de6439446c848">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a1d678454da7c00d9201de6439446c848"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -193,8 +193,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
         <tr>
           <td class="memname">void ecran_acceuil </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -203,7 +203,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
 <p>interface pour l'écran principal du jeu </p>
 <p >\function ecran_acceuil </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: moteur de jeux </td></tr>
   </table>
   </dd>
 </dl>
@@ -219,8 +219,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
         <tr>
           <td class="memname">int init_menu </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -229,7 +229,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
 <p>Initialisation de toutes les variables utilisé pour les menu. </p>
 <p >\function init_menu </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: moteur de jeux </td></tr>
   </table>
   </dd>
 </dl>
@@ -245,8 +245,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
         <tr>
           <td class="memname">void menu_Bag </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -255,13 +255,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
 <p>menu principal du jeu </p>
 <p >\function menu </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: moteur de jeux \function menu_Bag</td></tr>
+    <tr><td class="paramname">global_structure</td><td>: moteur de jeux \function menu_Bag</td></tr>
   </table>
   </dd>
 </dl>
 <p>menu du sac du joueur </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: moteur de jeux </td></tr>
   </table>
   </dd>
 </dl>
@@ -277,8 +277,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
         <tr>
           <td class="memname">void menu_Battle </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -287,7 +287,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
 <p>interface de combat du jeux </p>
 <p >\function menu_Battle </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: moteur de jeux </td></tr>
     <tr><td class="paramname">player</td><td>: structure de donnéees contenant les informations des pokémons du joueur </td></tr>
     <tr><td class="paramname">wild_pkm</td><td>: structure de donnéees contenant les informations des pokémons adversaire </td></tr>
   </table>
@@ -305,8 +305,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
         <tr>
           <td class="memname">void menu_Battle_Attaque </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -316,7 +316,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
 <p >\function menu_Battle_Attaque</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: moteur de jeux </td></tr>
     <tr><td class="paramname">player</td><td>: structure de donnéees contenant les informations des pokémons du joueur </td></tr>
     <tr><td class="paramname">wild_pkm</td><td>: structure de donnéees contenant les informations des pokémons adversaire </td></tr>
   </table>
@@ -334,8 +334,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
         <tr>
           <td class="memname">void menu_pokedex </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -344,7 +344,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
 <p>interface pour le pokedex qui est une sorte de base de données des pokémons </p>
 <p >\function menu_pokedex </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: moteur de jeux </td></tr>
   </table>
   </dd>
 </dl>
@@ -360,8 +360,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
         <tr>
           <td class="memname">void menu_pokemon </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -370,7 +370,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
 <p>interface pour la selection de pokemons pour le combat. </p>
 <p >\function menu_pokemon </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: moteur de jeux </td></tr>
   </table>
   </dd>
 </dl>
@@ -386,8 +386,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
         <tr>
           <td class="memname">void menu_save </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -396,7 +396,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
 <p>interface pour la sauvegarde de jeu </p>
 <p >\function menu_save </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: moteur de jeux </td></tr>
   </table>
   </dd>
 </dl>
@@ -412,8 +412,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
         <tr>
           <td class="memname">void menu_shop </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -422,7 +422,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
 <p>interface pour le marché </p>
 <p >\function menu_shop </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: moteur de jeux </td></tr>
   </table>
   </dd>
 </dl>
@@ -438,8 +438,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
         <tr>
           <td class="memname">void render_text </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em>, </td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -476,7 +476,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
 <p>cette fonction permet de creer du texte et de le positioner </p>
 <p >\function text_draw </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: moteur de jeux </td></tr>
     <tr><td class="paramname">text</td><td>: texte à afficher </td></tr>
     <tr><td class="paramname">font</td><td>: la police du texte à afficher </td></tr>
     <tr><td class="paramname">x</td><td>: position x du texte </td></tr>
@@ -576,8 +576,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
         <tr>
           <td class="memname">void resetSelecteurs </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -586,7 +586,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
 <p>Reset des variables utilisé par les selecteurs. </p>
 <p >\function resetSelecteurs </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: moteur de jeux </td></tr>
   </table>
   </dd>
 </dl>
@@ -602,8 +602,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
         <tr>
           <td class="memname">void speech_bubble </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -612,14 +612,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>menu</b> (motor_t **m
 <p>fonction qui affiche une bulle de texte contenant du texte mis en paramètre </p>
 <p >\function speech_bubble </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: moteur de jeux </td></tr>
     <tr><td class="paramname">text</td><td>texte à afficher dans la bulle \function speech_bubble</td></tr>
   </table>
   </dd>
 </dl>
 <p>interface d'une bulle de texte pour le dialogue </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: moteur de jeux </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: moteur de jeux </td></tr>
   </table>
   </dd>
 </dl>

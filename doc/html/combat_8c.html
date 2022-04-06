@@ -70,7 +70,7 @@ $(function() {
 
 <p>fichier de gestion de combat  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &quot;../include/motor.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;../include/global_structure.h&quot;</code><br />
 <code>#include &quot;../include/window_render.h&quot;</code><br />
 <code>#include &quot;../include/combat.h&quot;</code><br />
 <code>#include &quot;../include/liste.h&quot;</code><br />
@@ -78,7 +78,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a19cd40ebc53f1c29da60c5f38aa08f34"><td class="memItemLeft" align="right" valign="top"><a id="a19cd40ebc53f1c29da60c5f38aa08f34" name="a19cd40ebc53f1c29da60c5f38aa08f34"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>init_combat</b> (motor_t **motor, int pkm_enemy_ids[5])</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>init_combat</b> (global_structure_t **global_structure, int pkm_enemy_ids[5])</td></tr>
 <tr class="separator:a19cd40ebc53f1c29da60c5f38aa08f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56afc9c9f1c313561e1118283d25cb0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a56afc9c9f1c313561e1118283d25cb0c">print_list</a> (Liste_t *player)</td></tr>
 <tr class="memdesc:a56afc9c9f1c313561e1118283d25cb0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction permer de afficher tout les elements d'une liste de pokemon que le joueur possède.  <a href="combat_8c.html#a56afc9c9f1c313561e1118283d25cb0c">Plus de détails...</a><br /></td></tr>
@@ -104,7 +104,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>getPlayerPkmId</b> (Li
 <tr class="memitem:a59144ef179aa81ec5e2c437cc956087f"><td class="memItemLeft" align="right" valign="top">t_pkm&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a59144ef179aa81ec5e2c437cc956087f">GetNth</a> (Liste_t *head, int index)</td></tr>
 <tr class="memdesc:a59144ef179aa81ec5e2c437cc956087f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction renvoie le pokemon a la place 'index' de la liste.  <a href="combat_8c.html#a59144ef179aa81ec5e2c437cc956087f">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a59144ef179aa81ec5e2c437cc956087f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a117214db74819250eccf294fba5f979e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a117214db74819250eccf294fba5f979e">swapNodes</a> (motor_t **motor, int n1, int n2)</td></tr>
+<tr class="memitem:a117214db74819250eccf294fba5f979e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a117214db74819250eccf294fba5f979e">swapNodes</a> (global_structure_t **global_structure, int n1, int n2)</td></tr>
 <tr class="memdesc:a117214db74819250eccf294fba5f979e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Echange la place entre deux pokemon dans la liste.  <a href="combat_8c.html#a117214db74819250eccf294fba5f979e">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a117214db74819250eccf294fba5f979e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b0e5f701d592a9ded13af8e504a1973"><td class="memItemLeft" align="right" valign="top"><a id="a8b0e5f701d592a9ded13af8e504a1973" name="a8b0e5f701d592a9ded13af8e504a1973"></a>
@@ -137,7 +137,7 @@ Liste_t *&#160;</td><td class="memItemRight" valign="bottom"><b>current_pkm</b> 
 <tr class="memitem:a0e78544507ae53daca1bf4ee4e9091ea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a0e78544507ae53daca1bf4ee4e9091ea">combat</a> (Liste_t *pl, t_pkm *wild_pkm, int choix)</td></tr>
 <tr class="memdesc:a0e78544507ae53daca1bf4ee4e9091ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction generale de combat par systeme de manche, inflige les degats et verifie l'etat de la manche.  <a href="combat_8c.html#a0e78544507ae53daca1bf4ee4e9091ea">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a0e78544507ae53daca1bf4ee4e9091ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83c33c210a538fe84769a5be53554e29"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a83c33c210a538fe84769a5be53554e29">capturer</a> (motor_t **motor, Liste_t *player, t_pkm wild_pkm)</td></tr>
+<tr class="memitem:a83c33c210a538fe84769a5be53554e29"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a83c33c210a538fe84769a5be53554e29">capturer</a> (global_structure_t **global_structure, Liste_t *player, t_pkm wild_pkm)</td></tr>
 <tr class="memdesc:a83c33c210a538fe84769a5be53554e29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du dresseur adverse.  <a href="combat_8c.html#a83c33c210a538fe84769a5be53554e29">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a83c33c210a538fe84769a5be53554e29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ecccdcd8f5d0d7234d0894ba0cb4511"><td class="memItemLeft" align="right" valign="top"><a id="a4ecccdcd8f5d0d7234d0894ba0cb4511" name="a4ecccdcd8f5d0d7234d0894ba0cb4511"></a>
@@ -196,8 +196,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>soin</b> (Liste_t *pla
         <tr>
           <td class="memname">int capturer </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em>, </td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -724,8 +724,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>soin</b> (Liste_t *pla
         <tr>
           <td class="memname">int swapNodes </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em>, </td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

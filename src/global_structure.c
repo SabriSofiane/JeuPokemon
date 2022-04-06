@@ -1,5 +1,5 @@
 /**
-  * \file motor.c
+  * \file global_structure.c
   * \brief fichier du moteur
   * \author OKAT Elias
   * \version 1
@@ -10,7 +10,7 @@
 #include "../include/SDL2/SDL_mixer.h"
 #include "../include/SDL2/SDL_ttf.h"
 
-#include "../include/motor.h"
+#include "../include/global_structure.h"
 #include "../include/window_render.h"
 
 #include "../include/player.h"
@@ -22,16 +22,16 @@
 #include "../include/combat.h"
 #include "../include/controller.h"
 /**
-  * \function init_motor
+  * \function init_global_structure
   * \brief Constructeur du moteur de jeu
-  * \param motor : moteur de jeux
+  * \param global_structure : moteur de jeux
 */
-motor_t * init_motor()
+global_structure_t * init_global_structure()
 {
-  motor_t * motor = malloc(sizeof(motor_t));  // Allocation de l'espace mémoire du moteur
+  global_structure_t * global_structure = malloc(sizeof(global_structure_t));  // Allocation de l'espace mémoire du moteur
 
   /* Initialisation du moteur */
-  if(motor == NULL)                           // On test si le moteur a bien été créer
+  if(global_structure == NULL)                           // On test si le moteur a bien été créer
   {
     printf("Erreur pendant l'allocation mémoire pour le moteurr\n");
     return NULL;
@@ -41,13 +41,13 @@ motor_t * init_motor()
     printf("Creation du moteur\n");
   }
 
-  motor->quit = 0;
-  motor->tiles_number = 256;
-  motor->matrice_file = NULL;
-  srand(time(0));
+  global_structure->quit = 0;
+  global_structure->tiles_number = 256;
+  global_structure->matrice_file = NULL;
+  
 
   /* Initialisation de la fenetre du moteur */
-  if (init_window_render(&motor) != 0)
+  if (init_window_render(&global_structure) != 0)
   {
     printf("Erreur a la initialisation de la fenetre et du rendu\n");
     return NULL;
@@ -58,7 +58,7 @@ motor_t * init_motor()
   }
 
   /* Initialisation de la texture */
-  if(init_texture(&motor) != 0)
+  if(init_texture(&global_structure) != 0)
   {
     printf("Erreur a la initialisation des textures\n");
     return NULL;
@@ -68,10 +68,10 @@ motor_t * init_motor()
     printf("Initialisation des textures\n");
   }
 
-  if(create_window_render(&motor->windows->window, &motor->renderer,motor->windows->width,motor->windows->height) == 0)
+  if(create_window_render(&global_structure->windows->window, &global_structure->renderer,global_structure->windows->width,global_structure->windows->height) == 0)
   {
     printf("Erreur a la creation de la fenetre du moteur\n");
-    free(motor);
+    free(global_structure);
     return NULL;
   } else
   {
@@ -79,7 +79,7 @@ motor_t * init_motor()
   }
 
   /* Initialisation des fonctions audio du jeu */
-  if(audio_init(&motor) != 0)
+  if(audio_init(&global_structure) != 0)
   {
     printf("Erreur a la initialisation des fonctions audio\n");
     return NULL;
@@ -90,7 +90,7 @@ motor_t * init_motor()
 
 
   /* Initialisation des fonctions textuelles du jeu */
-  if(text_init(&motor) != 0)
+  if(text_init(&global_structure) != 0)
   {
     printf("Erreur a la initialisation des fonctions des textuelles\n");
     return NULL;
@@ -100,7 +100,7 @@ motor_t * init_motor()
   }
 
   /* Initialisation de la structure de la map*/
-  if(init_map(&motor) != 0)
+  if(init_map(&global_structure) != 0)
   {
     printf("Erreur a la initialisation de la map\n");
     return NULL;
@@ -110,23 +110,23 @@ motor_t * init_motor()
   }
 
   /*
-  motor->controller = malloc(sizeof(controller_t));
+  global_structure->controller = malloc(sizeof(controller_t));
 
-  motor->controller->controller = malloc(sizeof(SDL_GameController*));
-  motor->controller->controller = NULL;
+  global_structure->controller->controller = malloc(sizeof(SDL_GameController*));
+  global_structure->controller->controller = NULL;
 
-  motor->controller->leftX = 0;
-  motor->controller->leftY = 0;
-  motor->controller->rightX = 0;
-  motor->controller->rightY = 0;
+  global_structure->controller->leftX = 0;
+  global_structure->controller->leftY = 0;
+  global_structure->controller->rightX = 0;
+  global_structure->controller->rightY = 0;
 
-  motor->controller->press = 0;
+  global_structure->controller->press = 0;
 
-  motor->controller->joy = ' ';
+  global_structure->controller->joy = ' ';
   */
 
   /* Initialisation du joueur */
-  if(init_player(&motor) != 0)
+  if(init_player(&global_structure) != 0)
   {
     printf("Erreur a la initialisation du joueur\n");
     return NULL;
@@ -137,7 +137,7 @@ motor_t * init_motor()
 
   /* Initialisation des combat */
   int pkm_enemy_ids[5] = {1,2,3,4,5};
-  if(init_combat(&motor,pkm_enemy_ids) != 0)
+  if(init_combat(&global_structure,pkm_enemy_ids) != 0)
   {
     printf("Erreur a la initialisation des fonctions de combats\n");
     return NULL;
@@ -147,7 +147,7 @@ motor_t * init_motor()
   }
 
   /* Initialisation des menus */
-  if(init_menu(&motor) != 0)
+  if(init_menu(&global_structure) != 0)
   {
     printf("Erreur a la initialisation des fonctions des menus\n");
     return NULL;
@@ -156,40 +156,40 @@ motor_t * init_motor()
     printf("Initialisation des menus\n");
   }
 
-  return motor;
+  return global_structure;
 }
 
 /**
-  * \function destroy_motor
+  * \function destroy_global_structure
   * \brief destructeur du moteur de jeu
-  * \param motor : moteur de jeux
+  * \param global_structure : moteur de jeux
 */
-void destroy_motor(motor_t ** motor)
+void destroy_global_structure(global_structure_t ** global_structure)
 {
-  if(*motor != NULL)
+  if(*global_structure != NULL)
   {
-    destroy_window_render(&(*motor)->windows->window, &(*motor)->renderer);
+    destroy_window_render(&(*global_structure)->windows->window, &(*global_structure)->renderer);
 
     /*
     Exemple de destruction d'une texture
 
-    SDL_DestroyTexture(motor->textures->texture_map);
+    SDL_DestroyTexture(global_structure->textures->texture_map);
 
     ⚠️ TOUJOURS détruire une élément d'une structure avant de détruire la structure
     */
 
-    free(&(*motor)->textures);
-    free(&(*motor)->windows);
-    free(&(*motor)->player);
+    free(&(*global_structure)->textures);
+    free(&(*global_structure)->windows);
+    free(&(*global_structure)->player);
 
-    free(&(*motor)->controller->controller);
-    free(&(*motor)->controller->joy1);
-    free(&(*motor)->controller->joy2);
-    free(&(*motor)->controller);
+    free(&(*global_structure)->controller->controller);
+    free(&(*global_structure)->controller->joy1);
+    free(&(*global_structure)->controller->joy2);
+    free(&(*global_structure)->controller);
 
     printf("Destruction du moteur\n");
   }
 
-  free(*motor);
-  *motor = NULL;
+  free(*global_structure);
+  *global_structure = NULL;
 }

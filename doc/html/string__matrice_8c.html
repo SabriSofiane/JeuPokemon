@@ -70,7 +70,7 @@ $(function() {
 
 <p>fichier des matrices de jeu  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &quot;../include/motor.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;../include/global_structure.h&quot;</code><br />
 <code>#include &quot;../include/string_matrice.h&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -81,7 +81,7 @@ Fonctions</h2></td></tr>
 <tr class="memitem:a3da6709a9d7a983f7c09f69e0825460e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__matrice_8c.html#a3da6709a9d7a983f7c09f69e0825460e">detruire_string_matrice</a> (char ***matrice, int size)</td></tr>
 <tr class="memdesc:a3da6709a9d7a983f7c09f69e0825460e"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction de destruction de la matrice  <a href="string__matrice_8c.html#a3da6709a9d7a983f7c09f69e0825460e">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a3da6709a9d7a983f7c09f69e0825460e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2987824ba7b858b8411477bf57833d50"><td class="memItemLeft" align="right" valign="top">char ***&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__matrice_8c.html#a2987824ba7b858b8411477bf57833d50">get_String_Matrice</a> (motor_t **motor, int nb_bordure, int x_center, int y_center)</td></tr>
+<tr class="memitem:a2987824ba7b858b8411477bf57833d50"><td class="memItemLeft" align="right" valign="top">char ***&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__matrice_8c.html#a2987824ba7b858b8411477bf57833d50">get_String_Matrice</a> (global_structure_t **global_structure, int nb_bordure, int x_center, int y_center)</td></tr>
 <tr class="memdesc:a2987824ba7b858b8411477bf57833d50"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui récupère une matrice en matrice string  <a href="string__matrice_8c.html#a2987824ba7b858b8411477bf57833d50">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a2987824ba7b858b8411477bf57833d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adef3b07653d233b4f8a78826acb62125"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="string__matrice_8c.html#adef3b07653d233b4f8a78826acb62125">split_string_data</a> (char str[80], const char s2, int index)</td></tr>
@@ -167,8 +167,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">char *** get_String_Matrice </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em>, </td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -199,7 +199,7 @@ Fonctions</h2></td></tr>
 <p>fonction qui récupère une matrice en matrice string </p>
 <p >\function get_string_matrice </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: le moteur de jeu </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: le moteur de jeu </td></tr>
     <tr><td class="paramname">nb_bordure</td><td>: le nombre de bordure que l'on souhaite definir dans notre matrice </td></tr>
     <tr><td class="paramname">x_center</td><td>: </td></tr>
     <tr><td class="paramname">y_center</td><td>: </td></tr>

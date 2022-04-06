@@ -70,21 +70,21 @@ $(function() {
 
 <p>fichier dédié pour les textes à écrire  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &quot;../include/motor.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;../include/global_structure.h&quot;</code><br />
 <code>#include &quot;../include/text.h&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:af794501b6e23371665e86572a1771810"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#af794501b6e23371665e86572a1771810">text_init</a> (motor_t **motor)</td></tr>
+<tr class="memitem:af794501b6e23371665e86572a1771810"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#af794501b6e23371665e86572a1771810">text_init</a> (global_structure_t **global_structure)</td></tr>
 <tr class="memdesc:af794501b6e23371665e86572a1771810"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction d'initialisation du module de texte  <a href="text_8c.html#af794501b6e23371665e86572a1771810">Plus de détails...</a><br /></td></tr>
 <tr class="separator:af794501b6e23371665e86572a1771810"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22a8a64f541c1ca63acd2cb5032a9ae6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a22a8a64f541c1ca63acd2cb5032a9ae6">set_text_font_size</a> (motor_t **motor, int size)</td></tr>
+<tr class="memitem:a22a8a64f541c1ca63acd2cb5032a9ae6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a22a8a64f541c1ca63acd2cb5032a9ae6">set_text_font_size</a> (global_structure_t **global_structure, int size)</td></tr>
 <tr class="memdesc:a22a8a64f541c1ca63acd2cb5032a9ae6"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction de paramètrage de la taille de la police de texte  <a href="text_8c.html#a22a8a64f541c1ca63acd2cb5032a9ae6">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a22a8a64f541c1ca63acd2cb5032a9ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7758dbed9ccc936ce10065bbb6c7c95a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a7758dbed9ccc936ce10065bbb6c7c95a">text_draw</a> (motor_t **motor, char *text, int x, int y)</td></tr>
+<tr class="memitem:a7758dbed9ccc936ce10065bbb6c7c95a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a7758dbed9ccc936ce10065bbb6c7c95a">text_draw</a> (global_structure_t **global_structure, char *text, int x, int y)</td></tr>
 <tr class="memdesc:a7758dbed9ccc936ce10065bbb6c7c95a"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction d'initialisation du module de texte  <a href="text_8c.html#a7758dbed9ccc936ce10065bbb6c7c95a">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a7758dbed9ccc936ce10065bbb6c7c95a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7996f6965f182088db4961821d4512cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a7996f6965f182088db4961821d4512cb">text_quit</a> (motor_t **motor)</td></tr>
+<tr class="memitem:a7996f6965f182088db4961821d4512cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="text_8c.html#a7996f6965f182088db4961821d4512cb">text_quit</a> (global_structure_t **global_structure)</td></tr>
 <tr class="memdesc:a7996f6965f182088db4961821d4512cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction de destruction du texte  <a href="text_8c.html#a7996f6965f182088db4961821d4512cb">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a7996f6965f182088db4961821d4512cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -103,8 +103,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void set_text_font_size </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em>, </td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -123,7 +123,7 @@ Fonctions</h2></td></tr>
 <p>fonction de paramètrage de la taille de la police de texte </p>
 <p >\function set_text_font_size </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: le moteur de jeu </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: le moteur de jeu </td></tr>
     <tr><td class="paramname">size</td><td>: la taille de police </td></tr>
   </table>
   </dd>
@@ -140,8 +140,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void text_draw </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em>, </td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -172,7 +172,7 @@ Fonctions</h2></td></tr>
 <p>fonction d'initialisation du module de texte </p>
 <p >\function text_draw </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: le moteur de jeu </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: le moteur de jeu </td></tr>
   </table>
   </dd>
 </dl>
@@ -188,8 +188,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">int text_init </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -198,7 +198,7 @@ Fonctions</h2></td></tr>
 <p>fonction d'initialisation du module de texte </p>
 <p >\function text_init </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: le moteur de jeu </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: le moteur de jeu </td></tr>
   </table>
   </dd>
 </dl>
@@ -214,8 +214,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">void text_quit </td>
           <td>(</td>
-          <td class="paramtype">motor_t **&#160;</td>
-          <td class="paramname"><em>motor</em></td><td>)</td>
+          <td class="paramtype">global_structure_t **&#160;</td>
+          <td class="paramname"><em>global_structure</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -224,7 +224,7 @@ Fonctions</h2></td></tr>
 <p>fonction de destruction du texte </p>
 <p >\function text_quit </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">motor</td><td>: le moteur de jeu </td></tr>
+    <tr><td class="paramname">global_structure</td><td>: le moteur de jeu </td></tr>
   </table>
   </dd>
 </dl>

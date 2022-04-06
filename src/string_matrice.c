@@ -5,7 +5,7 @@
   * \version 1
   * \date 8 mars 22
 */
-#include "../include/motor.h"
+#include "../include/global_structure.h"
 #include "../include/string_matrice.h"
 /**
   * \function creer_string_matrice
@@ -49,18 +49,18 @@ void detruire_string_matrice(char *** matrice,int size)
 /**
   * \function get_string_matrice
   * \brief fonction qui récupère une matrice en matrice string
-  * \param motor : le moteur de jeu
+  * \param global_structure : le moteur de jeu
   * \param nb_bordure : le nombre de bordure que l'on souhaite definir dans notre matrice
   * \param x_center :
   * \param y_center :
   * \return char: la matrice en string
 */
-char *** get_String_Matrice(motor_t ** motor, int nb_bordure,int x_center,int y_center)
+char *** get_String_Matrice(global_structure_t ** global_structure, int nb_bordure,int x_center,int y_center)
 {
-  int r = (*motor)->tiles_number;
-  int c = (*motor)->tiles_number;
+  int r = (*global_structure)->tiles_number;
+  int c = (*global_structure)->tiles_number;
 
-  char *** data = (*motor)->matrice_file;
+  char *** data = (*global_structure)->matrice_file;
   char *** data2 = creer_string_matrice((2*nb_bordure)+1);
 
 

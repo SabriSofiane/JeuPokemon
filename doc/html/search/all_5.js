@@ -4,7 +4,7 @@ var searchData=
   ['init_5fcontroller_1',['init_controller',['../controller_8c.html#a381402e4c0d91071ec9fc39c601d631d',1,'controller.c']]],
   ['init_5fmap_2',['init_map',['../map_8c.html#a8ff134c84f38aeae58b106ac2bec3970',1,'map.c']]],
   ['init_5fmenu_3',['init_menu',['../menu_8c.html#a19f6b16af8fa98b95b9b73f1853d3c22',1,'menu.c']]],
-  ['init_5fmotor_4',['init_motor',['../motor_8c.html#a571efe5116b0fad28ffaccd572bbd1c7',1,'motor.c']]],
+  ['init_5fglobal_structure_4',['init_global_structure',['../global_structure_8c.html#a571efe5116b0fad28ffaccd572bbd1c7',1,'global_structure.c']]],
   ['init_5fpkm_5fenemy_5',['init_pkm_enemy',['../combat_8c.html#a5c0a4616c71d89980d5a85900bc0003c',1,'combat.c']]],
   ['init_5fpkm_5fteam_6',['init_pkm_team',['../combat_8c.html#af1051f124913a039fdbd23e14f4ab6f9',1,'combat.c']]],
   ['init_5fplayer_7',['init_player',['../player_8c.html#a0e3fa638c2179487dbf381036a431f8b',1,'player.c']]],

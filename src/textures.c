@@ -5,28 +5,28 @@
   * \version 1
   * \date 8 mars 22
 */
-#include "../include/motor.h"
+#include "../include/global_structure.h"
 #include "../include/textures.h"
 
 /**
   * \function init_texture
   * \brief fonction d'initialisation des textures
-  * \param motor : le moteur de jeu
+  * \param global_structure : le moteur de jeu
 */
-int init_texture(motor_t ** motor )
+int init_texture(global_structure_t ** global_structure )
 {
   int retour = 0;
-  (*motor)->textures = malloc(sizeof(texture_t));
+  (*global_structure)->textures = malloc(sizeof(texture_t));
 
-  if ((*motor)->textures == NULL)
+  if ((*global_structure)->textures == NULL)
   {
     printf("Erreur a l'allocation de la structure textures : %s\n",SDL_GetError());
     retour = -1;
   }
 
-  (*motor)->textures->texture_map = malloc(sizeof(SDL_Texture*));
+  (*global_structure)->textures->texture_map = malloc(sizeof(SDL_Texture*));
 
-  if ((*motor)->textures->texture_map == NULL)
+  if ((*global_structure)->textures->texture_map == NULL)
   {
     printf("Erreur a l'allocation de la structure texture pour la map : %s\n",SDL_GetError());
     retour = -1;

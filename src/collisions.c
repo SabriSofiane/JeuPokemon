@@ -5,7 +5,7 @@
   * \version 1
   * \date 28 mars 2022
 */
-#include "../include/motor.h"
+#include "../include/global_structure.h"
 #include "../include/collisions.h"
 #include "../include/string_matrice.h"
 #include "../include/audio.h"
@@ -15,12 +15,12 @@
   * \brief fonction qui detecter si la case en face du joueur est blocante
   * \return int : retourne l'état de collision
 */
-int check_collision(motor_t ** motor)
+int check_collision(global_structure_t ** global_structure)
 {
-  int y = (*motor)->player->posY;
+  int y = (*global_structure)->player->posY;
   y -= 4;
 
-  char *** matrice = get_String_Matrice(&(*motor), 1, (*motor)->player->posX,y);
+  char *** matrice = get_String_Matrice(&(*global_structure), 1, (*global_structure)->player->posX,y);
   int collision = split_string_data(matrice[1][1],',',4);
 
   detruire_string_matrice(matrice,3);
@@ -31,30 +31,30 @@ int check_collision(motor_t ** motor)
 /**
   * \function check_interaction
   * \brief Fonction de detection d'une interaction avec un élément du jeu (overworld) à la suite d'un appui sur une touche d'action (a,x,y,b)
-  * \param motor : Moteur de jeu
+  * \param global_structure : Moteur de jeu
 */
 
-int * check_interaction(motor_t ** motor)
+int * check_interaction(global_structure_t ** global_structure)
 {
-  int pos_x = (*motor)->player->posX;
-  int pos_y = (*motor)->player->posY;
+  int pos_x = (*global_structure)->player->posX;
+  int pos_y = (*global_structure)->player->posY;
   pos_y -= 5;
 
-  if (((*motor)->keys.lastkey == 'z')&&((*motor)->keys.z_key == 1))
+  if (((*global_structure)->keys.lastkey == 'z')&&((*global_structure)->keys.z_key == 1))
   pos_y--;
 
-  else if (((*motor)->keys.lastkey == 's')&&((*motor)->keys.s_key == 1))
+  else if (((*global_structure)->keys.lastkey == 's')&&((*global_structure)->keys.s_key == 1))
   pos_y++;
 
-  else if (((*motor)->keys.lastkey == 'q')&&((*motor)->keys.q_key == 1))
+  else if (((*global_structure)->keys.lastkey == 'q')&&((*global_structure)->keys.q_key == 1))
   pos_x--;
 
-  else if (((*motor)->keys.lastkey == 'd')&&((*motor)->keys.d_key == 1))
+  else if (((*global_structure)->keys.lastkey == 'd')&&((*global_structure)->keys.d_key == 1))
   pos_x++;
 
-  printf("Last key : %c\n",(*motor)->keys.lastkey );
+  printf("Last key : %c\n",(*global_structure)->keys.lastkey );
 
-  char *** matrice = get_String_Matrice(&(*motor), 1, pos_x,pos_y);
+  char *** matrice = get_String_Matrice(&(*global_structure), 1, pos_x,pos_y);
   static int interaction[10];
 
   for (size_t i = 0; i < 7; i++) {
@@ -85,16 +85,16 @@ int * check_interaction(motor_t ** motor)
 /**
   * \function check_tile_agurments
   * \brief
-  * \param motor : Moteur de jeu
+  * \param global_structure : Moteur de jeu
 */
-int * check_tile_agurments(motor_t ** motor)
+int * check_tile_agurments(global_structure_t ** global_structure)
 {
 
-  int pos_x = (*motor)->player->posX;
-  int pos_y = (*motor)->player->posY;
+  int pos_x = (*global_structure)->player->posX;
+  int pos_y = (*global_structure)->player->posY;
   pos_y -= 4;
 
-  char *** matrice = get_String_Matrice(&(*motor), 0, pos_x,pos_y);
+  char *** matrice = get_String_Matrice(&(*global_structure), 0, pos_x,pos_y);
 
   int * arguments = malloc(sizeof(int) * 10);
 
@@ -127,38 +127,38 @@ int * check_tile_agurments(motor_t ** motor)
 /**
   * \function collision
   * \brief Fonction de blocage du joueur quand une collision est rencontrée
-  * \param motor : Moteur de jeu
+  * \param global_structure : Moteur de jeu
 */
-void collision(motor_t ** motor)
+void collision(global_structure_t ** global_structure)
 {
-  if ((*motor)->keys.z_key + (*motor)->keys.q_key + (*motor)->keys.s_key + (*motor)->keys.d_key > 0 )
+  if ((*global_structure)->keys.z_key + (*global_structure)->keys.q_key + (*global_structure)->keys.s_key + (*global_structure)->keys.d_key > 0 )
   {
-    int collision = check_collision(motor);
+    int collision = check_collision(global_structure);
 
     if (collision != -1)
     {
-      int * arguments = check_tile_agurments(motor);
+      int * arguments = check_tile_agurments(global_structure);
       //printf("%i\n",collision);
 
       switch (collision) {
         case 1:
         printf("bump\n");
         /*Le joueur est entré en collision avec un element et doit donc être bumpé dans la direction opposée*/
-        if ((*motor)->keys.z_key == 1)
+        if ((*global_structure)->keys.z_key == 1)
         {
-          (*motor)->player->posY += (*motor)->player->move_step;
+          (*global_structure)->player->posY += (*global_structure)->player->move_step;
         }
-        else if ((*motor)->keys.q_key == 1)
+        else if ((*global_structure)->keys.q_key == 1)
         {
-          (*motor)->player->posX += (*motor)->player->move_step;
+          (*global_structure)->player->posX += (*global_structure)->player->move_step;
         }
-        else if ((*motor)->keys.s_key == 1)
+        else if ((*global_structure)->keys.s_key == 1)
         {
-          (*motor)->player->posY -= (*motor)->player->move_step;
+          (*global_structure)->player->posY -= (*global_structure)->player->move_step;
         }
-        else if ((*motor)->keys.d_key == 1)
+        else if ((*global_structure)->keys.d_key == 1)
         {
-          (*motor)->player->posX -= (*motor)->player->move_step;
+          (*global_structure)->player->posX -= (*global_structure)->player->move_step;
         }
 
         break;
@@ -166,13 +166,13 @@ void collision(motor_t ** motor)
         case 2:;
         //Le joueur marche dans l'herbe, ou dans les grottes.
         //Les paramètre additionnel correspondes au numéro des pokemon possible a rencontrer
-        if (rand()%10 == 1)
+        //srand(time(0));
+        if (rand()%30 == 1)
         {
-          printf("Combat\n");
+        printf("Combat\n");
+        init_pkm_enemy(&(*global_structure)->wild_pkm,rand()%9);
+        (*global_structure)->menu->menu_battle = 1;
         }
-
-        init_pkm_enemy(&(*motor)->wild_pkm,rand()%9);
-        (*motor)->menu->menu_battle = 1;
 
         break;
 
@@ -227,22 +227,22 @@ void collision(motor_t ** motor)
         switch (arguments[1]) {
           case 0:
           //Haut
-          (*motor)->player->posY -= 1;
+          (*global_structure)->player->posY -= 1;
           break;
 
           case 1:
           //Gauche
-          (*motor)->player->posX -= 1;
+          (*global_structure)->player->posX -= 1;
           break;
 
           case 2:
           //Bas
-          (*motor)->player->posY += 1;
+          (*global_structure)->player->posY += 1;
           break;
 
           case 3:
           //Droite
-          (*motor)->player->posX += 1;
+          (*global_structure)->player->posX += 1;
           break;
         }
         /*
@@ -259,19 +259,19 @@ void collision(motor_t ** motor)
         //Le joueur marche sur une case qui indique un changement/déclenchement d'une musique.
 
         int enable_play_sound = -1;
-        if ((arguments[2] == 0)&&((*motor)->keys.z_key == 1))
+        if ((arguments[2] == 0)&&((*global_structure)->keys.z_key == 1))
         enable_play_sound = 1;
-        else if ((arguments[2] == 1)&&((*motor)->keys.q_key == 1))
+        else if ((arguments[2] == 1)&&((*global_structure)->keys.q_key == 1))
         enable_play_sound = 1;
-        else if ((arguments[2] == 2)&&((*motor)->keys.s_key == 1))
+        else if ((arguments[2] == 2)&&((*global_structure)->keys.s_key == 1))
         enable_play_sound = 1;
-        else if ((arguments[2] == 3)&&((*motor)->keys.d_key == 1))
+        else if ((arguments[2] == 3)&&((*global_structure)->keys.d_key == 1))
         enable_play_sound = 1;
 
         if (enable_play_sound == 1)
         {
           stop_sound();
-          play_sound(motor,(*motor)->musique->track_path_list[arguments[1]],-1,10);
+          play_sound(global_structure,(*global_structure)->musique->track_path_list[arguments[1]],-1,10);
         }
         /*
         arg 0 : 5;
@@ -298,20 +298,20 @@ void collision(motor_t ** motor)
         */
 
         int enable_tp = -1;
-        if ((arguments[4] == 0)&&((*motor)->keys.z_key == 1))
+        if ((arguments[4] == 0)&&((*global_structure)->keys.z_key == 1))
         enable_tp = 1;
-        else if ((arguments[4] == 1)&&((*motor)->keys.q_key == 1))
+        else if ((arguments[4] == 1)&&((*global_structure)->keys.q_key == 1))
         enable_tp = 1;
-        else if ((arguments[4] == 2)&&((*motor)->keys.s_key == 1))
+        else if ((arguments[4] == 2)&&((*global_structure)->keys.s_key == 1))
         enable_tp = 1;
-        else if ((arguments[4] == 3)&&((*motor)->keys.d_key == 1))
+        else if ((arguments[4] == 3)&&((*global_structure)->keys.d_key == 1))
         enable_tp = 1;
 
         if (enable_tp == 1)
         {
           int map_number = arguments[0];
-          (*motor)->player->posX = arguments[2];
-          (*motor)->player->posY = arguments[3];
+          (*global_structure)->player->posX = arguments[2];
+          (*global_structure)->player->posY = arguments[3];
         }
 
 
