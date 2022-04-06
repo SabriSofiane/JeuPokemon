@@ -89,7 +89,7 @@ void display_map(motor_t ** motor,int calque_id)
       int property = split_string_data(mat[i][j],',',3);
      
 
-      if (mat_val != -1)
+      if (mat_val != -2) //Si la split_string_data à renvoyé -2, alors cela veut dire que la cellule et hors du jeu de donnée et donc hors de la map 
       {
         if (mat_val < 510)
         {
