@@ -33,3 +33,8 @@ admin.h
 creations des éléments suivant :
 
 Dossier objets (nécéssaire à la compilation)
+
+---
+Si vous avez l'erreur suivante sous windows: 
+![alt text](https://cdn.discordapp.com/attachments/885897962591510579/961254122038915082/unknown.png)
+Vérifier de bien recompiler le makefile, ci la recompilation échoue et que les messages d'érreurs spécifie que vous arrivez pas à trouver les librairies SDL2 SDL2Image SDL2TTF et SDL2Mixer, veuiller re-télécharger les librairies indiqués sous MinGW32/64 (exemple sur le site de la SDL2 : SDL2-devel-2.0.20-mingw.tar.gz (MinGW 32/64-bit)) et de reprendre les fichier contenus dans le dossier x86_64-w64-mingw32 puis recompiler.
