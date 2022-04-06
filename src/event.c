@@ -175,6 +175,7 @@ int event_handle(global_structure_t ** global_structure) {
             FILE* fout = fopen("player", "wb");
             fwrite((*global_structure)->player, sizeof(player_t), 1, fout);
             fclose(fout);
+            (*global_structure)->menu->menu_save = 0;
           }else{
             (*global_structure)->menu->menu_save = 0;
           }
