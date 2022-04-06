@@ -88,7 +88,7 @@ char *** get_String_Matrice(motor_t ** motor, int nb_bordure,int x_center,int y_
 */
 int split_string_data(char str[80], const char s2,int index)
 {
-  int retour = -1;
+  int retour = -2;
   const char s[2] = ",";
   char * token;
   char str_buffer[80];
