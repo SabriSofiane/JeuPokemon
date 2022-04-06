@@ -48,7 +48,7 @@ int init_window_render(global_structure_t ** global_structure)
 int create_window_render(SDL_Window ** window, SDL_Renderer ** renderer,int window_width, int window_height)
 {
   //SDL_WINDOW_FULLSCREEN
-  (*window) = SDL_CreateWindow("Pokemon ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_width, window_height, SDL_WINDOW_MAXIMIZED );
+  (*window) = SDL_CreateWindow("Pokemon ", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_width, window_height, 0 );
 
   SDL_Surface * icon = IMG_Load("./src/asset/icon.png");
   SDL_SetWindowIcon(*window,icon);
